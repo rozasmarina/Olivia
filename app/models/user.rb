@@ -38,7 +38,7 @@ class User < ApplicationRecord
                       message: "Entre um CPF válido" }
 
   validates :cnpj,
-            format: { if: -> { cpf.blank? }, 
+            format: { if: -> { cpf.blank? },
                       with: %r{\A\d{2}\.?\d{3}\.?\d{3}/\d{4}-?\d{2}\z},
                       message: "Entre um CNPJ válido" }
 end
