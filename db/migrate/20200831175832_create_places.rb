@@ -5,7 +5,6 @@ class CreatePlaces < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :latitude
       t.string :longitude
-
       t.timestamps
     end
   end
