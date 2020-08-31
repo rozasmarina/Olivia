@@ -1,5 +1,5 @@
 class Response < ApplicationRecord
   belongs_to :review
-  belongs_to :owner, class_name: "User", through: :places
+  belongs_to :user
   validates :response, presence: { message: "Campo obrigatório" }
 end

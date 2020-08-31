@@ -108,7 +108,7 @@ sleep(1)
 
   rand(4..10).times do
     content = Faker::Lorem.paragraphs.join.to_s
-    rating = "#{rand(1..5)} stars"
+    rating = rand(1..5)
     review = Review.create!(content: content,
                             rating: rating,
                             user: simple_users.sample,
