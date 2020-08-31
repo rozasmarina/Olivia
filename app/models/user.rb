@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :angels
   has_many :places, class_name: "Place", foreign_key: "owner_id"
   has_many :reviews
+  has many :responses, through: :reviews
   has_one_attached :photo
 
   validates :first_name, :last_name, :phone_number, :username, :email, :city, :state, :gender,
