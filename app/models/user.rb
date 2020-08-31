@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :username, :email, :cpf, :cnpj, uniqueness: true
   validates :email, confirmation: true
 
-  validates :cpf, presence: { if: -> { cnpj.blank? } } 
+  validates :cpf, presence: { if: -> { cnpj.blank? } }
   validates :cnpj, presence: { if: -> { cpf.blank? } }
 
   validates :first_name, :last_name,
