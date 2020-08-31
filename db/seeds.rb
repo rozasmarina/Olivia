@@ -20,7 +20,7 @@ sleep(1)
   password = "123456"
   city = Faker::Address.city
   state = Faker::Address.state
-  gender = %w[feminino feminino feminino outro masculino].sample
+  gender = %w[feminino feminino feminino outro masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cpf = rand.to_s[2..12]
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
@@ -52,7 +52,7 @@ sleep(1)
     Angel.create!(first_name: first_name,
                   email: email,
                   phone_number: phone_number,
-                  user: simple_users.sample)
+                  user: simple_users.sample.first)
   end
 end
 
@@ -67,7 +67,7 @@ sleep(1)
   password = "123456"
   city = Faker::Address.city
   state = Faker::Address.state
-  gender = %w[feminino masculino].sample
+  gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cnpj = rand.to_s[2..14]
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
@@ -99,8 +99,8 @@ sleep(1)
     venue = Place.create!(name: name,
                         latitude: latitude,
                         longitude: longitude,
-                        user: simple_users.sample,
-                        owner: business_users.sample)
+                        user: simple_users.sample.first,
+                        owner: business_users.sample.first)
     puts "#{venue.name} created"
   end
 
@@ -110,8 +110,8 @@ rand(4..10).times do
    rating = "#{rand(1..5)} stars"
    review = Review.create!(content: content,
                           rating: rating,
-                          user: simple_users.sample,
-                          place: Place.all.sample)
+                          user: simple_users.sample.first,
+                          place: Place.all.sample.first)
   puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -121,8 +121,8 @@ rand(4..10).times do
     rating = "#{rand(1..5)} stars"
     review = Review.create!(content: content,
                            rating: rating,
-                           user: simple_users.sample,
-                           place: Place.all.sample,
+                           user: simple_users.sample.first,
+                           place: Place.all.sample.first,
                            response: response)
   puts "#{review.place.name} reviewed by #{review.user.username}; venue responded"
    end
