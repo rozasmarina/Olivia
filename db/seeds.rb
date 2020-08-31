@@ -1,10 +1,10 @@
 require 'open-uri'
 puts "Destroying DB..."
 
-Review.destroy_all
-Place.destroy_all
-# Angels.destroy_all
-User.destroy_all
+# Review.destroy_all
+# Place.destroy_all
+# # Angels.destroy_all
+# User.destroy_all
 
 simple_users = []
 business_users = []
@@ -45,17 +45,15 @@ sleep(1)
   # simple_user.photo.attach(io: avatar, filename: "#{simple_user.username}.png", content_type: 'image/png')
   puts "#{simple_user.username} created"
 
-  # rand(1..3).times. do
-  #   email = Faker::Internet.free_email(name: username)
-  #   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7)
-  #   first_name = Faker::Name.first_name
-
-  #   angel = Angel.create!(first_name: first_name,
-  #                         email: email,
-  #                         phone_number: phone_number,
-  #                         # user: simple_users.sample
-  #                       )
-  # end
+  rand(1..3).times do
+    email = Faker::Internet.free_email(name: username)
+    phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
+    first_name = Faker::Name.first_name
+    Angel.create!(first_name: first_name,
+                  email: email,
+                  phone_number: phone_number,
+                  user: simple_users.sample)
+  end
 end
 
 puts "Creating reviewed places..."
@@ -101,9 +99,8 @@ sleep(1)
     venue = Place.create!(name: name,
                         latitude: latitude,
                         longitude: longitude,
-                        user: User.all[rand(0..9)]
-                        # owner: User.all[rand(10..19)]
-                      )
+                        user: simple_users.sample,
+                        owner: business_users.sample)
     puts "#{venue.name} created"
   end
 
@@ -113,7 +110,7 @@ rand(4..10).times do
    rating = "#{rand(1..5)} stars"
    review = Review.create!(content: content,
                           rating: rating,
-                          user: User.all[rand(0..9)],
+                          user: simple_users.sample,
                           place: Place.all.sample)
   puts "#{review.place.name} reviewed by #{review.user.username}"
   end
@@ -124,7 +121,7 @@ rand(4..10).times do
     rating = "#{rand(1..5)} stars"
     review = Review.create!(content: content,
                            rating: rating,
-                           user: User.all[rand(0..9)],
+                           user: simple_users.sample,
                            place: Place.all.sample,
                            response: response)
   puts "#{review.place.name} reviewed by #{review.user.username}; venue responded"
