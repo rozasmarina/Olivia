@@ -52,7 +52,7 @@ sleep(1)
     Angel.create!(first_name: first_name,
                   email: email,
                   phone_number: phone_number,
-                  user: simple_users.sample.first)
+                  user: simple_users.sample)
   end
 end
 
@@ -69,7 +69,7 @@ sleep(1)
   state = Faker::Address.state
   gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
-  cnpj = rand.to_s[2..14]
+  cnpj = Faker::CNPJ.numeric
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   business_user = User.create!(first_name: first_name,
@@ -99,8 +99,8 @@ sleep(1)
     venue = Place.create!(name: name,
                         latitude: latitude,
                         longitude: longitude,
-                        user: simple_users.sample.first,
-                        owner: business_users.sample.first)
+                        user: simple_users.sample,
+                        owner: business_users.sample)
     puts "#{venue.name} created"
   end
 
