@@ -76,11 +76,14 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    clipboard (1.3.4)
     cloudinary (1.12.0)
       aws_cf_signer
       rest-client
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
+    cpf_faker (1.3.0)
+      clipboard
     crass (1.0.6)
     devise (4.7.2)
       bcrypt (~> 3.0)
@@ -96,6 +99,8 @@ GEM
       railties (>= 3.2)
     erubi (1.9.0)
     execjs (2.7.0)
+    faker (2.13.0)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1)
     font-awesome-sass (5.13.0)
       sassc (>= 1.11)
@@ -264,8 +269,10 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.12.0)
+  cpf_faker
   devise
   dotenv-rails
+  faker
   font-awesome-sass
   geocoder
   jbuilder (~> 2.7)
