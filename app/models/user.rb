@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_one_attached :photo
 
-  validates :first_name, :last_name, :phone_number, :username, :email, :city, :state, :gender, presence: { message: "Campo obrigatório" }
+  validates :first_name, :last_name, :phone_number, :username, :email, :city, :state, :gender,
+            presence: { message: "Campo obrigatório" }
   validates :business, inclusion: { in: [true, false] }
   validates :username, :email, uniqueness: true
   validates :email, confirmation: true
@@ -37,7 +38,7 @@ class User < ApplicationRecord
                       message: "Entre um CPF válido" }
 
   validates :cnpj,
-            format: { if: -> { cpf.blank? },
-                      with: /\A\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}\z/,
+            format: { if: -> { cpf.blank? }, 
+                      with: %r{\A\d{2}\.?\d{3}\.?\d{3}/\d{4}-?\d{2}\z},
                       message: "Entre um CNPJ válido" }
 end
