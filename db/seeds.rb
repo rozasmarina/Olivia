@@ -1,10 +1,12 @@
 require 'open-uri'
+require 'cpf_faker'
+
 puts "Destroying DB..."
 
-# Review.destroy_all
-# Place.destroy_all
-# # Angels.destroy_all
-# User.destroy_all
+Review.destroy_all
+Place.destroy_all
+Angel.destroy_all
+User.destroy_all
 
 simple_users = []
 business_users = []
@@ -69,7 +71,7 @@ sleep(1)
   state = Faker::Address.state
   gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
-  cnpj = Faker::CNPJ.numeric
+  cnpj = Faker::CNPJ.pretty
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   business_user = User.create!(first_name: first_name,
@@ -110,8 +112,8 @@ rand(4..10).times do
    rating = "#{rand(1..5)} stars"
    review = Review.create!(content: content,
                           rating: rating,
-                          user: simple_users.sample.first,
-                          place: Place.all.sample.first)
+                          user: simple_users.sample,
+                          place: Place.all.sample)
   puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -121,8 +123,8 @@ rand(4..10).times do
     rating = "#{rand(1..5)} stars"
     review = Review.create!(content: content,
                            rating: rating,
-                           user: simple_users.sample.first,
-                           place: Place.all.sample.first,
+                           user: simple_users.sample,
+                           place: Place.all.sample,
                            response: response)
   puts "#{review.place.name} reviewed by #{review.user.username}; venue responded"
    end
