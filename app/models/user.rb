@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :angels
-  has_many :places
+  has_many :places, class_name: "Place", foreign_key: "owner_id"
   has_many :reviews
   has_one_attached :photo
 

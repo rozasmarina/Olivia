@@ -48,11 +48,13 @@ ActiveRecord::Schema.define(version: 2020_08_31_183012) do
 
   create_table "places", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "owner_id"
     t.string "name"
     t.string "latitude"
     t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_places_on_owner_id"
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_183012) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "angels", "users"
   add_foreign_key "places", "users"
+  add_foreign_key "places", "users", column: "owner_id"
   add_foreign_key "reviews", "places"
   add_foreign_key "reviews", "users"
 end
