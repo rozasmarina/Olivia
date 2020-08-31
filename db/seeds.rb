@@ -115,17 +115,14 @@ sleep(1)
                             place: Place.all.sample)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
+end
 
-  #   rand(4..10).times do
-  #     content = Faker::Lorem.paragraphs.join.to_s
-  #     response = Faker::Lorem.paragraphs.join.to_s
-  #     rating = "#{rand(1..5)} stars"
-  #     review = Review.create!(content: content,
-  #                            rating: rating,
-  #                            user: simple_users.sample,
-  #                            place: Place.all.sample)
-  #   puts "#{review.place.name} reviewed by #{review.user.username}; venue responded"
-  #    end
+rand(5..10).times do
+  response = Faker::Lorem.paragraphs.join.to_s
+  review = Review.find(rand(1..Review.count))
+  user = review.place.owner
+  Response.create!(response: response, user: user, review: review)
+  puts "#{review.place.owner.username} responded to #{review.user.username}"
 end
 
 puts "Seed successfully created!!!!"
