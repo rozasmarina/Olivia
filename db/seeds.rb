@@ -51,7 +51,9 @@ sleep(1)
     email = Faker::Internet.free_email(name: username)
     phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
     first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
     Angel.create!(first_name: first_name,
+                  last_name: last_name,
                   email: email,
                   phone_number: phone_number,
                   user: simple_users.sample)
