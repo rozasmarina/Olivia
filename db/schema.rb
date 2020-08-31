@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_183012) do
+ActiveRecord::Schema.define(version: 2020_08_31_215123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,12 +58,21 @@ ActiveRecord::Schema.define(version: 2020_08_31_183012) do
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "user_id", null: false
+    t.text "response"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_responses_on_review_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "place_id", null: false
     t.text "content"
     t.integer "rating"
-    t.text "response"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["place_id"], name: "index_reviews_on_place_id"
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_08_31_183012) do
   add_foreign_key "angels", "users"
   add_foreign_key "places", "users"
   add_foreign_key "places", "users", column: "owner_id"
+  add_foreign_key "responses", "reviews"
+  add_foreign_key "responses", "users"
   add_foreign_key "reviews", "places"
   add_foreign_key "reviews", "users"
 end

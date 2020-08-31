@@ -28,18 +28,18 @@ sleep(1)
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   simple_user = User.create!(first_name: first_name,
-                            last_name: last_name,
-                            username: username,
-                            email: email,
-                            password: password,
-                            city: city,
-                            state: state,
-                            business: false,
-                            cpf: cpf,
-                            latitude: latitude,
-                            longitude: longitude,
-                            gender: gender,
-                            phone_number: phone_number)
+                             last_name: last_name,
+                             username: username,
+                             email: email,
+                             password: password,
+                             city: city,
+                             state: state,
+                             business: false,
+                             cpf: cpf,
+                             latitude: latitude,
+                             longitude: longitude,
+                             gender: gender,
+                             phone_number: phone_number)
   simple_users << simple_user
 
   # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}handmazing.png"
@@ -75,18 +75,18 @@ sleep(1)
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   business_user = User.create!(first_name: first_name,
-                              last_name: last_name,
-                              username: username,
-                              email: email,
-                              password: password,
-                              city: city,
-                              state: state,
-                              business: true,
-                              cnpj: cnpj,
-                              latitude: latitude,
-                              longitude: longitude,
-                              gender: gender,
-                              phone_number: phone_number)
+                               last_name: last_name,
+                               username: username,
+                               email: email,
+                               password: password,
+                               city: city,
+                               state: state,
+                               business: true,
+                               cnpj: cnpj,
+                               latitude: latitude,
+                               longitude: longitude,
+                               gender: gender,
+                               phone_number: phone_number)
   business_users << business_user
 
   # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}handmazing.png"
@@ -97,37 +97,35 @@ sleep(1)
   rand(2..3).times do
     latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
     longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
-    name = Faker::Restaurant.name  
+    name = Faker::Restaurant.name
     venue = Place.create!(name: name,
-                        latitude: latitude,
-                        longitude: longitude,
-                        user: simple_users.sample,
-                        owner: business_users.sample)
-    puts "#{venue.name} created"
-  end
-
-
-rand(4..10).times do
-   content = Faker::Lorem.paragraphs.join.to_s
-   rating = "#{rand(1..5)} stars"
-   review = Review.create!(content: content,
-                          rating: rating,
+                          latitude: latitude,
+                          longitude: longitude,
                           user: simple_users.sample,
-                          place: Place.all.sample)
-  puts "#{review.place.name} reviewed by #{review.user.username}"
+                          owner: business_users.sample)
+    puts "#{venue.name} created"
   end
 
   rand(4..10).times do
     content = Faker::Lorem.paragraphs.join.to_s
-    response = Faker::Lorem.paragraphs.join.to_s
-    rating = "#{rand(1..5)} stars"
+    rating = rand(1..5)
     review = Review.create!(content: content,
-                           rating: rating,
-                           user: simple_users.sample,
-                           place: Place.all.sample,
-                           response: response)
-  puts "#{review.place.name} reviewed by #{review.user.username}; venue responded"
-   end
+                            rating: rating,
+                            user: simple_users.sample,
+                            place: Place.all.sample)
+    puts "#{review.place.name} reviewed by #{review.user.username}"
+  end
+
+  #   rand(4..10).times do
+  #     content = Faker::Lorem.paragraphs.join.to_s
+  #     response = Faker::Lorem.paragraphs.join.to_s
+  #     rating = "#{rand(1..5)} stars"
+  #     review = Review.create!(content: content,
+  #                            rating: rating,
+  #                            user: simple_users.sample,
+  #                            place: Place.all.sample)
+  #   puts "#{review.place.name} reviewed by #{review.user.username}; venue responded"
+  #    end
 end
 
 puts "Seed successfully created!!!!"
