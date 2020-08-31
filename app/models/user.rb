@@ -11,8 +11,10 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :phone_number, :username, :email, :city, :state, :gender, presence: { message: "Campo obrigatório" }
   validates :business, inclusion: { in: [true, false] }
-  validates :username, :email, :cpf, :cnpj, uniqueness: true
+  validates :username, :email, uniqueness: true
   validates :email, confirmation: true
+  validates :cpf, uniqueness: { if: -> { cpf.present? } }
+  validates :cnpj, uniqueness: { if: -> { cnpj.present? } }
 
   validates :cpf, presence: { if: -> { cnpj.blank? } }
   validates :cnpj, presence: { if: -> { cpf.blank? } }
