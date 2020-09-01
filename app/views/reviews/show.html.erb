@@ -1,0 +1,6 @@
+<h2>Review of <%= @review.place.name %></h2>
+<p><%= @review.content %></p>
+<p>Ranking Ollivia: <%= @review.rating %></p>
+<p>By: <%= @review.user.username %></p>
+<h3>Responded by <%= @review.place.name %></h3>
+<%= @review.response.response %>

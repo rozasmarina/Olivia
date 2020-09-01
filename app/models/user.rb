@@ -42,4 +42,12 @@ class User < ApplicationRecord
             format: { if: -> { cpf.blank? },
                       with: %r{\A\d{2}\.?\d{3}\.?\d{3}/\d{4}-?\d{2}\z},
                       message: "Entre um CNPJ válido" }
+
+  def set_default_avatar
+    unless photo.attached?
+      avatar_url = "https://api.adorable.io/avatars/285/#{id}ollivia.png"
+      avatar = URI.open(avatar_url)
+      photo.attach(io: avatar, filename: "#{username}.png", content_type: 'image/png')
+    end
+  end
 end
