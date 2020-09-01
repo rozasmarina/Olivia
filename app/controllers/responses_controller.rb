@@ -6,6 +6,8 @@ class ResponsesController < ApplicationController
 
   def new
     @response = Response.new
+    @review = Review.find(params[:review_id])
+    authorize @response
   end
 
   private
