@@ -1,10 +1,10 @@
 class PlacesController < ApplicationController
+  before_action :set_place, only: [:show]
   def index
     @places = policy_scope(Place)
   end
 
   def show
-    @place = Place.find(params[:id])
     authorize @place
   end
 
@@ -29,5 +29,9 @@ class PlacesController < ApplicationController
 
   def place_params
     params.require(:place).permit(:name, :latitude, :longitude)
+  end
+
+  def set_place
+    @place = Place.find(params[:id])
   end
 end
