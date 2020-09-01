@@ -28,6 +28,6 @@ class PlacePolicy < ApplicationPolicy
   private
 
   def is_owner?
-    record.user == user
+    record.owner == user
   end
 end
