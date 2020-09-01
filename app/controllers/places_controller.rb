@@ -1,3 +1,10 @@
 class PlacesController < ApplicationController
-  @places = policy_scope(Place)
+  def index
+    @places = policy_scope(Place)
+  end
+
+  def show
+    @place = Place.find(params[:id])
+    authorize @place
+  end
 end
