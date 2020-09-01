@@ -1,1 +1,17 @@
-<h1>New</h1>
+<div class="container"  style="width: 500px;">
+  <h2 class="mb-5 mt-3" style="text-align: center;">Create new ad</h2>
+  <%= simple_form_for @angel do |f| %>
+    <%= f.error_notification %>
+    <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :phone_number %>
+    <%= f.input :email %>
+    <%#= f.input :photo, :label => 'Send a image', as: :file %>
+    <div class="row justify-content-center">
+      <%= f.button :submit, class: "btn btn-success m-4" %>
+    </div>
+  <% end %>
+</div>
+
+

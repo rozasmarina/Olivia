@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
 
   resources :angels, only: [:new, :create]
-  
+
   #Temporary route for testing - those will be nested in Places
   resources :reviews, only: %i[index new create]
   #Temporary route for testing - those won/t be nested
