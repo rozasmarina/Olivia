@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end
 
   resource :users, only: :show
-  resources :angels, only: %i[new create]
+
+  resources :angels, only: [:new, :create, :show, :edit, :update, :destroy]
 
   # Temporary route for testing - those will be nested in Places
   resources :reviews, only: %i[index new]

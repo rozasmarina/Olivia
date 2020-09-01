@@ -15,6 +15,31 @@ class AngelsController < ApplicationController
     end
   end
 
+  def show
+    @angel = Angel.find(params[:id])
+    authorize @angel  
+  end
+
+  def edit
+    # realizar a edicao do angel se for current_user
+    @angel = Angel.find(params[:id])
+    authorize @angel
+  end
+
+  def update
+    @angel = Angel.find(params[:id])
+    authorize @angel
+    @angel.update(angel_params)
+    redirect_to @angel
+  end
+
+  def destroy
+    @angel = Angel.find(params[:id])
+    authorize @angel
+    @angel.destroy
+    redirect_to @angel
+  end
+
   private
 
   def angel_params
