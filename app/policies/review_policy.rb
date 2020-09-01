@@ -22,20 +22,20 @@ class ReviewPolicy < ApplicationPolicy
   # end
 
   # def edit?
-  #   is_owner?
+  #   owner?
   # end
 
   # def update?
-  #   is_owner?
+  #   owner?
   # end
 
   # def destroy?
-  #   is_owner?
+  #   owner?
   # end
 
   private
 
-  def is_owner?
+  def owner?
     record.user == user
   end
 end
