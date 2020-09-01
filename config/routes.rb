@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#home'
   
-  resources :users, only: :show
+  devise_for :users do
+  end
 
+  resources :users, only: :show
   resources :angels, only: [:new, :create]
 
   #Temporary route for testing - those will be nested in Places
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
     resources :responses, only: %i[new create destroy]
   end
   
-  resources :places, only: %i[index]
+  resources :places, only: %i[index show new create]
 end
