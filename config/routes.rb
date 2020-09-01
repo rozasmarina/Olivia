@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users do
   end
 
-  resources :users, only: :show
+  resource :users, only: :show
   resources :angels, only: [:new, :create]
 
   #Temporary route for testing - those will be nested in Places
