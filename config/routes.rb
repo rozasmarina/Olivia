@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users
+
+  resources :angels, only: [:new, :create]
 end
