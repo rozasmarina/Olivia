@@ -1,4 +1,4 @@
-class UserPolicy < ApplicationPolicy
+class ResponsesPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,6 +6,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    @user?
+    true
   end
 end
