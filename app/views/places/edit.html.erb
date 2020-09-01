@@ -1,0 +1,7 @@
+<h1>Edite as informações sobre esse local: </h1>
+<%= simple_form_for @place do |f| %>
+  <%= f.input :name %>
+  <%= f.input :latitude %>
+  <%= f.input :longitude %>
+  <%= f.button :submit, "Editar" %>
+<% end %>

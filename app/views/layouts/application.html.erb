@@ -4,14 +4,27 @@
     <title>Ollivia</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
+    <div class="w-100">
+      <% if current_user %>
+        <div class="row d-flex justify-content-around align-content-center p-2 pt-3 shadow-sm bg-light">
+          <p>Olá, <%= current_user.first_name %></p>
+          <%= link_to 'Editar perfil', edit_user_registration_path %>
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div class="row d-flex justify-content-around align-content-center p-2 pt-3 shadow-sm bg-light">
+          <%= link_to 'Home', root_path %>
+          <%= link_to 'Logar', new_user_session_path %>
+          <%= link_to 'Inscrever-se', new_user_registration_path %>
+        <% end  %>
+      </div>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
