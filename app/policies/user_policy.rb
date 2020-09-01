@@ -8,7 +8,7 @@ class UserPolicy < ApplicationPolicy
   def show?
     is_user?
   end
-  
+
   def new?
     true
   end
