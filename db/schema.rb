@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_215123) do
 
   create_table "angels", force: :cascade do |t|
     t.string "first_name"
+    t.string "last_name"
     t.string "email"
     t.string "phone_number"
     t.bigint "user_id", null: false
