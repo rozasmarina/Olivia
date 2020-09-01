@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users
+
+  #Temporary route for testing
+  resources :reviews, only: %i[index]
 end
