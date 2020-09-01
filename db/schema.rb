@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_215123) do
     t.string "username", null: false
     t.string "latitude"
     t.string "longitude"
-    t.boolean "business"
+    t.boolean "is_business?", default: false, null: false
     t.string "cpf"
     t.string "cnpj"
     t.datetime "created_at", precision: 6, null: false
