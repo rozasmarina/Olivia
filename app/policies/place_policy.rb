@@ -16,4 +16,18 @@ class PlacePolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def edit?
+    is_owner?
+  end
+
+  def update?
+    is_owner?
+  end
+
+  private
+
+  def is_owner?
+    record.owner == user
+  end
 end

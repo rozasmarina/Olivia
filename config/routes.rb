@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
   end
-
-  resources :places, only: %i[index show new create]
+  
+  resources :places, except: :destroy
 end
