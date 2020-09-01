@@ -34,7 +34,6 @@ sleep(1)
                              password: password,
                              city: city,
                              state: state,
-                             business: false,
                              cpf: cpf,
                              latitude: latitude,
                              longitude: longitude,
@@ -83,7 +82,7 @@ sleep(1)
                                password: password,
                                city: city,
                                state: state,
-                               business: true,
+                               is_business?: true,
                                cnpj: cnpj,
                                latitude: latitude,
                                longitude: longitude,
@@ -96,7 +95,7 @@ sleep(1)
   # business_user.photo.attach(io: avatar, filename: "#{business_user.username}.png", content_type: 'image/png')
   puts "Business account #{business_user.username} created"
 
-  rand(2..3).times do
+  rand(5..10).times do
     latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
     longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
     name = Faker::Restaurant.name
@@ -110,11 +109,25 @@ sleep(1)
 
   rand(4..10).times do
     content = Faker::Lorem.paragraphs.join.to_s
-    rating = rand(1..5)
+    rating = rand(0..3)
+    good = false
     review = Review.create!(content: content,
                             rating: rating,
                             user: simple_users.sample,
-                            place: Place.all.sample)
+                            place: Place.all.sample,
+                            is_good?: good)
+    puts "#{review.place.name} reviewed by #{review.user.username}"
+  end
+
+  rand(4..10).times do
+    content = Faker::Lorem.paragraphs.join.to_s
+    rating = rand(3..5)
+    good = true
+    review = Review.create!(content: content,
+                            rating: rating,
+                            user: simple_users.sample,
+                            place: Place.all.sample,
+                            is_good?: good)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 end
