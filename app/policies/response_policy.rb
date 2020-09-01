@@ -10,7 +10,11 @@ class ResponsePolicy < ApplicationPolicy
   end
 
   def new?
-    true
-    # user == record.place.owner
+    # false
+    record.place.owner == user
+  end
+
+  def create?
+    Review.find(params[:review_id]).place.owner == user
   end
 end

@@ -36,6 +36,6 @@ class ReviewPolicy < ApplicationPolicy
   private
 
   def owner?
-    record.user == user
+    user == record.user
   end
 end

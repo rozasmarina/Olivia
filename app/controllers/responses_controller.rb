@@ -7,7 +7,19 @@ class ResponsesController < ApplicationController
   def new
     @response = Response.new
     @review = Review.find(params[:review_id])
+    authorize @review
+  end
+
+  def create
+    @response = Response.new(response_params)
+    @response.review = Review.find(params[:review_id])
+    @response.user = current_user
     authorize @response
+    if @response.save
+      redirect_to review_path(@review)
+    else
+      render :new
+    end
   end
 
   private
@@ -15,5 +27,9 @@ class ResponsesController < ApplicationController
   def set_response
     authorize @response
     @response = Response.find(params[:id])
+  end
+
+  def response_params
+    params.require(:response).permit(:response, :title)
   end
 end
