@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_215123) do
     t.bigint "user_id", null: false
     t.bigint "place_id", null: false
     t.boolean "is_good?", default: false, null: false
+    t.string "title"
     t.text "content"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false

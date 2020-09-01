@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
-  
+  root to: 'places#index'
+
   devise_for :users do
   end
 
@@ -8,12 +8,12 @@ Rails.application.routes.draw do
 
   resources :angels, only: [:new, :create, :show, :edit, :update, :destroy]
 
-  #Temporary route for testing - those will be nested in Places
+  # Temporary route for testing - those will be nested in Places
   resources :reviews, only: %i[index new]
-  #Temporary route for testing - those won/t be nested
+  # Temporary route for testing - those won/t be nested
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
   end
   
-  resources :places, only: %i[index show new create]
+  resources :places, except: :destroy
 end

@@ -108,10 +108,12 @@ sleep(1)
   end
 
   rand(4..10).times do
+    title = Faker::Book.title
     content = Faker::Lorem.paragraphs.join.to_s
     rating = rand(0..3)
     good = false
-    review = Review.create!(content: content,
+    review = Review.create!(title: title,
+                            content: content,
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
@@ -120,10 +122,12 @@ sleep(1)
   end
 
   rand(4..10).times do
+    title = Faker::Book.title
     content = Faker::Lorem.paragraphs.join.to_s
     rating = rand(3..5)
     good = true
-    review = Review.create!(content: content,
+    review = Review.create!(title: title,
+                            content: content,
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,

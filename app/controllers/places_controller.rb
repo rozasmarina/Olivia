@@ -1,11 +1,12 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show]
+  before_action :set_place, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  
   def index
     @places = policy_scope(Place)
   end
 
   def show
-    authorize @place
   end
 
   def new
@@ -25,6 +26,17 @@ class PlacesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @place.update(place_params)
+      redirect_to @place, notice: 'Local editado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def place_params
@@ -33,5 +45,6 @@ class PlacesController < ApplicationController
 
   def set_place
     @place = Place.find(params[:id])
+    authorize @place
   end
 end
