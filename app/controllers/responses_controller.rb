@@ -6,7 +6,6 @@ class ResponsesController < ApplicationController
 
   def new
     @response = Response.new
-    authorize @response
   end
 
   private

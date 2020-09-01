@@ -1,0 +1,8 @@
+<!--talvez a gente queira isso no show de review, mas por enquanto tá aqui -->
+<%= simple_form_for[@review, @response] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>  
+
+  <%= f.input :response %>
+  <%= f.button :submit %>
+<% end %>
