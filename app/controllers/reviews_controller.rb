@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    authorize @review
   end
 
   private

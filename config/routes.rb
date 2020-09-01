@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :users
 
   #Temporary route for testing
-  resources :reviews, only: %i[index]
+  resources :reviews, only: %i[index show]
 end

@@ -9,9 +9,9 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
-  # def show?
-  #   true
-  # end
+  def show?
+    true
+  end
 
   # def new?
   #   true
@@ -34,6 +34,7 @@ class ReviewPolicy < ApplicationPolicy
   # end
 
   private
+
   def is_owner?
     record.user == user
   end
