@@ -8,6 +8,11 @@ class ReviewsController < ApplicationController
     authorize @review
   end
 
+  # def new
+  #   @review = Review.new
+  #   authorize @review
+  # end
+
   private
 
   def review_params
