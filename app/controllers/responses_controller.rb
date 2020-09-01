@@ -4,6 +4,11 @@ class ResponsesController < ApplicationController
   def show
   end
 
+  def new
+    @response = Response.new
+    authorize @response
+  end
+
   private
 
   def set_response
