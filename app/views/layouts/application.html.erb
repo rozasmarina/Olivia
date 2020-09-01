@@ -4,20 +4,10 @@
     <title>Ollivia</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Add to homescreen -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable"  content="yes">
-
-    <!-- Link the manifest to the layout -->
-    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
-
     <!-- Render the parcial -->
     <%= render 'shared/ios_pwa_links' %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
