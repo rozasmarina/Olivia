@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show]
+  before_action :set_review, only: %i[show edit update]
   def index
     @reviews = policy_scope(Review)
   end
@@ -27,6 +27,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @review.update(review_params)
+      redirect_to @review, notice: 'Local editado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def review_params
@@ -35,5 +46,6 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = Review.find(params[:id])
+    authorize @review
   end
 end

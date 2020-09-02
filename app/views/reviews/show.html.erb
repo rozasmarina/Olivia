@@ -20,3 +20,6 @@
     <% end %>
   </div>
 <% end %>
+<% if @review.created_at >= Time.now - 30.minutes  %>
+  <%= link_to "Editar review", edit_review_path %>
+<% end %>
