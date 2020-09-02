@@ -6,7 +6,7 @@
   <h3>Responded by <%= @review.place.name %></h3>
   <%= @review.response.response %>
 <% end %>
-<% if current_user == @review.place.owner %>
+<% if policy(@review).create_response? %>
   <div>
     <p>Write a response for <%= @review.user.username %></p>
     <%= simple_form_for [@review, @response], method: 'post' do |f| %>

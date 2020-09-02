@@ -7,7 +7,7 @@ class ResponsesController < ApplicationController
   def new
     @response = Response.new
     @review = Review.find(params[:id])
-    authorize @review
+    authorize @review, :create_response?
   end
 
   def create
