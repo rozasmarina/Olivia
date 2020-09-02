@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resource :users, only: :show
 
-  resources :angels, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :angels, only: [:new, :create, :show, :edit, :update, :destroy, :index]
 
   # Temporary route for testing - those will be nested in Places
   resources :places, only: :show do

@@ -1,4 +1,9 @@
 class AngelsController < ApplicationController
+  
+  def index
+    @angels = policy_scope(Angel).order(created_at: :desc)
+  end
+
   def new
     @angel = Angel.new
     authorize @angel
