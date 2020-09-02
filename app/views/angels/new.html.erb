@@ -1,5 +1,5 @@
 <div class="container"  style="width: 500px;">
-  <h2 class="mb-5 mt-3" style="text-align: center;">Create new a</h2>
+  <h2 class="mb-5 mt-3" style="text-align: center;">Adicione um Anjo</h2>
   <%= simple_form_for @angel do |f| %>
     <%= f.error_notification %>
     <%#= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -12,6 +12,9 @@
       <%= f.button :submit, class: "btn btn-success m-4" %>
     </div>
   <% end %>
+
+  <%= link_to 'voltar', angels_path %>
+  <%#= link_to 'voltar', :back %>
 </div>
 
 
