@@ -13,8 +13,8 @@
     <div class="w-100">
       <% if current_user %>
         <div class="row d-flex justify-content-around align-content-center p-2 pt-3 shadow-sm bg-light">
-          <%= link_to 'Home', root_path %>
           <p>Olá, <%= current_user.first_name %></p>
+          <%= link_to 'Home', root_path %>
           <%= link_to 'Editar perfil', edit_user_registration_path %>
           <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
         </div>
