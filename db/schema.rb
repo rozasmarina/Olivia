@@ -73,14 +73,14 @@ ActiveRecord::Schema.define(version: 2020_09_02_193802) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "place_id", null: false
-    t.boolean "is_good?", default: false, null: false
+    t.boolean "is_good", default: false, null: false
     t.boolean "is_satisfied?", default: false
     t.string "title"
     t.text "content"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_anonymous?", default: false
+    t.boolean "is_anonymous", default: false, null: false
     t.index ["place_id"], name: "index_reviews_on_place_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

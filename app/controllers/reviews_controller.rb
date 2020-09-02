@@ -16,10 +16,7 @@ class ReviewsController < ApplicationController
 
   def create
     # raise
-    @review = Review.new
-    @review
-    @review.is_good? = params["is_good"]
-    @review.is_anonymous? = params["is_anonymous"]
+    @review = Review.new(review_params)
     @review.place = Place.find(params[:place_id])
     @review.user = current_user
     authorize @review
@@ -45,7 +42,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :title, :is_good?, :is_anonymous?)
+    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous)
   end
 
   def set_review
