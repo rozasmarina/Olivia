@@ -121,7 +121,7 @@ sleep(1)
                             user: simple_users.sample,
                             place: Place.all.sample,
                             is_good: good,
-                            is_satisfied?: satisfied)
+                            is_satisfied: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -137,7 +137,7 @@ sleep(1)
                             user: simple_users.sample,
                             place: Place.all.sample,
                             is_good: good,
-                            is_satisfied?: satisfied)
+                            is_satisfied: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 end
