@@ -28,17 +28,17 @@ sleep(1)
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   simple_user = User.create!(first_name: first_name,
-                             last_name: last_name,
-                             username: username,
-                             email: email,
-                             password: password,
-                             city: city,
-                             state: state,
-                             cpf: cpf,
-                             latitude: latitude,
-                             longitude: longitude,
-                             gender: gender,
-                             phone_number: phone_number)
+                              last_name: last_name,
+                              username: username,
+                              email: email,
+                              password: password,
+                              city: city,
+                              state: state,
+                              cpf: cpf,
+                              latitude: latitude,
+                              longitude: longitude,
+                              gender: gender,
+                              phone_number: phone_number)
   simple_users << simple_user
 
   # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}handmazing.png"
@@ -75,19 +75,19 @@ sleep(1)
   cnpj = Faker::CNPJ.pretty
   latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
   longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
-  business_user = User.create!(first_name: first_name,
-                               last_name: last_name,
-                               username: username,
-                               email: email,
-                               password: password,
-                               city: city,
-                               state: state,
-                               is_business?: true,
-                               cnpj: cnpj,
-                               latitude: latitude,
-                               longitude: longitude,
-                               gender: gender,
-                               phone_number: phone_number)
+  business_user = User.create!( first_name: first_name,
+                                last_name: last_name,
+                                username: username,
+                                email: email,
+                                password: password,
+                                city: city,
+                                state: state,
+                                is_business?: true,
+                                cnpj: cnpj,
+                                latitude: latitude,
+                                longitude: longitude,
+                                gender: gender,
+                                phone_number: phone_number)
   business_users << business_user
 
   # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}handmazing.png"
@@ -120,8 +120,8 @@ sleep(1)
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
-                            is_good?: good,
-                            is_satisfied?: satisfied)
+                            is_good: good,
+                            is_satisfied: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -136,8 +136,8 @@ sleep(1)
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
-                            is_good?: good,
-                            is_satisfied?: satisfied)
+                            is_good: good,
+                            is_satisfied: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 end

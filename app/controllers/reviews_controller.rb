@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
   # end
 
   def create
+    # raise
     @review = Review.new(review_params)
     @review.place = Place.find(params[:place_id])
     @review.user = current_user
@@ -41,7 +42,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :title)
+    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous)
   end
 
   def set_review
