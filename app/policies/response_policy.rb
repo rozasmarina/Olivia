@@ -10,6 +10,6 @@ class ResponsePolicy < ApplicationPolicy
   end
 
   def create?
-    record.review.place.owner == user
+    record.review.place.owner == user || record.user == user
   end
 end

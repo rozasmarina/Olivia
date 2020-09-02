@@ -2,17 +2,20 @@
 <p><%= @review.content %></p>
 <p>Ranking Ollivia: <%= @review.rating %></p>
 <p>By: <%= @review.user.username %></p>
-<% if @review.response %>
-  <h3>Responded by <%= @review.place.name %></h3>
-  <%= @review.response.response %>
+<% @review.responses.each do | response | %>
+  <div>
+    <p><%= response.response %></p>
+    <p><em>Responded by <%= response.user.username %> <%= "(owner)" if current_user == @review.place.owner %> </em></p>
+    <hr>
+  </div>
 <% end %>
 <% if policy(@review).create_response? %>
   <div>
-    <p>Write a response for <%= @review.user.username %></p>
+    <p>Write a response:</p>
     <%= simple_form_for [@review, @response], method: 'post' do |f| %>
       <div>
         <%= f.input :response %>
-        <%= f.submit 'Response' %>
+        <%= f.submit 'Respond' %>
       </div>
     <% end %>
   </div>

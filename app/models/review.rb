@@ -1,7 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :place
-  has_one :response, dependent: :destroy
+  has_many :responses, dependent: :destroy
 
   validates :title, :content, :rating, presence: { message: "Campo obrigatório" }
   validates :rating, numericality: { only_integer: true }
