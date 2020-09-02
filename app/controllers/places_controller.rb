@@ -7,7 +7,9 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @reviews = @place.reviews
+    # @reviews = @place.reviews
+    @review = Review.new
+    authorize @place
   end
 
   def new
