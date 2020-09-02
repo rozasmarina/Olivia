@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_193802) do
     t.bigint "user_id", null: false
     t.bigint "place_id", null: false
     t.boolean "is_good", default: false, null: false
-    t.boolean "is_satisfied?", default: false
+    t.boolean "is_satisfied", default: false
     t.string "title"
     t.text "content"
     t.integer "rating"
