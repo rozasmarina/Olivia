@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # Temporary route for testing - those will be nested in Places
   resources :places, only: :show do
-    resources :reviews, only: %i[new, create]
+    resources :reviews, only: %i[new create]
   end
   # Temporary route to reviews index - discuss if it should be nested or even exist
   resources :reviews, only: :index
@@ -19,5 +19,5 @@ Rails.application.routes.draw do
     resources :responses, only: %i[new create destroy]
   end
   
-  resources :places, except: %i[destroy, show]
+  resources :places, except: %i[destroy show]
 end
