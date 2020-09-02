@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show edit update]
+  before_action :set_review, only: %i[show edit update disable]
+
   def index
     @reviews = policy_scope(Review)
   end
@@ -15,7 +16,6 @@ class ReviewsController < ApplicationController
   # end
 
   def create
-    # raise
     @review = Review.new(review_params)
     @review.place = Place.find(params[:place_id])
     @review.user = current_user
@@ -33,16 +33,20 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to @review, notice: 'Local editado com sucesso.'
+      redirect_to @review, notice: 'Avaliação editada com sucesso.'
     else
       render :edit
     end
   end
 
+  def disable
+    @review.is_destroyed = true
+  end
+
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous)
+    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_destroyed)
   end
 
   def set_review

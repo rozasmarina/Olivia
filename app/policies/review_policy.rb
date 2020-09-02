@@ -29,6 +29,10 @@ class ReviewPolicy < ApplicationPolicy
     owner?
   end
 
+  def disable
+    owner?
+  end
+
   # def destroy?
   #   owner?
   # end
