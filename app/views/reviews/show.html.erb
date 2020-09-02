@@ -20,6 +20,6 @@
     <% end %>
   </div>
 <% end %>
-<% if @review.created_at >= Time.now - 30.minutes  %>
+<% if policy(@review).edit?  %>
   <%= link_to "Editar review", edit_review_path %>
 <% end %>

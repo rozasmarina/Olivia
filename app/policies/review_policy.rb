@@ -22,7 +22,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def edit?
-    owner?
+    owner? && record.created_at >= Time.now - 30.minutes
   end
 
   def update?
