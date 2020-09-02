@@ -1,4 +1,8 @@
 <h1><%= @place.name %></h1>
+<p>Reviews:</p>
+<% @reviews.each do | review | %>
+  <p><%= link_to review.title, review_path(review) %></p>
+<% end %>
 <p><%= link_to 'voltar a Locais', places_path %></p>
 
 <% if policy(@place).edit? %>

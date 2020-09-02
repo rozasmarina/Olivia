@@ -1,4 +1,4 @@
-class ResponsesPolicy < ApplicationPolicy
+class ResponsePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -7,5 +7,9 @@ class ResponsesPolicy < ApplicationPolicy
 
   def show?
     true
+  end
+
+  def create?
+    record.review.place.owner == user
   end
 end
