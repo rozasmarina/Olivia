@@ -13,8 +13,8 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    true
+  def create?
+    record.place.owner != user && record.user == user
   end
 
   def create_response?

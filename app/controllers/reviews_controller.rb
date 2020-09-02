@@ -14,10 +14,23 @@ class ReviewsController < ApplicationController
   #   authorize @review
   # end
 
+  def create
+    @review = Review.new(review_params)
+    @review.place = Place.find(params[:place_id])
+    @review.user = current_user
+    authorize @review
+    if @review.save
+      redirect_to review_path(@review)
+    else
+      @place = @review.place
+      render "places/show"
+    end
+  end
+
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :rating, :title)
   end
 
   def set_review

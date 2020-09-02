@@ -1,11 +1,24 @@
 <h1><%= @place.name %></h1>
 <p>Reviews:</p>
-<% @reviews.each do | review | %>
+<% @place.reviews.each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
 <% end %>
-<p><%= link_to 'voltar a Locais', places_path %></p>
 
 <% if policy(@place).edit? %>
   <p><%= link_to 'editar local', edit_place_path(@place) %></p>
 <% end %>
 
+<% if policy(@place).add_review? %>
+  <div>
+    <p>Nos conte sobre a sua experiência:</p>
+    <%= simple_form_for [@place, @review], method: 'post' do |f| %>
+      <div>
+        <%= f.input :title %>
+        <%= f.input :content %>
+        <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
+        <%= f.submit 'Review' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<p><%= link_to 'voltar a Locais', places_path %></p>
