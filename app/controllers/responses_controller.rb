@@ -4,11 +4,11 @@ class ResponsesController < ApplicationController
   def show
   end
 
-  def new
-    @response = Response.new
-    @review = Review.find(params[:id])
-    authorize @review, :create_response?
-  end
+  # def new
+  #   @response = Response.new
+  #   @review = Review.find(params[:id])
+  #   authorize @review, :create_response?
+  # end
 
   def create
     @response = Response.new(response_params)
@@ -18,7 +18,8 @@ class ResponsesController < ApplicationController
     if @response.save
       redirect_to review_path(params[:review_id])
     else
-      render :new
+      @review = @response.review
+      render "reviews/show"
     end
   end
 

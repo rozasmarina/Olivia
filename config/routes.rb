@@ -8,12 +8,22 @@ Rails.application.routes.draw do
 
   resources :angels, only: %i[new create show edit update destroy]
 
-  # Temporary route for testing - those will be nested in Places
-  resources :reviews, only: %i[index new]
+  resources :angels
+
+
   # Temporary route for testing - those won/t be nested
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
   end
 
-  resources :places, except: :destroy
+  # Temporary route to reviews index - discuss if it should be nested or even exist
+  resources :reviews, only: %i[index edit update]
+  
+  resources :places, except: %i[destroy show]
+
+  # Temporary route for testing - those will be nested in Places
+  resources :places, only: :show do
+    resources :reviews, only: %i[new create]
+  end
+
 end

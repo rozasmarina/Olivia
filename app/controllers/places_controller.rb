@@ -7,7 +7,9 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @reviews = @place.reviews
+    # @reviews = @place.reviews
+    @review = Review.new
+    authorize @place
   end
 
   def new
@@ -41,7 +43,7 @@ class PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:name, :latitude, :longitude)
+    params.require(:place).permit(:name, :latitude, :longitude, :address)
   end
 
   def set_place

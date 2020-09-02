@@ -1,0 +1,26 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon justify-content-center">
+  <a class="navbar-brand" href="/">
+    <img src="https://previews.dropbox.com/p/thumb/AA7nuAQPGMILXHjzihKFIQIO8nuaIrqo6gLkN4IaCOa5qnNcZNvBSQdLZ2CgqwApu_WGlcWTKR-MaNJTpH2srNfE7IhdoYuvLrQ2EmqjefGrW7dztGxfWSU_3csYCmZCI2X9wfhQ9jeRnm5OsAhdID8aArHNyaZDTWeT_uw5A_lAFfTzwOHdYuG5dRgm5yg8mty6YEI12E8TS3rE2BxO10PZQlO69RVmeYATOvFhEwkqaKtGPq3LlM7Hk5oDNwBo0u2hIIMchdJQBYASpiHiYT-6pF1pbv6OHf2QHjpK9apaxeDcI5SSh8zSjZEu00t5Q9JtZp4c-LCNMLq7Hnnl5YAG/p.png?fv_content=true&size_mode=5" />
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> 
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <% if current_user %>
+            <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item"%>
+            <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to 'Home', root_path, class: "dropdown-item" %>
+            <%= link_to 'Logar', new_user_session_path, class: "dropdown-item" %>
+            <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item" %>
+          <% end  %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
