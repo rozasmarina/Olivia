@@ -1,5 +1,5 @@
 class AngelsController < ApplicationController
-  
+
   def index
     @angels = policy_scope(Angel).order(created_at: :desc)
   end
@@ -22,7 +22,7 @@ class AngelsController < ApplicationController
 
   def show
     @angel = Angel.find(params[:id])
-    authorize @angel  
+    authorize @angel
   end
 
   def edit
