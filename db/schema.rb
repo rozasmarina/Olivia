@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_193802) do
-
+ActiveRecord::Schema.define(version: 20_200_902_193_802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,11 +50,11 @@ ActiveRecord::Schema.define(version: 2020_09_02_193802) do
     t.bigint "user_id", null: false
     t.bigint "owner_id"
     t.string "name"
-    t.string "latitude"
-    t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["owner_id"], name: "index_places_on_owner_id"
     t.index ["user_id"], name: "index_places_on_user_id"
   end
@@ -98,8 +97,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_193802) do
     t.string "last_name", null: false
     t.string "phone_number", null: false
     t.string "username", null: false
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "is_business?", default: false, null: false
     t.string "cpf"
     t.string "cnpj"

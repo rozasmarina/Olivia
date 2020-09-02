@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # Temporary route to reviews index - discuss if it should be nested or even exist
   resources :reviews, only: %i[index edit update]
-  
+
   resources :places, except: %i[destroy show]
 
   # Temporary route for testing - those will be nested in Places
