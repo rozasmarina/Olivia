@@ -1,3 +1,7 @@
 <h1><%= @place.name %></h1>
 <p><%= link_to 'voltar a Locais', places_path %></p>
-<p><%= link_to 'editar local', edit_place_path(@place) %></p>
+
+<% if policy(@place).edit? %>
+  <p><%= link_to 'editar local', edit_place_path(@place) %></p>
+<% end %>
+
