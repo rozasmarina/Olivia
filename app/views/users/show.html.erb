@@ -1,1 +1,12 @@
 <h1><%= @user.first_name %></h1>
+
+<h3>Anjos</h3>
+<ul>
+  <% if @user.angels %>
+    <% @user.angels.each do |angel| %>
+      <li><%= link_to angel.first_name, angel_path(angel) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Adicionar novo anjo", new_angel_path %>
