@@ -114,12 +114,14 @@ sleep(1)
     content = Faker::Lorem.paragraphs.join.to_s
     rating = rand(0..3)
     good = false
+    satisfied = false
     review = Review.create!(title: title,
                             content: content,
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
-                            is_good?: good)
+                            is_good?: good,
+                            is_satisfied?: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -128,12 +130,14 @@ sleep(1)
     content = Faker::Lorem.paragraphs.join.to_s
     rating = rand(3..5)
     good = true
+    satisfied = false
     review = Review.create!(title: title,
                             content: content,
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
-                            is_good?: good)
+                            is_good?: good,
+                            is_satisfied?: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 end
