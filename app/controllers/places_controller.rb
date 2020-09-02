@@ -1,12 +1,13 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :edit, :update]
+  before_action :set_place, only: %i[show edit update]
   skip_before_action :authenticate_user!, only: %i[index show]
-  
+
   def index
     @places = policy_scope(Place)
   end
 
   def show
+    @reviews = @place.reviews
   end
 
   def new

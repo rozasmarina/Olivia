@@ -15,6 +15,6 @@ class ResponsePolicy < ApplicationPolicy
   end
 
   def create?
-    Review.find(params[:review_id]).place.owner == user
+    record.review.place.owner == user
   end
 end

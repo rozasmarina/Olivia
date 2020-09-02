@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @response = Response.new
     authorize @review
   end
 

@@ -6,7 +6,7 @@ class ResponsesController < ApplicationController
 
   def new
     @response = Response.new
-    @review = Review.find(params[:review_id])
+    @review = Review.find(params[:id])
     authorize @review
   end
 
@@ -16,7 +16,7 @@ class ResponsesController < ApplicationController
     @response.user = current_user
     authorize @response
     if @response.save
-      redirect_to review_path(@review)
+      redirect_to review_path(params[:review_id])
     else
       render :new
     end
