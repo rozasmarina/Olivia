@@ -18,7 +18,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create_response?
-    user == record.place.owner
+    user == record.place.owner || user == record.user
   end
 
   # def create?
