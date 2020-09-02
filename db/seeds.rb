@@ -25,8 +25,8 @@ sleep(1)
   gender = %w[feminino feminino feminino outro masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cpf = rand.to_s[2..12]
-  latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
-  longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
+  longitude = rand(-23.476482..-23.637696)
+  latitude = rand(-46.540127..-46.732998)
   simple_user = User.create!(first_name: first_name,
                              last_name: last_name,
                              username: username,
@@ -35,8 +35,8 @@ sleep(1)
                              city: city,
                              state: state,
                              cpf: cpf,
-                             latitude: latitude,
                              longitude: longitude,
+                             latitude: latitude,
                              gender: gender,
                              phone_number: phone_number)
   simple_users << simple_user
@@ -73,8 +73,8 @@ sleep(1)
   gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cnpj = Faker::CNPJ.pretty
-  latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
-  longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
+  longitude = rand(-23.476482..-23.637696)
+  latitude = rand(-46.540127..-46.732998)
   business_user = User.create!(first_name: first_name,
                                last_name: last_name,
                                username: username,
@@ -84,8 +84,8 @@ sleep(1)
                                state: state,
                                is_business?: true,
                                cnpj: cnpj,
-                               latitude: latitude,
                                longitude: longitude,
+                               latitude: latitude,
                                gender: gender,
                                phone_number: phone_number)
   business_users << business_user
@@ -96,13 +96,13 @@ sleep(1)
   puts "Business account #{business_user.username} created"
 
   rand(5..10).times do
-    latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
-    longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
+    longitude = rand(-23.476482..-23.637696)
+    latitude = rand(-46.540127..-46.732998)
     name = Faker::Restaurant.name
-    address = Faker::Address.street_address 
+    address = Faker::Address.street_address
     venue = Place.create!(name: name,
-                          latitude: latitude,
                           longitude: longitude,
+                          latitude: latitude,
                           user: simple_users.sample,
                           owner: business_users.sample,
                           address: address)
