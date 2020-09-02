@@ -1,7 +1,14 @@
 <h2>Review of <%= @review.place.name %></h2>
 <p><%= @review.content %></p>
 <p>Ranking Ollivia: <%= @review.rating %></p>
-<p>By: <%= @review.user.username %></p>
+
+<% if @review.is_anonymous %>
+  <p>By: anonymous</p>
+<% else %>
+  <p>By: <%= @review.user.username %></p>
+<% end %>
+
+
 <% @review.responses.each do | response | %>
   <div>
     <p><%= response.response %></p>
