@@ -21,17 +21,13 @@ class ReviewPolicy < ApplicationPolicy
     user == record.place.owner || user == record.user
   end
 
-  # def create?
-  #   true
-  # end
+  def edit?
+    owner?
+  end
 
-  # def edit?
-  #   owner?
-  # end
-
-  # def update?
-  #   owner?
-  # end
+  def update?
+    owner?
+  end
 
   # def destroy?
   #   owner?
