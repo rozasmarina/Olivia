@@ -13,25 +13,21 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    true
+  def create?
+    record.place.owner != user && record.user == user
   end
 
   def create_response?
     user == record.place.owner || user == record.user
   end
 
-  # def create?
-  #   true
-  # end
+  def edit?
+    owner? && record.created_at >= Time.now - 30.minutes
+  end
 
-  # def edit?
-  #   owner?
-  # end
-
-  # def update?
-  #   owner?
-  # end
+  def update?
+    owner?
+  end
 
   # def destroy?
   #   owner?

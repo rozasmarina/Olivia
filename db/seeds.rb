@@ -91,6 +91,7 @@ counter = 0
   gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cnpj = Faker::CNPJ.pretty
+
   longitude = rand(23.476482..23.637696).-@.round(6)
   latitude = rand(46.540127..46.732998).-@.round(6)
   business_user = User.create!(first_name: first_name,
@@ -106,6 +107,7 @@ counter = 0
                                latitude: latitude,
                                gender: gender,
                                phone_number: phone_number)
+
   business_users << business_user
 
   # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}handmazing.png"
@@ -131,8 +133,8 @@ counter = 0
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
-                            is_good?: good,
-                            is_satisfied?: satisfied)
+                            is_good: good,
+                            is_satisfied: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -148,8 +150,8 @@ counter = 0
                             rating: rating,
                             user: simple_users.sample,
                             place: Place.all.sample,
-                            is_good?: good,
-                            is_satisfied?: satisfied)
+                            is_good: good,
+                            is_satisfied: satisfied)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
   counter += 1
