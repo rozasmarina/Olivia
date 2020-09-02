@@ -99,11 +99,13 @@ sleep(1)
     latitude = "23#{rand(4..6)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
     longitude = "46#{rand(5..8)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}#{rand(0..9)}"
     name = Faker::Restaurant.name
+    address = Faker::Address.street_address 
     venue = Place.create!(name: name,
                           latitude: latitude,
                           longitude: longitude,
                           user: simple_users.sample,
-                          owner: business_users.sample)
+                          owner: business_users.sample,
+                          address: address)
     puts "#{venue.name} created"
   end
 
