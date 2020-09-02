@@ -25,8 +25,8 @@ sleep(1)
   gender = %w[feminino feminino feminino outro masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cpf = rand.to_s[2..12]
-  longitude = rand(-23.476482..-23.637696)
-  latitude = rand(-46.540127..-46.732998)
+  longitude = rand(23.476482..23.637696).-@.round(6)
+  latitude = rand(46.540127..46.732998).-@.round(6)
   simple_user = User.create!(first_name: first_name,
                              last_name: last_name,
                              username: username,
@@ -73,8 +73,8 @@ sleep(1)
   gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cnpj = Faker::CNPJ.pretty
-  longitude = rand(-23.476482..-23.637696)
-  latitude = rand(-46.540127..-46.732998)
+  longitude = rand(23.476482..23.637696).-@.round(6)
+  latitude = rand(46.540127..46.732998).-@.round(6)
   business_user = User.create!(first_name: first_name,
                                last_name: last_name,
                                username: username,
@@ -96,8 +96,8 @@ sleep(1)
   puts "Business account #{business_user.username} created"
 
   rand(5..10).times do
-    longitude = rand(-23.476482..-23.637696)
-    latitude = rand(-46.540127..-46.732998)
+    longitude = rand(23.476482..23.637696).-@.round(6)
+    latitude = rand(46.540127..46.732998).-@.round(6)
     name = Faker::Restaurant.name
     address = Faker::Address.street_address
     venue = Place.create!(name: name,
@@ -149,5 +149,7 @@ rand(5..10).times do
   Response.create!(response: response, user: user, review: review)
   puts "#{review.place.owner.username} responded to #{review.user.username}"
 end
-
+puts ""
+puts "-----------------------------"
 puts "Seed successfully created!!!!"
+puts "-----------------------------"

@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_141552) do
     t.bigint "user_id", null: false
     t.bigint "owner_id"
     t.string "name"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 2020_09_02_141552) do
     t.string "last_name", null: false
     t.string "phone_number", null: false
     t.string "username", null: false
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.boolean "is_business?", default: false, null: false
     t.string "cpf"
     t.string "cnpj"
