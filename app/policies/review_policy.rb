@@ -29,7 +29,7 @@ class ReviewPolicy < ApplicationPolicy
     owner?
   end
 
-  def disable
+  def disable?
     owner?
   end
 
