@@ -1,12 +1,14 @@
 require 'open-uri'
 require 'cpf_faker'
 
-puts "Destroying DB..."
+if Rails.env.development?
+  puts "Destroying DB..."
 
-Review.destroy_all
-Place.destroy_all
-Angel.destroy_all
-User.destroy_all
+  Review.destroy_all
+  Place.destroy_all
+  Angel.destroy_all
+  User.destroy_all
+end
 
 simple_users = []
 business_users = []
@@ -103,7 +105,7 @@ counter = 0
                                password: password,
                                city: city,
                                state: state,
-                               is_business?: true,
+                               is_business: true,
                                cnpj: cnpj,
                                longitude: longitude,
                                latitude: latitude,
@@ -112,7 +114,7 @@ counter = 0
 
   business_users << business_user
 
-  # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}handmazing.png"
+  # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}ollivia.png"
   # avatar = URI.open(avatar_url)
   # business_user.photo.attach(io: avatar, filename: "#{business_user.username}.png", content_type: 'image/png')
   puts "Business account #{business_user.username} created"
@@ -120,7 +122,8 @@ counter = 0
   venue = Place.create!(name: place_names[counter],
                         user: simple_users.sample,
                         owner: business_users.sample,
-                        address: place_addresses[counter])
+                        address: place_addresses[counter],
+                        description: Faker::Movies::HitchhikersGuideToTheGalaxy.quote)
   puts "#{venue.name} created"
 
   puts 'Creating bad reviews'
