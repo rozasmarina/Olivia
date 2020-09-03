@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_103742) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_anonymous", default: false, null: false
-    t.boolean "is_destroyed", default: false
+    t.boolean "is_disabled", default: false
     t.index ["place_id"], name: "index_reviews_on_place_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
