@@ -1,13 +1,12 @@
 <h1><%= @place.name %></h1>
-<p>Reviews:</p>
+<p>Ranking Ollivia: <%= @place.reviews.length == 0 ? "Local sem avaliações" : @place.average_rating.round(1) %></p>
+<p>Reviews:</>
 <% @place.reviews.each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
 <% end %>
-
 <% if policy(@place).edit? %>
   <p><%= link_to 'editar local', edit_place_path(@place) %></p>
 <% end %>
-
 <% if policy(@place).add_review? %>
   <div>
     <p>Nos conte sobre a sua experiência:</p>
