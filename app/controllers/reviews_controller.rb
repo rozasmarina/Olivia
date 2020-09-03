@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     authorize @review
     if @review.save
+      average_rating(@review.place)
       redirect_to review_path(@review)
     else
       @place = @review.place
@@ -40,6 +41,12 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def average_rating(place)
+    reviews = Review.where('place_id = ?', place.id)
+    ratings = reviews.map(&:rating)
+    place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f.round(1))
+  end
 
   def review_params
     params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous)
