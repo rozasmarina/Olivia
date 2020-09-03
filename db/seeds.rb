@@ -1,12 +1,14 @@
 require 'open-uri'
 require 'cpf_faker'
 
-puts "Destroying DB..."
+if Rails.env.development?
+  puts "Destroying DB..."
 
-Review.destroy_all
-Place.destroy_all
-Angel.destroy_all
-User.destroy_all
+  Review.destroy_all
+  Place.destroy_all
+  Angel.destroy_all
+  User.destroy_all
+end
 
 simple_users = []
 business_users = []
@@ -14,6 +16,7 @@ business_users = []
 puts "Creating personal users...And angels"
 sleep(1)
 
+# USERS CREATION
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -41,11 +44,12 @@ sleep(1)
                              phone_number: phone_number)
   simple_users << simple_user
 
-  # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}handmazing.png"
+  # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}ollivia.png"
   # avatar = URI.open(avatar_url)
   # simple_user.photo.attach(io: avatar, filename: "#{simple_user.username}.png", content_type: 'image/png')
   puts "#{simple_user.username} created"
 
+  # ANGELS CREATION
   rand(1..3).times do
     email = Faker::Internet.free_email(name: username)
     phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
@@ -101,7 +105,7 @@ counter = 0
                                password: password,
                                city: city,
                                state: state,
-                               is_business?: true,
+                               is_business: true,
                                cnpj: cnpj,
                                longitude: longitude,
                                latitude: latitude,
@@ -110,7 +114,7 @@ counter = 0
 
   business_users << business_user
 
-  # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}handmazing.png"
+  # avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}ollivia.png"
   # avatar = URI.open(avatar_url)
   # business_user.photo.attach(io: avatar, filename: "#{business_user.username}.png", content_type: 'image/png')
   puts "Business account #{business_user.username} created"
@@ -118,7 +122,8 @@ counter = 0
   venue = Place.create!(name: place_names[counter],
                         user: simple_users.sample,
                         owner: business_users.sample,
-                        address: place_addresses[counter])
+                        address: place_addresses[counter],
+                        description: Faker::Movies::HitchhikersGuideToTheGalaxy.quote)
   puts "#{venue.name} created"
 
   puts 'Creating bad reviews'
