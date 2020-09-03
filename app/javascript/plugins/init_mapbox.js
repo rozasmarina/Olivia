@@ -1,4 +1,4 @@
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, { Popup } from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const mapElement = document.getElementById('map');
@@ -39,12 +39,27 @@ const initMapbox = () => {
     if (mapElement) {
         const map = buildMap();
         const markers = JSON.parse(mapElement.dataset.markers);
+        const resultMarkers = JSON.parse(mapElement.dataset.markers);
         addMarkersToMap(map, markers);
         fitMapToMarkers(map, markers);
         map.addControl(new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
-            mapboxgl: mapboxgl
+            countries: 'br',
+            mapboxgl: mapboxgl,
+            marker: {
+                color: 'pink',
+            }
         }));
+        const nav = new mapboxgl.NavigationControl();
+        const position = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        })
+        map.addControl(position, 'bottom-right');
+        map.addControl(nav, 'bottom-right');
+
     }
 };
 
