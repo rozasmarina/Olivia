@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   # Temporary route to reviews index - discuss if it should be nested or even exist
   resources :reviews, only: %i[index edit update]
-  patch 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
+  get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
+  # patch 'reviews/:id', to: 'reviews#disabled' -> will use update to change
 
   
 

@@ -31,5 +31,5 @@
   <%= link_to "Editar review", edit_review_path %>
 <% end %>
 <% if policy(@review).disable? %>
-  <%= link_to "Desativar review", disable_review_path(@review), method: 'patch' %>
+  <%= link_to "Desativar review", disable_review_path(@review) %>
 <% end %>

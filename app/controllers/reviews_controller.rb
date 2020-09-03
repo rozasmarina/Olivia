@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show edit update disable]
+  before_action :set_review, only: %i[show edit update disable disabled]
 
   def index
     @reviews = policy_scope(Review)
@@ -33,15 +33,25 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to @review, notice: 'Avaliação editada com sucesso.'
+      redirect_to @review, notice: 'Alteração realizada com sucesso.'
     else
       render :edit
     end
   end
 
   def disable
-    @review.is_destroyed = true
   end
+
+  # WILL UPDATE THE REVIEW USING ACTION UPDATE
+  # def disabled
+  #   @review.update(review_params)
+  #   raise
+  #   if @review.update(review_params)
+  #     redirect_to @review, notice: 'Avaliação desabilitada com sucesso.'
+  #   else
+  #     render :disable
+  #   end
+  # end
 
   private
 
