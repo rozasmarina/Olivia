@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit update disable disabled]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @reviews = policy_scope(Review)
