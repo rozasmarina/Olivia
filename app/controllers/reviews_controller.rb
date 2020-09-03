@@ -1,13 +1,14 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show edit update disable disabled]
+  before_action :set_review, only: %i[show edit update disable satisfy]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @reviews = policy_scope(Review)
+    @active_reviews = policy_scope(Review).where("is_disabled = ?", false)
   end
 
   def show
     @response = Response.new
-    authorize @review
   end
 
   # def new
@@ -54,6 +55,9 @@ class ReviewsController < ApplicationController
   #   end
   # end
 
+  def satisfy
+  end
+
   private
 
   def average_rating(place)
@@ -63,7 +67,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_destroyed)
+    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_disabled, :is_satisfied)
   end
 
   def set_review

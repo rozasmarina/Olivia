@@ -1,14 +1,17 @@
-<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-center">
+<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between">
   <a class="navbar-brand" href="/">
     <%= image_tag("ollivia.png") %> </a>
 
   <div>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown avatar-link hamb">
+      
         <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <img alt="" class="avatar dropdown-toggle" src="https://kitt.lewagon.com/placeholder/users/cveneziani"> </a>
+          <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu.png") %>  > </a>
 
-        <div class="dropdown-menu dropdown-menu-left navBg" aria-labelledby="navbarDropdown">
+                
+
+        <div class="dropdown-menu dropdown-menu-right navBg" aria-labelledby="navbarDropdown">
           <% if current_user %>
             <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
             <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
@@ -23,5 +26,3 @@
     </ul>
   </div>
 </div>
-
-

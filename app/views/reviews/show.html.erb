@@ -1,15 +1,20 @@
 <h2>Review of <%= @review.place.name %></h2>
-<p><%= @review.content %></p>
-<p>Ranking Ollivia: <%= @review.rating %></p>
-<% if @review.is_anonymous %>
-  <p>By: anonymous</p>
+<% if @review.is_disabled? %>
+  <p> Avaliação removida </p>
 <% else %>
-  <p>By: <%= @review.user.username %></p>
+  <p><%= @review.content %></p>
+<% end %>
+<% if @review.user == current_user %>
+  <p>Sua avaliação: <%= @review.rating %></p>
+<% elsif @review.is_anonymous %>
+  <p> Avaliação de usuário anônimo: <%= @review.rating %></p>
+<% else %>
+  <p> Avaliação de <%= @review.user.username %>: <%= @review.rating %></p>
 <% end %>
 <% @review.responses.each do | response | %>
   <div>
     <p><%= response.response %></p>
-    <p><em>Responded by <%= response.user.username %> <%= "(owner)" if current_user == @review.place.owner %> </em></p>
+    <p><em>Respondido por <%= response.review.place.name %> <%= "(dono)" if current_user == @review.place.owner %> </em></p>
     <hr>
   </div>
 <% end %>
@@ -31,3 +36,7 @@
   <%= link_to "Desativar review", disable_review_path(@review) %>
 <% end %>
 <p><%= link_to "Voltar para #{@review.place.name}", place_path(@review.place) %></p>
+
+<% if policy(@review).satisfy? %>
+  <p><%= link_to "Questão resolvida?", satisfy_review_path(@review) %>
+<% end %>
