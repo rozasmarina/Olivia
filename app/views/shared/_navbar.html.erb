@@ -1,17 +1,19 @@
 <div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-center">
   <a class="navbar-brand" href="/">
-    <%= image_tag("ollivia.png") %>
-</a>
-  
+    <%= image_tag("ollivia.png") %> </a>
+
   <div>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <img class="avatar dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <img alt="" class="avatar dropdown-toggle" src="https://kitt.lewagon.com/placeholder/users/cveneziani"> </a>
+
+        <div class="dropdown-menu dropdown-menu-left navBg" aria-labelledby="navbarDropdown">
           <% if current_user %>
             <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
             <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
-            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %>
+            <div class="dropdown-divider"> </div>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
           <% else %>
             <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>            
             <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
@@ -21,3 +23,5 @@
     </ul>
   </div>
 </div>
+
+
