@@ -137,7 +137,7 @@ counter = 0
                             is_satisfied: satisfied)
     reviews = Review.where('place_id = ?', review.place.id)
     ratings = reviews.map(&:rating)
-    review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f.round(1))
+    review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
 
@@ -157,7 +157,7 @@ counter = 0
                             is_satisfied: satisfied)
     reviews = Review.where('place_id = ?', review.place.id)
     ratings = reviews.map(&:rating)
-    review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f.round(1))
+    review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
     puts "#{review.place.name} reviewed by #{review.user.username}"
   end
   counter += 1
