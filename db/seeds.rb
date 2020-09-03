@@ -14,6 +14,7 @@ business_users = []
 puts "Creating personal users...And angels"
 sleep(1)
 
+# USERS CREATION
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -41,11 +42,12 @@ sleep(1)
                              phone_number: phone_number)
   simple_users << simple_user
 
-  # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}handmazing.png"
+  # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}ollivia.png"
   # avatar = URI.open(avatar_url)
   # simple_user.photo.attach(io: avatar, filename: "#{simple_user.username}.png", content_type: 'image/png')
   puts "#{simple_user.username} created"
 
+  # ANGELS CREATION
   rand(1..3).times do
     email = Faker::Internet.free_email(name: username)
     phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
