@@ -14,7 +14,7 @@
 <% @review.responses.each do | response | %>
   <div>
     <p><%= response.response %></p>
-    <p><em>Responded by <%= response.user.username %> <%= "(owner)" if current_user == @review.place.owner %> </em></p>
+    <p><em>Responded by <%= response.review.place.name %> <%= "(owner)" if current_user == @review.place.owner %> </em></p>
     <hr>
   </div>
 <% end %>
