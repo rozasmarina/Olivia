@@ -33,9 +33,13 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 
+import { initOlliviaRating } from '../plugins/init_ollivia_rating';
+initOlliviaRating();
+
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
     // initSelect2();
 });
 
 import "controllers"
+

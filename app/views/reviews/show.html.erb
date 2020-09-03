@@ -1,6 +1,6 @@
 <h2>Review of <%= @review.place.name %></h2>
 <p><%= @review.content %></p>
-<p>Ranking Ollivia: <%= @review.rating %></p>
+<p id="ollivia_rating">Ranking Ollivia: <%= @review.rating %></p>
 <% if @review.is_anonymous %>
   <p>By: anonymous</p>
 <% else %>
