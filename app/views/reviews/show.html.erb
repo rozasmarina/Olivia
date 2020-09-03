@@ -14,7 +14,7 @@
 <% @review.responses.each do | response | %>
   <div>
     <p><%= response.response %></p>
-    <p><em>Responded by <%= response.user.username %> <%= "(owner)" if current_user == @review.place.owner %> </em></p>
+    <p><em>Respondido por <%= response.review.place.name %> <%= "(dono)" if current_user == @review.place.owner %> </em></p>
     <hr>
   </div>
 <% end %>
@@ -36,3 +36,7 @@
   <%= link_to "Desativar review", disable_review_path(@review) %>
 <% end %>
 <p><%= link_to "Voltar para #{@review.place.name}", place_path(@review.place) %></p>
+
+<% if policy(@review).satisfy? %>
+  <p><%= link_to "Questão resolvida?", satisfy_review_path(@review) %>
+<% end %>

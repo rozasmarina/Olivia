@@ -1,0 +1,7 @@
+<%= simple_form_for(@review) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.input :is_satisfied, label: "Você ficou safisfeita com a resposta do estabelecimento?", as: :radio_buttons, selected: true, checked: "Yes" %>
+  <%= f.input :rating, collection: (0..5).to_a, selected: 0, label: 'Avaliação final' %>
+  <%= f.button :submit, "Enviar", data: { confirm: 'Tem certeza?' } %>
+<% end %>
