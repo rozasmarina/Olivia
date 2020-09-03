@@ -1,14 +1,11 @@
 <h2>Review of <%= @review.place.name %></h2>
 <p><%= @review.content %></p>
 <p>Ranking Ollivia: <%= @review.rating %></p>
-
 <% if @review.is_anonymous %>
   <p>By: anonymous</p>
 <% else %>
   <p>By: <%= @review.user.username %></p>
 <% end %>
-
-
 <% @review.responses.each do | response | %>
   <div>
     <p><%= response.response %></p>
@@ -28,5 +25,6 @@
   </div>
 <% end %>
 <% if policy(@review).edit?  %>
-  <%= link_to "Editar review", edit_review_path %>
+  <p><%= link_to "Editar review", edit_review_path %></p>
 <% end %>
+<p><%= link_to "Voltar para #{@review.place.name}", place_path(@review.place) %></p>
