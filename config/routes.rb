@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resources :angels
 
-
   # Temporary route for testing - those won/t be nested
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
@@ -20,8 +19,6 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[index edit update]
   get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
   # patch 'reviews/:id', to: 'reviews#disabled' -> will use update to change
-
-  
 
   resources :places, except: %i[destroy show]
 
