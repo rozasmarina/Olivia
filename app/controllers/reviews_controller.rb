@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_destroyed)
+    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_disabled)
   end
 
   def set_review
