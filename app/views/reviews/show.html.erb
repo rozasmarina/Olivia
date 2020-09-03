@@ -27,4 +27,7 @@
 <% if policy(@review).edit?  %>
   <p><%= link_to "Editar review", edit_review_path %></p>
 <% end %>
+<% if policy(@review).disable? %>
+  <%= link_to "Desativar review", disable_review_path(@review) %>
+<% end %>
 <p><%= link_to "Voltar para #{@review.place.name}", place_path(@review.place) %></p>

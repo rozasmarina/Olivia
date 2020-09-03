@@ -29,6 +29,10 @@ class ReviewPolicy < ApplicationPolicy
     owner?
   end
 
+  def disable?
+    owner? && record.is_destroyed == false
+  end
+
   # def destroy?
   #   owner?
   # end
