@@ -36,3 +36,7 @@
   <%= link_to "Desativar review", disable_review_path(@review) %>
 <% end %>
 <p><%= link_to "Voltar para #{@review.place.name}", place_path(@review.place) %></p>
+
+<% if @review.responses.present? && policy(@review).satisfy? %>
+  <p><%= link_to "Satisfeita com a resposta do estabelecimento?", satisfy_review_path(@review) %>
+<% end %>

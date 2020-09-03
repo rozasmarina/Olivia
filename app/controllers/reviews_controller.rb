@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[show edit update disable disabled]
+  before_action :set_review, only: %i[show edit update disable satisfy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
@@ -54,6 +54,9 @@ class ReviewsController < ApplicationController
   #     render :disable
   #   end
   # end
+
+  def satisfy
+  end
 
   private
 
