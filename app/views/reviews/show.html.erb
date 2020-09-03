@@ -1,10 +1,15 @@
 <h2>Review of <%= @review.place.name %></h2>
-<p><%= @review.content %></p>
-<p>Ranking Ollivia: <%= @review.rating %></p>
-<% if @review.is_anonymous %>
-  <p>By: anonymous</p>
+<% if @review.is_disabled? %>
+  <p> Avaliação removida </p>
 <% else %>
-  <p>By: <%= @review.user.username %></p>
+  <p><%= @review.content %></p>
+<% end %>
+<% if @review.user == current_user %>
+  <p>Sua avaliação: <%= @review.rating %></p>
+<% elsif @review.is_anonymous %>
+  <p> Avaliação de usuário anônimo: <%= @review.rating %></p>
+<% else %>
+  <p> Avaliação de <%= @review.user.username %>: <%= @review.rating %></p>
 <% end %>
 <% @review.responses.each do | response | %>
   <div>
