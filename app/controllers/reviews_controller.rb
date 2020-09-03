@@ -3,11 +3,11 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = policy_scope(Review)
+    @active_reviews = policy_scope(Review).where("is_disabled = ?", false)
   end
 
   def show
     @response = Response.new
-    authorize @review
   end
 
   # def new
