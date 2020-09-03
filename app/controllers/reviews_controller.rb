@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
   def average_rating(place)
     reviews = Review.where('place_id = ?', place.id)
     ratings = reviews.map(&:rating)
-    place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f.round(1))
+    place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
   end
 
   def review_params
