@@ -3,11 +3,11 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = policy_scope(Review)
+    @active_reviews = policy_scope(Review).where("is_disabled = ?", false)
   end
 
   def show
     @response = Response.new
-    authorize @review
   end
 
   # def new
@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_destroyed)
+    params.require(:review).permit(:content, :rating, :title, :is_good, :is_anonymous, :is_disabled)
   end
 
   def set_review

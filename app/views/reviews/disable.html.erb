@@ -1,8 +1,6 @@
 <%= simple_form_for(@review) do |f| %>
   <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>  
-
-  <%= f.input :is_destroyed, label: "Quer desativar sua review?", as: :radio_buttons, selected: true, checked: "Yes" %>
-
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.input :is_disabled, label: "Quer desativar sua review?", as: :radio_buttons, selected: true, checked: "Yes" %>
   <%= f.button :submit, "Desativar", data: { confirm: 'Are you sure?' } %>
 <% end %>
