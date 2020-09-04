@@ -5,3 +5,14 @@
 @import "navfooter";
 @import "map";
 @import "together";
+
+body {
+  padding-bottom: 69px;
+  min-height: 97vh;
+  position: relative;
+  ;
+}
+
+.purple {
+  color: $roxo;
+}

@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between">
+<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between" style="z-index: 3">
   <a class="navbar-brand" href="/">
     <%= image_tag("menu/ollivia.png") %> </a>
 
@@ -15,12 +15,12 @@
             <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
             <div class="dropdown-divider"> </div>
             <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
-          <% else %>
-            <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>            
-            <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
-          <% end  %>
-        </div>
-      </li>
-    </ul>
-  </div>
+        <% else %>
+          <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
+          <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</div>
 </div>
