@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   devise_for :users do
   end
 
-  # rota menu
-  get '/vamojunto', to: 'pages#vamojunto', as: :vamojunto
+  # menu rotes
+  get '/VamosJuntas', to: 'pages#together', as: :together
+  get '/ReportarExperiencia', to: 'pages#report', as: :report
+  get '/Comunidade', to: 'pages#community', as: :community
+  get '/Empresa', to: 'pages#company', as: :company
 
   resource :users, only: :show
 
-  resources :angels, only: %i[new create show edit update destroy]
-
-  resources :angels
+  resources :angels, except: :index
 
   # Temporary route for testing - those won/t be nested
   resources :reviews, only: %i[show] do

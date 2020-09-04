@@ -14,6 +14,15 @@ class PagesController < ApplicationController
                  image_url: helpers.asset_url('marker.png') }
   end
 
-  def vamojunto
+  def together
+  end
+
+  def report
+  end
+
+  def community
+  end
+
+  def company
   end
 end
