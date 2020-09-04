@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    # @reviews = @place.reviews
+    @reviews = @place.reviews.order('created_at desc')
     @review = Review.new
     authorize @place
   end
