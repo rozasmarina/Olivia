@@ -13,4 +13,7 @@ class PagesController < ApplicationController
     @rmarker = { createPlace: render_to_string(partial: "create_place"),
                  image_url: helpers.asset_url('marker.png') }
   end
+
+  def vamojunto
+  end
 end

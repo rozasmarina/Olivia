@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   devise_for :users do
   end
 
+  # rota menu
+  get '/vamojunto', to: 'pages#vamojunto', as: :vamojunto
+
   resource :users, only: :show
 
   resources :angels, only: %i[new create show edit update destroy]
