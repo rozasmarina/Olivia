@@ -1,12 +1,29 @@
-<h1><%= @user.first_name %></h1>
+<div class="container"> 
+  <h2> <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-square pic", alt: "avatar" %> </h2>
+  <h5> <strong>Olá <%= @user.first_name %> </strong> </h5>
+  <br>
 
-<h3>Anjos</h3>
-<ul>
-  <% if @user.angels %>
-    <% @user.angels.each do |angel| %>
-      <li><%= link_to angel.first_name, angel_path(angel) %></li>
+  <h4 class="title table page-item">Meus Anjos</h4>
+  <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
+  
+  <ul>
+    <% if @user.angels %>
+      <% @user.angels.each do |angel| %>
+        <li><%= link_to angel.first_name, angel_path(angel) %></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
-<%= link_to "Adicionar novo anjo", new_angel_path %>
+  <h4 class="title table">Minhas Reviews</h4>
+  <ul>
+      <% @user.reviews.each do |review| %>
+        <li> <%= link_to review.title, review_path(review) %></li>
+      <% end %>
+  </ul>
+
+
+  
+
+
+</div>
+

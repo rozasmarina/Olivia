@@ -1,0 +1,31 @@
+.pic {
+  width: 90px;
+}
+
+.bg {
+  justify-content: space-between;
+  background-color: none !important;
+  border-top: solid 3px $roxo;
+  border-bottom: none !important;
+}
+
+// --- Gallery Card img --- //
+.card-s {
+  width: 100px;
+}
+
+.title {
+  color: $roxo;
+}
+
+ul {
+  list-style: none;
+}
+
+.btns {
+  border-color: rgb(68, 68, 230);
+  background-color: white !important;
+  color: $roxo !important;
+}
+
+
