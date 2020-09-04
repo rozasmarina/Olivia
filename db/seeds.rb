@@ -84,7 +84,7 @@ place_addresses = ['Avenida Presidente Juscelino Kubitschek, 1444, São Paulo',
                    'Rua Dr. José Paulo, 103']
 
 counter = 0
-10.times do
+place_names.length.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])

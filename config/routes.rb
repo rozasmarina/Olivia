@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: 'places#index'
   get '/home', to: 'pages#home'
+  get '/near_me', to: 'pages#near_me', as: "near_me"
+  get '/top_places', to: 'pages#top_places', as: "top_places"
+  get '/recommended', to: 'pages#recommended', as: "recommended"
+
   devise_for :users do
   end
 
@@ -30,5 +34,4 @@ Rails.application.routes.draw do
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
-
 end
