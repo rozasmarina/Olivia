@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root to: 'places#index'
   get '/home', to: 'pages#home'
-  get '/home', to: 'pages#near_me', as: "near_me"
-  get '/home', to: 'pages#top', as: "top_places"
-  get '/home', to: 'pages#recommended', as: "recommended"
+  get '/near_me', to: 'pages#near_me', as: "near_me"
+  get '/top_places', to: 'pages#top_places', as: "top_places"
+  get '/recommended', to: 'pages#recommended', as: "recommended"
 
   devise_for :users do
   end

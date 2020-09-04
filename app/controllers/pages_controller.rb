@@ -16,14 +16,12 @@ class PagesController < ApplicationController
 
   def top_places
     @places = Place.all
-    @markers = @places.first(5).geocoded.map do |place|
+    @top_places = @places.geocoded.sort { |a, b| b.average_rating <=> a.average_rating }
+    @markers = @top_places.first(5).map do |place|
       { lat: place.latitude, lng: place.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { place: place }),
         image_url: helpers.asset_url('marker.png') }
     end
-    @rmarker = { createPlace: render_to_string(partial: "create_place"),
-                 image_url: helpers.asset_url('rmarker.png') }
-    raise
   end
 
   def recommended
