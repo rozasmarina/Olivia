@@ -1,6 +1,6 @@
 <h1><%= @place.name %></h1>
 <p>Ranking Ollivia: <%= @place.reviews.length == 0 ? "Local sem avaliações" : @place.average_rating.round(1) %></p>
-<p>Reviews:</>
+<p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
 <% end %>
