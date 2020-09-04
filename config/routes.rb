@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'places#index'
-  get '/home', to: 'pages#home'
+  root to: 'pages#home'
   get '/near_me', to: 'pages#near_me', as: "near_me"
   get '/top_places', to: 'pages#top_places', as: "top_places"
   get '/recommended', to: 'pages#recommended', as: "recommended"
