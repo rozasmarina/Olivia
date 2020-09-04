@@ -1,6 +1,7 @@
 <%= simple_form_for(@review) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
   <%= f.label "Deseja desativar a sua avaliação?" %>
   <%= f.collection_radio_buttons :is_disabled,
                                 [

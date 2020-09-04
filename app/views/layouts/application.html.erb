@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>  
+<html>
   <head>
     <title>Ollivia</title>
     <%= csrf_meta_tags %>
@@ -11,14 +11,11 @@
   </head>
   <body>
     <%= render "shared/navheader" %>
-    <%= render "shared/index" %>
-    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    
     <%= yield %>
     <div class="fixed-bottom">
       <%= render "shared/navfooter"  %>
     </div>
-  </body> 
+  </body>
 </html>
