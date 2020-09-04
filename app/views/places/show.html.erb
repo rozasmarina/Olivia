@@ -12,7 +12,18 @@
     <p>Nos conte sobre a sua experiência:</p>
     <%= simple_form_for [@place, @review], method: 'post' do |f| %>
       <div>
-        <%= f.input :is_good, label: "Sua experiência foi boa?", as: :radio_buttons, selected: true, input_html: { true: "Boa", false: "Ruim"} %>
+        <%# LABEL + INPUTS IS_GOOD  %>
+        <%= f.label "Como foi sua experiência?" %>
+        <%= f.collection_radio_buttons :is_good,
+                                      [
+                                        [true, 'Boa'],
+                                        [false, 'Ruim']
+                                      ],
+                                      :first,
+                                      :last, 
+                                      checked: true,
+                                      item_wrapper_class: :evaluation,
+                                      item_wrapper_tag: :p %>
         <%= f.input :title, label: "Título" %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>

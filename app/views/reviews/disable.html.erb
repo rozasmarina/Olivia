@@ -1,6 +1,16 @@
 <%= simple_form_for(@review) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <%= f.input :is_disabled, label: "Quer desativar sua review?", as: :radio_buttons, selected: true, checked: "Yes" %>
-  <%= f.button :submit, "Desativar", data: { confirm: 'Are you sure?' } %>
+  <%= f.label "Deseja desativar a sua avaliação?" %>
+  <%= f.collection_radio_buttons :is_disabled,
+                                [
+                                  [true, 'Sim, quero desativar a minha avaliação'],
+                                  [false, 'Não, desejo manter a avaliação ativa']
+                                ],
+                                :first,
+                                :last, 
+                                checked: true,
+                                item_wrapper_class: :disabling,
+                                item_wrapper_tag: :p %>
+  <%= f.button :submit, "Desativar", data: { confirm: 'Tem certeza? Caso opte por desativar a avaliação, não será possível reverter essa escolha' } %>
 <% end %>
