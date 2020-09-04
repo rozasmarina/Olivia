@@ -1,26 +1,23 @@
-<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between">
+<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between" style="z-index: 3">
   <a class="navbar-brand" href="/">
     <%= image_tag("ollivia.png") %> </a>
-
   <div>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown avatar-link hamb">
-      
-        <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
+        <a class="avatar-link" data-toggle="dropdown" aria-expanded="false">
           <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu.png") %>  > </a>
-
         <div class="dropdown-menu dropdown-menu-right navBg" aria-labelledby="navbarDropdown">
           <% if current_user %>
             <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
             <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
             <div class="dropdown-divider"> </div>
             <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
-          <% else %>
-            <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>            
-            <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
-          <% end  %>
-        </div>
-      </li>
-    </ul>
-  </div>
+        <% else %>
+          <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
+          <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</div>
 </div>
