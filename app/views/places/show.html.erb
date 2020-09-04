@@ -27,8 +27,10 @@
         <%= f.input :title, label: "Título" %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
-        <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
-        <%= f.submit 'Review' %>
+        <fieldset class="form-group" id="anonymous" style="display:none;">
+          <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
+        </fieldset>
+        <%= f.submit 'Avaliar' %>
       </div>
     <% end %>
   </div>
