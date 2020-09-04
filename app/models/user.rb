@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :responses
   has_one_attached :photo
 
-  validates :first_name, :last_name, :phone_number, :username, :email, :city, :state, :gender,
+  validates :first_name, :last_name, :phone_number, :username, :email, :city, :state,
             presence: { message: "Campo obrigatório" }
   validates :is_business, inclusion: { in: [true, false] }
   validates :username, :email, uniqueness: true
@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   validates :cpf, presence: { if: -> { cnpj.blank? } }
   validates :cnpj, presence: { if: -> { cpf.blank? } }
+  validates :gender, presence: { if: -> { cpf.present? } }
 
   validates :first_name, :last_name,
             format: { with: /[A-Za-z]+/,

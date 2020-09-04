@@ -26,7 +26,7 @@ class PlacePolicy < ApplicationPolicy
   end
 
   def add_review?
-    record.owner != user
+    record.owner != user && user
   end
 
   private

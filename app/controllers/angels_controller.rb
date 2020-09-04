@@ -14,7 +14,7 @@ class AngelsController < ApplicationController
     @angel.user = current_user
     authorize @angel
     if @angel.save
-      redirect_to root_path
+      redirect_to angels_path
     else
       render :new
     end
