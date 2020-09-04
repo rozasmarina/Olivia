@@ -9,8 +9,6 @@
         <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
           <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu.png") %>  > </a>
 
-                
-
         <div class="dropdown-menu dropdown-menu-right navBg" aria-labelledby="navbarDropdown">
           <% if current_user %>
             <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>

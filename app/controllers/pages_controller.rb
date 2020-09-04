@@ -28,4 +28,7 @@ class PagesController < ApplicationController
 
   def recommended
   end
+
+  def vamojunto
+  end
 end

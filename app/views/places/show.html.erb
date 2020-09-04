@@ -1,7 +1,7 @@
 <h1><%= @place.name %></h1>
 <p>Ranking Ollivia: <%= @place.reviews.length == 0 ? "Local sem avaliações" : @place.average_rating.round(1) %></p>
-<p>Reviews:</>
-<% @place.reviews.where("is_disabled = ?", false).each do | review | %>
+<p>Avaliações:</>
+<% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
 <% end %>
 <% if policy(@place).edit? %>
@@ -12,7 +12,18 @@
     <p>Nos conte sobre a sua experiência:</p>
     <%= simple_form_for [@place, @review], method: 'post' do |f| %>
       <div>
-        <%= f.input :is_good, label: "Sua experiência foi boa?", as: :radio_buttons, selected: true, checked: "Yes" %>
+        <%# LABEL + INPUTS IS_GOOD  %>
+        <%= f.label "Como foi sua experiência?" %>
+        <%= f.collection_radio_buttons :is_good,
+                                      [
+                                        [true, 'Boa'],
+                                        [false, 'Ruim']
+                                      ],
+                                      :first,
+                                      :last, 
+                                      checked: true,
+                                      item_wrapper_class: :evaluation,
+                                      item_wrapper_tag: :p %>
         <%= f.input :title, label: "Título" %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
@@ -21,5 +32,7 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <%= link_to 'Faça login para avaliar o local', new_user_session_path %>
 <% end %>
-<p><%= link_to 'voltar a Locais', places_path %></p>
+<p><%= link_to 'Voltar a Locais', places_path %></p>

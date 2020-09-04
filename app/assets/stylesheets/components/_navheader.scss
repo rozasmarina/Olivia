@@ -2,6 +2,9 @@
   justify-content: space-between;
   background: #7209B7 !important;
   border-bottom: solid 3px #F72585;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -20,6 +23,7 @@
 .navDropLogadoTxt {
   color: #7F7F7F;
 }
+
 .navDropLogoff {
   color: #7209B7;
 }
