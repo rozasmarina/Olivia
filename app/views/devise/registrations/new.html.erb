@@ -15,14 +15,35 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :is_business, label: "Quer criar uma conta empresarial?" %>
 
-    <%#= SE USER COMUM: CPF E GENDER %>
-    <%= f.input :cpf, label: 'CPF'%>
-    <%= f.input :gender, label: 'GENDER'%>
+    <!--<fieldset class="form-group">
+      <label for="businessaccount">Is there a stair Opening?</label>
+      <br><input type="checkbox" id="FLoorAId">
+    </fieldset> -->
+
+    <%= f.label "Quer criar uma conta empresarial?" %>
+    <%= f.collection_radio_buttons :is_business,
+                                    [
+                                      [false, 'Não, sou uma pessoa física'],
+                                      [true, 'Sim, tenho um estabelecimento']
+                                    ],
+                                    :first,
+                                    :last, 
+                                    checked: false,
+                                    item_wrapper_class: :businessaccount,
+                                    item_wrapper_tag: :p %>
     
+    <%#= SE USER COMUM: CPF E GENDER %>
+    <fieldset class="form-group" id="pffield" style="display:block;">
+      <%= f.input :cpf, label: 'CPF'%>
+      <%= f.input :gender%>
+    </fieldset>
+
     <%#=SE USER EMPRESARIAL: CNPJ %>
-    <%= f.input :cnpj, label: 'CNPJ'%>
+    <fieldset class="form-group" id="pjfield" style="display:none;">
+      <%= f.input :cnpj, label: 'CNPJ'%>
+    </fieldset>
+    
 
     <%#= CMPOS COMUNS A TODOS OS USERS %>
     <%= f.input :first_name %>
