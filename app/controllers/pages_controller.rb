@@ -29,6 +29,15 @@ class PagesController < ApplicationController
   def recommended
   end
 
-  def vamojunto
+  def together
+  end
+
+  def report
+  end
+
+  def community
+  end
+
+  def company
   end
 end

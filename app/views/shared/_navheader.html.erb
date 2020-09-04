@@ -1,11 +1,14 @@
 <div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between" style="z-index: 3">
   <a class="navbar-brand" href="/">
-    <%= image_tag("ollivia.png") %> </a>
+    <%= image_tag("menu/ollivia.png") %> </a>
+
   <div>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown avatar-link hamb">
-        <a class="avatar-link" data-toggle="dropdown" aria-expanded="false">
-          <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu.png") %>  > </a>
+      
+        <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu/menu.png") %>  > </a>
+
         <div class="dropdown-menu dropdown-menu-right navBg" aria-labelledby="navbarDropdown">
           <% if current_user %>
             <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
