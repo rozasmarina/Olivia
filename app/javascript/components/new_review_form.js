@@ -1,4 +1,4 @@
-console.log("New review form")
+// console.log("New review form")
 // let experience = document.querySelectorAll('.evaluation');
 
 // let good = experience[0];
