@@ -21,5 +21,7 @@
       </div>
     <% end %>
   </div>
+<% else %>
+  <%= link_to 'Faça login para avaliar o local', new_user_session_path %>
 <% end %>
-<p><%= link_to 'voltar a Locais', places_path %></p>
+<p><%= link_to 'Voltar a Locais', places_path %></p>
