@@ -21,9 +21,9 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :city %>
-    <%= f.input :state %>
-    <%= f.input :phone_number %>
+    <%= f.input :city, label: 'Cidade' %>
+    <%= f.input :state, label: 'Estado' %>
+    <%= f.input :phone_number, label: 'Telefone' %>
     <%= f.input :photo, :label => 'Avatar', as: :file %>
   </div>
 

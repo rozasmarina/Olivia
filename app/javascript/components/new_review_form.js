@@ -13,12 +13,15 @@ console.log("New review form")
 //   $('#anonymous').show();
 // });
 
-$(document).on('change','.evaluation', () => {
-    $(document).on('click', () => {
-        if($("#review_is_good_false").is(':checked') && !$("#review_is_good_true").is(':checked')) {
-            $('#anonymous').show();
-        }else{
-            $('#anonymous').hide();
-        }
+let experience = document.querySelectorAll('.evaluation');
+if (experience) {
+    $(document).on('change','.evaluation', () => {
+        $(document).on('click', () => {
+            if($("#review_is_good_false").is(':checked') && !$("#review_is_good_true").is(':checked')) {
+                $('#anonymous').show();
+            }else{
+                $('#anonymous').hide();
+            }
+        });
     });
-});
+};

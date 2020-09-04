@@ -13,14 +13,18 @@
 //   $('#pffield').hide();
 // });
 
+let businessAccount = document.querySelectorAll('.businessaccount');
 
-
-$(document).on('change','.evaluation', () => {
-  $(document).on('click', () => {
-      if($("#review_is_good_false").is(':checked') && !$("#review_is_good_true").is(':checked')) {
-          $('#anonymous').show();
-      }else{
-          $('#anonymous').hide();
-      }
-  });
-});
+if (businessAccount) {
+    $(document).on('change','.businessaccount', () => {
+        $(document).on('click', () => {
+              if($("#user_is_business_true").is(':checked') && !$("#user_is_business_false").is(':checked')) {
+                  $('#pjfield').show();
+                  $('#pffield').hide();
+              }else {
+                  $('#pjfield').hide();
+                  $('#pffield').show();
+              }
+        });
+    });
+};
