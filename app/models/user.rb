@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :responses
   has_one_attached :photo
 
-  validates :first_name, :last_name, :phone_number, :username, :email, :city, :state, :gender,
+  validates :first_name, :last_name, :phone_number, :username, :email, :city, :state,
             presence: { message: "Campo obrigatório" }
   validates :is_business, inclusion: { in: [true, false] }
   validates :username, :email, uniqueness: true
@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   validates :cpf, presence: { if: -> { cnpj.blank? } }
   validates :cnpj, presence: { if: -> { cpf.blank? } }
+  validates :gender, presence: { if: -> { cpf.present? } }
 
   validates :first_name, :last_name,
             format: { with: /[A-Za-z]+/,
@@ -40,7 +41,7 @@ class User < ApplicationRecord
 
   validates :cnpj,
             format: { if: -> { cpf.blank? },
-                      with: %r{\A\d{2}\.?\d{3}\.?\d{3}/\d{4}-?\d{2}\z},
+                      with: %r{\A\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}\z},
                       message: "Entre um CNPJ válido" }
 
   def set_default_avatar

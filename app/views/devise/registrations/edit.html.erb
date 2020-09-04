@@ -21,6 +21,10 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :phone_number %>
+    <%= f.input :photo, :label => 'Avatar', as: :file %>
   </div>
 
   <div class="form-actions">
