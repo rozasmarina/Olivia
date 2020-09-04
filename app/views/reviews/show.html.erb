@@ -1,42 +1,66 @@
-<h2>Review of <%= @review.place.name %></h2>
-<% if @review.is_disabled? %>
-  <p> Avaliação removida </p>
-<% else %>
-  <p><%= @review.content %></p>
-<% end %>
-<% if @review.user == current_user %>
-  <p>Sua avaliação: <%= @review.rating %></p>
-<% elsif @review.is_anonymous %>
-  <p> Avaliação de usuário anônimo: <%= @review.rating %></p>
-<% else %>
-  <p> Avaliação de <%= @review.user.username %>: <%= @review.rating %></p>
-<% end %>
-<% @review.responses.each do | response | %>
-  <div>
-    <p><%= response.response %></p>
-    <p><em>Respondido por <%= response.review.place.name %> <%= "(dono)" if current_user == @review.place.owner %> </em></p>
-    <hr>
+<div class="container">
+  <div class="container mt-4 mb-4 purple">
+    <h2><strong>Avaliação de <%= @review.place.name %></strong></h2>
   </div>
-<% end %>
-<% if policy(@review).create_response? %>
-  <div>
-    <p>Write a response:</p>
-    <%= simple_form_for [@review, @response], method: 'post' do |f| %>
+  <!-- nota do review -->
+  <div class="m-3">
+    <% if @review.user == current_user %>
+      <p>Sua avaliação: <strong><%= @review.rating %></strong></p>
+    <% elsif @review.is_anonymous %>
+      <p> Avaliação de usuário anônimo: <%= @review.rating %></p>
+    <% else %>
+      <p> Avaliação de <%= @review.user.username %>: <%= @review.rating %></p>
+    <% end %>
+  </div>
+  <!-- conteudo do review -->
+  <div class="m-3">
+    <% if @review.is_disabled? %>
+      <p> Avaliação removida </p>
+    <% else %>
+      <p><%= @review.content %></p>
+    <% end %>
+  </div>
+  <!-- response -->
+  <div class="m-3">
+    <% @review.responses.each do | response | %>
       <div>
-        <%= f.input :response %>
-        <%= f.submit 'Respond' %>
+        <p><%= response.response %></p>
+        <p><em>Respondido por <%= response.review.place.name %> <%= "(dono)" if current_user == @review.place.owner %> </em></p>
+        <hr>
+      </div>
+    <% end %>
+    <% if policy(@review).create_response? %>
+      <div>
+        <p>Write a response:</p>
+        <%= simple_form_for [@review, @response], method: 'post' do |f| %>
+          <div>
+            <%= f.input :response %>
+            <%= f.submit 'Responda' %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
-<% end %>
-<% if policy(@review).edit?  %>
-  <p><%= link_to "Editar review", edit_review_path %></p>
-<% end %>
-<% if policy(@review).disable? %>
-  <%= link_to "Desativar review", disable_review_path(@review) %>
-<% end %>
-<p><%= link_to "Voltar para #{@review.place.name}", place_path(@review.place) %></p>
-
-<% if policy(@review).satisfy? %>
-  <p><%= link_to "Questão resolvida?", satisfy_review_path(@review) %>
-<% end %>
+  <!-- links -->
+  <div class="m-3">
+    <% if policy(@review).edit?  %>
+      <p><%= link_to edit_review_path do %></p>
+        <i class="far fa-edit"></i> Edite a avaliação
+      <% end %>
+    <% end %>
+    <br>
+    <br>
+    <% if policy(@review).disable? %>
+      <%= link_to disable_review_path(@review) do %>
+        <i class="fas fa-trash-alt"></i> Desative a avaliação 
+      <% end %>
+    <% end %>
+    <p><%= link_to place_path(@review.place) do %></p>
+      <i class="fas fa-arrow-left"></i> <%= "Voltar para #{@review.place.name}" %>
+    <% end %>
+    <br>
+    <% if policy(@review).satisfy? %>
+      <p><%= link_to "Questão resolvida?", satisfy_review_path(@review) %>
+      <% end %>
+    </div>
+  </div>
