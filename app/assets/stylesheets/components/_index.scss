@@ -4,3 +4,10 @@
 @import "navheader";
 @import "navfooter";
 @import "map";
+
+body {
+  padding-bottom: 69px;
+  min-height: 97vh;
+  position: relative;
+  ;
+}
