@@ -8,7 +8,7 @@
   <%= link_to 'Recomendados', recommended_path %>
 </div>
 <div id="map"
-     style="width: 100%; height: 585px;"
+     style="width: 100%; height: 700px;"
      data-markers="<%= @markers.to_json %>"
      data-rmarker="<%= @rmarker.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">

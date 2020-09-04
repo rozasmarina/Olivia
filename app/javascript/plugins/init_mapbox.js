@@ -3,14 +3,37 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const mapElement = document.getElementById('map');
 
-// if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(p) {
-//         const position = {
-//             lng: p.coords.longitude,
-//             lat: p.coords.latitude
-//         }
-//     })
-// }
+// Geting user position
+// const buildMap = () => {
+//     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+
+//     const options = {
+//         enableHighAccuracy: true,
+//         timeout: 5000,
+//         maximumAge: 0
+//     };
+
+//     let crds = {}
+
+//     function success(pos) {
+//         const crd = pos.coords;
+//         crds['lng'] = crd.longitude;
+//         crds['lat'] = crd.latitude;
+//     }
+
+//     function error(err) {
+//         console.warn(`ERROR(${err.code}): ${err.message}`);
+//     };
+
+//     navigator.geolocation.getCurrentPosition(success, error, options);
+
+//     return new mapboxgl.Map({
+//         container: 'map',
+//         style: 'mapbox://styles/oliviatheapp/cken128nw071i19s0sndd9p0w',
+//         center: [crds.lng, crds.lat]
+//     });
+// };
+
 const buildMap = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     return new mapboxgl.Map({
