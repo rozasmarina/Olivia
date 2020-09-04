@@ -1,40 +1,8 @@
 import mapboxgl, { Popup } from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-const mapElement = document.getElementById('map');
-
-// Geting user position
-// const buildMap = () => {
-//     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-
-//     const options = {
-//         enableHighAccuracy: true,
-//         timeout: 5000,
-//         maximumAge: 0
-//     };
-
-//     let crds = {}
-
-//     function success(pos) {
-//         const crd = pos.coords;
-//         crds['lng'] = crd.longitude;
-//         crds['lat'] = crd.latitude;
-//     }
-
-//     function error(err) {
-//         console.warn(`ERROR(${err.code}): ${err.message}`);
-//     };
-
-//     navigator.geolocation.getCurrentPosition(success, error, options);
-
-//     return new mapboxgl.Map({
-//         container: 'map',
-//         style: 'mapbox://styles/oliviatheapp/cken128nw071i19s0sndd9p0w',
-//         center: [crds.lng, crds.lat]
-//     });
-// };
-
 const buildMap = () => {
+    const mapElement = document.getElementById('map');
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     return new mapboxgl.Map({
         container: 'map',
@@ -63,16 +31,18 @@ const addMarkersToMap = (map, markers) => {
 const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 3000 });
+    map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 2000 });
 };
 
 const initMapbox = () => {
+    const mapElement = document.getElementById('map');
     if (mapElement) {
+        let crd;
         const map = buildMap();
         const markers = JSON.parse(mapElement.dataset.markers);
         const rmarker = JSON.parse(mapElement.dataset.rmarker);
         addMarkersToMap(map, markers);
-        fitMapToMarkers(map, markers);
+        fitMapToMarkers(map, markers)
         const geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             countries: 'br',
@@ -106,7 +76,15 @@ const initMapbox = () => {
         })
         map.addControl(position, 'bottom-right');
         map.addControl(nav, 'bottom-right');
-
+        navigator.geolocation.getCurrentPosition((pos) => {
+            crd = pos.coords;
+            map.flyTo({
+                center: [crd.longitude, crd.latitude],
+                zoom: 12
+            })
+        }, () => {
+            fitMapToMarkers(map, markers)
+        });
     }
 };
 
