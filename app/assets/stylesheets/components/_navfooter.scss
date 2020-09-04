@@ -4,3 +4,9 @@
   border-top: solid 3px $roxo;
   border-bottom: none !important;
 }
+
+.fixed-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100% ;
+}
