@@ -1,10 +1,12 @@
+// Navbar Lewagon
 .navbar-lewagon {
   justify-content: space-between;
-  background: #7209B7 !important;
-  border-bottom: solid 3px #F72585;
+  background: $roxo !important;
+  border-bottom: solid 3px $rosa;
   position: sticky;
   top: 0;
   width: 100%;
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,17 +17,18 @@
   width: 40px;
 }
 
+// Setup Nav
 .navDropLogado {
   background-color: none;
-  color: #F72585;
+  color: white;
 }
 
 .navDropLogadoTxt {
-  color: #7F7F7F;
+  color: #f1f1f1;
 }
 
 .navDropLogoff {
-  color: #7209B7;
+  color: $roxo;
 }
 
 .navBg {
@@ -33,7 +36,60 @@
   margin-top: 13px;
 }
 
-// Menu Sandwich
-.bar {
-  border-radius: 0 !important;
+.pos {
+  z-index: 3
 }
+
+.logo {
+  width: 50px;
+}
+
+.btn-icon {
+  width: 10px;
+  padding: none !important;
+  font-size: 1rem !important;
+}
+
+.menu-sand {
+  color: #ffffffb0 !important;
+  width: 20px !important;
+}
+
+.arrow-down {
+  color: #ffffffb0 !important;
+  width: 12px !important;
+}
+
+.arrow-right {
+  color: #ffffffb0 !important;
+  height: 12px !important;
+}
+
+// Personalization menu lists
+.bg-list {
+  background-color: $roxo !important;
+  border-bottom: #f1f1f140 solid 1px;
+  color: #f1f1f1f1;
+}
+
+.btn-logout {
+  background-color: $roxo !important;
+  border: #f1f1f140 solid 1px;
+  color: #ffffffb0;
+  border-radius: 5px;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.avatar-menu {
+  width: 60px;
+}
+
+
+
+
+
+
+
+
+

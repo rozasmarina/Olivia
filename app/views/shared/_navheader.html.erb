@@ -1,26 +1,114 @@
-<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-between" style="z-index: 3">
-  <a class="navbar-brand" href="/">
-    <%= image_tag("menu/ollivia.png") %> </a>
+<div class="navbar-expand-lg navbar-lewagon pos navbar justify-content-center">
 
-  <div>
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown avatar-link hamb">
-      
-        <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu/menu.png") %>  > </a>
+  <div class="d-flex justify-content-center align-items-center">
 
-        <div class="dropdown-menu dropdown-menu-right navBg" aria-labelledby="navbarDropdown">
-          <% if current_user %>
-            <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
-            <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
-            <div class="dropdown-divider"> </div>
-            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
-        <% else %>
-          <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
-          <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
-        <% end %>
+    <!-- Logo -->
+    <img alt="" class="avatar dropdown-toggle bar logo" src= <%= image_path("menu/ollivia_white.png") %> >
+
+    <% if current_user %>
+
+      <div class="d-flex pt-2" style="flex-direction: column; justify-content: center;" >
+        <!-- User Logado -->
+        <%= link_to "Olá, #{ current_user.first_name} ;)", users_path, class: "dropdown-item navDropLogado"%>
+
+        <!-- Icon Arrow Down com Função de colapsar -->
+        <nav class="icon" style="display: flex; justify-content: center; align-items: center; ">
+        <button class="navbar-toggler btn-icon" style="width: 100%; margin-right: 10px;" type="button" data-toggle="collapse"
+        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img alt="" class="dropdown-toggle bar arrow-down" src= <%= image_path("menu/arrow_down.png") %> > </button> </nav>
       </div>
-    </li>
-  </ul>
-</div>
+
+    <% else %>
+      <!-- Logar -->
+      <%#= link_to '', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
+
+      <!-- Inscrever -->
+      <div class="d-flex pt-2" style="flex-direction: column; justify-content: center;" >
+        <%= link_to 'Fazer Login', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+      <nav class="icon" style="display: flex; justify-content: center; align-items: center; ">
+      <button class="navbar-toggler btn-icon" style="width: 100%; margin-right: 10px;" type="button" data-toggle="collapse"
+      data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img alt="" class="dropdown-toggle bar arrow-down" src= <%= image_path("menu/arrow_down.png") %> > </button> </nav>
+      </div>
+
+    <% end %>
+  </div>
+
+
+
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="p-4">
+
+
+
+      <ul class="list-group list-group-flush bg-list">
+        <h2>  </h2>
+
+        <li class="list-group-item bg-list d-inline-flex"> <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani",
+        class: "avatar avatar-menu ", alt: "avatar" %>
+         <%= link_to 'Meu Perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+      </ul>
+
+
+      <ul class="list-group list-group-flush bg-list">
+
+        <!-- Meu Perfil -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Ver Perfil', users_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+        <!-- Vamos Juntas -->
+<!--     <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Vamos Juntas', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li> -->
+
+        <!-- Reportar Exp -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Reportar Experiência', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+        <!-- Comunidade -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Comunidade', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+        <!-- Empresa -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Empresa', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+         <!-- Quem Somos -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Quem Somos', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+         <!-- Ajuda com o Aplicativo -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Ajuda com o Aplicativo', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+         <!-- Recomendar APP -->
+        <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
+          <%= link_to 'Recomendar APP', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+          <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
+        </li>
+
+
+      </ul>
+      <button type="button" class="btn btn-primary btn-block btn-logout mt-4"> <%= link_to 'SAIR DO APP', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a> </button>
+
+
+
+    </div>
+  </div>
+
 </div>
