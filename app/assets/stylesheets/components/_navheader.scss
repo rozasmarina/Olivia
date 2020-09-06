@@ -6,7 +6,6 @@
   position: sticky;
   top: 0;
   width: 100%;
-
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -21,6 +20,7 @@
 .navDropLogado {
   background-color: none;
   color: white;
+  font-weight: bold;
 }
 
 .navDropLogadoTxt {
@@ -41,7 +41,7 @@
 }
 
 .logo {
-  width: 50px;
+  width: 60px;
 }
 
 .btn-icon {
@@ -55,6 +55,7 @@
   width: 20px !important;
 }
 
+// Arrow Collapse
 .arrow-down {
   color: #ffffffb0 !important;
   width: 12px !important;

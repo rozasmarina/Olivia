@@ -3,13 +3,15 @@
   <div class="d-flex justify-content-center align-items-center">
 
     <!-- Logo -->
-    <img alt="" class="avatar dropdown-toggle bar logo" src= <%= image_path("menu/ollivia_white.png") %> >
+    <div lass="d-flex justify-content-center">
+      <img alt="" class="avatar dropdown-toggle bar logo" src= <%= image_path("menu/ollivia_white.png") %> >
+    </div>
 
     <% if current_user %>
 
-      <div class="d-flex pt-2" style="flex-direction: column; justify-content: center;" >
+      <div class="d-flex" style="flex-direction: column; justify-content: center;" >
         <!-- User Logado -->
-        <%= link_to "Olá, #{ current_user.first_name} ;)", users_path, class: "dropdown-item navDropLogado"%>
+        <%= link_to "#{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
 
         <!-- Icon Arrow Down com Função de colapsar -->
         <nav class="icon" style="display: flex; justify-content: center; align-items: center; ">
@@ -20,16 +22,15 @@
 
     <% else %>
       <!-- Logar -->
-      <%#= link_to '', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
+      <%= link_to '', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
 
       <!-- Inscrever -->
-      <div class="d-flex pt-2" style="flex-direction: column; justify-content: center;" >
+      <div class="d-flex" style="flex-direction: column; justify-content: center;" >
         <%= link_to 'Fazer Login', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
       <nav class="icon" style="display: flex; justify-content: center; align-items: center; ">
       <button class="navbar-toggler btn-icon" style="width: 100%; margin-right: 10px;" type="button" data-toggle="collapse"
       data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <img alt="" class="dropdown-toggle bar arrow-down" src= <%= image_path("menu/arrow_down.png") %> > </button> </nav>
-      </div>
 
     <% end %>
   </div>
@@ -88,8 +89,7 @@
         <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
           <%= link_to 'Quem Somos', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
           <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-        </li>
-
+        </l
          <!-- Ajuda com o Aplicativo -->
         <li class="list-group-item bg-list d-inline-flex"> <i class="fas fa-user mt-1"> </i>
           <%= link_to 'Ajuda com o Aplicativo', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
@@ -112,3 +112,6 @@
   </div>
 
 </div>
+
+
+
