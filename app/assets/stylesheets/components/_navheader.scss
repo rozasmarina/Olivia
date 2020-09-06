@@ -1,3 +1,12 @@
+// ============ Desktop View ============ //
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu{ display: none; }
+  .navbar .nav-item:hover .nav-link{ color: #fff;  }
+  .navbar .nav-item:hover .dropdown-menu{ display: block; }
+  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
 // ============ Nav Lewagon ============ //
 
 .navbar-lewagon {
@@ -22,16 +31,17 @@
 .user {
   background-color: none;
   color: white;
-  font-weight: bold;
+  font-size: 20px;
 }
 
-.navDropLogadoTxt {
-  color: #f1f1f1;
-}
-
-.navDropLogoff {
+.nav-txt {
   color: $white;
 }
+
+.nav-txt-footer a {
+  color: #a081b4;
+}
+
 
 .navBg {
   border-radius: 5px;
@@ -72,7 +82,6 @@
 .bg-list {
   background-color: $roxo !important;
   border-bottom: #f1f1f140 solid 1px;
-  color: #f1f1f1f1;
 }
 
 .btn-logout {
@@ -88,15 +97,13 @@
   width: 60px;
 }
 
-
-
-// ============ Desktop View ============ //
-@media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu{ display: none; }
-  .navbar .nav-item:hover .nav-link{ color: #fff;  }
-  .navbar .nav-item:hover .dropdown-menu{ display: block; }
-  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+.icon {
+  width: 35px;
+  height: 35px;
 }
+
+
+
 
 
 
