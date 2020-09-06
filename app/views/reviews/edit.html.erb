@@ -5,6 +5,6 @@
 
   <%= f.input :title  %>
   <%= f.input :content %>
-  <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
+  <%= f.input :rating, collection: (0..5).to_a, selected: @review.rating %>
   <%= f.button :submit, "Editar" %>
 <% end %>
