@@ -1,4 +1,5 @@
-// Navbar Lewagon
+// ============ Nav Lewagon ============ //
+
 .navbar-lewagon {
   justify-content: space-between;
   background: $roxo !important;
@@ -16,8 +17,9 @@
   width: 40px;
 }
 
-// Setup Nav
-.navDropLogado {
+
+// ============ Setup Nav ============ //
+.user {
   background-color: none;
   color: white;
   font-weight: bold;
@@ -28,7 +30,7 @@
 }
 
 .navDropLogoff {
-  color: $roxo;
+  color: $white;
 }
 
 .navBg {
@@ -36,7 +38,7 @@
   margin-top: 13px;
 }
 
-.pos {
+.position {
   z-index: 3
 }
 
@@ -66,7 +68,7 @@
   height: 12px !important;
 }
 
-// Personalization menu lists
+// ============ Menu List ============ //
 .bg-list {
   background-color: $roxo !important;
   border-bottom: #f1f1f140 solid 1px;
@@ -88,6 +90,13 @@
 
 
 
+// ============ Desktop View ============ //
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu{ display: none; }
+  .navbar .nav-item:hover .nav-link{ color: #fff;  }
+  .navbar .nav-item:hover .dropdown-menu{ display: block; }
+  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
 
 
 
