@@ -1,29 +1,32 @@
 <div class="container">
   <div class="container mt-4 mb-4 purple">
     <h2><strong>Avaliação de <%= @review.place.name %></strong></h2>
+    <br>
+    <h3><%= @review.title %></h3>
   </div>
   <!-- nota do review -->
   <div class="m-3">
-    <br>
-    <h3><%= @review.title %></h3>
     <% if @review.user == current_user %>
-      <p>Sua avaliação: <strong><%= @review.rating %></strong></p>
+      <span>Sua avaliação: </span>
       <!-- RATING SYSTEM -->
       <div class="rates-outer">
         <div class="rates-inner">
         </div>
       </div>
-      <span class="number-rating"><%= @review.rating %></span>
     <% elsif @review.is_anonymous %>
-      <p> Avaliação de usuário anônimo: <%= @review.rating %></p>
+      <span> Avaliação de usuário anônimo: </span>
       <!-- RATING SYSTEM -->
       <div class="rates-outer">
         <div class="rates-inner">
         </div>
       </div>
-      <span class="number-rating"><%= @review.rating %></span>
     <% else %>
-      <p> Avaliação de <%= @review.user.username %>: <%= @review.rating %></p>
+      <span> Avaliação de <%= @review.user.username %>: </span>
+      <!-- RATING SYSTEM -->
+      <div class="rates-outer">
+        <div class="rates-inner">
+        </div>
+      </div>
     <% end %>
   </div>
   <!-- conteudo do review -->
@@ -79,18 +82,12 @@
     </div>
   </div>
 
-<!-- RATING SYSTEM -->
-<div class="rates-outer">
-  <div class="rates-inner">
-  </div>
-</div>
-<span class="number-rating"><%= @review.rating %></span>
 
 <!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
 <script>
   // Rating
   const rating = <%= @review.rating %>
-  console.log(rating)
+
   // Total icons
   const iconTotal =5;
 
@@ -101,10 +98,10 @@
   function getRating() {
     // Get percentage
     const iconPercentage = (rating / iconTotal) * 100;
-    console.log(iconPercentage)
+
     // Round to nearest 
     const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
-    console.log(iconPercentageRounded)
+
     // Set width of rates-inner to percentage
     document.querySelector('.rates-inner').style.width = iconPercentageRounded;
   };

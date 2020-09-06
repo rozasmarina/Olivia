@@ -1,5 +1,16 @@
 <h1><%= @place.name %></h1>
-<p>Ranking Ollivia: <%= @place.reviews.length == 0 ? "Local sem avaliações" : @place.average_rating.round(1) %></p>
+<span>Ranking Ollivia: </span>
+  <% if @place.reviews.length == 0 %>
+    <span>"Local sem avaliações"</span>
+  <% else %>
+    <!-- RATING SYSTEM -->
+    <div class="rates-outer">
+      <div class="rates-inner">
+      </div>
+    </div>
+    <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+  <% end %>
+
 <p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
@@ -38,3 +49,28 @@
   <%= link_to 'Faça login para avaliar o local', new_user_session_path %>
 <% end %>
 <p><%= link_to 'Voltar a Locais', places_path %></p>
+
+
+<!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
+<script>
+  // Rating
+  const rating = <%= @place.average_rating.round(1) %>
+  console.log(rating)
+  // Total icons
+  const iconTotal =5;
+
+  // Run getRating when DOM loads
+  document.addEventListener('DOMContentLoaded', getRating);
+
+  // Get rating
+  function getRating() {
+    // Get percentage
+    const iconPercentage = (rating / iconTotal) * 100;
+    console.log(iconPercentage)
+    // Round to nearest 
+    const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
+    console.log(iconPercentageRounded)
+    // Set width of rates-inner to percentage
+    document.querySelector('.rates-inner').style.width = iconPercentageRounded;
+  };
+</script>
