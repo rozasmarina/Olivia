@@ -4,11 +4,9 @@
     <!-- Logo -->
     <img alt="" class="avatar dropdown-toggle bar logo"
       src= <%= image_path("menu/ollivia_white.png") %> >
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+    <button class="navbar-toggler btn-nav" type="button" data-toggle="collapse" data-target="#main_nav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-
 
     <div class="collapse navbar-collapse" id="main_nav">
       <ul class="list-group list-group-flush bg-list">
@@ -52,7 +50,7 @@
 
           <!-- Fazer Login -->
           <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("https://avatars2.githubusercontent.com/u/67805186?s=460&u=39b8a39dc9942acb55ed9a8ad7a9804cff3c59a9&v=4",
-          class: "avatar avatar-menu", alt: "avatar") %> <%= link_to 'FAZER LOGIN', new_user_session_path, class: "dropdown-item user" %>
+          class: "avatar avatar-menu", alt: "avatar") %> <%= link_to 'Fazer login', new_user_session_path, class: "dropdown-item user" %>
             <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
           </li>
 
@@ -75,13 +73,13 @@
 
           <!-- Empresa -->
           <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/empresa.png", class: "icon") %>
-            <%= link_to 'Empresa Res', edit_user_registration_path, class: "dropdown-item nav-txt" %>
+            <%= link_to 'Empresa Responde', edit_user_registration_path, class: "dropdown-item nav-txt" %>
             <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
           </li>
 
         <% end %>
 
-          <!-- Footer Txt -->
+          <!-- Footer -->
           <footer class="page-footer font-small">
             <div class="footer-copyright text-center py-3 nav-txt-footer">
               <a href="https://mdbootstrap.com/"> Quem Somos | </a>
@@ -89,21 +87,14 @@
               <a href="https://mdbootstrap.com/"> Recomendar</a>
             </div>
           </footer>
-
           <p>
+            <!-- Logo -->
             <img alt="" class="avatar dropdown-toggle bar logo py-2"
             src= <%= image_path("menu/ollivia.png") %> >
           </p>
-
       </ul>
-
     </div>
-
   </nav>
-
-
-
-
 </div>
 
 
