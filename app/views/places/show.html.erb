@@ -35,6 +35,6 @@
     <% end %>
   </div>
 <% else %>
-  <%= link_to 'Faça login para avaliar o local', new_user_session_path %>
+  <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user == @place.owner %>
 <% end %>
 <p><%= link_to 'Voltar a Locais', places_path %></p>
