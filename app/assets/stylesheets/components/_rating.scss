@@ -1,0 +1,27 @@
+.rates-outer {
+    position: relative;
+    display: inline-block;
+}
+
+.rates-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.rates-outer::before {
+    content: "\f584 \f584 \f584 \f584 \f584";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #ccc;
+}
+
+.rates-inner::before {
+    content: "\f584 \f584 \f584 \f584 \f584";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #F72585;
+}
