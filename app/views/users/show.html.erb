@@ -18,9 +18,10 @@
               <option value="0" disabled selected>Selecionar estabelecimento</option>
               <% @places.each do |place| %>
                 <option value="<%= place.name %>" ><%= place.name %></option>
+                
               <% end %>
             </select>
-            <%# <%= link_to 'Adicionar esse estabelecimento', add_owner_path(place) %> <!--%> -->
+            <%#= link_to 'Adicionar esse estabelecimento', add_owner_path(chosen), data: { confirm: 'O estabelecimento selecionado está correto?' } %>
           </fieldset>
         </div>
         
