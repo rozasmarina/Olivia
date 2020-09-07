@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   #   @review.update(review_params)
   #   raise
   #   if @review.update(review_params)
-  #     redirect_to @review, notice: 'Avaliação desabilitada com sucesso.'
+  #     redirect_to @review, notice: 'Avaliaçao desabilitada com sucesso.'
   #   else
   #     render :disable
   #   end
