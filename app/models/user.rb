@@ -1,11 +1,14 @@
+require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  after_create :set_default_avatar
 
   has_many :angels
-  has_many :places, class_name: "Place", foreign_key: "owner_id"
+  has_many :places, class_name: "Place", foreign_key: "user_id"
+  has_one :owned_place, class_name: "Place", foreign_key: "owner_id"
   has_many :reviews
   has_many :responses
   has_one_attached :photo

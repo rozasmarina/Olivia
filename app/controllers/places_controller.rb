@@ -19,9 +19,8 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-    @place.user = current_user
+    current_user.is_business ? @place.owner = current_user : @place.user = current_user
     authorize @place
-
     if @place.save
       redirect_to @place, notice: 'Local adicionado com sucesso.'
     else
@@ -40,10 +39,23 @@ class PlacesController < ApplicationController
     end
   end
 
+  def add_owner
+    @place = Place.find(params[:owner][:place])
+    authorize @place
+    @place.owner = current_user
+    if @place.save
+      redirect_to users_path
+    else
+      @user = current_user
+      @places = Place.where(owner: nil)
+      render 'users/show'
+    end
+  end
+
   private
 
   def place_params
-    params.require(:place).permit(:name, :latitude, :longitude, :address)
+    params.require(:place).permit(:name, :address, :photo)
   end
 
   def set_place

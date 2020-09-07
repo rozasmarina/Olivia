@@ -49,7 +49,7 @@ const initMapbox = () => {
             mapboxgl: mapboxgl,
             marker: false
         });
-        map.addControl(geocoder);
+        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
         geocoder.on('result', (resultCoord) => {
             const newPlaceMarker = resultCoord.result.center
             const popup = new mapboxgl.Popup().setHTML(rmarker.createPlace);

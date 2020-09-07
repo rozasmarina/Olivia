@@ -20,5 +20,6 @@
   </div>
 </div>
 
-<!-- Add novo local pra user não logado ? -->
-<p><%#= link_to 'Adicionar um novo local', new_place_path %></p>
+<% if policy(@places).new? %>
+  <p><%= link_to 'Adicionar um novo local', new_place_path %></p>
+<% end %>
