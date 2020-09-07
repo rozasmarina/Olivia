@@ -8,8 +8,7 @@
       <div class="rates-inner">
       </div>
     </div>
-  </div>
-  <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+  <span id="number-rating"><%= @place.average_rating.round(1) %></span>
 <% end %>
 <p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
@@ -49,29 +48,3 @@
   <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user == @place.owner %>
 <% end %>
 <p><%= link_to 'Voltar a Locais', places_path %></p>
-
-<!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
-<script>
-  // Rating
-  let rating = <%= @place.average_rating.round(1) %>
-  console.log(rating)
-  // Total icons
-  const iconTotal = 5;
-
-  // Run getRating when DOM loads
-  if (rating) {
-    document.addEventListener('DOMContentLoaded', getRating);
-  };
-
-  // Get rating
-  function getRating() {
-    // Get percentage
-    const iconPercentage = (rating / iconTotal) * 100;
-    console.log(iconPercentage)
-    // Round to nearest
-    const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
-    console.log(iconPercentageRounded)
-    // Set width of rates-inner to percentage
-    document.querySelector('.rates-inner').style.width = iconPercentageRounded;
-  };
-</script>
