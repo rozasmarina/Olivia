@@ -9,7 +9,7 @@
     <% if @review.user == current_user %>
       <span>Sua avaliação: </span>
       <!-- RATING SYSTEM -->
-      <div class="rates-outer">
+      <div class="rates-outer" data-rating="<%= @review.rating %>"> 
         <div class="rates-inner">
         </div>
       </div>
