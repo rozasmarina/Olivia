@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update, :show]
 
   def show
-    @user = current_user
-    authorize @user
+    @places = Place.where(owner: nil)
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   # ! DO NOT DELETE
@@ -19,4 +25,15 @@ class UsersController < ApplicationController
   #     })
   #   end
   # end
+
+  private
+
+  def set_user
+    @user = current_user
+    authorize @user
+  end
+
+  def user_params
+    params.require(:user).permit(:places)
+  end
 end

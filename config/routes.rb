@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   devise_for :users do
   end
 
-  # menu rotes
+  # menu routes
   get '/VamosJuntas', to: 'pages#together', as: :together
   get '/ReportarExperiencia', to: 'pages#report', as: :report
   get '/Comunidade', to: 'pages#community', as: :community
   get '/Empresa', to: 'pages#company', as: :company
 
-  resource :users, only: :show
+  resource :users, only: [:edit, :update, :show]
 
   resources :angels, except: :index
 

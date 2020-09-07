@@ -2,28 +2,47 @@
   <h2> <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-square pic", alt: "avatar" %> </h2>
   <h5> <strong>Olá <%= @user.first_name %> </strong> </h5>
   <br>
+  <% if @user.is_business %>
+    <% if @user.places.present? %>
+      <h4>Seu estabelecimento: <%= link_to  @user.places.first.name, place_path(@user.places.first) %> </h4>
+    <% else %>
+      <fieldset class="form-group">
+        <label for="BusinessPresent">Sua empresa já está cadastrada na Ollivia?</label>
+      <br><input type="checkbox" id="BusinessPresent">
+      </fieldset>
 
-  <h4 class="title table page-item">Meus Anjos</h4>
-  <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
-  
-  <ul>
-    <% if @user.angels %>
-      <% @user.angels.each do |angel| %>
-        <li><%= link_to angel.first_name, angel_path(angel) %></li>
-      <% end %>
+      <fieldset class="form-group" id="add-place-to-owner">
+        
+        <select id="place-select" class="form-control">
+          <option value="0" disabled selected>Selecionar estabelecimento</option>
+          <% @places.each do |place| %>
+            <option value="<%= place.name %>" ></option>
+          <% end %>
+        </select>
+      </fieldset>
+
+      <fieldset id="add-your-place">
+        <p><%= link_to 'Adicionar meu estabelecimento à Ollivia!', new_place_path %></p>
+      </fieldset>
     <% end %>
-  </ul>
-
-  <h4 class="title table">Minhas Reviews</h4>
-  <ul>
-      <% @user.reviews.each do |review| %>
-        <li> <%= link_to review.title, review_path(review) %></li>
+  <% else %>
+    <h4 class="title table page-item">Meus Anjos</h4>
+    <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
+    
+    <ul>
+      <% if @user.angels %>
+        <% @user.angels.each do |angel| %>
+          <li><%= link_to angel.first_name, angel_path(angel) %></li>
+        <% end %>
       <% end %>
-  </ul>
+    </ul>
 
-
-  
-
-
+    <h4 class="title table">Minhas Reviews</h4>
+    <ul>
+        <% @user.reviews.each do |review| %>
+          <li> <%= link_to review.title, review_path(review) %></li>
+        <% end %>
+    </ul>
+  <% end %>
 </div>
 
