@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :owner, class_name: "User", optional: true
   has_many :reviews
   has_one_attached :photo
@@ -10,4 +10,7 @@ class Place < ApplicationRecord
   validates :name, :address, presence: true
   # validates :latitude, uniqueness: { scope: :longitude,
   #  message: "Este local já existe na base de dados" }
+
+  validates :user_id, presence: { if: -> { owner_id.blank? } }
+  validates :owner_id, presence: { if: -> { user_id.blank? } }
 end

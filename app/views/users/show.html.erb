@@ -52,7 +52,7 @@
     </ul>
   <% end %>
 
-  <h4 class="title table page-item">Meus Anjos</h4>
+  <h4 class="title table page-item">Meus Anjos:</h4>
   <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
   <ul>
     <% if @user.angels %>
@@ -61,7 +61,7 @@
       <% end %>
     <% end %>
   </ul>
-  <h4 class="title table">Minhas Reviews</h4>
+  <h4 class="title table">Minhas avaliações:</h4>
   <ul>
     <% @user.reviews.each do |review| %>
       <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
