@@ -5,12 +5,6 @@ class UsersController < ApplicationController
     @places = Place.where(owner: nil)
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   # ! DO NOT DELETE
   # def sos_angels
   #   #Precisamos criar uma função que transforme lat e lng em endereço e chamamos na variável abaixo
@@ -25,15 +19,4 @@ class UsersController < ApplicationController
   #     })
   #   end
   # end
-
-  private
-
-  def set_user
-    @user = current_user
-    authorize @user
-  end
-
-  def user_params
-    params.require(:user).permit(:places)
-  end
 end

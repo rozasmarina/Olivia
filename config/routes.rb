@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/Comunidade', to: 'pages#community', as: :community
   get '/Empresa', to: 'pages#company', as: :company
 
-  resource :users, only: [:edit, :update, :show]
+  resource :users, only: [:edit]
 
   resources :angels, except: :index
 
@@ -34,4 +34,7 @@ Rails.application.routes.draw do
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
+
+  # Route to add owner to place created by normal user
+  get 'places/:id/add_owner', to: 'places#add_owner', as: :add_owner
 end
