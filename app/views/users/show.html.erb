@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
+    
     <div class="col-12 d-flex justify-content-center p-2">
-      <!--<%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %> -->
-    </div>
+      <%#= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+    </div> 
+    
+    
     <h5 class="col-12 d-flex justify-content-center pt-2"> <strong>Olá, <%= @user.first_name %> </strong> </h5>
   </div>
   <br>
@@ -19,7 +22,7 @@
     <% else %>
       <p>
         <button class="btn border" type="button" data-toggle="collapse" data-target="#select-place" aria-expanded="false" aria-controls="select-place">
-          Meu estabelcimento já está cadastrado plataforma
+          Meu estabelecimento já está cadastrado na plataforma
         </button>
       </p>
       <div class="collapse" id="select-place">
