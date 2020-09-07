@@ -28,6 +28,7 @@
         </div>
       </div>
     <% end %>
+    <span id="number-rating"><%= @review.rating %></span>
   </div>
   <!-- conteudo do review -->
   <div class="m-3">
@@ -82,27 +83,3 @@
     </div>
   </div>
 
-
-<!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
-<script>
-  // Rating
-  const rating = <%= @review.rating %>
-
-  // Total icons
-  const iconTotal =5;
-
-  // Run getRating when DOM loads
-  document.addEventListener('DOMContentLoaded', getRating);
-
-  // Get rating
-  function getRating() {
-    // Get percentage
-    const iconPercentage = (rating / iconTotal) * 100;
-
-    // Round to nearest 
-    const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
-
-    // Set width of rates-inner to percentage
-    document.querySelector('.rates-inner').style.width = iconPercentageRounded;
-  };
-</script>
