@@ -2,5 +2,6 @@
 <%= simple_form_for @place do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
+  <%= f.input :photo, :label => 'Foto', as: :file %>
   <%= f.button :submit, "Adicionar" %>
 <% end %>
