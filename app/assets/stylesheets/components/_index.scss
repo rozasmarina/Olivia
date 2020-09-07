@@ -8,10 +8,12 @@
 @import "rating";
 @import "button";
 @import "card";
+@import "header";
 
 body {
+  margin: 0;
   padding-bottom: 69px;
-  min-height: 97vh;
+  min-height: 98vh;
   position: relative;
 }
 
