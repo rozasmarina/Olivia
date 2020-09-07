@@ -1,0 +1,24 @@
+// Essa classe nao eh daqui
+.img-place {
+  width: 100%;
+  z-index: -3;
+  height: 14em;
+  position: relative;
+  border-radius: 10px;
+  fixed-top: -16px;
+}
+
+.list-place {
+  padding: 0.75rem 1.25rem !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.list-place a {
+  color: $roxo !important;
+}
+
+.badge-roxa {
+  background-color: $rosa !important;
+  color: #fff;
+}

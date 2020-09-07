@@ -1,5 +1,24 @@
-<h1>Locais</h1>
-<p><%= link_to 'Adicionar um novo local', new_place_path %></p>
-<% @places.each do |place| %>
-  <p><%= link_to place.name, place_path(place) %></p>
-<% end %>
+<div class="container">
+
+  <div class="d-flex justify-content-center align-items-center">
+    <h1>Top 10 Piores</h1>
+
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @places.each do |place| %>
+    <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+      <%= link_to place.name, place_path(place) %>
+      <span class="badge badge-roxa badge-pill"> 3 </span>
+    </li>
+    <% end %>
+  </ul>
+
+</div>
+
+
+  </div>
+</div>
+
+<!-- Add novo local pra user não logado ? -->
+<p><%#= link_to 'Adicionar um novo local', new_place_path %></p>

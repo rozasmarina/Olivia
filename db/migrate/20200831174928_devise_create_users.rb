@@ -39,8 +39,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :last_name, null: false
       t.string :phone_number, null: false
       t.string :username, null: false
-      t.float :latitude
-      t.float :longitude
       t.boolean :is_business, null: false, default: false
       t.string :cpf
       t.string :cnpj
