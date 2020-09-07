@@ -30,7 +30,7 @@ class PlacePolicy < ApplicationPolicy
   end
 
   def add_owner?
-    user.is_business
+    user.is_business && record.owner.nil?
   end
 
   private

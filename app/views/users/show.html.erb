@@ -13,16 +13,21 @@
       </p>
       <div class="collapse" id="select-place">
         <div class="card card-body">
-          <fieldset class="form-group" id="add-place-to-owner">
+          <%= simple_form_for :owner, url: add_owner_path, method: "patch" do |f| %>
+            <%= f.input :place, as: :select, collection: @places %>
+            <%= f.submit 'Adicionar esse estabelecimento', input_html: { data: { confirm: 'O estabelecimento selecionado está correto?' } } %>
+          <% end %>
+
+          <!--<fieldset class="form-group" id="add-place-to-owner" data-controller="add-place">
             <select id="place-select" class="form-control">
               <option value="0" disabled selected>Selecionar estabelecimento</option>
               <% @places.each do |place| %>
                 <option value="<%= place.name %>" ><%= place.name %></option>
-                
               <% end %>
-            </select>
-            <%#= link_to 'Adicionar esse estabelecimento', add_owner_path(chosen), data: { confirm: 'O estabelecimento selecionado está correto?' } %>
-          </fieldset>
+            </select> -->
+
+            <%#= link_to 'Adicionar esse estabelecimento', add_owner_path(selecionado), data: { confirm: 'O estabelecimento selecionado está correto?' } %>
+          <%# </fieldset> %>
         </div>
         
       </div>
@@ -51,14 +56,15 @@
 
 <!-- JS SCRIPT TO SELECT PLACE -->
 <script>
-  // Place form
+  <%# // Place form
   const placeSelect = document.getElementById('select-place');
 
   // Init place
-  let = chosen;
+  let place;
 
   // Place select change
   placeSelect.addEventListener('change', (event) => {
-    chosen = event.taget.value;
-  })
+    place = event.target.value;
+    console.log(place);
+  }) %>
 </script>

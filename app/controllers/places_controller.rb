@@ -40,6 +40,16 @@ class PlacesController < ApplicationController
   end
 
   def add_owner
+    @place = Place.find(params[:owner][:place])
+    authorize @place
+    @place.owner = current_user
+    if @place.save
+      redirect_to users_path
+    else
+      @user = current_user
+      @places = Place.where(owner: nil)
+      render 'users/show'
+    end
   end
 
   private
