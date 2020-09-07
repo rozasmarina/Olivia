@@ -1,40 +1,50 @@
-<h1><%= @place.name %></h1>
-<p>Ranking Ollivia: <%= @place.reviews.length == 0 ? "Local sem avaliações" : @place.average_rating.round(1) %></p>
-<p>Avaliações:</>
-<% @reviews.where("is_disabled = ?", false).each do | review | %>
-  <p><%= link_to review.title, review_path(review) %></p>
-<% end %>
-<% if policy(@place).edit? %>
-  <p><%= link_to 'editar local', edit_place_path(@place) %></p>
-<% end %>
-<% if policy(@place).add_review? %>
-  <div>
-    <p>Nos conte sobre a sua experiência:</p>
-    <%= simple_form_for [@place, @review], method: 'post' do |f| %>
-      <div>
-        <%# LABEL + INPUTS IS_GOOD  %>
-        <%= f.label "Como foi sua experiência?" %>
-        <%= f.collection_radio_buttons :is_good,
-                                      [
-                                        [true, 'Boa'],
-                                        [false, 'Ruim']
-                                      ],
-                                      :first,
-                                      :last, 
-                                      checked: true,
-                                      item_wrapper_class: :evaluation,
-                                      item_wrapper_tag: :p %>
-        <%= f.input :title, label: "Título" %>
-        <%= f.input :content %>
-        <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
-        <fieldset class="form-group" id="anonymous" style="display:none;">
-          <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
-        </fieldset>
-        <%= f.submit 'Avaliar' %>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <%= link_to 'Faça login para avaliar o local', new_user_session_path %>
-<% end %>
-<p><%= link_to 'Voltar a Locais', places_path %></p>
+ <div class="container">
+
+  <!-- Img Places -->
+  <img alt="" class="img-place d-flex justify-content-center"
+    src= <%= image_path("https://images.unsplash.com/photo-1580109676286-8e2d50b2196b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80") %> >
+
+
+
+  <h1><%= @place.name %></h1>
+  <p>Ranking Ollivia: <%= @place.reviews.length == 0 ? "Local sem avaliações" : @place.average_rating.round(1) %></p>
+  <p>Avaliações:</>
+  <% @reviews.where("is_disabled = ?", false).each do | review | %>
+    <p><%= link_to review.title, review_path(review) %></p>
+  <% end %>
+  <% if policy(@place).edit? %>
+    <p><%= link_to 'editar local', edit_place_path(@place) %></p>
+  <% end %>
+  <% if policy(@place).add_review? %>
+    <div>
+      <p>Nos conte sobre a sua experiência:</p>
+      <%= simple_form_for [@place, @review], method: 'post' do |f| %>
+        <div>
+          <%# LABEL + INPUTS IS_GOOD  %>
+          <%= f.label "Como foi sua experiência?" %>
+          <%= f.collection_radio_buttons :is_good,
+                                        [
+                                          [true, 'Boa'],
+                                          [false, 'Ruim']
+                                        ],
+                                        :first,
+                                        :last,
+                                        checked: true,
+                                        item_wrapper_class: :evaluation,
+                                        item_wrapper_tag: :p %>
+          <%= f.input :title, label: "Título" %>
+          <%= f.input :content %>
+          <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
+          <fieldset class="form-group" id="anonymous" style="display:none;">
+            <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
+          </fieldset>
+          <%= f.submit 'Avaliar' %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <%= link_to 'Faça login para avaliar o local', new_user_session_path %>
+  <% end %>
+  <p><%= link_to 'Voltar a Locais', places_path %></p>
+
+</div>
