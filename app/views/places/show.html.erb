@@ -18,7 +18,9 @@
     </div>
     <div class="review-header">
       <h2><%= @place.name %></h2>
-      <p> <%= @review.responses.length %> relatos </p>
+      <% if @place.reviews.length > 0 %>
+        <p> <%= @place.reviews.length %> relatos </p>
+      <% end %>
     </div>
     <div class="review-buttons">
       <!-- linkar após criarmos a rota -->
@@ -40,12 +42,28 @@
         </div>
       </div>
     </div>
-    <div class="review-card">
-      <div class="review-header">
+    <% @reviews.where("is_disabled = ?", false).each do |review| %>
+      <div class="review-card">
+        <div class="review-header">
+          <%= link_to review.title, review_path(review) %>
+          <% if review.is_anonymous %>
+            <!-- avatar anonimo -->
+            <p>Por: usuário anônimo</p>
+            <%= @review.created_at %>
+          <% else %>
+            <!-- avatar -->
+            <p>Por <%= review.user.username %></p>
+          <% end %>
+        </div>
+        <div class="review-content">
+          <% if review.content.chars.length > 121 %>
+            <p><%= review.content.slice(0, 120) + '...' %></p>
+          <% else %>
+            <p> <%= review.content %></p>
+          <% end %>
+        </div>
       </div>
-      <div class="review-content">
-      </div>
-    </div>
+    <% end %>
     <% if @review.responses %>
       <div class="response-card">
         <div class="response-header">
@@ -55,14 +73,14 @@
       </div>
     <% end %>
   </div>
+  <% if policy(@place).edit? %>
+    <p><%= link_to 'editar local', edit_place_path(@place), class: "pink-btn" %></p>
+  <% else %>
+    <%= link_to new_place_review_path(@place), class: "pink-btn"  do %>
+      Faça seu relato
+    <% end %>
+  <% end %>
 </div>
-<p>Avaliações:</>
-<% @reviews.where("is_disabled = ?", false).each do | review | %>
-  <p><%= link_to review.title, review_path(review) %></p>
-<% end %>
-<% if policy(@place).edit? %>
-  <p><%= link_to 'editar local', edit_place_path(@place) %></p>
-<% end %>
 <% if policy(@place).add_review? %>
   <div>
     <p>Nos conte sobre a sua experiência:</p>
