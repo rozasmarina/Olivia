@@ -10,7 +10,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
-    <%#= render "shared/navheader" %>
+    <%= image_tag 'icons/btn-sos', class: 'emergency-btn' do %>
+      <!--link to angels-->
+    <% end %>
+    <%= render "shared/navheader" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
