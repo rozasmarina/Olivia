@@ -14,7 +14,7 @@
             <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
             <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
             <div class="dropdown-divider"> </div>
-            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt", data: { confirm: 'Quer mesmo sair?' } %></a>
         <% else %>
           <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
           <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
