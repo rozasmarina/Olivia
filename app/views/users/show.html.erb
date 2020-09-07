@@ -1,11 +1,8 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    
     <div class="col-12 d-flex justify-content-center p-2">
-      <%#= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-    </div> 
-    
-    
+      <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+    </div>
     <h5 class="col-12 d-flex justify-content-center pt-2"> <strong>Olá, <%= @user.first_name %> </strong> </h5>
   </div>
   <br>
@@ -14,7 +11,6 @@
     <div class="dropdown-divider"> </div>
     <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
 </div>
-
 <div>
   <% if @user.is_business %>
     <% if @user.owned_place.present? %>
@@ -38,7 +34,6 @@
   <% else %>
     <h4 class="title table page-item">Meus Anjos</h4>
     <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
-    
     <ul>
       <% if @user.angels %>
         <% @user.angels.each do |angel| %>
@@ -46,15 +41,13 @@
         <% end %>
       <% end %>
     </ul>
-
     <h4 class="title table">Minhas Reviews</h4>
     <ul>
-        <% @user.reviews.each do |review| %>
-          <li> <%= link_to review.title, review_path(review) %></li>
-        <% end %>
+      <% @user.reviews.each do |review| %>
+        <li> <%= link_to review.title, review_path(review) %></li>
+      <% end %>
     </ul>
   <% end %>
-
   <h4 class="title table page-item">Meus Anjos:</h4>
   <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
   <ul>
