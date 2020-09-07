@@ -1,11 +1,62 @@
-<div class="container"> 
-  <h2> <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-square pic", alt: "avatar" %> </h2>
-  <h5> <strong>Olá <%= @user.first_name %> </strong> </h5>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    
+    <div class="col-12 d-flex justify-content-center p-2">
+      <%#= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+    </div> 
+    
+    
+    <h5 class="col-12 d-flex justify-content-center pt-2"> <strong>Olá, <%= @user.first_name %> </strong> </h5>
+  </div>
   <br>
+  <div>
+    <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+    <div class="dropdown-divider"> </div>
+    <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
+</div>
 
-  <h4 class="title table page-item">Meus Anjos</h4>
+<div>
+  <% if @user.is_business %>
+    <% if @user.owned_place.present? %>
+      <h4>Seu estabelecimento: <%= link_to  @user.owned_place.name, place_path(@user.owned_place) %> </h4>
+    <% else %>
+      <p>
+        <button class="btn border" type="button" data-toggle="collapse" data-target="#select-place" aria-expanded="false" aria-controls="select-place">
+          Meu estabelecimento já está cadastrado na plataforma
+        </button>
+      </p>
+      <div class="collapse" id="select-place">
+        <div class="card card-body">
+          <%= simple_form_for :owner, url: add_owner_path, method: "patch" do |f| %>
+            <%= f.input :place, as: :select, collection: @places %>
+            <%= f.submit 'Adicionar esse estabelecimento', data: { confirm: 'O estabelecimento selecionado está correto?' } %>
+          <% end %>
+        </div>
+      </div>
+      <p><%= link_to 'Adicionar meu estabelecimento à Ollivia!', new_place_path, class: "btn border" %></p>
+    <% end %>
+  <% else %>
+    <h4 class="title table page-item">Meus Anjos</h4>
+    <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
+    
+    <ul>
+      <% if @user.angels %>
+        <% @user.angels.each do |angel| %>
+          <li><%= link_to angel.first_name, angel_path(angel) %></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <h4 class="title table">Minhas Reviews</h4>
+    <ul>
+        <% @user.reviews.each do |review| %>
+          <li> <%= link_to review.title, review_path(review) %></li>
+        <% end %>
+    </ul>
+  <% end %>
+
+  <h4 class="title table page-item">Meus Anjos:</h4>
   <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
-  
   <ul>
     <% if @user.angels %>
       <% @user.angels.each do |angel| %>
@@ -13,17 +64,10 @@
       <% end %>
     <% end %>
   </ul>
-
-  <h4 class="title table">Minhas Reviews</h4>
+  <h4 class="title table">Minhas avaliações:</h4>
   <ul>
-      <% @user.reviews.each do |review| %>
-        <li> <%= link_to review.title, review_path(review) %></li>
-      <% end %>
+    <% @user.reviews.each do |review| %>
+      <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+    <% end %>
   </ul>
-
-
-  
-
-
 </div>
-

@@ -1,5 +1,5 @@
 <h1><%= @place.name %></h1>
-<span>Ranking Ollivia: </span>
+<span>Nota Ollivia: </span>
   <% if @place.reviews.length == 0 %>
     <span>"Local sem avaliações. Deixe sua opinião"</span>
   <% else %>
@@ -8,9 +8,9 @@
       <div class="rates-inner">
       </div>
     </div>
-    <span class="number-rating"><%= @place.average_rating.round(1) %></span>
-  <% end %>
-
+  </div>
+  <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+<% end %>
 <p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
@@ -38,7 +38,7 @@
         <%= f.input :title, label: "Título" %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
-        <fieldset class="form-group" id="anonymous" style="display:none;">
+        <fieldset class="form-group" id="anonymous" style="display: none;">
           <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
         </fieldset>
         <%= f.submit 'Avaliar' %>
@@ -50,17 +50,18 @@
 <% end %>
 <p><%= link_to 'Voltar a Locais', places_path %></p>
 
-
 <!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
 <script>
   // Rating
-  const rating = <%= @place.average_rating.round(1) %>
+  let rating = <%= @place.average_rating.round(1) %>
   console.log(rating)
   // Total icons
-  const iconTotal =5;
+  const iconTotal = 5;
 
   // Run getRating when DOM loads
-  document.addEventListener('DOMContentLoaded', getRating);
+  if (rating) {
+    document.addEventListener('DOMContentLoaded', getRating);
+  };
 
   // Get rating
   function getRating() {
@@ -74,4 +75,3 @@
     document.querySelector('.rates-inner').style.width = iconPercentageRounded;
   };
 </script>
->>>>>>> master
