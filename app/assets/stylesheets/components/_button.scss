@@ -5,3 +5,22 @@
   z-index: 100;
   height: 45px;
 }
+
+.xp-btn {
+  border-radius: 5px;
+  border: 1px solid $rosa;
+  width: 170px;
+}
+
+.xp-btn-thumb {
+  display: inline;
+  color: white;
+  background-color: $rosa;
+  padding: 5px 3px 3px 3px;
+  
+}
+
+.xp-btn-content {
+  display: inline;
+  color: $roxo;
+}

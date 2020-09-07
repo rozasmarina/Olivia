@@ -1,11 +1,34 @@
 <div class="container">
+<div class="xp-btn">
+  <div class="xp-btn-thumb">
+    <i class="far fa-thumbs-up"></i>
+  </div>
+  <div class="xp-btn-content">
+    Experiência boa
+  </div>
+</div>
+</div>
+<div class="container">
   <div class="img-show">
+    <!-- <#%= image_tag @place.photo %> -->
   </div>
   <div class="review-content">
     <div class="review-ranking">
+      <span>Ranking Ollivia: </span>
+      <% if @place.reviews.length == 0 %>
+        <span>"Local sem avaliações. Deixe sua opinião"</span>
+      <% else %>
+        <!-- RATING SYSTEM -->
+        <div class="rates-outer">
+          <div class="rates-inner">
+          </div>
+        </div>
+        <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+      <% end %>
     </div>
     <div class="review-header">
       <h2><%= @place.name %></h2>
+      <p> <%= @review.responses.length %> relatos </p>
     </div>
     <div class="review-buttons">
     </div>
@@ -25,18 +48,6 @@
     <% end %>
   </div>
 </div>
-
-<span>Ranking Ollivia: </span>
-<% if @place.reviews.length == 0 %>
-  <span>"Local sem avaliações. Deixe sua opinião"</span>
-<% else %>
-  <!-- RATING SYSTEM -->
-  <div class="rates-outer">
-    <div class="rates-inner">
-    </div>
-  </div>
-  <span class="number-rating"><%= @place.average_rating.round(1) %></span>
-<% end %>
 <p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
