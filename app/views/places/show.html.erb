@@ -1,14 +1,4 @@
 <div class="container">
-<div class="xp-btn">
-  <div class="xp-btn-thumb">
-    <i class="far fa-thumbs-up"></i>
-  </div>
-  <div class="xp-btn-content">
-    Experiência boa
-  </div>
-</div>
-</div>
-<div class="container">
   <div class="img-show">
     <!-- <#%= image_tag @place.photo %> -->
   </div>
@@ -31,6 +21,24 @@
       <p> <%= @review.responses.length %> relatos </p>
     </div>
     <div class="review-buttons">
+      <!-- linkar após criarmos a rota -->
+      <div class="xp-btn">
+        <div class="xp-btn-thumb">
+          <i class="far fa-thumbs-up"></i>
+        </div>
+        <div class="xp-btn-content">
+          Experiência boa
+        </div>
+      </div>
+      <!-- linkar após criarmos a rota -->
+      <div class="xp-btn">
+        <div class="xp-btn-thumb">
+          <i class="far fa-thumbs-down"></i>
+        </div>
+        <div class="xp-btn-content">
+          Experiência ruim
+        </div>
+      </div>
     </div>
     <div class="review-card">
       <div class="review-header">
