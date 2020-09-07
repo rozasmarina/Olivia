@@ -1,112 +1,28 @@
-<div class="navbar navbar-expand-lg navbar-dark navbar-lewagon d-flex justify-content-center align-items-center position">
+<div class="navbar navbar-expand navbar-light navbar-lewagon justify-content-center" style="z-index: 3">
+  <a class="navbar-brand" href="/">
+    <%= image_tag("menu/ollivia.png") %> </a>
 
-  <nav>
-    <!-- Logo -->
-    <img alt="" class="avatar dropdown-toggle bar logo"
-      src= <%= image_path("menu/ollivia_white.png") %> >
-    <button class="navbar-toggler btn-nav" type="button" data-toggle="collapse" data-target="#main_nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown avatar-link hamb">
 
-    <div class="collapse navbar-collapse" id="main_nav">
-      <ul class="list-group list-group-flush bg-list">
+        <a class="avatar-link" data-toggle="dropdown" href="#" aria-expanded="false">
+          <img alt="" class="avatar dropdown-toggle bar" src= <%= image_path("menu/menu.png") %>  > </a>
 
-        <% if current_user %>
+        <div class="dropdown-menu dropdown-menu-right navBg" aria-labelledby="navbarDropdown">
 
-          <!-- Ver Perfil -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("https://avatars2.githubusercontent.com/u/67805186?s=460&u=39b8a39dc9942acb55ed9a8ad7a9804cff3c59a9&v=4",
-          class: "avatar avatar-menu ", alt: "avatar") %> <%= link_to "#{ current_user.first_name}", users_path,
-            class: "dropdown-item user" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Vamos Juntas -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/vmj.png", class: "icon") %>
-            <%= link_to 'Vamos Juntas', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-
-          <!-- Reportar Exp -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/reportar.png", class: "icon") %>
-            <%= link_to 'Reportar Experiência', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Comunidade -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/comunidade.png", class: "icon") %>
-            <%= link_to 'Comunidade', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Empresa -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/empresa.png", class: "icon") %>
-            <%= link_to 'Empresa Res', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Sair do APP -->
-          <button type="button" class="btn btn-primary btn-block btn-logout mt-4"> <%= link_to 'SAIR DO APP', destroy_user_session_path, method: :delete, class: "dropdown-item nav-txt" %></a> </button>
-
+          <% if current_user %>
+            <%= link_to "Olá, #{ current_user.first_name}", users_path, class: "dropdown-item navDropLogado"%>
+            <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
+            <div class="dropdown-divider"> </div>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
         <% else %>
-
-          <!-- Fazer Login -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("https://avatars2.githubusercontent.com/u/67805186?s=460&u=39b8a39dc9942acb55ed9a8ad7a9804cff3c59a9&v=4",
-          class: "avatar avatar-menu", alt: "avatar") %> <%= link_to 'Fazer login', new_user_session_path, class: "dropdown-item user" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Vamos Juntas -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/vmj.png", class: "icon") %>
-            <%= link_to 'Vamos Juntas', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-
-          <!-- Reportar Exp -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/reportar.png", class: "icon") %>
-            <%= link_to 'Reportar Experiência', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Comunidade -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/comunidade.png", class: "icon") %>
-            <%= link_to 'Comunidade', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
-          <!-- Empresa -->
-          <li class="list-group-item bg-list d-inline-flex"> <%= image_tag("menu/empresa.png", class: "icon") %>
-            <%= link_to 'Empresa Responde', edit_user_registration_path, class: "dropdown-item nav-txt" %>
-            <img alt="" class="dropdown-toggle bar arrow-right mt-2" src= <%= image_path("menu/arrow_right.png") %> >
-          </li>
-
+          <%= link_to 'Logar', new_user_session_path, class: "dropdown-item navDropOff navDropLogoff" %>
+          <%= link_to 'Inscrever-se', new_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
         <% end %>
 
-          <!-- Footer -->
-          <footer class="page-footer font-small">
-            <div class="footer-copyright text-center py-3 nav-txt-footer">
-              <a href="#"> Quem Somos | </a>
-              <a href="#"> APP | </a>
-              <a href="#"> Recomendar</a>
-            </div>
-          </footer>
-          <p>
-            <!-- Logo -->
-            <img alt="" class="avatar dropdown-toggle bar logo py-2"
-            src= <%= image_path("menu/ollivia.png") %> >
-          </p>
-      </ul>
-    </div>
-  </nav>
+      </div>
+    </li>
+  </ul>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
