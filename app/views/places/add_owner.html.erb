@@ -1,0 +1,27 @@
+
+
+<fieldset class="form-group" id="add-place-to-owner" style="display: none;">
+        <select id="place-select" class="form-control">
+          <option value="0" disabled selected>Selecionar estabelecimento</option>
+          <% @places.each do |place| %>
+            <option value="<%= place.name %>" ><%= place.name %></option>
+          <% end %>
+        </select>
+        <%# <%= link_to 'Adicionar esse estabelecimento', add_owner_path(place) %> %>
+      </fieldset>
+
+
+<!-- SELECT PLACE TO ADD OWNERSHIP -->
+<script>
+  // Select form
+  const placeSelect = document.getElementById('place-select');
+
+  // Init place
+  let place;
+
+  // Place select change
+  placeSelect.addEventListener('change', (event) => {
+    place = event.target.value;
+    console.log(place);
+  });
+</script>

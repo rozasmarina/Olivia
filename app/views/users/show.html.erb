@@ -6,24 +6,26 @@
     <% if @user.places.present? %>
       <h4>Seu estabelecimento: <%= link_to  @user.places.first.name, place_path(@user.places.first) %> </h4>
     <% else %>
-      <fieldset class="form-group">
-        <label for="BusinessPresent">Sua empresa já está cadastrada na Ollivia?</label>
-      <br><input type="checkbox" id="BusinessPresent">
-      </fieldset>
-
-      <fieldset class="form-group" id="add-place-to-owner">
+      <p>
+        <button class="btn border" type="button" data-toggle="collapse" data-target="#select-place" aria-expanded="false" aria-controls="select-place">
+          Meu estabelcimento já está cadastrado plataforma
+        </button>
+      </p>
+      <div class="collapse" id="select-place">
+        <div class="card card-body">
+          <fieldset class="form-group" id="add-place-to-owner">
+            <select id="place-select" class="form-control">
+              <option value="0" disabled selected>Selecionar estabelecimento</option>
+              <% @places.each do |place| %>
+                <option value="<%= place.name %>" ><%= place.name %></option>
+              <% end %>
+            </select>
+            <%# <%= link_to 'Adicionar esse estabelecimento', add_owner_path(place) %> <!--%> -->
+          </fieldset>
+        </div>
         
-        <select id="place-select" class="form-control">
-          <option value="0" disabled selected>Selecionar estabelecimento</option>
-          <% @places.each do |place| %>
-            <option value="<%= place.name %>" ></option>
-          <% end %>
-        </select>
-      </fieldset>
-
-      <fieldset id="add-your-place">
-        <p><%= link_to 'Adicionar meu estabelecimento à Ollivia!', new_place_path %></p>
-      </fieldset>
+      </div>
+      <p><%= link_to 'Adicionar meu estabelecimento à Ollivia!', new_place_path, class: "btn border" %></p>
     <% end %>
   <% else %>
     <h4 class="title table page-item">Meus Anjos</h4>
@@ -46,3 +48,16 @@
   <% end %>
 </div>
 
+<!-- JS SCRIPT TO SELECT PLACE -->
+<script>
+  // Place form
+  const placeSelect = document.getElementById('select-place');
+
+  // Init place
+  let = chosen;
+
+  // Place select change
+  placeSelect.addEventListener('change', (event) => {
+    chosen = event.taget.value;
+  })
+</script>

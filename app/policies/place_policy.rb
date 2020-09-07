@@ -29,6 +29,10 @@ class PlacePolicy < ApplicationPolicy
     record.owner != user && user
   end
 
+  def add_owner?
+    user.is_business
+  end
+
   private
 
   def is_owner?

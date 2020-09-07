@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
+      average_rating(@review.place)
       redirect_to @review, notice: 'Alteração realizada com sucesso.'
     else
       render :edit
@@ -42,6 +43,7 @@ class ReviewsController < ApplicationController
   end
 
   def disable
+    average_rating(@review.place)
   end
 
   # WILL UPDATE THE REVIEW USING ACTION UPDATE
@@ -49,7 +51,7 @@ class ReviewsController < ApplicationController
   #   @review.update(review_params)
   #   raise
   #   if @review.update(review_params)
-  #     redirect_to @review, notice: 'Avaliação desabilitada com sucesso.'
+  #     redirect_to @review, notice: 'Avaliaçao desabilitada com sucesso.'
   #   else
   #     render :disable
   #   end
@@ -61,9 +63,10 @@ class ReviewsController < ApplicationController
   private
 
   def average_rating(place)
-    reviews = Review.where('place_id = ?', place.id)
+    reviews = Review.where(is_disabled: false, place_id: place.id)
     ratings = reviews.map(&:rating)
     place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
+    # place.average_rating = ratings.sum / ratings.length.to_f
   end
 
   def review_params

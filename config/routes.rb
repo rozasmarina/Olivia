@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   devise_for :users do
   end
 
-  # menu routes
+  # menu rotes
   get '/VamosJuntas', to: 'pages#together', as: :together
   get '/ReportarExperiencia', to: 'pages#report', as: :report
   get '/Comunidade', to: 'pages#community', as: :community
   get '/Empresa', to: 'pages#company', as: :company
 
-  resource :users, only: [:edit]
+  resource :users, only: :show
 
   resources :angels, except: :index
 
@@ -35,6 +35,6 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[new create]
   end
 
-  # Route to add owner to place created by normal user
-  get 'places/:id/add_owner', to: 'places#add_owner', as: :add_owner
+  # Route to add owner to places
+  get 'places/:id/add_owner', to: 'reviews#add_owner', as: :add_owner
 end
