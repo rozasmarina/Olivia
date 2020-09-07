@@ -1,16 +1,42 @@
-<h1><%= @place.name %></h1>
-<span>Ranking Ollivia: </span>
-  <% if @place.reviews.length == 0 %>
-    <span>"Local sem avaliações. Deixe sua opinião"</span>
-  <% else %>
-    <!-- RATING SYSTEM -->
-    <div class="rates-outer">
-      <div class="rates-inner">
+<div class="container">
+  <div class="img-show">
+  </div>
+  <div class="review-content">
+    <div class="review-ranking">
+    </div>
+    <div class="review-header">
+      <h2><%= @place.name %></h2>
+    </div>
+    <div class="review-buttons">
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+      </div>
+      <div class="review-content">
       </div>
     </div>
-    <span class="number-rating"><%= @place.average_rating.round(1) %></span>
-  <% end %>
+    <% if @review.responses %>
+      <div class="response-card">
+        <div class="response-header">
+        </div>
+        <div class="response-content">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
+<span>Ranking Ollivia: </span>
+<% if @place.reviews.length == 0 %>
+  <span>"Local sem avaliações. Deixe sua opinião"</span>
+<% else %>
+  <!-- RATING SYSTEM -->
+  <div class="rates-outer">
+    <div class="rates-inner">
+    </div>
+  </div>
+  <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+<% end %>
 <p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
@@ -49,8 +75,6 @@
   <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user == @place.owner %>
 <% end %>
 <p><%= link_to 'Voltar a Locais', places_path %></p>
-
-
 <!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
 <script>
   // Rating
@@ -58,16 +82,16 @@
   console.log(rating)
   // Total icons
   const iconTotal =5;
-
+  
   // Run getRating when DOM loads
   document.addEventListener('DOMContentLoaded', getRating);
-
+  
   // Get rating
   function getRating() {
     // Get percentage
     const iconPercentage = (rating / iconTotal) * 100;
     console.log(iconPercentage)
-    // Round to nearest 
+    // Round to nearest
     const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
     console.log(iconPercentageRounded)
     // Set width of rates-inner to percentage
