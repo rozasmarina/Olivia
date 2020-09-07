@@ -22,15 +22,60 @@ sleep(1)
 # longitude = rand(23.476482..23.637696).-@.round(6)
 # latitude = rand(46.540127..46.732998).-@.round(6)
 
-15.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])
+user_first_names = ['Talita', 'Antonia', 'Thais', 'Andreia', 'Larissa',
+                    'Aline', 'Giovanna', 'Elisa', 'Suzana', 'Tereza',
+                    'Jaqueline', 'Lilian', 'Nathalia', 'Isabella', 'Sara',
+                    'Daniela', 'Elsa', 'Fernanda', 'Carla', 'Lidia',
+                    'Rodrigo', 'Pedro', 'Joao', 'Victor', 'Jorge']
+
+user_last_names = ['Santos', 'Weber', 'Schmidt', 'Torres', 'Silva',
+                   'Andrade', 'Barbosa', 'Barros', 'Santana', 'Marques',
+                   'Campos', 'Borges', 'Moraes', 'Nogueira', 'Ferreira',
+                   'Carvalho', 'Vieira', 'Rocha', 'Gentil', 'Freitas',
+                   'Miranda', 'Machado', 'Lopes', 'Fernandes', 'Costa']
+
+user_genders = ['feminino', 'feminino', 'feminino', 'feminino', 'outro',
+                'feminino', 'feminino', 'feminino', 'feminino', 'outro',
+                'feminino', 'feminino', 'feminino', 'feminino', 'outro',
+                'feminino', 'feminino', 'feminino', 'feminino', 'outro',
+                'masculino', 'masculino', 'masculino', 'masculino', 'outro']
+
+user_avatar_url = ['https://images.pexels.com/photos/4026110/pexels-photo-4026110.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/1987301/pexels-photo-1987301.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/3676424/pexels-photo-3676424.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2804282/pexels-photo-2804282.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/3008355/pexels-photo-3008355.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2100063/pexels-photo-2100063.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2120114/pexels-photo-2120114.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/3021593/pexels-photo-3021593.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2169434/pexels-photo-2169434.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2123778/pexels-photo-2123778.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/1988681/pexels-photo-1988681.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/839633/pexels-photo-839633.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2104252/pexels-photo-2104252.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/718978/pexels-photo-718978.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2101838/pexels-photo-2101838.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/2287252/pexels-photo-2287252.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/4484829/pexels-photo-4484829.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+                   'https://images.pexels.com/photos/4286948/pexels-photo-4286948.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                   'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500']
+
+user_counter = 0
+25.times do
+  first_name = user_first_names[user_counter]
+  last_name = user_last_names[user_counter]
+  username = "#{first_name.downcase}#{%w[. _ -].sample}#{last_name.downcase}"
   email = Faker::Internet.free_email(name: username)
   password = "123456"
-  city = Faker::Address.city
-  state = Faker::Address.state
-  gender = %w[feminino feminino feminino outro masculino].sample.first
+  city = "São Paulo"
+  state = "SP"
+  gender = user_genders[user_counter]
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cpf = rand.to_s[2..12]
   simple_user = User.create!(first_name: first_name,
@@ -43,35 +88,42 @@ sleep(1)
                              cpf: cpf,
                              gender: gender,
                              phone_number: phone_number)
-  simple_users << simple_user
 
-  # avatar_url = "https://api.adorable.io/avatars/285/#{simple_user.id}ollivia.png"
-  # avatar = URI.open(avatar_url)
-  # simple_user.photo.attach(io: avatar, filename: "#{simple_user.username}.png", content_type: 'image/png')
+  avatar = URI.open(user_avatar_url[user_counter])
+  simple_user.photo.attach(io: avatar, filename: "#{simple_user.username}.png", content_type: 'image/png')
+
+  simple_users << simple_user
   puts "#{simple_user.username} created"
+  user_counter += 1
 
   # ANGELS CREATION
+  angel_first_names = ['Talita', 'Thais', 'Larissa', 'Aline', 'Giovanna',
+                       'Nathalia', 'Isabella', 'Sara', 'Daniela', 'Fernanda',
+                       'Bia', 'Heloisa', 'Carol', 'Ana', 'Bruna',
+                       'Otavio', 'Thiago', 'Matheus', 'Luis', 'Davi',
+                       'Mauro', 'Caio', 'Leo', 'Fred', 'Marcelo',
+                       'Fabio', 'Beto', 'Pedro', 'Fabricio', 'Paulo']
   rand(1..3).times do
-    email = Faker::Internet.free_email(name: username)
     phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    Angel.create!(first_name: first_name,
-                  last_name: last_name,
+    angel_first_name = angel_first_names.sample
+    angel_last_name = user_last_names.sample
+    Angel.create!(first_name: angel_first_name,
+                  last_name: angel_last_name,
                   email: email,
                   phone_number: phone_number,
-                  user: simple_users.sample)
+                  user: simple_user)
   end
 end
 
 puts "Creating reviewed places..."
 sleep(1)
 
-place_names = ['Trabuca', 'Benzina', 'Ginteria', 'Tetto Rooftop', 'Tatu Bola', 'Galleria Bar', 'Bar de Cima',
-               'Biri Nait', 'Vila Seu Justino', 'Vila 567', 'Bar do Veloso', 'A Casa do Porco Bar',
-               'Bar do Jão', 'Chopp do Alemão', 'Bar Do Urso', 'Morrison Rock Bar', 'Eu Tu Eles', 'Santa Julia',
-               'Frangó', 'Veríssimo', 'Salve Jorge', 'Bar Brahma', 'Cervejaria do Gordo', 'Rey Castro',
-               'Excelenstíssimo', 'Boteco Boa Praça', 'Bar Original', 'Pitico', 'Castro Burger', 'Pirajá']
+place_names = ['Trabuca', 'Benzina', 'Ginteria', 'Tetto Rooftop', 'Tatu Bola',
+               'Galleria Bar', 'Bar de Cima', 'Biri Nait', 'Vila Seu Justino', 'Vila 567',
+               'Bar do Veloso', 'A Casa do Porco Bar', 'Bar do Jão', 'Chopp do Alemão', 'Bar Do Urso',
+               'Morrison Rock Bar', 'Eu Tu Eles', 'Santa Julia', 'Frangó', 'Veríssimo',
+               'Salve Jorge', 'Bar Brahma', 'Cervejaria do Gordo', 'Rey Castro', 'Excelenstíssimo',
+               'Boteco Boa Praça', 'Bar Original', 'Pitico', 'Castro Burger', 'Pirajá']
 
 place_addresses = ['Avenida Presidente Juscelino Kubitschek, 1444, São Paulo',
                    'Rua Girassol, 396, São Paulo',
@@ -92,8 +144,8 @@ place_addresses = ['Avenida Presidente Juscelino Kubitschek, 1444, São Paulo',
                    'Avenida Brigadeiro Faria Lima, 2902, São Paulo',
                    'Rua Gomes de Carvalho, 1705, São Paulo',
                    'Largo da Matriz de Nossa Senhora do Ó, 168, São Paulo',
-                   'Rua Flórida, 1488, São Paulo',
-                   'Praça Antônio Prado, 33, São Paulo',
+                   'Rua Flórida, 1488 - Brooklin Novo, São Paulo',
+                   'Praça Antônio Prado, 33 - Centro Histórico de São Paulo, São Paulo - SP, 05159-360',
                    'Avenida São João, 677, São Paulo',
                    'Rua Augusta, 1246, São Paulo',
                    'Rua Ministro Jesuíno Cardoso, 181, São Paulo',
@@ -190,78 +242,86 @@ place_names.length.times do
                                gender: gender,
                                phone_number: phone_number)
 
+  avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}ollivia.png"
+  avatar = URI.open(avatar_url)
+  business_user.photo.attach(io: avatar, filename: "#{business_user.username}.png", content_type: 'image/png')
+
   business_users << business_user
 
   puts "Business account #{business_user.username} created"
 
   venue = Place.create!(name: place_names[counter],
                         user: simple_users.sample,
-                        owner: business_users.sample,
+                        owner: [business_user, business_user, nil].sample,
                         address: place_addresses[counter],
                         description: place_descriptions[counter])
+
   place_photo_url = place_photos[counter]
   place_photo = URI.open(place_photo_url)
   venue.photo.attach(io: place_photo, filename: "#{venue.name}.png", content_type: 'image/png')
 
   puts "#{venue.name} created"
-
-  puts 'Creating bad reviews'
-  rand(4..10).times do
-    title = Faker::Book.title
-    content = Faker::Quote.famous_last_words
-    rating = rand(0..3)
-    good = false
-    satisfied = false
-    review = Review.create!(title: title,
-                            content: content,
-                            rating: rating,
-                            user: simple_users.sample,
-                            place: Place.all.sample,
-                            is_good: good,
-                            is_satisfied: satisfied)
-    reviews = Review.where('place_id = ?', review.place.id)
-    ratings = reviews.map(&:rating)
-    review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
-    puts "#{review.place.name} reviewed by #{review.user.username}"
-  end
-
-  puts 'Creating good reviews'
-  rand(4..10).times do
-    title = Faker::Book.title
-    content = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
-    rating = rand(3..5)
-    good = true
-    satisfied = false
-    review = Review.create!(title: title,
-                            content: content,
-                            rating: rating,
-                            user: simple_users.sample,
-                            place: Place.all.sample,
-                            is_good: good,
-                            is_satisfied: satisfied)
-    reviews = Review.where('place_id = ?', review.place.id)
-    ratings = reviews.map(&:rating)
-    review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
-    puts "#{review.place.name} reviewed by #{review.user.username}"
-  end
   counter += 1
 end
 
-puts 'Creating responses'
-rand(5..10).times do
+puts 'Creating bad reviews'
+rand(20..25).times do
+  title = Faker::Book.title
+  content = Faker::Quote.famous_last_words
+  rating = rand(0..3)
+  good = false
+  satisfied = false
+  review = Review.create!(title: title,
+                          content: content,
+                          rating: rating,
+                          user: simple_users.sample,
+                          place: Place.all.sample,
+                          is_good: good,
+                          is_satisfied: satisfied)
+  reviews = Review.where('place_id = ?', review.place.id)
+  ratings = reviews.map(&:rating)
+  review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
+  puts "#{review.place.name} reviewed by #{review.user.username}"
+end
+
+puts 'Creating good reviews'
+rand(20..25).times do
+  title = Faker::Book.title
+  content = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
+  rating = rand(3..5)
+  good = true
+  satisfied = false
+  review = Review.create!(title: title,
+                          content: content,
+                          rating: rating,
+                          user: simple_users.sample,
+                          place: Place.all.sample,
+                          is_good: good,
+                          is_satisfied: satisfied)
+  reviews = Review.where('place_id = ?', review.place.id)
+  ratings = reviews.map(&:rating)
+  review.place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
+  puts "#{review.place.name} reviewed by #{review.user.username}"
+end
+
+puts 'Creating owners responses'
+rand(10..20).times do
   response = Faker::Quote.famous_last_words
-  review = Review.find(rand(1..Review.count))
+  review = Review.all.sample
   user = review.place.owner
+  next if user.nil?
+
   Response.create!(response: response, user: user, review: review)
   review.update(is_satisfied: [false, true].sample)
-  puts "#{review.place.owner.username} responded to #{review.user.username}"
+  puts "#{review.place.owner.username} responded to a review"
 
   rand(0..1).times do
     user_response = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
     Response.create!(response: user_response, user: review.user, review: review)
-    puts "#{review.user.username} responded to #{review.place.owner.username}"
+    puts "#{review.user.username} continued a thread."
   end
 end
+
 puts ""
 puts "-----------------------------"
 puts "Seed successfully created!!!!"

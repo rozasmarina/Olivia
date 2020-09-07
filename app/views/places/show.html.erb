@@ -1,13 +1,13 @@
 <h1><%= @place.name %></h1>
 <span>Nota Ollivia: </span>
-<% if @place.reviews.length == 0 %>
-  <span>"Local sem avaliações. Deixe sua opinião"</span>
-<% else %>
-  <!-- RATING SYSTEM -->
-  <div class="rates-outer">
-    <div class="rates-inner">
+  <% if @place.reviews.length == 0 %>
+    <span>"Local sem avaliações. Deixe sua opinião"</span>
+  <% else %>
+    <!-- RATING SYSTEM -->
+    <div class="rates-outer">
+      <div class="rates-inner">
+      </div>
     </div>
-  </div>
   <span id="number-rating"><%= @place.average_rating.round(1) %></span>
 <% end %>
 <p>Avaliações:</>
@@ -37,7 +37,7 @@
         <%= f.input :title, label: "Título" %>
         <%= f.input :content %>
         <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
-        <fieldset class="form-group" id="anonymous" style="display:none;">
+        <fieldset class="form-group" id="anonymous" style="display: none;">
           <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
         </fieldset>
         <%= f.submit 'Avaliar' %>

@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_182510) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "owner_id"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -101,8 +101,6 @@ ActiveRecord::Schema.define(version: 2020_09_03_182510) do
     t.string "last_name", null: false
     t.string "phone_number", null: false
     t.string "username", null: false
-    t.float "latitude"
-    t.float "longitude"
     t.boolean "is_business", default: false, null: false
     t.string "cpf"
     t.string "cnpj"

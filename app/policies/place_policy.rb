@@ -10,11 +10,11 @@ class PlacePolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    user
   end
 
   def create?
-    true
+    user
   end
 
   def edit?
@@ -24,9 +24,13 @@ class PlacePolicy < ApplicationPolicy
   def update?
     is_owner?
   end
-
+  
   def add_review?
     record.owner != user && user
+  end
+
+  def add_owner?
+    user.is_business && record.owner.nil? && user.owned_place.nil?
   end
 
   private

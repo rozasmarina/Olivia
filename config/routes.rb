@@ -28,10 +28,15 @@ Rails.application.routes.draw do
   get 'reviews/:id/satisfy', to: 'reviews#satisfy', as: :satisfy_review
   # patch 'reviews/:id', to: 'reviews#disabled' -> will use update to change
 
+  # Route to add owner to places
+  patch 'places/add_owner', to: 'places#add_owner', as: :add_owner
+  
   resources :places, except: %i[destroy show]
 
   # Temporary route for testing - those will be nested in Places
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
+
+  
 end
