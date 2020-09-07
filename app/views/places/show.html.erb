@@ -31,7 +31,7 @@
                                         [false, 'Ruim']
                                       ],
                                       :first,
-                                      :last, 
+                                      :last,
                                       checked: true,
                                       item_wrapper_class: :evaluation,
                                       item_wrapper_tag: :p %>
@@ -69,10 +69,11 @@
     // Get percentage
     const iconPercentage = (rating / iconTotal) * 100;
     console.log(iconPercentage)
-    // Round to nearest 
+    // Round to nearest
     const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
     console.log(iconPercentageRounded)
     // Set width of rates-inner to percentage
     document.querySelector('.rates-inner').style.width = iconPercentageRounded;
   };
 </script>
+>>>>>>> master
