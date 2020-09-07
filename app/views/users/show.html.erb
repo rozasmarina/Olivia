@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-12 d-flex justify-content-center p-2">
-      <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+      <!--<%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %> -->
     </div>
     <h5 class="col-12 d-flex justify-content-center pt-2"> <strong>Olá, <%= @user.first_name %> </strong> </h5>
   </div>
@@ -14,8 +14,8 @@
 
 <div>
   <% if @user.is_business %>
-    <% if @user.places.present? %>
-      <h4>Seu estabelecimento: <%= link_to  @user.places.first.name, place_path(@user.places.first) %> </h4>
+    <% if @user.owned_place.present? %>
+      <h4>Seu estabelecimento: <%= link_to  @user.owned_place.name, place_path(@user.owned_place) %> </h4>
     <% else %>
       <p>
         <button class="btn border" type="button" data-toggle="collapse" data-target="#select-place" aria-expanded="false" aria-controls="select-place">
@@ -26,7 +26,7 @@
         <div class="card card-body">
           <%= simple_form_for :owner, url: add_owner_path, method: "patch" do |f| %>
             <%= f.input :place, as: :select, collection: @places %>
-            <%= f.submit 'Adicionar esse estabelecimento', input_html: { data: { confirm: 'O estabelecimento selecionado está correto?' } } %>
+            <%= f.submit 'Adicionar esse estabelecimento', data: { confirm: 'O estabelecimento selecionado está correto?' } %>
           <% end %>
         </div>
       </div>
