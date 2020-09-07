@@ -1,3 +1,16 @@
+.review-content {
+    position: relative;
+}
+
+.review-ranking {
+    position: absolute;
+    right: 15px;
+    top: -30px;
+    background-color: white;
+    padding: 7px 30px;
+    border-radius: 30px;
+}
+
 .rates-outer {
     position: relative;
     display: inline-block;
