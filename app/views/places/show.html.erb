@@ -33,18 +33,18 @@
         <% end %>
         <span class="txt-rating">Ranking Ollivia</span>
       </div>
-      <div class="review-header mt-3 p-4 d-flex align-items-center justify-content-between">
+      <div class="review-header mt-3 pt-4 pb-2 px-4 d-flex align-items-center justify-content-between mr-2  border-bottom">
         <div class='place-info'>
           <h2><%= @place.name %></h2>
           <p><%= @place.description %></p>
         </div>
-        <div>
+        <div class="mt-4">
           <% if @place.reviews.length > 0 %>
-            <p> <%= @place.reviews.length %> relatos </p>
+            <p><strong><%= @place.reviews.length %></strong> relatos </p>
           <% end %>
         </div>
       </div>
-      <div class="review-buttons">
+      <div class="review-buttons d-flex justify-content-around m-4">
         <!-- linkar após criarmos a rota -->
         <div class="xp-btn">
           <div class="xp-btn-thumb">

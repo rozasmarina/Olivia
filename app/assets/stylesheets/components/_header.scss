@@ -2,11 +2,12 @@
   // align-items: space-between;
   background: $roxo;
   border-bottom: solid 3px $rosa;
-  position: sticky;
-  bottom: 0;
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 48px;
+  height: 55px;
   margin-top: 0;
+  z-index: 50;
 }
 
 .btn-back {
