@@ -8,9 +8,9 @@
       <div class="rates-inner">
       </div>
     </div>
-    <span class="number-rating"><%= @place.average_rating.round(1) %></span>
-  <% end %>
-
+  </div>
+  <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+<% end %>
 <p>Avaliações:</>
 <% @reviews.where("is_disabled = ?", false).each do | review | %>
   <p><%= link_to review.title, review_path(review) %></p>
@@ -50,7 +50,6 @@
 <% end %>
 <p><%= link_to 'Voltar a Locais', places_path %></p>
 
-
 <!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
 <script>
   // Rating
@@ -76,4 +75,3 @@
     document.querySelector('.rates-inner').style.width = iconPercentageRounded;
   };
 </script>
-
