@@ -1,11 +1,47 @@
 .mapboxgl-popup {
   max-width: 300px;
-}
 
-.mapboxgl-popup-content {
+  .mapboxgl-popup-content {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  border-radius: 10px !important;
-  box-shadow: none !important;
-  height: 300px !important;
+  border-radius: 10px;
+  box-shadow: none;
+  height: 300px;
+  background-color: transparent;
+  position: relative;
+
+    .mapboxgl-popup-close-button {
+      font-size: 15px;
+      font-weight: bolder;
+      color: white;
+      background-color: $roxo;
+      border-radius: 5px;
+      z-index: 3;
+      width: 10%;
+      height: 7%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      }
+
+  .view.overlay {
+    position: relative;
+    height: 175px;
+
+    .card-img-olli {
+      width: 170px;
+      height: 110px;
+      border-radius: 4px 4px 10px 10px;
+      border-style: solid white;
+      position: absolute;
+      object-fit: cover;
+      left: 9px;
+      top: 9px;
+      }
+
+    }
+
+  }
+
 }
+
