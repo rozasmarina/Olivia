@@ -28,6 +28,15 @@
 }
 
 .card-text {
-    color: #7a6c7d !important;
-    font-size: 1rem !important;
+  color: #7a6c7d !important;
+  font-size: 1rem !important;
+}
+
+.card-map-new {
+  background-color: white;
+  border-radius: 7px !important;
+  width: 170;
+  height: 60px;
+  border: 2px solid $roxo;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1) !important;
 }
