@@ -24,9 +24,9 @@ class PlacePolicy < ApplicationPolicy
   def update?
     is_owner?
   end
-  
+
   def add_review?
-    record.owner != user && user
+    record.owner != user && user && !user.is_business
   end
 
   def add_owner?

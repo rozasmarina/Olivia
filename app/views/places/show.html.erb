@@ -124,7 +124,7 @@
         <% end %>
       </div>
     <% else %>
-      <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user == @place.owner %>
+      <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user.present? && current_user.is_business %>
     <% end %>
     <p><%= link_to 'Voltar a Locais', places_path %></p>
   </div>
