@@ -33,12 +33,18 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
+import { getRating } from '../components/ratings_with_icons.js';
+import { formBusiness } from '../components/new_user_form.js';
+import { formReview } from '../components/new_review_form.js';
 
 
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
     // initSelect2();
+    getRating();
     initMapbox();
+    formBusiness();
+    formReview();
 });
 
 import "controllers"
