@@ -21,6 +21,7 @@
     <!-- infos do estabelecimento -->
     <div class="review-content">
       <% if @place.reviews.length == 0 %>
+      
       <% else %>
         <!-- RATING SYSTEM -->
         <div class="review-ranking">
@@ -30,7 +31,7 @@
               </div>
             </div>
             <span id="number-rating"><%= @place.average_rating.round(1) %></span>
-            <span class="txt-rating d-block">Ranking Ollivia</span>
+            <span class="txt-rating d-block">Rating Ollivia</span>
           </div>
         <% end %>
       </div>

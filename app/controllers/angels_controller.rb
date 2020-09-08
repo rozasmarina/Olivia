@@ -22,7 +22,7 @@ class AngelsController < ApplicationController
 
   def show
     @angel = Angel.find(params[:id])
-    authorize @angel  
+    authorize @angel
   end
 
   def edit
@@ -34,8 +34,11 @@ class AngelsController < ApplicationController
   def update
     @angel = Angel.find(params[:id])
     authorize @angel
-    @angel.update(angel_params)
-    redirect_to @angel
+    if @angel.update(angel_params)
+      redirect_to @angel
+    else
+      render :edit
+    end
   end
 
   def destroy
