@@ -78,6 +78,8 @@ user_counter = 0
   gender = user_genders[user_counter]
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cpf = rand.to_s[2..12]
+  longitude = rand(23.476482..23.637696).-@.round(6)
+  latitude = rand(46.540127..46.732998).-@.round(6)
   simple_user = User.create!(first_name: first_name,
                              last_name: last_name,
                              username: username,
@@ -87,7 +89,9 @@ user_counter = 0
                              state: state,
                              cpf: cpf,
                              gender: gender,
-                             phone_number: phone_number)
+                             phone_number: phone_number,
+                             longitude: longitude,
+                             latitude: latitude)
 
   avatar = URI.open(user_avatar_url[user_counter])
   simple_user.photo.attach(io: avatar, filename: "#{simple_user.username}.png", content_type: 'image/png')
@@ -230,6 +234,8 @@ place_names.length.times do
   gender = %w[feminino masculino].sample.first
   phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
   cnpj = Faker::CNPJ.pretty
+  longitude = rand(23.476482..23.637696).-@.round(6)
+  latitude = rand(46.540127..46.732998).-@.round(6)
   business_user = User.create!(first_name: first_name,
                                last_name: last_name,
                                username: username,
@@ -240,7 +246,9 @@ place_names.length.times do
                                is_business: true,
                                cnpj: cnpj,
                                gender: gender,
-                               phone_number: phone_number)
+                               phone_number: phone_number,
+                               longitude: longitude,
+                               latitude: latitude)
 
   avatar_url = "https://api.adorable.io/avatars/285/#{business_user.id}ollivia.png"
   avatar = URI.open(avatar_url)
