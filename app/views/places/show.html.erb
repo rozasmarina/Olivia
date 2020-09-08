@@ -14,54 +14,92 @@
 <!--fim do header-->
 <div>
   <div>
+    <!--img -->
     <div class="img-show">
       <%= cl_image_tag @place.photo.key %>
     </div>
+    <!-- infos do estabelecimento -->
     <div class="review-content">
-      <div class="review-ranking">
-        <% if @place.reviews.length == 0 %>
-          <span>"Local sem avaliações. Deixe sua opinião"</span>
-        <% else %>
-          <!-- RATING SYSTEM -->
+      <% if @place.reviews.length == 0 %>
+      <% else %>
+        <!-- RATING SYSTEM -->
+        <div class="review-ranking">
           <div class="rating-container">
             <div class="rates-outer">
               <div class="rates-inner">
               </div>
             </div>
             <span id="number-rating"><%= @place.average_rating.round(1) %></span>
+            <span class="txt-rating d-block">Ranking Ollivia</span>
           </div>
         <% end %>
-        <span class="txt-rating">Ranking Ollivia</span>
       </div>
       <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
         <div class='place-info'>
           <h2 class="purple"><%= @place.name %></h2>
           <p><%= @place.description %></p>
-          <% if @place.reviews.length > 0 %>
-            <p class="sm-line"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
-          <% end %>
+          <div class="row d-flex justify-content-around align-items-center mb-3">
+            <% if  @place.reviews.length == 1 %>
+              <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
+            <% elsif @place.reviews.length > 2 %>
+              <p class="sm-line mt-3"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
+              <div class="xp-btn d-flex justify-content-center">
+                <i class="far fa-smile-beam mt-2"></i>
+              </div>
+              <!-- linkar após criarmos a rota -->
+              <div class="xp-btn d-flex justify-content-center">
+                <i class="far fa-frown mt-2"></i>
+              </div>
+            <% else %>
+              Local sem avaliações
+            <% end %>
+          </div>
         </div>
       </div>
+      <!--form collapsable -->
+      <% if policy(@place).add_review? %>
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header bg-white" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link justify-content-center" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Deixe sua avaliação
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <%= simple_form_for [@place, @review], method: 'post' do |f| %>
+                  <%# LABEL + INPUTS IS_GOOD  %>
+                  <%= f.label "Como foi sua experiência?" %>
+                  <%= f.collection_radio_buttons :is_good,
+                                              [
+                                                [true, 'Boa'],
+                                                [false, 'Ruim']
+                                              ],
+                                              :first,
+                                              :last,
+                                              checked: true,
+                                              item_wrapper_class: :evaluation,
+                                              item_wrapper_tag: :p %>
+                  <%= f.input :title, label: "Título" %>
+                  <%= f.input :content %>
+                  <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
+                  <fieldset class="form-group" id="anonymous" style="display:none;">
+                    <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
+                  </fieldset>
+                  <%= f.submit 'Avaliar' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!--botões de exp boa e ruim-->
       <div class="review-buttons d-flex justify-content-around m-4">
         <!-- linkar após criarmos a rota -->
-        <div class="xp-btn">
-          <div class="xp-btn-thumb">
-            <i class="far fa-thumbs-up"></i>
-          </div>
-          <div class="xp-btn-content">
-            Experiência boa
-          </div>
-        </div>
-        <!-- linkar após criarmos a rota -->
-        <div class="xp-btn">
-          <div class="xp-btn-thumb">
-            <i class="far fa-thumbs-down"></i>
-          </div>
-          <div class="xp-btn-content">
-            Experiência ruim
-          </div>
-        </div>
       </div>
+      <!--reviews-->
       <% @reviews.where("is_disabled = ?", false).each do |review| %>
         <div class="review-card">
           <div class="review-header m-3">
@@ -73,6 +111,9 @@
               <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
               <%= link_to review.title, review_path(review), class: "ml-1" %>
               <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
+              <% if review.responses.present? %>
+                <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
+              <% end %>
             <% end %>
           </div>
           <div class="review-content m-4 border-bottom">
@@ -93,38 +134,9 @@
         </div>
       <% end %>
     </div>
-    <% if policy(@place).edit? %>
-      <p><%= link_to 'editar local', edit_place_path(@place), class: "pink-btn" %></p>
-    <% end %>
-    <% if policy(@place).add_review? %>
-      <div>
-        <p>Nos conte sobre a sua experiência:</p>
-        <%= simple_form_for [@place, @review], method: 'post' do |f| %>
-          <div>
-            <%# LABEL + INPUTS IS_GOOD  %>
-            <%= f.label "Como foi sua experiência?" %>
-            <%= f.collection_radio_buttons :is_good,
-                                        [
-                                          [true, 'Boa'],
-                                          [false, 'Ruim']
-                                        ],
-                                        :first,
-                                        :last,
-                                        checked: true,
-                                        item_wrapper_class: :evaluation,
-                                        item_wrapper_tag: :p %>
-            <%= f.input :title, label: "Título" %>
-            <%= f.input :content %>
-            <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
-            <fieldset class="form-group" id="anonymous" style="display:none;">
-              <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
-            </fieldset>
-            <%= f.submit 'Avaliar' %>
-          </div>
-        <% end %>
-      </div>
-    <% else %>
+    <!--botões-->
+    <% if current_user.blank? %>
       <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user.present? && current_user.is_business %>
     <% end %>
-    <p><%= link_to 'Voltar a Locais', places_path %></p>
+    <!-- <p><%= link_to 'Voltar a Locais', places_path %></p> -->
   </div>

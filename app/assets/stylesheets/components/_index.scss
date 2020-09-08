@@ -12,17 +12,21 @@
 @import "header";
 @import "img";
 @import "info_window";
+@import "profile_cards";
+
 body {
-    margin: 0;
-    padding-bottom: 69px;
-    min-height: 98vh;
-    position: relative;
-    background-color: white;
+  margin: 0;
+  padding-bottom: 69px;
+  min-height: 98vh;
+  position: relative;
+  background-color: white;
+  color: $dark-gray;
 }
 
-// .purple {
-//     color: $roxo;
-// }
+.purple {
+  color: $roxo;
+}
+
 // .dimmedPage {
 //     background-color: black;
 // }

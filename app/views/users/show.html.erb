@@ -1,66 +1,243 @@
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-12 d-flex justify-content-center p-2">
-      <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-    </div>
-    <h5 class="col-12 d-flex justify-content-center pt-2"> <strong>Olá, <%= @user.first_name %> </strong> </h5>
-  </div>
-  <br>
-  <div>
-    <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
-    <div class="dropdown-divider"> </div>
-    <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
-</div>
-<div>
-  <% if @user.is_business %>
-    <% if @user.owned_place.present? %>
-      <h4>Seu estabelecimento: <%= link_to  @user.owned_place.name, place_path(@user.owned_place) %> </h4>
+<!-- HEADER -->
+<div class="heading d-flex justify-content-center align-items-center w-100 pt-2">
+  <div class="pg-title">
+    <% if @user.is_business? && @user.owned_place.present? %>
+      <h5> <strong><%= @user.owned_place.name %> </strong> </h5>
     <% else %>
-      <p>
-        <button class="btn border" type="button" data-toggle="collapse" data-target="#select-place" aria-expanded="false" aria-controls="select-place">
-          Meu estabelecimento já está cadastrado na plataforma
-        </button>
-      </p>
-      <div class="collapse" id="select-place">
-        <div class="card card-body">
-          <%= simple_form_for :owner, url: add_owner_path, method: "patch" do |f| %>
-            <%= f.input :place, as: :select, collection: @places %>
-            <%= f.submit 'Adicionar esse estabelecimento', data: { confirm: 'O estabelecimento selecionado está correto?' } %>
-          <% end %>
+      <h5> <strong>Olá, <%= @user.first_name %> </strong> </h5>
+    <% end %>
+  </div>
+</div>
+
+<!-- MAIN BODY -->
+
+<!-- AVATAR -->
+<div class="d-flex justify-content-center pt-5 mt-4">
+  <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+</div>
+<br>
+
+<!-- EDIT AND LOGOUT -->
+<%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center" %>
+<div class="col-12 dropdown-divider"></div>
+<%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
+
+
+<div class="container">
+<!-- BUSINESS PROFILE -->
+  <% if @user.is_business %>
+    <!-- HAS PLACE -->
+    <% if @user.owned_place.present? %>
+      <div class="accordion" id="business">
+
+        <!-- AWAITING RESPONSE -->
+        <div class="card">
+          <div class="card-header" id="awaiting">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#awaitingCollapse" aria-expanded="true" aria-controls="awaitingCollapse">
+                Avaliações aguardando resposta
+              </button>
+            </h2>
+          </div>
+
+          <div id="awaitingCollapse" class="collapse" aria-labelledby="awaiting" data-parent="#business">
+            <div class="card-body">
+              <% if @user.owned_place.reviews.present? %>
+                <ul>
+                  <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
+                    <% if review.responses.present? && review.responses.last.user != current_user %>
+                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                    <% else %>
+                      <p>Não há avaliações aguardando resposta.</p>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALL REVIEWS -->
+        <div class="card">
+          <div class="card-header" id="allReviews">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#allReviewsCollapse" aria-expanded="false" aria-controls="allReviewsCollapse">
+                Todas as avaliações do meu estabelecimento
+              </button>
+            </h2>
+          </div>
+          <div id="allReviewsCollapse" class="collapse" aria-labelledby="allReviews" data-parent="#business">
+            <div class="card-body">
+              <% if @user.owned_place.reviews.present? %>
+                <ul>
+                  <% @user.owned_place.reviews.each do |review| %>
+                    <% if review.responses.present? && review.responses.last.user != current_user %>
+                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                    <% else %>
+                      <li> <%= link_to review.title, review_path(review) %></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- GOOD REVIEWS -->
+        <div class="card">
+          <div class="card-header" id="goodReviews">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#goodReviewsCollapse" aria-expanded="false" aria-controls="goodReviewsCollapse">
+                Avaliações positivas
+              </button>
+            </h2>
+          </div>
+          <div id="goodReviewsCollapse" class="collapse" aria-labelledby="goodReviews" data-parent="#business">
+            <div class="card-body">
+              <% if @user.owned_place.reviews.where(is_good: true).present? %>
+                <ul>
+                  <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
+                    <% if review.responses.present? && review.responses.last.user != current_user %>
+                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                    <% else %>
+                      <li> <%= link_to review.title, review_path(review) %></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação positiva.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAD REVIEWS -->
+        <div class="card">
+          <div class="card-header" id="badReviews">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#badReviewsCollapse" aria-expanded="false" aria-controls="badReviewsCollapse">
+                Avaliações negativas
+              </button>
+            </h2>
+          </div>
+          <div id="badReviewsCollapse" class="collapse" aria-labelledby="badReviews" data-parent="#business">
+            <div class="card-body">
+              <% if @user.owned_place.reviews.where(is_good: false).present? %>
+                <ul>
+                  <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
+                    <% if review.responses.present? && review.responses.last.user != current_user %>
+                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                    <% else %>
+                      <li> <%= link_to review.title, review_path(review) %></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação negativa.</p>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
-      <p><%= link_to 'Adicionar meu estabelecimento à Ollivia!', new_place_path, class: "btn border" %></p>
+    
+    <!-- NEED TO SELECT OR ADD PLACE -->
+    <% else %>
+      <div class="accordion" id="newBusiness">
+        <!-- SELECT PLACE -->
+        <div class="card">
+          <div class="card-header" id="registered">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#registeredCollapse" aria-expanded="true" aria-controls="registeredCollapse">
+                Meu estabelecimento já está cadastrado na plataforma
+              </button>
+            </h2>
+          </div>
+          <div id="registeredCollapse" class="collapse" aria-labelledby="registered" data-parent="#newBusiness">
+            <div class="card-body">
+              <div class="d-flex justify-content-center">
+                <%= simple_form_for :owner, url: add_owner_path, method: "patch" do |f| %>
+                  <%= f.input :place, as: :select, collection: @places, label: "Selecionar estabelecimento" %>
+                  <%= f.submit 'Adicionar esse estabelecimento', data: { confirm: 'O estabelecimento selecionado está correto?' }, class: "btn btn-sm btn-primary btns" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ADD PLACE -->
+        <div class="card">
+          <div class="card-header" id="newPlace">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#newPlaceCollapse" aria-expanded="false" aria-controls="newPlaceCollapse">
+                Adicionar meu estabelecimento à Ollivia!
+              </button>
+            </h2>
+          </div>
+          <div id="newPlaceCollapse" class="collapse" aria-labelledby="newPlace" data-parent="#newBusiness">
+            <div class="card-body">
+              <%= link_to new_place_path, class: "btn btn-sm btn-primary btns d-flex justify-content-around" do %>
+                <i class="fas fa-building align-self-center"> </i>
+                <span class="align-self-center">Adicionar meu estabelecimento</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
+
+  <!-- COMMON PROFILE -->
   <% else %>
-    <h4 class="title table page-item">Meus Anjos</h4>
-    <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
-    <ul>
-      <% if @user.angels %>
-        <% @user.angels.each do |angel| %>
-          <li><%= link_to angel.first_name, angel_path(angel) %></li>
-        <% end %>
-      <% end %>
-    </ul>
-    <h4 class="title table">Minhas Reviews</h4>
-    <ul>
-      <% @user.reviews.each do |review| %>
-        <li> <%= link_to review.title, review_path(review) %></li>
-      <% end %>
-    </ul>
+    <div class="accordion" id="common">
+      <!-- USER ANGELS -->
+      <div class="card">
+        <div class="card-header" id="angels">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#angelsCollapse" aria-expanded="true" aria-controls="angelsCollapse">
+              Meus anjos
+            </button>
+          </h2>
+        </div>
+        <div id="angelsCollapse" class="collapse" aria-labelledby="angels" data-parent="#common">
+          <div class="card-body">
+            <ul class="list-group m-3">
+              <% if @user.angels %>
+                <% @user.angels.each do |angel| %>
+                  <li class="list-group-item d-flex justify-content-center"><%= link_to angel.first_name, angel_path(angel) %></li>
+                <% end %>
+              <% end %>
+            </ul>
+            <%= link_to "Adicionar novo anjo", new_angel_path, class: "btn btn-sm btn-primary btns d-flex justify-content-center" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- USER REVIEWS -->
+      <div class="card">
+        <div class="card-header" id="reviews">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#reviewsCollapse" aria-expanded="false" aria-controls="reviewsCollapse">
+              Minhas avaliações
+            </button>
+          </h2>
+        </div>
+        <div id="reviewsCollapse" class="collapse" aria-labelledby="reviews" data-parent="#common">
+          <div class="card-body">
+            <ul>
+              <% @user.reviews.each do |review| %>
+                <% if review.responses.present? && review.responses.last.user != current_user %>
+                  <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                <% else %>
+                  <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
   <% end %>
-  <h4 class="title table page-item">Meus Anjos:</h4>
-  <p class="btn btn-sm btn-primary btns"><%= link_to "Adicionar novo anjo", new_angel_path %></p>
-  <ul>
-    <% if @user.angels %>
-      <% @user.angels.each do |angel| %>
-        <li><%= link_to angel.first_name, angel_path(angel) %></li>
-      <% end %>
-    <% end %>
-  </ul>
-  <h4 class="title table">Minhas avaliações:</h4>
-  <ul>
-    <% @user.reviews.each do |review| %>
-      <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
-    <% end %>
-  </ul>
 </div>
+

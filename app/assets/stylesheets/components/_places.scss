@@ -32,6 +32,18 @@
   font-weight: 500;
 }
 
+.review-card {
+  position: relative;
+}
+
 .sm-line {
   line-height: 60%;
+  font-size: 16px;
+}
+
+
+.badge-pos {
+  position: absolute;
+  right: 30px;
+  top: 10px;
 }
