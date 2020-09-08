@@ -46,12 +46,12 @@ class PagesController < ApplicationController
   def together
   end
 
-  def report
+  def ollivia
   end
 
   def community
   end
 
-  def company
+  def emergency
   end
 end
