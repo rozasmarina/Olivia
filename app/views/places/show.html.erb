@@ -66,18 +66,18 @@
       </div>
       <% @reviews.where("is_disabled = ?", false).each do |review| %>
         <div class="review-card">
-          <div class="review-header">
-            <%= link_to review.title, review_path(review) %>
+          <div class="review-header m-3">
             <% if review.is_anonymous %>
               <!-- avatar anonimo -->
               <p>Por: usuário anônimo</p>
-              <%= @review.created_at %>
+              <%= link_to review.title, review_path(review) %>
             <% else %>
-              <%= cl_image_tag review.user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-              <p>Por <%= review.user.username %></p>
+              <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+              <%= link_to review.title, review_path(review), class: "ml-1" %>
+              <p class="ml-5 purple by-user">Por <%= review.user.username %></p>
             <% end %>
           </div>
-          <div class="review-content">
+          <div class="review-content m-4 border-bottom">
             <% if review.content.chars.length > 121 %>
               <p><%= review.content.slice(0, 120) + '...' %></p>
             <% else %>
