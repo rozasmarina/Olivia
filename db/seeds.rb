@@ -66,6 +66,13 @@ user_avatar_url = ['https://images.pexels.com/photos/4026110/pexels-photo-402611
                    'https://images.pexels.com/photos/4286948/pexels-photo-4286948.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
                    'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500']
 
+angel_first_names = ['Talita', 'Thais', 'Larissa', 'Aline', 'Giovanna',
+                     'Nathalia', 'Isabella', 'Sara', 'Daniela', 'Fernanda',
+                     'Bia', 'Heloisa', 'Carol', 'Ana', 'Bruna',
+                     'Otavio', 'Thiago', 'Matheus', 'Luis', 'Davi',
+                     'Mauro', 'Caio', 'Leo', 'Fred', 'Marcelo',
+                     'Fabio', 'Beto', 'Pedro', 'Fabricio', 'Paulo']
+
 user_counter = 0
 25.times do
   first_name = user_first_names[user_counter]
@@ -101,12 +108,6 @@ user_counter = 0
   user_counter += 1
 
   # ANGELS CREATION
-  angel_first_names = ['Talita', 'Thais', 'Larissa', 'Aline', 'Giovanna',
-                       'Nathalia', 'Isabella', 'Sara', 'Daniela', 'Fernanda',
-                       'Bia', 'Heloisa', 'Carol', 'Ana', 'Bruna',
-                       'Otavio', 'Thiago', 'Matheus', 'Luis', 'Davi',
-                       'Mauro', 'Caio', 'Leo', 'Fred', 'Marcelo',
-                       'Fabio', 'Beto', 'Pedro', 'Fabricio', 'Paulo']
   rand(1..3).times do
     phone_number = "#{rand(1..9)}#{rand(0..9)}9#{rand(2..9)}#{(0..9).to_a.sample(7).join}"
     angel_first_name = angel_first_names.sample
