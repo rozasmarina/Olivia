@@ -16,13 +16,18 @@
     <p class="card-text"> <%= place.address %> </p>
 
     <!-- Rating -->
-    <div class="rating-container">
-      <div class="rates-outer">
-        <div class="rates-inner">
+    <% iconPercentage = (place.average_rating.round(1) / 5) * 100 %>
+    <% iconPercentageRounded = (iconPercentage/10).round * 10 %>
+    <% if place.reviews.length == 0 %>
+      <p>Local sem avaliações</p>
+    <% else %>
+      <div class="rating-container">
+        <div class="rates-outer">
+          <div class="rates-inner" style="width:<%= iconPercentageRounded %>%;">
+          </div>
         </div>
+        <span id="number-rating"><%= place.average_rating.round(1) %></span>
       </div>
-      <span id="number-rating"><%= place.average_rating.round(1) %></span>
-    </div>
+    <% end %>
   </div>
-
 </div>

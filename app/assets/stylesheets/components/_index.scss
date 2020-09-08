@@ -1,5 +1,6 @@
 // Import your components CSS files here.
 @import "alert";
+@import "notice";
 @import "avatar";
 @import "navbar";
 @import "map";
@@ -25,3 +26,10 @@ body {
 .purple {
   color: $roxo;
 }
+
+// .dimmedPage {
+//     background-color: black;
+// }
+// .dimmedPage body {
+//     opacity: 0.5;
+// }

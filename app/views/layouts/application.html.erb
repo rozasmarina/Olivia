@@ -12,12 +12,21 @@
   <body class='m-0'>
     <div data-controller="position"
     data-position-refresh-interval="60000"></div>
-    <%= image_tag 'icons/btn-sos', class: 'emergency-btn' do %>
-      <!--link to angels-->
+    <% if alert %>
+      <div class="flash-alert alert alert-dismissible fade show" role="alert" data-controller="alert" data-target="alert.message" data-alert-message="<%= alert %>">
+        <span><%= alert %></span>
+        <a data-action="alert#dismiss" data-dismiss="alert" aria-label="Close"><i class="fas fa-times"></i></a>
+      </div>
     <% end %>
-    <div class="notice"><%= notice %></div>
-    <div class="alert"><%= alert %></div>
-    <%= yield %>
+    <% if notice %>
+      <div class="flash-notice alert alert-dismissible fade show" role="alert" data-controller="alert" data-target="alert.message" data-alert-message="<%= notice %>">
+        <span><%= notice %></span>
+        <a data-action="alert#dismiss" data-dismiss="alert" aria-label="Close"><i class="fas fa-times"></i></a>
+      </div>
+    <% end %>
+    <div class="main-content">
+      <%= yield %>
+    </div>
     <div class="fixed-bottom">
       <%= render "shared/navbar"  %>
     </div>
