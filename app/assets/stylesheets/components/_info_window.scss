@@ -1,10 +1,10 @@
 .card-map {
-  background-color: white;
-  border-radius: 7px !important;
-  width: 194px;
-  height: 320px;
-  border: 2px solid $roxo;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1) !important;
+    background-color: white;
+    border-radius: 7px !important;
+    width: 194px;
+    height: 320px;
+    border: 2px solid $roxo;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
 // .card-img-olli {
@@ -14,18 +14,17 @@
 //   //box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(114,9,183,0.43);
 //   //background-color: yellow;
 // }
-
 .card-body {
-  border-radius: 7px !important;
-  border-style: hidden !important;
+    border-radius: 7px !important;
+    border-style: hidden !important;
 }
 
 .card-title {
-  color: $roxo !important;
-  font-size: 1.8rem;
-  line-height: 0.9 !important;
-  margin-bottom: 0.75rem;
-  margin-top: -1em;
+    color: $roxo !important;
+    font-size: 1.3rem;
+    line-height: 0.9 !important;
+    margin-bottom: 0.75rem;
+    margin-top: -1em;
 }
 
 .card-text {
