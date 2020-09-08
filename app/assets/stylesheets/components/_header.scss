@@ -1,0 +1,27 @@
+.heading {
+  // align-items: space-between;
+  background: $roxo;
+  border-bottom: solid 3px $rosa;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 55px;
+  margin-top: 0;
+  z-index: 50;
+}
+
+.btn-back {
+  display: inline;
+  color: white;
+
+  i {
+    color: white !important;
+  }
+}
+
+.pg-title {
+  display: inline;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
