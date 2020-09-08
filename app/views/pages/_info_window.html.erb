@@ -10,13 +10,19 @@
   <!-- Card content -->
   <div class="card-body">
     <!-- Title -->
-    <h4 class="card-title"> <%= place.name %> </h4>
+    <h4 class="card-title"> <%= link_to place.name, place_path(place) %> </h4>
+    
     <!-- Text -->
     <p class="card-text"> <%= place.address %> </p>
 
     <!-- Rating -->
-    <p> Ranking Ollivia </p>
-    <p> <%#= link_to 'ver local', place_path(place) %> </p>
+    <div class="rating-container">
+      <div class="rates-outer">
+        <div class="rates-inner">
+        </div>
+      </div>
+      <span id="number-rating"><%= place.average_rating.round(1) %></span>
+    </div>
   </div>
 
 </div>
