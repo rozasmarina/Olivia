@@ -5,15 +5,7 @@
   </div>
 </div>
 
-
-
-<div class="heading d-flex justify-content-between align-items-center w-100">
-  <div class="pg-title">
-    
-  </div>
-</div>
-
-<div class="container">
+<div class="container pt-55">
   <div class="row d-flex justify-content-center">
     <div class="col-12 d-flex justify-content-center p-2">
       <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
@@ -25,8 +17,8 @@
     <%= link_to 'Editar perfil', edit_user_registration_path, class: "dropdown-item navDropLogadoTxt" %>
     <div class="dropdown-divider"> </div>
     <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "dropdown-item navDropLogadoTxt" %></a>
-</div>
-<div>
+  </div>
+  <div>
   <% if @user.is_business %>
     <% if @user.owned_place.present? %>
       <h4>Seu estabelecimento: <%= link_to  @user.owned_place.name, place_path(@user.owned_place) %> </h4>
@@ -78,4 +70,8 @@
       <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
     <% end %>
   </ul>
+
 </div>
+
+
+
