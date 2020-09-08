@@ -28,7 +28,7 @@
               <div class="rates-inner">
               </div>
             </div>
-            <span class="number-rating"><%= @place.average_rating.round(1) %></span>
+            <span id="number-rating"><%= @place.average_rating.round(1) %></span>
           </div>
         <% end %>
         <span class="txt-rating">Ranking Ollivia</span>
@@ -128,26 +128,3 @@
     <% end %>
     <p><%= link_to 'Voltar a Locais', places_path %></p>
   </div>
-  <!-- JS SCRIPT PARA RATING CUSTOMIZADO -->
-  <script>
-    // Rating
-    const rating = <%= @place.average_rating.round(1) %>
-    console.log(rating)
-    // Total icons
-    const iconTotal =5;
-    
-    // Run getRating when DOM loads
-    document.addEventListener('DOMContentLoaded', getRating);
-    
-    // Get rating
-    function getRating() {
-      // Get percentage
-      const iconPercentage = (rating / iconTotal) * 100;
-      console.log(iconPercentage)
-      // Round to nearest
-      const iconPercentageRounded = `${Math.round(iconPercentage / 10) * 10}%`;
-      console.log(iconPercentageRounded)
-      // Set width of rates-inner to percentage
-      document.querySelector('.rates-inner').style.width = iconPercentageRounded;
-    };
-  </script>
