@@ -7,12 +7,17 @@
 @import "places";
 @import "rating";
 @import "button";
+@import "card";
+@import "header";
+@import "img";
 @import "info_window";
 
 body {
+  margin: 0;
   padding-bottom: 69px;
-  min-height: 97vh;
+  min-height: 98vh;
   position: relative;
+  background-color: white;
 }
 
 .purple {
