@@ -20,28 +20,38 @@
     </div>
     <!-- infos do estabelecimento -->
     <div class="review-content">
-      <div class="review-ranking">
-        <% if @place.reviews.length == 0 %>
-          <span>"Local sem avaliações. Deixe sua opinião"</span>
-        <% else %>
-          <!-- RATING SYSTEM -->
+      <% if @place.reviews.length == 0 %>
+      <% else %>
+        <!-- RATING SYSTEM -->
+        <div class="review-ranking">
           <div class="rating-container">
             <div class="rates-outer">
               <div class="rates-inner">
               </div>
             </div>
             <span id="number-rating"><%= @place.average_rating.round(1) %></span>
+            <span class="txt-rating d-block">Ranking Ollivia</span>
           </div>
         <% end %>
-        <span class="txt-rating">Ranking Ollivia</span>
       </div>
       <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
         <div class='place-info'>
           <h2 class="purple"><%= @place.name %></h2>
           <p><%= @place.description %></p>
-          <% if @place.reviews.length > 0 %>
-            <p class="sm-line"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
-          <% end %>
+          <div class="row d-flex justify-content-around align-items-center mb-3">
+            <% if @place.reviews.length > 0 %>
+              <p class="sm-line mt-3"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
+              <div class="xp-btn d-flex justify-content-center">
+                <i class="far fa-smile-beam mt-2"></i>
+              </div>
+              <!-- linkar após criarmos a rota -->
+              <div class="xp-btn d-flex justify-content-center">
+                <i class="far fa-frown mt-2"></i>
+              </div>
+            <% else %>
+              Local sem avaliações
+            <% end %>
+          </div>
         </div>
       </div>
       <!--form collapsable -->
@@ -86,23 +96,6 @@
       <!--botões de exp boa e ruim-->
       <div class="review-buttons d-flex justify-content-around m-4">
         <!-- linkar após criarmos a rota -->
-        <div class="xp-btn">
-          <div class="xp-btn-thumb">
-            <i class="far fa-thumbs-up"></i>
-          </div>
-          <div class="xp-btn-content">
-            Experiência boa
-          </div>
-        </div>
-        <!-- linkar após criarmos a rota -->
-        <div class="xp-btn">
-          <div class="xp-btn-thumb">
-            <i class="far fa-thumbs-down"></i>
-          </div>
-          <div class="xp-btn-content">
-            Experiência ruim
-          </div>
-        </div>
       </div>
       <!--reviews-->
       <% @reviews.where("is_disabled = ?", false).each do |review| %>
