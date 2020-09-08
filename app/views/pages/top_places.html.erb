@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
   <div id="geocoder" class="geocoder row justify-content-center w-100 mx-auto" style="position:absolute; height: 50px;"></div>
   <div id="map"
-     style="width: 100%; height: 100%; position: absolute; left:0px;"
+     style="width: 100%; height: 95vh; position: absolute; left:0px;"
      data-markers="<%= @markers.to_json %>"
      data-rmarker="<%= @rmarker.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
