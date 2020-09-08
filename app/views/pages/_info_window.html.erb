@@ -1,35 +1,22 @@
-
-<p><%#= cl_image_tag place.photo.key %></p>
-
-
-<!-- Card Wider -->
-<div class="card card-cascade wider card-body-olli mapboxgl-popup-content">
-
+<div class="card-map">
   <!-- Card image -->
-  <div class="view view-cascade overlay ">
-    <%= cl_image_tag place.photo.key, class: "cad-img-top card-window-olli shadow-lg" %>
-   <!--  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo6.jpg" alt="Card image cap"> -->
-    <a href="#!">
-      <div class="mask rgba-white-slight"></div>
+  <div class="view overlay ">
+    <%= cl_image_tag place.photo.key, class: "cad-img-top shadow-lg card-img-olli d-flex justify-content-center" %>
+    <a>
+      <div class="mask rgba-white-slight"> </div>
     </a>
   </div>
 
   <!-- Card content -->
-  <div class="card-body card-body-cascade text-center card-body-olli">
-
+  <div class="card-body">
     <!-- Title -->
-    <h4 class="card-title card-title-olli"><strong> <%= place.name %> </strong></h4>
-    <!-- Rating -->
-    <a class="px-2 fa-lg li-ic"> <i class="fa fa-star" aria-hidden="true"></i> rating </a>
-    <!-- Subtitle -->
-    <h5 class="blue-text pb-2 card-subtitle-olli"><strong> <%= place.address %> </strong></h5>
+    <h4 class="card-title"> <%= place.name %> </h4>
     <!-- Text -->
-    <p class="card-text"> <%= link_to 'ver local', place_path(place) %> </p>
+    <p class="card-text"> <%= place.address %> </p>
 
-
-
-    average_rating
+    <!-- Rating -->
+    <p> Ranking Ollivia </p>
+    <p> <%#= link_to 'ver local', place_path(place) %> </p>
   </div>
 
 </div>
-<!-- Card Wider -->
