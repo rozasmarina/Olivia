@@ -12,6 +12,20 @@ class PagesController < ApplicationController
   end
 
   def near_me
+    @places = Place.near(current_user, 2)
+    @places = Place.near(current_user, 5) if @places == []
+    @places = Place.near(current_user, 7) if @places == []
+    if @places == []
+      redirect_to root_path, notice: 'Nenhum local próximo encontrado'
+    else
+      @markers = @places.geocoded.map do |place|
+        { lat: place.latitude, lng: place.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { place: place }),
+          image_url: helpers.asset_url('marker.png') }
+      end
+      @rmarker = { createPlace: render_to_string(partial: "create_place"),
+                   image_url: helpers.asset_url('rmarker.png') }
+    end
   end
 
   def top_places
