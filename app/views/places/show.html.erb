@@ -73,7 +73,7 @@
               <p>Por: usuário anônimo</p>
               <%= @review.created_at %>
             <% else %>
-              <!-- avatar -->
+              <%= cl_image_tag review.user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
               <p>Por <%= review.user.username %></p>
             <% end %>
           </div>
