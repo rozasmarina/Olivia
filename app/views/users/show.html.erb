@@ -206,7 +206,9 @@
             <ul class="list-group m-3">
               <% if @user.angels %>
                 <% @user.angels.each do |angel| %>
-                  <li class="list-group-item d-flex justify-content-center"><%= link_to angel.first_name, angel_path(angel) %></li>
+                  <li class="list-group-item d-flex justify-content-center"><%= link_to edit_angel_path(angel) do %>
+                    <%= angel.first_name %> <i class="far fa-edit"></i>
+                  <% end %></li>
                 <% end %>
               <% end %>
             </ul>
