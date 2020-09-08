@@ -1,4 +1,5 @@
 class AngelsController < ApplicationController
+
   def index
     @angels = policy_scope(Angel).order(created_at: :desc)
   end
