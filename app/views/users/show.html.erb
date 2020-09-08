@@ -36,20 +36,21 @@
         <div class="card-header" id="awaiting">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#awaitingCollapse" aria-expanded="true" aria-controls="awaitingCollapse">
-              Avaliações
+              Avaliações aguardando resposta
             </button>
           </h2>
         </div>
         <div id="awaitingCollapse" class="collapse" aria-labelledby="awaiting" data-parent="#business">
           <div class="card-body">
-            <ul class="list-group m-3">
-              <% if @user.angels %>
-                <% @user.angels.each do |angel| %>
-                  <li class="list-group-item d-flex justify-content-center"><%= link_to angel.first_name, angel_path(angel) %></li>
+            <ul>
+              <% @user.reviews.each do |review| %>
+                <% if review.responses.present? && review.responses.last.user != current_user %>
+                  <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                <% else %>
+                  <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
                 <% end %>
               <% end %>
             </ul>
-            <%= link_to "Adicionar novo anjo", new_angel_path, class: "btn btn-sm btn-primary btns d-flex justify-content-center" %>
           </div>
         </div>
       </div>
