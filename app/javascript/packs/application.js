@@ -10,6 +10,7 @@ require("channels")
 require("components/new_user_form.js")
 require("components/new_review_form.js")
 require("components/ratings_with_icons.js")
+require("components/sos_button_with_sms.js")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -32,12 +33,18 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
+import { getRating } from '../components/ratings_with_icons.js';
+import { formBusiness } from '../components/new_user_form.js';
+import { formReview } from '../components/new_review_form.js';
 
 
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
     // initSelect2();
+    getRating();
     initMapbox();
+    formBusiness();
+    formReview();
 });
 
 import "controllers"

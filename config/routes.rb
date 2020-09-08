@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   devise_for :users do
   end
 
-  # menu rotes
-  get '/VamosJuntas', to: 'pages#together', as: :together
-  get '/ReportarExperiencia', to: 'pages#report', as: :report
-  get '/Comunidade', to: 'pages#community', as: :community
-  get '/Empresa', to: 'pages#company', as: :company
+  # menu routes
+  get '/together', to: 'pages#together', as: :together
+  get '/community', to: 'pages#community', as: :community
+  get '/ollivia', to: 'pages#ollivia', as: :ollivia
+  get '/emergency', to: 'pages#emergency', as: :emergency
 
   resource :users, only: :show
 

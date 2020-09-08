@@ -1,5 +1,6 @@
 // Import your components CSS files here.
 @import "alert";
+@import "notice";
 @import "avatar";
 @import "navbar";
 @import "map";
@@ -14,6 +15,7 @@
 @import "user_profile";
 
 
+@import "profile_cards";
 
 body {
   margin: 0;
@@ -27,3 +29,10 @@ body {
 .purple {
   color: $roxo;
 }
+
+// .dimmedPage {
+//     background-color: black;
+// }
+// .dimmedPage body {
+//     opacity: 0.5;
+// }

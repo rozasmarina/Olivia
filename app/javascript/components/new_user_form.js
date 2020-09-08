@@ -13,18 +13,22 @@
 //   $('#pffield').hide();
 // });
 
-let businessAccount = document.querySelectorAll('.businessaccount');
+const formBusiness = () => {
+    let businessAccount = document.querySelectorAll('.businessaccount');
 
-if (businessAccount) {
-    $(document).on('change','.businessaccount', () => {
-        $(document).on('click', () => {
-              if($("#user_is_business_true").is(':checked') && !$("#user_is_business_false").is(':checked')) {
-                  $('#pjfield').show();
-                  $('#pffield').hide();
-              }else {
-                  $('#pjfield').hide();
-                  $('#pffield').show();
-              }
+    if (businessAccount) {
+        $(document).on('change','.businessaccount', () => {
+            $(document).on('click', () => {
+                  if($("#user_is_business_true").is(':checked') && !$("#user_is_business_false").is(':checked')) {
+                      $('#pjfield').show();
+                      $('#pffield').hide();
+                  }else {
+                      $('#pjfield').hide();
+                      $('#pffield').show();
+                  }
+            });
         });
-    });
+    };
 };
+
+export { formBusiness }
