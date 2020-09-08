@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/near_me', to: 'pages#near_me', as: "near_me"
   get '/top_places', to: 'pages#top_places', as: "top_places"
   get '/recommended', to: 'pages#recommended', as: "recommended"
+  post 'users/update_position', to: 'users#update_position', as: :update_position
 
   devise_for :users do
   end
@@ -30,13 +31,11 @@ Rails.application.routes.draw do
 
   # Route to add owner to places
   patch 'places/add_owner', to: 'places#add_owner', as: :add_owner
-  
+
   resources :places, except: %i[destroy show]
 
   # Temporary route for testing - those will be nested in Places
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
-
-  
 end

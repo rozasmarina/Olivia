@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     record.id == user.id
   end
+
+  def update_position?
+    record.id == user.id
+  end
 end
