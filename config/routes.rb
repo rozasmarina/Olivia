@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resource :users, only: :show
 
-  resources :angels, except: :index
+  resources :angels, except: %i[index show]
 
   # Temporary route for testing - those won/t be nested
   resources :reviews, only: %i[show] do
