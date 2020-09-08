@@ -6,26 +6,6 @@
   height: 45px;
 }
 
-.xp-btn {
-  border-radius: 5px;
-  border: 1px solid $rosa;
-  width: 170px;
-}
-
-.xp-btn-thumb {
-  display: inline;
-  color: white;
-  background-color: $rosa;
-  padding: 3px;
-  padding-left: 5px;
-  border-radius: 5px 0 0 5px;
-}
-
-.xp-btn-content {
-  display: inline;
-  color: $roxo;
-  margin-left: 5px;
-}
 
 .pink-btn {
   border-radius: 5px;
@@ -33,3 +13,35 @@
   color: white;
   padding: 5px;
 }
+
+.xp-btn {
+  border-radius: 6px;
+  width: 40px;
+  height: 35px;
+  display: inline;
+  background-color: $rosa;
+  color: white;
+  padding: 2px;
+  text-align: center;
+}
+
+// .xp-btn {
+//   border-radius: 5px;
+//   border: 1px solid $rosa;
+//   width: 170px;
+// }
+
+// .xp-btn-thumb {
+//   display: inline;
+//   color: white;
+//   background-color: $rosa;
+//   padding: 3px;
+//   padding-left: 5px;
+//   border-radius: 5px 0 0 5px;
+// }
+
+// .xp-btn-content {
+//   display: inline;
+//   color: $roxo;
+//   margin-left: 5px;
+// }

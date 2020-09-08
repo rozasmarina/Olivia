@@ -33,13 +33,14 @@
   <!-- HAS PLACE -->
   <% if @user.owned_place.present? %>
     <div class="accordion" id="business">
+
       <!-- AWAITING RESPONSE -->
       <div class="card">
         <div class="card-header" id="awaiting">
           <h2 class="mb-0">
-            <!--<button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#awaitingCollapse" aria-expanded="true" aria-controls="awaitingCollapse">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#awaitingCollapse" aria-expanded="true" aria-controls="awaitingCollapse">
               Avaliações aguardando resposta
-            </button>-->
+            </button>
           </h2>
         </div>
 
@@ -56,12 +57,13 @@
                 <% end %>
               </ul>
             <% else %>
-              <p>Ainda não foi realizada nenhuma avaliação.</p>
+              <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
             <% end %>
           </div>
         </div>
       </div>
 
+      <!-- ALL REVIEWS -->
       <div class="card">
         <div class="card-header" id="allReviews">
           <h2 class="mb-0">
@@ -78,12 +80,68 @@
                   <% if review.responses.present? && review.responses.last.user != current_user %>
                     <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
                   <% else %>
-                    <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                    <li> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
                 <% end %>
               </ul>
             <% else %>
-              Nenhuma avaliação
+              <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOOD REVIEWS -->
+      <div class="card">
+        <div class="card-header" id="goodReviews">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#goodReviewsCollapse" aria-expanded="false" aria-controls="goodReviewsCollapse">
+              Avaliações positivas
+            </button>
+          </h2>
+        </div>
+        <div id="goodReviewsCollapse" class="collapse" aria-labelledby="goodReviews" data-parent="#business">
+          <div class="card-body">
+            <% if @user.owned_place.reviews.where(is_good: true).present? %>
+              <ul>
+                <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                  <% else %>
+                    <li> <%= link_to review.title, review_path(review) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% else %>
+              <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação positiva.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAD REVIEWS -->
+      <div class="card">
+        <div class="card-header" id="badReviews">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#badReviewsCollapse" aria-expanded="false" aria-controls="badReviewsCollapse">
+              Avaliações negativas
+            </button>
+          </h2>
+        </div>
+        <div id="badReviewsCollapse" class="collapse" aria-labelledby="badReviews" data-parent="#business">
+          <div class="card-body">
+            <% if @user.owned_place.reviews.where(is_good: false).present? %>
+              <ul>
+                <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                  <% else %>
+                    <li> <%= link_to review.title, review_path(review) %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% else %>
+              <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação negativa.</p>
             <% end %>
           </div>
         </div>
@@ -93,6 +151,7 @@
   <!-- NEED TO SELECT OR ADD PLACE -->
   <% else %>
     <div class="accordion" id="newBusiness">
+      <!-- SELECT PLACE -->
       <div class="card">
         <div class="card-header" id="registered">
           <h2 class="mb-0">
@@ -112,7 +171,8 @@
           </div>
         </div>
       </div>
-
+      
+      <!-- ADD PLACE -->
       <div class="card">
         <div class="card-header" id="newPlace">
           <h2 class="mb-0">
