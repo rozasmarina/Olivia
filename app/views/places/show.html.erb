@@ -33,14 +33,12 @@
         <% end %>
         <span class="txt-rating">Ranking Ollivia</span>
       </div>
-      <div class="review-header mt-3 pt-4 pb-2 px-4 d-flex align-items-center justify-content-between mr-2  border-bottom">
+      <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
         <div class='place-info'>
-          <h2><%= @place.name %></h2>
+          <h2 class="purple"><%= @place.name %></h2>
           <p><%= @place.description %></p>
-        </div>
-        <div class="mt-4">
           <% if @place.reviews.length > 0 %>
-            <p><strong><%= @place.reviews.length %></strong> relatos </p>
+            <p class="sm-line"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
           <% end %>
         </div>
       </div>
@@ -74,7 +72,7 @@
             <% else %>
               <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
               <%= link_to review.title, review_path(review), class: "ml-1" %>
-              <p class="ml-5 purple by-user">Por <%= review.user.username %></p>
+              <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
             <% end %>
           </div>
           <div class="review-content m-4 border-bottom">
