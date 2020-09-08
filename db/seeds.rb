@@ -224,9 +224,9 @@ place_descriptions = ['Almoço e happy hour estendido com DJs ,pista de dança e
 
 counter = 0
 place_names.length.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  username = Faker::Internet.username(specifier: "#{first_name} #{last_name}", separators: %w[. _ -])
+  first_name = angel_first_names.sample
+  last_name = user_last_names.sample
+  username = "#{first_name.downcase}#{%w[. _ -].sample}#{last_name.downcase}"
   email = Faker::Internet.free_email(name: username)
   password = "123456"
   city = Faker::Address.city
