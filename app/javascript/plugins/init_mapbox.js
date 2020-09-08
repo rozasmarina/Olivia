@@ -31,7 +31,7 @@ const addMarkersToMap = (map, markers) => {
 const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 10, duration: 1000 });
+    map.fitBounds(bounds, { padding: 20, maxZoom: 13, duration: 1000 });
 };
 
 const initMapbox = () => {
@@ -80,7 +80,7 @@ const initMapbox = () => {
             crd = pos.coords;
             map.flyTo({
                 center: [crd.longitude, crd.latitude],
-                zoom: 14
+                zoom: 13
             })
         }, () => {
             fitMapToMarkers(map, markers)
