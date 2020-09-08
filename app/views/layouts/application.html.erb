@@ -10,6 +10,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body class='m-0'>
+    <div data-controller="position"
+    data-position-refresh-interval="60000"></div>
     <%= image_tag 'icons/btn-sos', class: 'emergency-btn' do %>
       <!--link to angels-->
     <% end %>

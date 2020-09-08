@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :responses
   has_one_attached :photo
 
-  reverse_geocoded_by :latitude, :longitude, address: :loc
+  reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
 
   validates :first_name, :last_name, :phone_number, :username, :email, :city, :state,
