@@ -206,9 +206,15 @@
             <ul class="list-group m-3">
               <% if @user.angels %>
                 <% @user.angels.each do |angel| %>
-                  <li class="list-group-item d-flex justify-content-center"><%= link_to edit_angel_path(angel) do %>
-                    <%= angel.first_name %> <i class="far fa-edit"></i>
-                  <% end %></li>
+                  <li class="list-group-item d-flex justify-content-around mx-5">
+                    <%= angel.first_name %> 
+                    <%= link_to edit_angel_path(angel) do %>
+                      <i class="far fa-edit"></i>
+                    <% end %>
+                    <%= link_to angel_path(angel), method: :delete, data: { confirm: 'Tem certeza?' } do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  </li>
                 <% end %>
               <% end %>
             </ul>

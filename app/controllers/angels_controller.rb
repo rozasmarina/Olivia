@@ -1,4 +1,5 @@
 class AngelsController < ApplicationController
+  before_action :set_angel, only: [:edit, :update, :destroy]
 
   def index
     @angels = policy_scope(Angel).order(created_at: :desc)
@@ -35,7 +36,7 @@ class AngelsController < ApplicationController
     @angel = Angel.find(params[:id])
     authorize @angel
     if @angel.update(angel_params)
-      redirect_to @angel
+      redirect_to users_path
     else
       render :edit
     end
@@ -45,7 +46,7 @@ class AngelsController < ApplicationController
     @angel = Angel.find(params[:id])
     authorize @angel
     @angel.destroy
-    redirect_to @angel
+    redirect_to users_path
   end
 
   private
@@ -57,5 +58,10 @@ class AngelsController < ApplicationController
       :phone_number,
       :email
     )
+  end
+
+  def set_angel
+    @angel = Angel.find(params[:id])
+    authorize @angel
   end
 end

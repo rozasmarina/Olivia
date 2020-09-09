@@ -32,4 +32,8 @@ class UserPolicy < ApplicationPolicy
   def update_messages?
     record.id == user.id
   end
+
+  def add_new_angel?
+    record.id == user.id
+  end
 end
