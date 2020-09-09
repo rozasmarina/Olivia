@@ -234,7 +234,7 @@
               <% if review.is_anonymous %>
                 <!-- avatar anonimo -->
                 <p>Por: usuário anônimo</p>
-                <%= link_to review.title, review_path(review) %>
+                <%= link_to review.title, review_path(review), class: "ml-1" %>
               <% else %>
                 <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
                 <%= link_to review.title, review_path(review), class: "ml-1" %>
