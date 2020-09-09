@@ -14,16 +14,14 @@
                 required: false,
                 input_html: { autocomplete: "current-password", placeholder: 'Senha' } %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
-    <!-- Btn Login-->
-    <div class="form-actions pink-btn">
-      <%= f.button :submit, "Fazer Login", style: "color: white;" %>
-    </div>
-  <% end %>
-</form>
+      </div>
+      <!-- Btn Login-->
+      <div class="form-actions pink-btn">
+        <%= f.button :submit, "Fazer Login", style: "color: white;" %>
+      </div>
+    <% end %>
+  </form>
 </div>
-<div class="container container d-flex justify-content-center">
-
+<div class="container m-5 pl-5 purple">
   <%= render "devise/shared/links" %>
-
 </div>
