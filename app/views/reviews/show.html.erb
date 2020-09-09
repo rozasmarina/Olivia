@@ -1,34 +1,51 @@
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="pg-title">
+    AVALIAÇÃO
+  </div>
+  <div>
+  </div>
+</div>
+<!--fim do header-->
+
 <div class="container">
-  <div class="container mt-4 mb-4 purple">
-    <h2><strong>Avaliação de <%= @review.place.name %></strong></h2>
-    <br>
+  <div class="d-flex mt-4 mb-2 pt-5 purple justify-content-center">
+    <h2><strong><%= @review.place.name %></strong></h2>
+  </div>
+  <div class="d-flex justify-content-center">
     <h3><%= @review.title %></h3>
   </div>
-  <!-- nota do review -->
-  <div class="m-3">
+  <div class="d-flex justify-content-around">
     <% if @review.user == current_user %>
-      <span>Sua avaliação: </span>
-      <!-- RATING SYSTEM -->
-      <div class="rates-outer" data-rating="<%= @review.rating %>"> 
-        <div class="rates-inner">
-        </div>
-      </div>
+      <span class="align-self-center">Sua avaliação: </span>
     <% elsif @review.is_anonymous %>
-      <span> Avaliação de usuário anônimo: </span>
-      <!-- RATING SYSTEM -->
-      <div class="rates-outer">
-        <div class="rates-inner">
-        </div>
+      <span class="align-self-center"> Avaliação de usuário anônimo: </span>
+    <% else %>
+      <span class="align-self-center"> Avaliação de <%= @review.user.username %>: </span>
+    <% end %>
+    <!-- RATING SYSTEM -->
+    <div class="rates-outer align-self-center" data-rating="<%= @review.rating %>"> 
+      <div class="rates-inner align-self-center">
+      </div>
+    </div>
+    <span id="number-rating" class="align-self-center"><%= @review.rating %></span>
+    <% if @review.is_good %>
+      <div class="xp-btn d-flex justify-content-center">
+        <i class="far fa-smile-beam mt-2"></i>
       </div>
     <% else %>
-      <span> Avaliação de <%= @review.user.username %>: </span>
-      <!-- RATING SYSTEM -->
-      <div class="rates-outer">
-        <div class="rates-inner">
-        </div>
+      <div class="xp-btn d-flex justify-content-center">
+        <i class="far fa-frown mt-2"></i>
       </div>
     <% end %>
-    <span id="number-rating"><%= @review.rating %></span>
+
+  </div>
+
   </div>
   <!-- conteudo do review -->
   <div class="m-3">
