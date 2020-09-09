@@ -40,7 +40,7 @@
         <%= f.input :city, label: 'Cidade' %>
         <%= f.input :state, label: 'Estado' %>
         <%= f.input :phone_number, label: 'Telefone' %>
-        <%= f.input :photo, :label => 'Avatar', as: :file %>
+        <%= f.input :photo, :label => 'Alterar avatar', as: :file %>
       </div>
       <div class="form-actions pink-btn justify-content-center align-center-btn mb-3">
         <%= f.button :submit, "Atualizar" %>
@@ -48,6 +48,6 @@
     <% end %>
   </div>
   <div class="container container d-flex justify-content-center mb-2">
-    <%= link_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "justify " %></p>
+    <%= link_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "justify " %></p>
 </div>
 </div>
