@@ -135,41 +135,41 @@
     <% end %>
   <% end %>
 
-<!-- ADD RESPONSE -->
-<% if policy(@review).create_response? %>
-  <div class="container d-flex justify-content-center p-0">
-    <%= simple_form_for [@review, @response], method: 'post' do |f| %>
-      <div>
-        <%= f.label "Interaja nesta avaliação" %>
-        <%= f.input :response, label: false, placeholder: "Escreva aqui a sua resposta" %>
-        <div class="d-flex justify-content-center">
-          <%= f.submit 'Responda' %> 
+  <!-- ADD RESPONSE -->
+  <% if policy(@review).create_response? %>
+    <div class="mx-3">
+      <%= simple_form_for [@review, @response], method: 'post' do |f| %>
+        <div>
+          <div class="d-flex justify-content-center">
+            <%= f.label "Interaja nesta avaliação" %>
+          </div>
+          <%= f.input :response, label: false, placeholder: "Escreva aqui a sua resposta" %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit 'Responda' %> 
+          </div>
+          
         </div>
-        
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
+      <% end %>
+    </div>
+  <% end %>
 
   <!-- links -->
   <div class="m-3">
     <% if policy(@review).edit?  %>
-      <p><%= link_to edit_review_path do %></p>
+      <%= link_to edit_review_path do %>
         <i class="far fa-edit"></i> Edite a avaliação
       <% end %>
     <% end %>
-    <br>
     <br>
     <% if policy(@review).disable? %>
       <%= link_to disable_review_path(@review) do %>
         <i class="fas fa-trash-alt"></i> Desative a avaliação 
       <% end %>
     <% end %>
-    
     <br>
     <% if policy(@review).satisfy? %>
-      <p><%= link_to "Questão resolvida?", satisfy_review_path(@review) %>
+      <%= link_to satisfy_review_path(@review) do %>
+        <i class="far fa-check-circle"></i> Questão resolvida?
       <% end %>
-    </div>
+    <% end %>
   </div>
