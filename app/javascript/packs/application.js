@@ -35,7 +35,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { getRating } from '../components/ratings_with_icons.js';
 import { formBusiness } from '../components/new_user_form.js';
 import { formReview } from '../components/new_review_form.js';
-
+import { initToast } from '../components/toast.js'
 
 document.addEventListener('turbolinks:load', () => {
     // Call your functions here, e.g:
@@ -44,6 +44,7 @@ document.addEventListener('turbolinks:load', () => {
     initMapbox();
     formBusiness();
     formReview();
+    initToast();
 });
 
 import "controllers"

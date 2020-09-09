@@ -1,0 +1,15 @@
+.toast.alert {
+    border: 2px solid #f72585;
+
+    .toast-header {
+        border-bottom: 1px solid rgba(114, 9, 183, 0.5);
+    }
+}
+
+.toast.notice {
+    border: 2px solid  rgb(114, 9, 183);
+
+    .toast-header {
+        border-bottom: 1px solid rgba(247, 37, 133, 0.5);
+    }
+}
