@@ -1,39 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
     <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :city, label: 'Cidade' %>
-    <%= f.input :state, label: 'Estado' %>
-    <%= f.input :phone_number, label: 'Telefone' %>
-    <%= f.input :photo, :label => 'Avatar', as: :file %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+  <div class="pg-title">
+    Edite seu perfil
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <div>
+  </div>
+</div>
+<!--fim do header-->
+<div class="container">
+  <div class="container d-flex justify-content-center text-center mt-2 pt-5">
+    <h2 class="h3 font-weight-normal">Edit <%= resource_name.to_s.humanize %></h2>
+  </div>
+  <div class="container d-flex justify-content-center pt-2">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+        <%= f.input :city, label: 'Cidade' %>
+        <%= f.input :state, label: 'Estado' %>
+        <%= f.input :phone_number, label: 'Telefone' %>
+        <%= f.input :photo, :label => 'Avatar', as: :file %>
+      </div>
+      <div class="form-actions pink-btn justify-content-center align-center-btn mb-3">
+        <%= f.button :submit, "Update" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="container container d-flex justify-content-center mb-2">
+    <%= link_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "justify " %></p>
+</div>
+</div>
