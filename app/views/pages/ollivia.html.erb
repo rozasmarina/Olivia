@@ -1,10 +1,33 @@
-<h2>Ollivia</h2>
-<%= link_to "Emergência" , emergency_path, id: 'sos-btn' %>
-<p>Informações sobre o app</p>
-<p>Recomendar</p>
-<p>Fale conosco</p>
-<p>Reportar um problema</p>
-<h3>Rankings</h3>
-<p>Locais com mais avaliações positivas</p>
-<p>Locais com maior número de resoluções</p>
-<p>Locais com mais avaliações negativas</p>
+
+<div class="container justify-content-center mt-2 pt-5">
+
+
+
+  <ul class="list-group list-group-flush ">
+
+
+    <h2>Menu Ollivia</h2>
+
+
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+      <div>
+        <i class="fas fa-bullhorn icon-left"></i>
+        <%= link_to "Emergência" , emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div>
+
+
+      <i class="fas fa-arrow-right icon-right"></i>
+    </li>
+
+    <li class="list-group-item"> Informações sobre o app </li>
+    <li class="list-group-item"> Recomendar </li>
+    <li class="list-group-item"> Fale conosco </li>
+    <li class="list-group-item"> Reportar um problema </li>
+    <li class="list-group-item"> Rankings </li>
+    <li class="list-group-item"> Locais com mais avaliações positivas </li>
+    <li class="list-group-item"> Locais com maior número de resoluções </li>
+    <li class="list-group-item"> Locais com mais avaliações negativas </li>
+  </ul>
+
+</div>
