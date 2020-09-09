@@ -6,15 +6,15 @@ class AngelPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    user
   end
 
   def create?
-    true
+    user == record.user
   end
 
   def show?
-    true
+    user == record.user
   end
 
   def edit?
@@ -28,5 +28,4 @@ class AngelPolicy < ApplicationPolicy
   def destroy?
     user == record.user
   end
-
 end

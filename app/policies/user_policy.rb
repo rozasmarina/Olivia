@@ -28,4 +28,12 @@ class UserPolicy < ApplicationPolicy
   def message_authorities?
     record.id == user.id
   end
+
+  def update_messages?
+    record.id == user.id
+  end
+
+  def add_new_angel?
+    record.id == user.id
+  end
 end
