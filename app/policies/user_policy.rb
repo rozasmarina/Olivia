@@ -12,4 +12,20 @@ class UserPolicy < ApplicationPolicy
   def update_position?
     record.id == user.id
   end
+
+  def send_message?
+    record.id == user.id
+  end
+
+  def message_angels?
+    record.id == user.id
+  end
+
+  def message_near_users?
+    record.id == user.id
+  end
+
+  def message_authorities?
+    record.id == user.id
+  end
 end

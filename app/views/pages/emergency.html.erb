@@ -1,6 +1,7 @@
 <h2>Emergência</h2>
-<p>Notificar anjos</p>
-<p>Notificar usuárias próximas</p>
-<p>Encontrar local seguro</p>
-<p>Notificar autoridades</p>
+<p><%= link_to 'Notificar anjos', message_angels_path %></p>
+<p><%= link_to 'Notificar usuárias próximas', message_near_users_path %></p>
+<p><%= link_to 'Notificar autoridades', message_authorities_path %></p>
+<%# Descomentar para a demoday %>
+<p><%# link_to 'Demonstrar envio de SMS', demo_notification_path %></p>
 <%= link_to 'voltar', ollivia_path %>
