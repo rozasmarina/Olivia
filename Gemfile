@@ -37,6 +37,8 @@ gem 'turbolinks_render'
 gem 'geocoder'
 gem 'pundit'
 
+gem 'rails-i18n', '~> 6.0.0' # For 6.0.0 or higher
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
