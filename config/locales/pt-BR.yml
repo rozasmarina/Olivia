@@ -7,6 +7,31 @@ pt-BR:
                 restrict_dependent_destroy:
                     has_one: Não é possível excluir o registro, pois existe um %{record} dependente
                     has_many: Não é possível excluir o registro, pois existem %{record} dependentes
+            attributes:
+                angel:
+                    first_name: 'Primeiro nome'
+                    last_name: 'Sobrenome'
+                    phone_number: 'Telefone'
+                place:
+                    name: 'Nome'
+                    address: 'Endereço'
+                    average_rating: 'Nota média'
+                    description: 'Descrição'
+                response:
+                    response: 'Resposta'
+                review:
+                    title: 'Título'
+                    content: 'Conteúdo'
+                    rating: 'Nota'
+                user:
+                    address: 'Endereço'
+                    state_id: 'Estado'
+                    city_id: 'Cidade'
+                    password: 'Senha'
+                    first_name: 'Primeiro nome'
+                    last_name: 'Sobrenome'
+                    gender: 'Sexo'
+                    phone_number: 'Telefone'
     date:
         abbr_day_names:
         - dom
