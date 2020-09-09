@@ -1,11 +1,8 @@
 <div class="container">
-
-  <div class="container d-flex justify-content-center text-center mt-2 pt-5">
-    <h1 class="h3 font-weight-normal">FAZER LOGIN</h1>
+  <div class="container justify-content-center text-center mt-2 pt-5">
+    <h1 class="h3 font-weight-normal">LOGIN</h1>
   </div>
-
-  <div class="container d-flex justify-content-center text-center pt-2">
-
+  <div class="container d-flex justify-content-center text-center my-5 py-5">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
@@ -19,16 +16,13 @@
                     input_html: { autocomplete: "current-password", placeholder: "Senha" } %>
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
-
-      <div class="form-actions pink-btn justify-content-center align-center-btn"> 
-        <%= f.button :submit, "Log in" %>
+      <div class="form-actions pink-btn justify-content-center align-center-btn">
+        <%= f.button :submit, "Log in", class:"pink-btn"%>
       </div>
     <% end %>
   </div>
-
   <!-- Forgot password + Create a count -->
   <div class="container container d-flex justify-content-center">
     <%= render "devise/shared/links" %>
   </div>
-
 </div>

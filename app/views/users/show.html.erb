@@ -242,7 +242,7 @@
       </div>
 
 
-       <!-- MESSAGE ANGELS -->
+      <!-- MESSAGE ANGELS -->
       <div class="card">
         <div class="card-header" id="messageAngels">
           <h2 class="mb-0">
@@ -254,9 +254,55 @@
         <div id="messageAngelsCollapse" class="collapse" aria-labelledby="messageAngels" data-parent="#common">
           <div class="card-body">
             <div class="d-flex justify-content-center">
-              <%= simple_form_for :angels_message, url: message_update_path, method: "patch" do |f| %>
+              <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
                 <%= f.input :message_angels, as: :text, label: "Deseja personalizar sua mensagem para seus anjos?" %>
-                <div>
+                <div class="d-flex justify-content-center">
+                  <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MESSAGE NEAR USERS -->
+      <div class="card">
+        <div class="card-header" id="nearMe">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#nearMeCollapse" aria-expanded="true" aria-controls="nearMeCollapse">
+              Alterar minha mensagem para pessoas próximas
+            </button>
+          </h2>
+        </div>
+        <div id="nearMeCollapse" class="collapse" aria-labelledby="nearMe" data-parent="#common">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
+                <%= f.input :message_near_users, as: :text, label: "Deseja personalizar sua mensagem para pessoas próximas?" %>
+                <div class="d-flex justify-content-center">
+                  <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MESSAGE AUTHORITIES -->
+      <div class="card">
+        <div class="card-header" id="authorities">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#authoritiesCollapse" aria-expanded="true" aria-controls="authoritiesCollapse">
+              Alterar minha mensagem para as autoridades
+            </button>
+          </h2>
+        </div>
+        <div id="authoritiesCollapse" class="collapse" aria-labelledby="authorities" data-parent="#common">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
+                <%= f.input :message_authorities, as: :text, label: "Deseja personalizar sua mensagem para as autoridades?" %>
+                <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
               <% end %>

@@ -28,4 +28,8 @@ class UserPolicy < ApplicationPolicy
   def message_authorities?
     record.id == user.id
   end
+
+  def update_messages?
+    record.id == user.id
+  end
 end

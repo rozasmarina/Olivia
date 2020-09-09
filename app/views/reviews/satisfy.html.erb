@@ -12,7 +12,7 @@
   </div>
 </div>
 <!--fim do header-->
-<div class="container">
+<div class="container py-5 my-5">
   <div class="row mt-5 d-inline-flex justify-content-center">
     <div class="col-8 mt-5">
       <%= simple_form_for(@review) do |f| %>
@@ -21,15 +21,15 @@
         <%= f.label "Você ficou safisfeita com a resposta do estabelecimento?", class: "pb-2" %>
         <%= f.collection_radio_buttons :is_satisfied, 
                                       [
-                                        [true, 'Sim ☺'],
-                                        [false, 'Não ☹']
+                                        [true, 'Sim, estou 😀'],
+                                        [false, 'Ainda não 🙁']
                                       ],
                                       :first,
                                       :last,
                                       checked: true,
                                       item_wrapper_class: :evaluation,
                                       item_wrapper_tag: :p %>
-        <%= f.input :rating, collection: (0..5).to_a, selected: 0, label: 'Avaliação final' %>
+        <%= f.input :rating, collection: (0..5).to_a, selected: @review.rating, label: 'Deseja alterar sua avaliação?' %>
         <div class="row justify-content-center">
           <%= f.button :submit, "Enviar", data: { confirm: 'Tem certeza?' }, class: 'pink-btn mt-3' %>
         </div>

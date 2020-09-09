@@ -16,11 +16,14 @@ class UsersController < ApplicationController
   def update_messages
     @user = current_user
     authorize @user
-    if @user.message_angels.update(message_params)
-      redirect_to users_path
+    if params[:message][:message_angels]
+      @user.message_angels = params[:message][:message_angels]
+    elsif params[:message][:message_near_users]
+      @user.message_near_users = params[:message][:message_near_users]
     else
-      render :show
+      @user.message_authorities = params[:message][:message_authorities]
     end
+    @user.save ? (redirect_to users_path) : (render :show)
   end
 
   # ! DO NOT DELETE
@@ -37,10 +40,4 @@ class UsersController < ApplicationController
   #     })
   #   end
   # end
-
-  private
-
-  def message_params
-    params.require(:user).permit(:message_angels, :message_near_users, :message_authorities)
-  end
 end
