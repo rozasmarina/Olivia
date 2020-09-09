@@ -203,7 +203,7 @@
         </div>
         <div id="angelsCollapse" class="collapse" aria-labelledby="angels" data-parent="#common">
           <div class="card-body">
-            <ul class="list-group m-3">
+            <ul class="list-group my-2">
               <% if @user.angels %>
                 <% @user.angels.each do |angel| %>
                   <li class="list-group-item d-flex justify-content-around mx-5">
@@ -218,7 +218,7 @@
                 <% end %>
               <% end %>
             </ul>
-            <%= link_to "Adicionar novo anjo", new_angel_path, class: "btn btn-sm btn-primary btns d-flex justify-content-center mx-3" %>
+            <%= link_to "Adicionar novo anjo", new_angel_path, class: "btn btn-sm btn-primary btns d-flex justify-content-center mx-5" %>
           </div>
         </div>
       </div>

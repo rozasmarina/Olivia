@@ -14,7 +14,7 @@
         <%= f.input :password,
                       required: true,
                       label: false,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      hint: ("#{@minimum_password_length} caracteres no mínimo" if @minimum_password_length),
                       input_html: { autocomplete: "new-password", placeholder: 'Senha' } %>
         <%= f.input :password_confirmation,
                       required: true,
@@ -47,7 +47,7 @@
         <%= f.input :city, label: false, placeholder: 'Cidade' %>
         <%= f.input :state, label: false, placeholder: 'Estado' %>
         <%= f.input :phone_number, label: false, placeholder: 'Telefone' %>
-        <%= f.input :photo, :label => 'Avatar', as: :file %>
+        <%= f.input :photo, :label => 'Adicionar avatar', as: :file %>
         <div class="form-actions pink-btn justify-content-center align-center-btn">
           <%= f.button :submit, "Criar conta" %>
         </div>

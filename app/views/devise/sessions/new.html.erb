@@ -14,7 +14,7 @@
                     label: false,
                     required: false,
                     input_html: { autocomplete: "current-password", placeholder: "Senha" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.input :remember_me, label: "Lembre-se de mim", as: :boolean if devise_mapping.rememberable? %>
       </div>
       <div class="form-actions pink-btn justify-content-center align-center-btn">
         <%= f.button :submit, "Log in", class:"pink-btn"%>
