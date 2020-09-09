@@ -1,27 +1,20 @@
-<%#= link_to image_tag("menu/ollivia_rx.png"), company_path, class: "logo-nav" %>
-<div class="container d-flex justify-content-center text-center mt-5 pt-5">
-  <form class="form-signin">
-    <div class="logo-nav mb-3">
-      <h2 class="h3 font-weight-normal">Fazer Login</h2>
-    </div>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <%= f.input :email,
+<h2>Log in</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email", placeholder: "E-mail" } %>
-        <%= f.input :password,
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :password,
                 required: false,
-                input_html: { autocomplete: "current-password", placeholder: 'Senha' } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      </div>
-      <!-- Btn Login-->
-      <div class="form-actions pink-btn">
-        <%= f.button :submit, "Fazer Login", style: "color: white;" %>
-      </div>
-    <% end %>
-  </form>
-</div>
-<div class="container m-5 pl-5 purple">
-  <%= render "devise/shared/links" %>
-</div>
+                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
