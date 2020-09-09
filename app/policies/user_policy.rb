@@ -12,4 +12,8 @@ class UserPolicy < ApplicationPolicy
   def update_position?
     record.id == user.id
   end
+
+  def send_message?
+    record.id == user.id
+  end
 end
