@@ -9,7 +9,7 @@ pt-BR:
                     has_many: Não é possível excluir o registro, pois existem %{record} dependentes
         attributes:
             angel:
-                first_name: 'Primeiro nome'
+                first_name: 'Nome'
                 last_name: 'Sobrenome'
                 phone_number: 'Telefone'
             place:
@@ -25,15 +25,17 @@ pt-BR:
                 rating: 'Nota'
             user:
                 address: 'Endereço'
-                state_id: 'Estado'
-                city_id: 'Cidade'
-                password: 'senha'
-                first_name: 'Primeiro nome'
+                state: 'Estado'
+                city: 'Cidade'
+                password: 'Senha'
+                first_name: 'Nome'
                 last_name: 'Sobrenome'
                 gender: 'Sexo'
                 phone_number: 'Telefone'
                 password_confirmation: 'Confirmação de senha'
                 current_password: 'Senha atual'
+                cpf: 'CPF'
+                cnpj: 'CNPJ'
     date:
         abbr_day_names:
         - dom
@@ -134,7 +136,7 @@ pt-BR:
             month: Mês
             year: Ano
     errors:
-        format: "%{attribute} %{message}"
+        format: "%{attribute}: %{message}"
         messages:
             accepted: deve ser aceito
             blank: não pode ficar em branco

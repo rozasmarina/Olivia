@@ -17,7 +17,7 @@ class User < ApplicationRecord
   after_validation :reverse_geocode
 
   validates :first_name, :last_name, :phone_number, :username, :email, :city, :state,
-            presence: { message: "Campo obrigatório" }
+            presence: true
   validates :is_business, inclusion: { in: [true, false] }
   validates :username, :email, uniqueness: true
   validates :email, confirmation: true
@@ -30,25 +30,25 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name,
             format: { with: /[A-Za-z]+/,
-                      message: "Utilize somente letras" }
+                      message: "utilize somente letras" }
 
   validates :username,
             format: { with: /\A(?=[a-zA-Z0-9._-]{5,20}$)(?!.*[_.]{2})[^_.].*[^_.]\z/,
-                      message: "Deve ter entre 5 e 20 caracateres" }
+                      message: "deve ter entre 5 e 20 caracateres" }
 
   validates :phone_number,
             format: { with: /\A(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))\z/,
-                      message: "Entre um telefone válido" }
+                      message: "entre um telefone válido" }
 
   validates :cpf,
             format: { if: -> { cnpj.blank? },
                       with: /\A\d{3}\.?\d{3}\.?\d{3}-?\d{2}\z/,
-                      message: "Entre um CPF válido" }
+                      message: "entre um CPF válido" }
 
   validates :cnpj,
             format: { if: -> { cpf.blank? },
                       with: %r{\A\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}\z},
-                      message: "Entre um CNPJ válido" }
+                      message: "entre um CNPJ válido" }
 
   def set_default_avatar
     unless photo.attached?
