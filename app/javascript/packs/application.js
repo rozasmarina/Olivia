@@ -10,7 +10,6 @@ require("channels")
 require("components/new_user_form.js")
 require("components/new_review_form.js")
 require("components/ratings_with_icons.js")
-require("components/sos_button_with_sms.js")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

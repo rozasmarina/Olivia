@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   get '/emergency', to: 'pages#emergency', as: :emergency
 
   # Messages
-  get '/send_message', to: 'twilio#send_message', as: :send_message
+  # get '/send_message', to: 'twilio#send_message', as: :send_message
   get '/message_angels', to: 'twilio#message_angels', as: :message_angels
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
+  get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
 
   resource :users, only: :show
 
