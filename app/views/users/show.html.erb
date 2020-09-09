@@ -212,7 +212,7 @@
                 <% end %>
               <% end %>
             </ul>
-            <%= link_to "Adicionar novo anjo", new_angel_path, class: "btn btn-sm btn-primary btns d-flex justify-content-center" %>
+            <%= link_to "Adicionar novo anjo", new_angel_path, class: "btn btn-sm btn-primary btns d-flex justify-content-center mx-3" %>
           </div>
         </div>
       </div>
@@ -240,6 +240,31 @@
           </div>
         </div>
       </div>
+
+
+       <!-- MESSAGE ANGELS -->
+      <div class="card">
+        <div class="card-header" id="messageAngels">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#messageAngelsCollapse" aria-expanded="true" aria-controls="messageAngelsCollapse">
+              Alterar minha mensagem para os anjos
+            </button>
+          </h2>
+        </div>
+        <div id="messageAngelsCollapse" class="collapse" aria-labelledby="messageAngels" data-parent="#common">
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <%= simple_form_for :angels_message, url: message_update_path, method: "patch" do |f| %>
+                <%= f.input :message_angels, as: :text, label: "Deseja personalizar sua mensagem para seus anjos?" %>
+                <div>
+                  <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 

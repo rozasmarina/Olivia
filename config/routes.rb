@@ -20,8 +20,10 @@ Rails.application.routes.draw do
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
   get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
+  
 
   resource :users, only: :show
+  patch 'users/message_update', to: 'users#update_messages', as: :message_update
 
   resources :angels, except: %i[index show]
 
