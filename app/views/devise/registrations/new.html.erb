@@ -44,8 +44,39 @@
         <%= f.input :first_name, label: false, placeholder: 'Nome' %>
         <%= f.input :last_name, label: false, placeholder: 'Sobrenome' %>
         <%= f.input :username, label: false, placeholder: 'Username' %>
+        <%= f.input :state,
+                    label: false,
+                    placeholder: 'Estado',
+                    collection: [
+                      'Acre', 
+                      'Alagoas',
+                      'Amazonas',
+                      'Amapá',
+                      'Bahia',
+                      'Ceará',
+                      'Distrito Federal',
+                      'Espírito Santo',
+                      'Goiás',
+                      'Maranhão',
+                      'Minas Gerais',
+                      'Mato Grosso do Sul',
+                      'Mato Grosso',
+                      'Pará',
+                      'Paraíba',
+                      'Pernambuco',
+                      'Piauí',
+                      'Paraná',
+                      'Rio de Janeiro',
+                      'Rio Grande do Norte',
+                      'Rondônia',
+                      'Roraima',
+                      'Rio Grande do Sul',
+                      'Santa Catarina',
+                      'Sergipe',
+                      'São Paulo',
+                      'Tocantins'
+                      ] %>
         <%= f.input :city, label: false, placeholder: 'Cidade' %>
-        <%= f.input :state, label: false, placeholder: 'Estado' %>
         <%= f.input :phone_number, label: false, placeholder: 'Telefone' %>
         <%= f.input :photo, :label => 'Adicionar avatar', as: :file %>
         <div class="form-actions pink-btn justify-content-center align-center-btn">
