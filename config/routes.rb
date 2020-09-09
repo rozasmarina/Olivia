@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/ollivia', to: 'pages#ollivia', as: :ollivia
   get '/emergency', to: 'pages#emergency', as: :emergency
 
+  # Twilio
+  get '/twilio', to: 'twilio#send_message', as: :send_message
+
   resource :users, only: :show
 
   resources :angels, except: :index
