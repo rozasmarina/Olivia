@@ -1,84 +1,175 @@
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="pg-title">
+    AVALIAÇÃO
+  </div>
+  <div>
+  </div>
+</div>
+<!--fim do header-->
+
 <div class="container">
-  <div class="container mt-4 mb-4 purple">
-    <h2><strong>Avaliação de <%= @review.place.name %></strong></h2>
-    <br>
+  <!-- PLACE NAME -->
+  <div class="d-flex mt-5 mb-2 pt-5 purple justify-content-center">
+    <h2><strong><%= @review.place.name %></strong></h2>
+  </div>
+  <!-- REVIEW TITLE -->
+  <div class="d-flex justify-content-center">
     <h3><%= @review.title %></h3>
   </div>
-  <!-- nota do review -->
-  <div class="m-3">
+  <!-- REVIEW USER, RATING, GOOD OR BAD -->
+  <div class="d-flex justify-content-around my-3">
     <% if @review.user == current_user %>
-      <span>Sua avaliação: </span>
-      <!-- RATING SYSTEM -->
-      <div class="rates-outer" data-rating="<%= @review.rating %>"> 
-        <div class="rates-inner">
-        </div>
-      </div>
+      <span class="align-self-center">Sua avaliação: </span>
     <% elsif @review.is_anonymous %>
-      <span> Avaliação de usuário anônimo: </span>
-      <!-- RATING SYSTEM -->
-      <div class="rates-outer">
-        <div class="rates-inner">
-        </div>
+      <span class="align-self-center"> Avaliação de usuário anônimo: </span>
+    <% else %>
+      <span class="align-self-center"> Avaliação de <%= @review.user.username %>: </span>
+    <% end %>
+    <!-- RATING SYSTEM -->
+    <div class="rates-outer align-self-center" data-rating="<%= @review.rating %>"> 
+      <div class="rates-inner align-self-center">
+      </div>
+    </div>
+    <span id="number-rating" class="align-self-center"><%= @review.rating %></span>
+    <% if @review.is_good %>
+      <div class="xp-btn d-flex justify-content-center">
+        <i class="far fa-smile-beam mt-2"></i>
       </div>
     <% else %>
-      <span> Avaliação de <%= @review.user.username %>: </span>
-      <!-- RATING SYSTEM -->
-      <div class="rates-outer">
-        <div class="rates-inner">
-        </div>
+      <div class="xp-btn d-flex justify-content-center">
+        <i class="far fa-frown mt-2"></i>
       </div>
     <% end %>
-    <span id="number-rating"><%= @review.rating %></span>
   </div>
-  <!-- conteudo do review -->
-  <div class="m-3">
+
+  <!-- REVIEW HEADER -->
+  <div class="review-card">
+    <div class="review-header m-3">
+      <% if @review.is_anonymous %>
+        <div class="d-flex justify-content-start">
+          <div>
+            <!-- avatar anonimo -->
+          </div>
+          <div class="ml-2 mt-1 d-flex align-self-center flex-column">
+            <span class="purple sm-line ml-2 pt-3">Por usuário anônimo</span>
+            <span>em <%= @review.created_at  %></span>
+          </div>
+        </div>
+      <% else %>
+        <div class="d-flex justify-content-start">
+          <div>
+            <%= cl_image_tag @review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+          </div>
+          <div class="ml-2 mt-1 d-flex align-self-center flex-column">
+            <span class="purple sm-line">Por <%= @review.user.username %></span>
+            <span>em <%= @review.created_at  %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <!-- REVIEW CONTENT -->
+  <div class="review-content m-3 border-bottom">
     <% if @review.is_disabled? %>
       <p> Avaliação removida </p>
     <% else %>
       <p><%= @review.content %></p>
     <% end %>
   </div>
-  <!-- response -->
-  <div class="m-3">
+
+  <!-- RESPONSE -->
+  <% if @review.responses.present? %>
     <% @review.responses.each do | response | %>
-      <div>
-        <p><%= response.response %></p>
-        <p><em>Respondido por <%= response.review.place.name %> <%= "(dono)" if current_user == @review.place.owner %> </em></p>
-        <hr>
-      </div>
+      <div class="response-card">
+        <!-- RESPONSE HEADER -->
+        <div class="response-header m-3">
+          <% if response.user == @review.place.owner %>
+            <div class="d-flex justify-content-end">
+              <div class="mr-2 mt-1 d-flex align-self-center flex-column">
+                <span class="purple sm-line">Por <%= response.review.place.name %></span>
+                <span>em <%= response.created_at  %></span>
+              </div>
+              <div>
+                <%= cl_image_tag response.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+              </div>
+            </div>
+          <% else %>
+            <div class="d-flex justify-content-start">
+              <% if @review.is_anonymous %>
+                <div>
+                  <!-- avatar anonimo -->
+                </div>
+                <div class="ml-2 mt-1 d-flex align-self-center flex-column">
+                  <span class="purple sm-line ml-2 pt-3">Por usuário anônimo</span>
+                  <span>em <%= @review.created_at  %></span>
+                </div>
+              <% else %>
+                <div>
+                  <%= cl_image_tag @review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                </div>
+                <div class="ml-2 mt-1 d-flex align-self-center flex-column">
+                  <span class="purple sm-line">Por <%= @review.user.username %></span>
+                  <span>em <%= @review.created_at  %></span>
+                </div>
+              <% end %>
+              
+            </div>
+          <% end %>
+        </div>
+
+        <!-- RESPONSE CONTENT -->
+        <div class="response-content m-3 border-bottom">
+          <% if response.user == @review.place.owner %>
+            <p style="text-align:right;"><%= response.response %></p>
+          <% else %>
+            <p><%= response.response %></p>
+          <% end %>
+        </div>
+      </div>  
     <% end %>
-    <% if policy(@review).create_response? %>
-      <div>
-        <p>Write a response:</p>
-        <%= simple_form_for [@review, @response], method: 'post' do |f| %>
-          <div>
-            <%= f.input :response %>
-            <%= f.submit 'Responda' %>
+  <% end %>
+
+  <!-- ADD RESPONSE -->
+  <% if policy(@review).create_response? %>
+    <div class="mx-3">
+      <%= simple_form_for [@review, @response], method: 'post' do |f| %>
+        <div>
+          <div class="d-flex justify-content-center">
+            <%= f.label "Interaja nesta avaliação" %>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+          <%= f.input :response, label: false, placeholder: "Escreva aqui a sua resposta" %>
+          <div class="d-flex justify-content-center">
+            <%= f.submit 'Responda' %> 
+          </div>
+          
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
   <!-- links -->
   <div class="m-3">
     <% if policy(@review).edit?  %>
-      <p><%= link_to edit_review_path do %></p>
+      <%= link_to edit_review_path do %>
         <i class="far fa-edit"></i> Edite a avaliação
       <% end %>
     <% end %>
-    <br>
     <br>
     <% if policy(@review).disable? %>
       <%= link_to disable_review_path(@review) do %>
         <i class="fas fa-trash-alt"></i> Desative a avaliação 
       <% end %>
     <% end %>
-    <p><%= link_to place_path(@review.place) do %></p>
-      <i class="fas fa-arrow-left"></i> <%= "Voltar para #{@review.place.name}" %>
-    <% end %>
     <br>
     <% if policy(@review).satisfy? %>
-      <p><%= link_to "Questão resolvida?", satisfy_review_path(@review) %>
+      <%= link_to satisfy_review_path(@review) do %>
+        <i class="far fa-check-circle"></i> Questão resolvida?
       <% end %>
-    </div>
+    <% end %>
   </div>

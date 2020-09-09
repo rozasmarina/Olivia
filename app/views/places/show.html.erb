@@ -33,11 +33,12 @@
           </div>
         <% end %>
       </div>
+      <!-- INFO CONTENT -->
       <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
         <div class='place-info'>
           <h2 class="purple"><%= @place.name %></h2>
           <p><%= @place.description %></p>
-          <div class="row d-flex justify-content-around align-items-center mb-3">
+          <div class="d-flex justify-content-around align-items-center mb-3">
             <% if  @place.reviews.length == 1 %>
               <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
               <% if current_user.blank? %>
@@ -233,7 +234,7 @@
               <% if review.is_anonymous %>
                 <!-- avatar anonimo -->
                 <p>Por: usuário anônimo</p>
-                <%= link_to review.title, review_path(review) %>
+                <%= link_to review.title, review_path(review), class: "ml-1" %>
               <% else %>
                 <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
                 <%= link_to review.title, review_path(review), class: "ml-1" %>
