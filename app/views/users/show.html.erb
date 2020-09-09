@@ -255,7 +255,10 @@
           <div class="card-body">
             <div class="d-flex justify-content-center">
               <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
-                <%= f.input :message_angels, as: :text, label: "Deseja personalizar sua mensagem para seus anjos?" %>
+                <%= f.input :message_angels,
+                            as: :text,
+                            label: "Deseja personalizar sua mensagem para seus anjos?",
+                            placeholder: "#{@user.message_angels}" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -278,7 +281,10 @@
           <div class="card-body">
             <div class="d-flex justify-content-center">
               <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
-                <%= f.input :message_near_users, as: :text, label: "Deseja personalizar sua mensagem para pessoas próximas?" %>
+                <%= f.input :message_near_users,
+                            as: :text,
+                            label: "Deseja personalizar sua mensagem para pessoas próximas?",
+                            placeholder: "#{@user.message_near_users}" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -301,7 +307,10 @@
           <div class="card-body">
             <div class="d-flex justify-content-center">
               <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
-                <%= f.input :message_authorities, as: :text, label: "Deseja personalizar sua mensagem para as autoridades?" %>
+                <%= f.input :message_authorities, 
+                            as: :text, 
+                            label: "Deseja personalizar sua mensagem para as autoridades?",
+                            placeholder: "#{@user.message_authorities}" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
