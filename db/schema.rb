@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_092048) do
     t.text "message_angels"
     t.text "message_near_users"
     t.text "message_authorities"
+    t.boolean "emergency", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

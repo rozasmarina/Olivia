@@ -2,6 +2,7 @@ require 'twilio-ruby'
 
 class TwilioController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_user_and_position, except: %i[voice]
 
   def voice
     response = Twilio::TwiML::Response.new do |r|
@@ -21,7 +22,7 @@ class TwilioController < ApplicationController
 
     twilio_phone = '+12055831356'
     to = '+5511974142345'
-    @user = current_user
+
     authorize @user, :send_message?
     client.messages.create(
       from: twilio_phone,
@@ -41,7 +42,17 @@ end
 
 def message_authorities
 end
+
+private
+
+def set_user_and_position
+  @user = current_user
+  @position = @user.address.split(', ')
+  @coords = "#{@user.latitude.round(6)}, #{@user.longitude.round(6)}"
+end
+
 # mudar a policy para autorizar o redict
 # criar uma coluna de mensagem para user
 # adicionar as informações de address no sms
 # authorize @user, :show?
+# "Preciso de ajuda perto da #{@position[0]}, na #{@position[1]} (#{@position[2]}) em #{@position[3]}. Nas coordenadas: #{@coords}"
