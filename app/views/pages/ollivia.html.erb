@@ -1,10 +1,96 @@
-<h2>Ollivia</h2>
-<%= link_to "Emergência" , emergency_path %>
-<p>Informações sobre o app</p>
-<p>Recomendar</p>
-<p>Fale conosco</p>
-<p>Reportar um problema</p>
-<h3>Rankings</h3>
-<p>Locais com mais avaliações positivas</p>
-<p>Locais com maior número de resoluções</p>
-<p>Locais com mais avaliações negativas</p>
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100 header-ollivia">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="pg-title">
+    OLLIVIA
+  </div>
+  <div class="mb-5">
+  </div>
+</div>
+<!--fim do header-->
+
+
+<div class="container justify-content-center mt-2 pt-5">
+
+  <ul class="list-group list-group-flush ">
+
+    <!-- Emergency -->
+    <li class="list-group-item d-flex justify-content-between align-items-center mt-4">
+      <div>
+        <i class="far fa-bell icon-rosa"></i>
+        <%= link_to "Emergência", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div> <i class="fas fa-arrow-right icon-roxo"> </i>
+    </li>
+
+    <!-- App Info -->
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <i class="fas fa-info icon-roxo"></i>
+        <%= link_to "Informações sobre o app", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div> <i class="fas fa-arrow-right"> </i>
+    </li>
+
+    <!-- VAI ENTRAR DENTRO DE APP INFO -->
+
+    <!-- Talk to us -->
+<!--     <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <i class="fas fa-headset"></i>
+        <%= link_to "Fale Conosco", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div> <i class="fas fa-arrow-right"> </i>
+    </li> -->
+
+    <!-- Report a problem -->
+    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <i class="far fa-times-circle"></i>
+        <%= link_to "Reportar um problema", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div> <i class="fas fa-arrow-right"> </i>
+    </li>  -->
+
+    <!-- Rankings -->
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <i class="fas fa-bullhorn"> </i>
+        <%= link_to "Rankings", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div> <i class="fas fa-arrow-right icon-roxo"> </i>
+    </li>
+
+
+
+    <li class="list-group-item">  </li>
+  </ul>
+
+    <h2>Locais avaliados</h2>
+
+    <!-- AVALIACAO POSITIVAS -->
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <!-- <i class="fas fa-bullhorn"> </i> -->
+        <%= link_to "As mais positivas", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+        <!-- </div> <i class="fas fa-arrow-right"> </i> -->
+    </li>
+
+    <!-- NUMERO DE RESOLUCOES -->
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <!-- <i class="fas fa-bullhorn"> </i> -->
+        <%= link_to "Maior número de resoluções", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+        <!--  </div> <i class="fas fa-arrow-right"> </i> -->
+    </li>
+
+
+
+</div>
+
+      <!-- RECOMENDAR APP -->
+      <div class="d-flex justify-content-center align-items-center container pt-5">
+          <%= link_to 'RECOMENDAR APP', recommended_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500;" %>
+        </div>
+
+
+
