@@ -21,7 +21,7 @@
     <%= cl_image_tag @review.place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
   </div>
   <!-- infos do estabelecimento -->
-  <div class="review-content">
+  <div class="review-content mt-3">
     <% if @review.place.reviews.length > 0 %>
       <!-- RATING SYSTEM -->
       <div class="review-ranking">
@@ -40,7 +40,7 @@
   </div>
 
   <!-- PLACE NAME -->
-  <div class="d-flex mt-4 purple justify-content-center">
+  <div class="d-flex mt-5 purple justify-content-center">
     <%= link_to place_path(@review.place) do %>
       <h2><strong style="color: #7209B7;"><%= @review.place.name %></strong></h2>
     <% end %>

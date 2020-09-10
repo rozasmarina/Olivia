@@ -79,7 +79,9 @@
           <div class="card-header bg-white d-flex justify-content-center" id="headingOne">
             <h5 class="mb-0">
               <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Deixe sua avaliação
+                <h6 class="black-text font-weight-normal mb-0">
+                  Deixe sua avaliação <i class="fas fa-angle-down rotate-icon"></i>
+                </h6>
               </button>
             </h5>
           </div>
@@ -88,19 +90,21 @@
               <%= simple_form_for [@place, @review], method: 'post' do |f| %>
                 <%# LABEL + INPUTS IS_GOOD  %>
                 <div class="d-flex justify-content-center">
-                  <%= f.label "Como foi sua experiência?" %>
-                </div>
-                <div class="d-flex justify-content-around">
-                  <%= f.collection_radio_buttons :is_good,
-                                              [
-                                                [true, 'Boa'],
-                                                [false, 'Ruim']
-                                              ],
-                                              :first,
-                                              :last,
-                                              checked: true,
-                                              item_wrapper_class: :evaluation,
-                                              item_wrapper_tag: :p %>
+                  <div>
+                    <%= f.label "Como foi sua experiência?" %>
+                    <div class="d-flex justify-content-between">
+                      <%= f.collection_radio_buttons :is_good,
+                                                [
+                                                  [true, 'Boa'],
+                                                  [false, 'Ruim']
+                                                ],
+                                                :first,
+                                                :last,
+                                                checked: true,
+                                                item_wrapper_class: :evaluation,
+                                                item_wrapper_tag: :p %>
+                    </div>
+                  </div>
                 </div>
                 <%= f.input :title,
                             label: "Título",
