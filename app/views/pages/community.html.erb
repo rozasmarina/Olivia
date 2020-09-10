@@ -1,4 +1,144 @@
-<h2>Comunidade</h2>
-<p>Fórum</p>
-<p>Artigos</p>
-<p>Notícias</p>
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="pg-title">
+    OLLIVIA
+  </div>
+  <div class="mb-5">
+  </div>
+</div>
+<!--fim do header-->
+
+<div class="container my-5">
+
+  <!--Section: Content-->
+  <section class="dark-grey-text">
+    <!-- Section heading -->
+    <h3 class="text-center font-weight-bold mb-4 pb-2"></h3>
+    <!-- Section description -->
+    <p class="lead text-center w-responsive mx-auto text-muted mt-4 pt-2 mb-5"> <!-- Um texto acolhedor talvez ? --> </p>
+    <!--First row-->
+    <div class="row">
+      <!--First column-->
+      <div class="col-md-6 mb-4" style="margin-top: 40px;">
+        <!-- Card -->
+        <a href="#!" class="card hoverable" style="border-radius: 10px;
+                                                   border: 2px solid #F72585;">
+          <!-- Card content -->
+          <div class="card-body">
+            <div class="media">
+              <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                <i class="far fa-bell fa-2x icon-rosa"></i>
+
+              </span>
+              <div class="media-body">
+                <h5 class="dark-grey-text mb-3">Emergência!</h5>
+                <p class="font-weight-light text-muted mb-0">Clique aqui para avisar os seus anjos que você está em perigo</p>
+                 <%#= link_to "Emergência", emergency_path, id: 'sos-btn'%>
+              </div>
+            </div>
+
+          </div>
+
+        </a>
+        <!-- Card -->
+      </div>
+      <!--First column-->
+    </div>
+    <!--First row-->
+  </section>
+
+</div>
+
+
+<div class="container my-5">
+
+
+  <!--Section: Content-->
+  <section>
+
+    <!-- Section heading -->
+
+    <h3 class="font-weight-bold black-text mb-4 pb-2 text-center" style="color: #7209B7;">Rankings
+      <i class="fas fa-2x fa-bullhorn" style="font-size: 1em;"> </i> </h3>
+    <hr class="w-header">
+    <!-- Section description -->
+<!--     <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
+ -->
+    <div class="row">
+      <div class="col-md-12 col-lg-10 mx-auto mb-5">
+
+        <!--Accordion wrapper-->
+        <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+          <!-- Accordion card -->
+          <div class="card border-top border-bottom-0 border-left border-right border-light">
+
+            <!-- Card header -->
+            <div class="card-header border-bottom border-light" role="tab" id="headingOne1">
+              <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                aria-controls="collapseOne1">
+                <h5 class="black-text font-weight-normal mb-0">
+                  As mais positivas <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+              </a>
+            </div>
+
+            <!-- Card body -->
+            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+              data-parent="#accordionEx">
+              <div class="card-body">
+                As mais positivas vao aqui
+              </div>
+            </div>
+
+          </div>
+          <!-- Accordion card -->
+
+          <!-- Accordion card -->
+          <div class="card border-bottom-0 border-left border-right border-light">
+
+            <!-- Card header -->
+            <div class="card-header border-bottom border-light" role="tab" id="headingTwo2">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                aria-expanded="false" aria-controls="collapseTwo2">
+                <h5 class="black-text font-weight-normal mb-0">
+                  Maior numero de resolucoes <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+              </a>
+            </div>
+
+            <!-- Card body -->
+            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+              data-parent="#accordionEx">
+              <div class="card-body">
+                Num de resolucoes aqui
+              </div>
+            </div>
+
+          </div>
+          <!-- Accordion card -->
+
+          </div>
+          <!-- Accordion card -->
+
+        </div>
+        <!-- Accordion wrapper -->
+
+      </div>
+    </div>
+
+  </section>
+    <!-- App Info -->
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <i class="fas fa-info icon-roxo"></i>
+        <%= link_to "Informações sobre o app", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+      </div> <i class="fas fa-arrow-right"> </i>
+    </li>
+
+</div>
