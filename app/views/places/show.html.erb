@@ -95,8 +95,11 @@
                                               checked: true,
                                               item_wrapper_class: :evaluation,
                                               item_wrapper_tag: :p %>
-                  <%= f.input :title, label: "Título" %>
-                  <%= f.input :content %>
+                  <%= f.input :title,
+                              label: "Título",
+                              hint: "Não deixe em branco" %>
+                  <%= f.input :content,
+                              hint: "Não deixe em branco" %>
                   <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
                   <fieldset class="form-group" id="anonymous" style="display:none;">
                     <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
