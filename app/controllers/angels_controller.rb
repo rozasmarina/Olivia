@@ -1,5 +1,5 @@
 class AngelsController < ApplicationController
-  before_action :set_angel, only: [:edit, :update, :destroy]
+  before_action :set_angel, only: %i[edit update destroy]
 
   def index
     @angels = policy_scope(Angel).order(created_at: :desc)
@@ -61,7 +61,11 @@ class AngelsController < ApplicationController
   end
 
   def set_angel
-    @angel = Angel.find(params[:id])
-    authorize @angel
+    @angel = Angel.find_by(id: params[:id])
+    if @angel.nil?
+      redirect_to root_path, notice: "Anjo não encontrado."
+    else
+      authorize @angel
+    end
   end
 end
