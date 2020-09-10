@@ -13,4 +13,10 @@ class Place < ApplicationRecord
 
   validates :user_id, presence: { if: -> { owner_id.blank? } }
   validates :owner_id, presence: { if: -> { user_id.blank? } }
+
+  # def set_default_photo
+  #   unless photo.attached?
+  #     photo.attach(io: avatar, filename: "#{username}.png", content_type: 'image/png')
+  #   end
+  # end
 end
