@@ -20,20 +20,16 @@ Rails.application.routes.draw do
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
   get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
-  
 
   resource :users, only: :show
   patch 'users/message_update', to: 'users#update_messages', as: :message_update
 
-
   resources :angels, except: %i[index show]
 
-  
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
   end
 
-  
   resources :reviews, only: %i[index edit update]
   get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
   get 'reviews/:id/satisfy', to: 'reviews#satisfy', as: :satisfy_review
@@ -44,7 +40,6 @@ Rails.application.routes.draw do
 
   resources :places, except: %i[destroy show]
 
-  
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end

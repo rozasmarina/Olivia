@@ -16,6 +16,7 @@ class ResponsesController < ApplicationController
     @response.user = current_user
     authorize @response
     if @response.save
+      ActionCable.server.broadcast "notification_channel", content: "test message"
       redirect_to review_path(params[:review_id])
     else
       @review = @response.review

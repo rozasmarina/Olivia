@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     @user = current_user
     @places = Place.where(owner: nil)
     authorize @user
+    NotificationChannel.broadcast_to("notification_channel", "showing profile")
   end
 
   def update_position
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     end
     @user.save ? (redirect_to users_path) : (render :show)
   end
-  
+
   # ! DO NOT DELETE
   # def sos_angels
   #   #Precisamos criar uma função que transforme lat e lng em endereço e chamamos na variável abaixo
