@@ -1,10 +1,30 @@
-<h1>Edite sua review</h1>
-<%= simple_form_for @review do |f|%>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>  
-
-  <%= f.input :title  %>
-  <%= f.input :content %>
-  <%= f.input :rating, collection: (0..5).to_a, selected: @review.rating %>
-  <%= f.button :submit, "Editar" %>
-<% end %>
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="pg-title">
+    Editar avaliação 
+  </div>
+  <div>
+  </div>
+</div>
+<!--fim do header-->
+<div class="container py-5 my-5">
+  <div class="row mt-5 d-flex justify-content-center">
+    <div class="col-8 mt-5">
+      <%= simple_form_for @review do |f|%>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= f.input :title, label: "Título" %>
+        <%= f.input :content %>
+        <%= f.input :rating, collection: (0..5).to_a, selected: @review.rating %>
+        <div class="row justify-content-center">
+          <%= f.button :submit, "Editar", class: 'pink-btn mt-3 w-100 mx-3' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

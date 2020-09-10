@@ -25,16 +25,13 @@ Rails.application.routes.draw do
   resource :users, only: :show
   patch 'users/message_update', to: 'users#update_messages', as: :message_update
 
-
   resources :angels, except: %i[index show]
 
-  
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
   end
-
   
-  resources :reviews, only: %i[index edit update]
+  resources :reviews, only: %i[edit update]
   get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
   get 'reviews/:id/satisfy', to: 'reviews#satisfy', as: :satisfy_review
   # patch 'reviews/:id', to: 'reviews#disabled' -> will use update to change
