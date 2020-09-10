@@ -59,7 +59,11 @@ class PlacesController < ApplicationController
   end
 
   def set_place
-    @place = Place.find(params[:id])
-    authorize @place
+    @place = Place.find_by(id: params[:id])
+    if @place.nil?
+      redirect_to root_path, notice: "Local não encontrado."
+    else
+      authorize @place
+    end
   end
 end

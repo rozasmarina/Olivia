@@ -15,7 +15,7 @@
 <div>
   <div>
     <!--img -->
-    <div class="">
+    <div class="pt-4">
       <%= cl_image_tag @place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
     </div>
     <!-- infos do estabelecimento -->
@@ -111,7 +111,6 @@
                   <div>
                     <%= f.submit 'Avaliar', class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
                   </div>
-                  
                 <% end %>
               </div>
             </div>
@@ -131,7 +130,7 @@
                     <p>Por: usuário anônimo</p>
                     <%= link_to review.title, review_path(review) %>
                   <% else %>
-                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
                     <%= link_to review.title, review_path(review), class: "ml-1" %>
                     <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
                     <% if review.responses.present? %>

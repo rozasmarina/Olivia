@@ -16,7 +16,7 @@ export default class extends Controller {
     load() {
         navigator.geolocation.getCurrentPosition((pos) => {
             let position = pos.coords;
-            $.post('users/update_position', {
+            $.post('/users/update_position', {
                 lat: position.latitude,
                 lng: position.longitude
             });
