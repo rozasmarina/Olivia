@@ -1,18 +1,16 @@
 <!--Header-->
 <div class="heading d-flex justify-content-between align-items-center w-100">
-  <div class="back-btn text-white ml-2">
+  <div class="back-btn text-white ml-4">
     <%= link_to :back do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
   </div>
-  <div class="pg-title" style="margin-left: 7em;
-                              margin-right: 7em;">
+  <div class="pg-title mx-2">
     AVALIAÇÃO
   </div>
   <div>
-    <i class="fas fa-info" style="color: white;"></i>
+    <i class="fas fa-info mr-4" style="color: white;"></i>
   </div>
-  <div class="mb-5"></div>
 </div>
 <!-- Fim do header -->
 <div>
@@ -53,17 +51,17 @@
     <% if @review.user == current_user %>
       <span class="align-self-center">Sua avaliação: </span>
     <% elsif @review.is_anonymous %>
-      <span class="align-self-center"> Avaliação de usuário anônimo: </span>
+      <span class="align-self-center"> Avaliação de usuária anônima: </span>
     <% else %>
       <span class="align-self-center"> Avaliação de <%= @review.user.username %>: </span>
     <% end %>
     <!-- RATING SYSTEM -->
-      <% reviewPercent = (@review.rating.to_f / 5) * 100 %>
-      <% reviewPercentRounded = (reviewPercent / 10).round * 10 %>
-      <div class="rates-outer align-self-center">
-        <div class="rates-inner" style="width:<%= reviewPercentRounded %>%;">
-        </div>
+    <% reviewPercent = (@review.rating.to_f / 5) * 100 %>
+    <% reviewPercentRounded = (reviewPercent / 10).round * 10 %>
+    <div class="rates-outer align-self-center">
+      <div class="rates-inner" style="width:<%= reviewPercentRounded %>%;">
       </div>
+    </div>
     <% if @review.is_good %>
       <div class="xp-btn d-flex justify-content-center">
         <i class="far fa-smile-beam mt-2"></i>
@@ -85,7 +83,7 @@
             <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
           </div>
           <div class="ml-2 mt-1 d-flex align-self-center flex-column">
-            <span class="purple sm-line">Por usuário anônimo</span>
+            <span class="purple sm-line">Por usuária anônima</span>
             <span>em <%= I18n.localize @review.created_at, format: :long %></span>
           </div>
         </div>
@@ -134,7 +132,7 @@
                   <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
                 </div>
                 <div class="ml-2 mt-1 d-flex align-self-center flex-column">
-                  <span class="purple sm-line ml-2 pt-3">Avaliação anônima</span>
+                  <span class="purple sm-line">Avaliação anônima</span>
                   <span style="font-size:small;">em <%= I18n.localize response.created_at, format: :long  %></span>
                 </div>
               <% else %>
