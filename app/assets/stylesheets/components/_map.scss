@@ -14,15 +14,16 @@
       font-size: 15px;
       font-weight: bolder;
       color: white;
-      background-color: $roxo;
+      background-color: #7209B7;
       border-radius: 5px;
       z-index: 3;
-      width: 15%;
-      height: 7%;
+      width: 2em;
+      height: 2em;
       position: absolute;
-      top: 0;
-      right: 0;
-      }
+      top: 0em;
+      left: 17em;
+      box-shadow: -3px 7px 15px rgba(0, 0, 0, 0.6), 0 15px 12px rgba(0, 0, 0, 0.1) !important;
+    }
 
   .view.overlay {
     position: relative;
