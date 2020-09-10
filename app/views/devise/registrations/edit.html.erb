@@ -37,13 +37,46 @@
                     required: true,
                     label: 'Senha atual',
                     input_html: { autocomplete: "current-password" } %>
+        <%= f.input :state, 
+                    label: 'Estado',
+                    collection: [
+                      'Acre', 
+                      'Alagoas',
+                      'Amazonas',
+                      'Amapá',
+                      'Bahia',
+                      'Ceará',
+                      'Distrito Federal',
+                      'Espírito Santo',
+                      'Goiás',
+                      'Maranhão',
+                      'Minas Gerais',
+                      'Mato Grosso do Sul',
+                      'Mato Grosso',
+                      'Pará',
+                      'Paraíba',
+                      'Pernambuco',
+                      'Piauí',
+                      'Paraná',
+                      'Rio de Janeiro',
+                      'Rio Grande do Norte',
+                      'Rondônia',
+                      'Roraima',
+                      'Rio Grande do Sul',
+                      'Santa Catarina',
+                      'Sergipe',
+                      'São Paulo',
+                      'Tocantins'
+                      ] %>
         <%= f.input :city, label: 'Cidade' %>
-        <%= f.input :state, label: 'Estado' %>
         <%= f.input :phone_number, label: 'Telefone' %>
-        <%= f.input :photo, :label => 'Alterar avatar', as: :file %>
+        <label class="d-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100">
+          Adicionar avatar
+          <%= f.input :photo, label: false, as: :file, input_html: { hidden: true } %>
+        </label>
       </div>
-      <div class="form-actions pink-btn justify-content-center align-center-btn mb-3">
-        <%= f.button :submit, "Atualizar" %>
+      <div>
+        <%= f.button :submit, "Atualizar", class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %> 
       </div>
     <% end %>
   </div>

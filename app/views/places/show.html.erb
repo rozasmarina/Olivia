@@ -15,7 +15,7 @@
 <div>
   <div>
     <!--img -->
-    <div class="">
+    <div class="pt-4">
       <%= cl_image_tag @place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
     </div>
     <!-- infos do estabelecimento -->
@@ -84,24 +84,33 @@
               <div class="card-body">
                 <%= simple_form_for [@place, @review], method: 'post' do |f| %>
                   <%# LABEL + INPUTS IS_GOOD  %>
-                  <%= f.label "Como foi sua experiência?" %>
-                  <%= f.collection_radio_buttons :is_good,
-                                              [
-                                                [true, 'Boa'],
-                                                [false, 'Ruim']
-                                              ],
-                                              :first,
-                                              :last,
-                                              checked: true,
-                                              item_wrapper_class: :evaluation,
-                                              item_wrapper_tag: :p %>
-                  <%= f.input :title, label: "Título" %>
-                  <%= f.input :content %>
+                  <div class="d-flex justify-content-center">
+                    <%= f.label "Como foi sua experiência?" %>
+                  </div>
+                  <div class="d-flex justify-content-around">
+                    <%= f.collection_radio_buttons :is_good,
+                                                [
+                                                  [true, 'Boa'],
+                                                  [false, 'Ruim']
+                                                ],
+                                                :first,
+                                                :last,
+                                                checked: true,
+                                                item_wrapper_class: :evaluation,
+                                                item_wrapper_tag: :p %>
+                  </div>
+                  <%= f.input :title,
+                              label: "Título",
+                              hint: "Não deixe em branco" %>
+                  <%= f.input :content,
+                              hint: "Não deixe em branco" %>
                   <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
                   <fieldset class="form-group" id="anonymous" style="display:none;">
                     <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
                   </fieldset>
-                  <%= f.submit 'Avaliar' %>
+                  <div>
+                    <%= f.submit 'Avaliar', class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
+                  </div>
                 <% end %>
               </div>
             </div>
@@ -118,10 +127,11 @@
                 <div class="review-header m-3">
                   <% if review.is_anonymous %>
                     <!-- avatar anonimo -->
-                    <p>Por: usuário anônimo</p>
-                    <%= link_to review.title, review_path(review) %>
+                    <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                    <%= link_to review.title, review_path(review), class: "ml-1" %>
+                    <p class="ml-5 purple sm-line">Avaliação anônima</p>
                   <% else %>
-                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
                     <%= link_to review.title, review_path(review), class: "ml-1" %>
                     <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
                     <% if review.responses.present? %>

@@ -58,7 +58,7 @@
           </div>
           <div class="ml-2 mt-1 d-flex align-self-center flex-column">
             <span class="purple sm-line ml-2 pt-3">Por usuário anônimo</span>
-            <span>em <%= @review.created_at  %></span>
+            <span>em <%= I18n.localize @review.created_at, format: :long %></span>
           </div>
         </div>
       <% else %>
@@ -68,7 +68,7 @@
           </div>
           <div class="ml-2 mt-1 d-flex align-self-center flex-column">
             <span class="purple sm-line">Por <%= @review.user.username %></span>
-            <span>em <%= @review.created_at  %></span>
+            <span>em <%= I18n.localize @review.created_at, format: :long %></span>
           </div>
         </div>
       <% end %>
@@ -92,7 +92,7 @@
             <div class="d-flex justify-content-end">
               <div class="mr-2 mt-1 d-flex align-self-center flex-column">
                 <span class="purple sm-line">Por <%= response.review.place.name %></span>
-                <span>em <%= response.created_at  %></span>
+                <span>em <%= I18n.localize response.created_at, format: :long  %></span>
               </div>
               <div>
                 <%= cl_image_tag response.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="ml-2 mt-1 d-flex align-self-center flex-column">
                   <span class="purple sm-line ml-2 pt-3">Por usuário anônimo</span>
-                  <span>em <%= @review.created_at  %></span>
+                  <span>em <%= I18n.localize response.created_at, format: :long  %></span>
                 </div>
               <% else %>
                 <div>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="ml-2 mt-1 d-flex align-self-center flex-column">
                   <span class="purple sm-line">Por <%= @review.user.username %></span>
-                  <span>em <%= @review.created_at  %></span>
+                  <span>em <%= I18n.localize response.created_at, format: :long  %></span>
                 </div>
               <% end %>
             </div>

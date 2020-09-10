@@ -11,11 +11,15 @@
 <!-- MAIN BODY -->
 <!-- AVATAR -->
 <div class="d-flex justify-content-center pt-5 mt-4">
-  <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+  <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
 </div>
 <br>
 <!-- EDIT AND LOGOUT -->
 <%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center" %>
+<div class="dropdown-divider"></div>
+<% if @user.owned_place.present? %>
+  <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center" %>
+<% end %>
 <div class="dropdown-divider"></div>
 <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
 <div class="container">
@@ -221,7 +225,7 @@
         <div id="reviewsCollapse" class="collapse" aria-labelledby="reviews" data-parent="#common">
           <div class="card-body">
             <ul>
-              <% @user.reviews.each do |review| %>
+              <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
                 <% if review.responses.present? && review.responses.last.user != current_user %>
                   <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
                 <% else %>
@@ -248,7 +252,8 @@
                 <%= f.input :message_angels,
                             as: :text,
                             label: "Deseja personalizar sua mensagem para seus anjos?",
-                            placeholder: "#{@user.message_angels}" %>
+                            placeholder: "#{@user.message_angels}",
+                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -273,7 +278,8 @@
                 <%= f.input :message_near_users,
                             as: :text,
                             label: "Deseja personalizar sua mensagem para pessoas próximas?",
-                            placeholder: "#{@user.message_near_users}" %>
+                            placeholder: "#{@user.message_near_users}",
+                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -298,7 +304,8 @@
                 <%= f.input :message_authorities, 
                             as: :text, 
                             label: "Deseja personalizar sua mensagem para as autoridades?",
-                            placeholder: "#{@user.message_authorities}" %>
+                            placeholder: "#{@user.message_authorities}",
+                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>

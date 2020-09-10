@@ -27,8 +27,12 @@ class ResponsesController < ApplicationController
   private
 
   def set_response
-    authorize @response
-    @response = Response.find(params[:id])
+    @response = Response.find_by(id: params[:id])
+    if @response.nil?
+      redirect_to root_path, notice: "Resposta não encontrada."
+    else
+      authorize @response
+    end
   end
 
   def response_params
