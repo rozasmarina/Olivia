@@ -13,7 +13,10 @@
 
 <!-- AVATAR -->
 <div class="d-flex justify-content-center pt-5 mt-4">
-  <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+  <%= cl_image_tag current_user.photo.key, class:"avatar",
+                                           transformation: [{width: 400, height: 400, gravity:
+                                           "face", radius: "max", crop: "crop", quality: 80},
+                                           {width: 150, crop: "scale"}] %>
 </div>
 <br>
 
@@ -143,7 +146,7 @@
           </div>
         </div>
       </div>
-    
+
     <!-- NEED TO SELECT OR ADD PLACE -->
     <% else %>
       <div class="accordion" id="newBusiness">
@@ -167,7 +170,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- ADD PLACE -->
         <div class="card">
           <div class="card-header" id="newPlace">
