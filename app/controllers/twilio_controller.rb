@@ -39,12 +39,11 @@ class TwilioController < ApplicationController
 
   def demo_notification
     authorize @user, :message_angels?
-    demo_message = ""
     @user.angels.each do |angel|
-      client.messages.create(
-        from: twilio_phone,
-        to: angel.phone_number,
-        body: "Olá, #{angel.first_name}! #{demo_message}"
+      @client.messages.create(
+        from: @twilio_phone,
+        to: "+#{angel.phone_number}",
+        body: "#{angel.first_name}! #{@message}"
       )
     end
     redirect_to ollivia_path, notice: 'Mensagens enviadas com sucesso.'
