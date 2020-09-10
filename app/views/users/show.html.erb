@@ -8,28 +8,22 @@
     <% end %>
   </div>
 </div>
-
 <!-- MAIN BODY -->
-
 <!-- AVATAR -->
 <div class="d-flex justify-content-center pt-5 mt-4">
-  <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+  <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
 </div>
 <br>
-
 <!-- EDIT AND LOGOUT -->
 <%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center" %>
 <div class="dropdown-divider"></div>
 <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
-
-
 <div class="container">
-<!-- BUSINESS PROFILE -->
+  <!-- BUSINESS PROFILE -->
   <% if @user.is_business %>
     <!-- HAS PLACE -->
     <% if @user.owned_place.present? %>
       <div class="accordion" id="business">
-
         <!-- AWAITING RESPONSE -->
         <div class="card">
           <div class="card-header" id="awaiting">
@@ -39,7 +33,6 @@
               </button>
             </h2>
           </div>
-
           <div id="awaitingCollapse" class="collapse" aria-labelledby="awaiting" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.present? %>
@@ -58,7 +51,6 @@
             </div>
           </div>
         </div>
-
         <!-- ALL REVIEWS -->
         <div class="card">
           <div class="card-header" id="allReviews">
@@ -86,7 +78,6 @@
             </div>
           </div>
         </div>
-
         <!-- GOOD REVIEWS -->
         <div class="card">
           <div class="card-header" id="goodReviews">
@@ -114,7 +105,6 @@
             </div>
           </div>
         </div>
-
         <!-- BAD REVIEWS -->
         <div class="card">
           <div class="card-header" id="badReviews">
@@ -143,8 +133,7 @@
           </div>
         </div>
       </div>
-    
-    <!-- NEED TO SELECT OR ADD PLACE -->
+      <!-- NEED TO SELECT OR ADD PLACE -->
     <% else %>
       <div class="accordion" id="newBusiness">
         <!-- SELECT PLACE -->
@@ -167,7 +156,6 @@
             </div>
           </div>
         </div>
-        
         <!-- ADD PLACE -->
         <div class="card">
           <div class="card-header" id="newPlace">
@@ -188,8 +176,7 @@
         </div>
       </div>
     <% end %>
-
-  <!-- COMMON PROFILE -->
+    <!-- COMMON PROFILE -->
   <% else %>
     <div class="accordion" id="common">
       <!-- USER ANGELS -->
@@ -207,7 +194,7 @@
               <% if @user.angels %>
                 <% @user.angels.each do |angel| %>
                   <li class="list-group-item d-flex justify-content-around mx-5">
-                    <%= angel.first_name %> 
+                    <%= angel.first_name %>
                     <%= link_to edit_angel_path(angel) do %>
                       <i class="far fa-edit"></i>
                     <% end %>
@@ -222,7 +209,6 @@
           </div>
         </div>
       </div>
-
       <!-- USER REVIEWS -->
       <div class="card">
         <div class="card-header" id="reviews">
@@ -246,8 +232,6 @@
           </div>
         </div>
       </div>
-
-
       <!-- MESSAGE ANGELS -->
       <div class="card">
         <div class="card-header" id="messageAngels">
@@ -274,7 +258,6 @@
           </div>
         </div>
       </div>
-
       <!-- MESSAGE NEAR USERS -->
       <div class="card">
         <div class="card-header" id="nearMe">
@@ -301,7 +284,6 @@
           </div>
         </div>
       </div>
-
       <!-- MESSAGE AUTHORITIES -->
       <div class="card">
         <div class="card-header" id="authorities">
@@ -331,4 +313,3 @@
     </div>
   <% end %>
 </div>
-
