@@ -31,7 +31,7 @@
                                       item_wrapper_tag: :p %>
         <%= f.input :rating, collection: (0..5).to_a, selected: @review.rating, label: 'Deseja alterar sua avaliação?' %>
         <div class="row justify-content-center">
-          <%= f.button :submit, "Enviar", data: { confirm: 'Tem certeza?' }, class: 'pink-btn mt-3' %>
+          <%= f.button :submit, "Enviar", data: { confirm: 'Tem certeza?' }, class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
         </div>
       <% end %>
     </div>
