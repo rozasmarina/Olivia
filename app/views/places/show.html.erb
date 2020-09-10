@@ -39,8 +39,9 @@
     <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
       <div class='place-info'>
         <h2 class="purple"><%= @place.name %></h2>
+        <p><%= @place.address %></p>
         <p><%= @place.description %></p>
-        <div class="d-flex justify-content-around align-items-center mb-3">
+        <div class="d-flex justify-content-around align-items-center mb-1">
           <% if  @place.reviews.length == 1 %>
             <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
           <% elsif @place.reviews.length >= 2 %>
