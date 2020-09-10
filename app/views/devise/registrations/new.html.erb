@@ -80,8 +80,8 @@
           <%= f.input :city, label: false, placeholder: 'Cidade' %>
           <%= f.input :phone_number, label: false, placeholder: 'Telefone' %>
           <%= f.input :photo, :label => 'Adicionar avatar', as: :file %>
-          <div class="form-actions pink-btn justify-content-center align-center-btn mb-3">
-            <%= f.button :submit, "Criar conta" %>
+          <div>
+            <%= f.button :submit, "Criar conta", class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
           </div>
         <% end %>
         <div class="mb-3">

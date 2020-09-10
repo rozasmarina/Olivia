@@ -84,17 +84,21 @@
               <div class="card-body">
                 <%= simple_form_for [@place, @review], method: 'post' do |f| %>
                   <%# LABEL + INPUTS IS_GOOD  %>
-                  <%= f.label "Como foi sua experiência?" %>
-                  <%= f.collection_radio_buttons :is_good,
-                                              [
-                                                [true, 'Boa'],
-                                                [false, 'Ruim']
-                                              ],
-                                              :first,
-                                              :last,
-                                              checked: true,
-                                              item_wrapper_class: :evaluation,
-                                              item_wrapper_tag: :p %>
+                  <div class="d-flex justify-content-center">
+                    <%= f.label "Como foi sua experiência?" %>
+                  </div>
+                  <div class="d-flex justify-content-around">
+                    <%= f.collection_radio_buttons :is_good,
+                                                [
+                                                  [true, 'Boa'],
+                                                  [false, 'Ruim']
+                                                ],
+                                                :first,
+                                                :last,
+                                                checked: true,
+                                                item_wrapper_class: :evaluation,
+                                                item_wrapper_tag: :p %>
+                  </div>
                   <%= f.input :title,
                               label: "Título",
                               hint: "Não deixe em branco" %>
@@ -104,7 +108,10 @@
                   <fieldset class="form-group" id="anonymous" style="display:none;">
                     <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
                   </fieldset>
-                  <%= f.submit 'Avaliar' %>
+                  <div>
+                    <%= f.submit 'Avaliar', class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
+                  </div>
+                  
                 <% end %>
               </div>
             </div>
