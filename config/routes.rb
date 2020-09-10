@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/top_places', to: 'pages#top_places', as: "top_places"
   get '/recommended', to: 'pages#recommended', as: "recommended"
   post 'users/update_position', to: 'users#update_position', as: :update_position
-
+  
   devise_for :users do
   end
 
@@ -48,4 +48,7 @@ Rails.application.routes.draw do
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
+
+  # Redirect to home when the route does not exist
+  get '*path' => redirect('/')
 end
