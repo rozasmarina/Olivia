@@ -140,8 +140,10 @@
                   <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
                   <%= link_to review.title, review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
-                  <% if review.responses.present? %>
-                    <span class="badge badge-pill badge-warning badge-pos">Respondido</span>
+                  <% if review.is_satisfied? %>
+                    <span class="badge badge-pill badge-danger badge-pos font-weight-normal" style="color: white;">Resolvido</span>
+                  <% elsif review.responses.present? %>
+                    <span class="badge badge-pill badge-warning badge-pos font-weight-normal" style="color: white;">Respondido</span>
                   <% end %>
                 <% end %>
               </div>
