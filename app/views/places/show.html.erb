@@ -15,7 +15,6 @@
   <div class="mb-5"></div>
 </div>
 <!-- Fim do header -->
-
 <div>
   <!--img -->
   <div class="pt-4">
@@ -142,7 +141,7 @@
                   <%= link_to review.title, review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
                   <% if review.responses.present? %>
-                    <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
+                    <span class="badge badge-pill badge-warning badge-pos">Respondido</span>
                   <% end %>
                 <% end %>
               </div>
