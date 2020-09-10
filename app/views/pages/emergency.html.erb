@@ -1,13 +1,10 @@
 <!-- Header + info -->
 <div class="heading d-flex justify-content-between align-items-center w-100">
   <div class="back-btn text-white ml-2">
-
-    <%= link_to :back do %> <i class="fas fa-arrow-left"> </i>
-    <% end %>
-
+    <i class="fas fa-arrow-left" style="color: #7209B7 !important;"> </i>
   </div>
   <div class="pg-title" style="margin-left: 7em;
-                              margin-right: 7em;">
+                               margin-right: 7em;">
     EMERGÊNCIA
   </div>
   <div><i class="fas fa-info" style="color: white;"></i></div>
@@ -15,46 +12,33 @@
   </div>
 </div>
 <!-- Fim do Header -->
-
-
-
-
-
-
-
-<!-- Notificar Anjos -->
-<li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-  <div>
-    <i class="far fa-bell" style="color: #F72585;"></i>
-    <%= link_to "Notificar Anjos", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-  </div> <i class="fas fa-arrow-right" style="color: #7209B7;"> </i>
-</li>
-
-<!-- Notificar Usuarios Próximas -->
-<li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-  <div>
-    <i class="far fa-bell" style="color: #F72585;"></i>
-    <%= link_to "Notificar Usuarios Próximas", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-  </div> <i class="fas fa-arrow-right" style="color: #7209B7;"> </i>
-</li>
-
-
-<!-- Notificar Autoridades -->
-<li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-  <div>
-    <i class="far fa-bell" style="color: #F72585;"></i>
-    <%= link_to "Notificar Autoridades", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-  </div> <i class="fas fa-arrow-right" style="color: #7209B7;"> </i>
-</li>
-
-
-
-
+<div style="height: 100vh; padding-top: 200px;">
+  <!-- Notificar Anjos -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Notificar anjos', message_angels_path, class: "pr-4 pl-4 mr-484"  %>
+    </div>
+  </li>
+  <!-- Notificar Usuarios Próximas -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Notificar usuárias próximas', message_near_users_path, class: "pr-4 pl-4 mr-484"  %>
+    </div>
+  </li>
+  <!-- Notificar Autoridades -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Notificar autoridades', message_authorities_path, class: "pr-4 pl-4 mr-484"  %>
+    </div>
+  </li>
+</div>
 <p><%#= link_to 'Notificar anjos', message_angels_path %></p>
 <p><%#= link_to 'Notificar usuárias próximas', message_near_users_path %></p>
 <p><%#= link_to 'Notificar autoridades', message_authorities_path %></p>
 <%# Descomentar para a demoday %>
 <p><%# link_to 'Demonstrar envio de SMS', demo_notification_path %></p>
-
 <!-- Colocar o link voltar na flecha do header -->
 <%#= link_to 'voltar', ollivia_path %>
