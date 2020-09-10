@@ -225,7 +225,7 @@
         <div id="reviewsCollapse" class="collapse" aria-labelledby="reviews" data-parent="#common">
           <div class="card-body">
             <ul>
-              <% @user.reviews.each do |review| %>
+              <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
                 <% if review.responses.present? && review.responses.last.user != current_user %>
                   <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
                 <% else %>
