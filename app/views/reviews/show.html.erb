@@ -1,20 +1,46 @@
-<!--header-->
+<!--Header-->
 <div class="heading d-flex justify-content-between align-items-center w-100">
   <div class="back-btn text-white ml-2">
     <%= link_to :back do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
   </div>
-  <div class="pg-title">
+  <div class="pg-title" style="margin-left: 7em;
+                              margin-right: 7em;">
     AVALIAÇÃO
   </div>
   <div>
+    <i class="fas fa-info" style="color: white;"></i>
   </div>
+  <div class="mb-5"></div>
 </div>
-<!--fim do header-->
-<div class="container">
+<!-- Fim do header -->
+<div>
+  <!--img -->
+  <div class="pt-4">
+    <%= cl_image_tag @review.place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
+  </div>
+  <!-- infos do estabelecimento -->
+  <div class="review-content">
+    <% if @review.place.reviews.length > 0 %>
+      <!-- RATING SYSTEM -->
+      <div class="review-ranking">
+        <div class="rating-container">
+          <div class="rates-outer">
+            <% iconPercentage = (@review.place.average_rating.round(1) / 5) * 100 %>
+            <% iconPercentageRounded = (iconPercentage / 10).round * 10 %>
+            <div class="rates-inner" style="width:<%= iconPercentageRounded %>%;">
+            </div>
+          </div>
+          <span><%= @review.place.average_rating.round(1) %></span>
+          <span class="txt-rating d-block">Rating Ollivia</span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <!-- PLACE NAME -->
-  <div class="d-flex mt-5 mb-2 pt-5 purple justify-content-center">
+  <div class="d-flex mt-4 purple justify-content-center">
     <%= link_to place_path(@review.place) do %>
       <h2><strong style="color: #7209B7;"><%= @review.place.name %></strong></h2>
     <% end %>
@@ -34,10 +60,11 @@
     <% end %>
     <!-- RATING SYSTEM -->
     <div class="rates-outer align-self-center" data-rating="<%= @review.rating %>">
-      <div class="rates-inner align-self-center">
+      <% reviewPercent = (@review.rating / 5) * 100 %>
+      <% reviewPercentRounded = (reviewPercent / 10).round * 10 %>
+      <div class="rates-inner align-self-center" style="width:<%= iconPercentageRounded %>%;">
       </div>
     </div>
-    <span id="number-rating" class="align-self-center"><%= @review.rating %></span>
     <% if @review.is_good %>
       <div class="xp-btn d-flex justify-content-center">
         <i class="far fa-smile-beam mt-2"></i>
@@ -48,6 +75,7 @@
       </div>
     <% end %>
   </div>
+  <br>
   <!-- REVIEW HEADER -->
   <div class="review-card">
     <div class="review-header m-3">
@@ -58,7 +86,7 @@
           </div>
           <div class="ml-2 mt-1 d-flex align-self-center flex-column">
             <span class="purple sm-line ml-2 pt-3">Por usuário anônimo</span>
-            <span>em <%= @review.created_at  %></span>
+            <span>em <%= I18n.localize @review.created_at, format: :long %></span>
           </div>
         </div>
       <% else %>
@@ -68,7 +96,7 @@
           </div>
           <div class="ml-2 mt-1 d-flex align-self-center flex-column">
             <span class="purple sm-line">Por <%= @review.user.username %></span>
-            <span>em <%= @review.created_at  %></span>
+            <span>em <%= I18n.localize @review.created_at, format: :long %></span>
           </div>
         </div>
       <% end %>
@@ -92,7 +120,7 @@
             <div class="d-flex justify-content-end">
               <div class="mr-2 mt-1 d-flex align-self-center flex-column">
                 <span class="purple sm-line">Por <%= response.review.place.name %></span>
-                <span>em <%= response.created_at  %></span>
+                <span>em <%= I18n.localize response.created_at, format: :long  %></span>
               </div>
               <div>
                 <%= cl_image_tag response.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
@@ -106,7 +134,7 @@
                 </div>
                 <div class="ml-2 mt-1 d-flex align-self-center flex-column">
                   <span class="purple sm-line ml-2 pt-3">Por usuário anônimo</span>
-                  <span>em <%= @review.created_at  %></span>
+                  <span>em <%= I18n.localize response.created_at, format: :long  %></span>
                 </div>
               <% else %>
                 <div>
@@ -114,7 +142,7 @@
                 </div>
                 <div class="ml-2 mt-1 d-flex align-self-center flex-column">
                   <span class="purple sm-line">Por <%= @review.user.username %></span>
-                  <span>em <%= @review.created_at  %></span>
+                  <span>em <%= I18n.localize response.created_at, format: :long  %></span>
                 </div>
               <% end %>
             </div>

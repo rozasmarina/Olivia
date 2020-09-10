@@ -17,256 +17,256 @@
 <!-- Fim do header -->
 
 <div>
-  <div>
-    <!--img -->
-    <div class="pt-4">
-      <%= cl_image_tag @place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
-    </div>
-    <!-- infos do estabelecimento -->
-    <div class="review-content">
-      <% if @place.reviews.length > 0 %>
-        <!-- RATING SYSTEM -->
-        <div class="review-ranking">
-          <div class="rating-container">
-            <div class="rates-outer">
-              <div class="rates-inner">
-              </div>
+  <!--img -->
+  <div class="pt-4">
+    <%= cl_image_tag @place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
+  </div>
+  <!-- infos do estabelecimento -->
+  <div class="review-content">
+    <% if @place.reviews.length > 0 %>
+      <!-- RATING SYSTEM -->
+      <div class="review-ranking">
+        <div class="rating-container">
+          <div class="rates-outer">
+            <div class="rates-inner">
             </div>
-            <span id="number-rating"><%= @place.average_rating.round(1) %></span>
-            <span class="txt-rating d-block">Rating Ollivia</span>
           </div>
-        <% end %>
-      </div>
-      <!-- INFO CONTENT -->
-      <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
-        <div class='place-info'>
-          <h2 class="purple"><%= @place.name %></h2>
-          <p><%= @place.description %></p>
-          <div class="d-flex justify-content-around align-items-center mb-3">
-            <% if  @place.reviews.length == 1 %>
-              <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
-            <% elsif @place.reviews.length >= 2 %>
-              <nav class="nav justify-content-around" style="border-top:none;" id="optionsList" role ="tablist">
-                <a class="nav-link" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">
-                  <p class="sm-line mt-3"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
-                </a>
-                <a class="nav-link" id="pills-good-tab" data-toggle="pill" href="#pills-good" role="tab" aria-controls="pills-good" aria-selected="false">
-                  <div class="xp-btn d-flex justify-content-center">
-                    <i class="far fa-smile-beam mt-2"></i>
-                  </div>
-                </a>
-                <a class="nav-link" id="pills-bad-tab" data-toggle="pill" href="#pills-bad" role="tab" aria-controls="pills-bad" aria-selected="false">
-                  <div class="xp-btn d-flex justify-content-center">
-                    <i class="far fa-frown mt-2"></i>
-                  </div>
-                </a>
-              </nav>
-            <% else %>
-              Local sem avaliações
-              <!--botões-->
-            <% end %>
-          </div>
+          <span id="number-rating"><%= @place.average_rating.round(1) %></span>
+          <span class="txt-rating d-block">Rating Ollivia</span>
         </div>
-        <div class="row d-flex justify-content-center pb-3">
-          <% if current_user.blank? %>
-            <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user.present? && current_user.is_business %>
+      <% end %>
+    </div>
+    <!-- INFO CONTENT -->
+    <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
+      <div class='place-info'>
+        <h2 class="purple"><%= @place.name %></h2>
+        <p><%= @place.description %></p>
+        <div class="d-flex justify-content-around align-items-center mb-3">
+          <% if  @place.reviews.length == 1 %>
+            <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
+          <% elsif @place.reviews.length >= 2 %>
+            <nav class="nav justify-content-around" style="border-top:none;" id="optionsList" role ="tablist">
+              <a class="nav-link" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">
+                <p class="sm-line mt-3"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
+              </a>
+              <a class="nav-link" id="pills-good-tab" data-toggle="pill" href="#pills-good" role="tab" aria-controls="pills-good" aria-selected="false">
+                <div class="xp-btn d-flex justify-content-center">
+                  <i class="far fa-smile-beam mt-2"></i>
+                </div>
+              </a>
+              <a class="nav-link" id="pills-bad-tab" data-toggle="pill" href="#pills-bad" role="tab" aria-controls="pills-bad" aria-selected="false">
+                <div class="xp-btn d-flex justify-content-center">
+                  <i class="far fa-frown mt-2"></i>
+                </div>
+              </a>
+            </nav>
+          <% else %>
+            Local sem avaliações
+            <!--botões-->
           <% end %>
         </div>
       </div>
-      <!--form collapsable -->
-      <% if policy(@place).add_review? %>
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header bg-white d-flex justify-content-center" id="headingOne">
-              <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Deixe sua avaliação
-                </button>
-              </h5>
-            </div>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                <%= simple_form_for [@place, @review], method: 'post' do |f| %>
-                  <%# LABEL + INPUTS IS_GOOD  %>
-                  <div class="d-flex justify-content-center">
-                    <%= f.label "Como foi sua experiência?" %>
-                  </div>
-                  <div class="d-flex justify-content-around">
-                    <%= f.collection_radio_buttons :is_good,
-                                                [
-                                                  [true, 'Boa'],
-                                                  [false, 'Ruim']
-                                                ],
-                                                :first,
-                                                :last,
-                                                checked: true,
-                                                item_wrapper_class: :evaluation,
-                                                item_wrapper_tag: :p %>
-                  </div>
-                  <%= f.input :title,
-                              label: "Título",
-                              hint: "Não deixe em branco" %>
-                  <%= f.input :content,
-                              hint: "Não deixe em branco" %>
-                  <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
-                  <fieldset class="form-group" id="anonymous" style="display:none;">
-                    <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
-                  </fieldset>
-                  <div>
-                    <%= f.submit 'Avaliar', class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <!--reviews-->
-      <% if @place.reviews.length >= 2 %>
-        <div class="tab-content" id="options-content">
-          <!-- TAB GOOD REVIEW -->
-          <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
-            <% @reviews.where("is_disabled = ?", false).each do |review| %>
-              <div class="review-card">
-                <div class="review-header m-3">
-                  <% if review.is_anonymous %>
-                    <!-- avatar anonimo -->
-                    <p>Por: usuário anônimo</p>
-                    <%= link_to review.title, review_path(review) %>
-                  <% else %>
-                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
-                    <%= link_to review.title, review_path(review), class: "ml-1" %>
-                    <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
-                    <% if review.responses.present? %>
-                      <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="review-content m-4 border-bottom">
-                  <% if review.content.chars.length > 121 %>
-                    <p><%= review.content.slice(0, 120) + '...' %></p>
-                  <% else %>
-                    <p> <%= review.content %></p>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-            <% if @review.responses %>
-              <div class="response-card">
-                <div class="response-header">
-                </div>
-                <div class="response-content">
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="tab-pane fade" id="pills-good" role="tabpanel" aria-labelledby="pills-good-tab">
-            <% @reviews.where("is_disabled = ?", false).where(is_good: true).each do |review| %>
-              <div class="review-card">
-                <div class="review-header m-3">
-                  <% if review.is_anonymous %>
-                    <!-- avatar anonimo -->
-                    <p>Por: usuário anônimo</p>
-                    <%= link_to review.title, review_path(review) %>
-                  <% else %>
-                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                    <%= link_to review.title, review_path(review), class: "ml-1" %>
-                    <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
-                    <% if review.responses.present? %>
-                      <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="review-content m-4 border-bottom">
-                  <% if review.content.chars.length > 121 %>
-                    <p><%= review.content.slice(0, 120) + '...' %></p>
-                  <% else %>
-                    <p> <%= review.content %></p>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-            <% if @review.responses %>
-              <div class="response-card">
-                <div class="response-header">
-                </div>
-                <div class="response-content">
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="tab-pane fade" id="pills-bad" role="tabpanel" aria-labelledby="pills-bad-tab">
-            <% @reviews.where("is_disabled = ?", false).where(is_good: false).each do |review| %>
-              <div class="review-card">
-                <div class="review-header m-3">
-                  <% if review.is_anonymous %>
-                    <!-- avatar anonimo -->
-                    <p>Por: usuário anônimo</p>
-                    <%= link_to review.title, review_path(review) %>
-                  <% else %>
-                    <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                    <%= link_to review.title, review_path(review), class: "ml-1" %>
-                    <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
-                    <% if review.responses.present? %>
-                      <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="review-content m-4 border-bottom">
-                  <% if review.content.chars.length > 121 %>
-                    <p><%= review.content.slice(0, 120) + '...' %></p>
-                  <% else %>
-                    <p> <%= review.content %></p>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-            <% if @review.responses %>
-              <div class="response-card">
-                <div class="response-header">
-                </div>
-                <div class="response-content">
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <!-- ONE REVIEW -->
-      <% else %>
-        <% @reviews.where("is_disabled = ?", false).each do |review| %>
-          <div class="review-card">
-            <div class="review-header m-3">
-              <% if review.is_anonymous %>
-                <!-- avatar anonimo -->
-                <p>Por: usuário anônimo</p>
-                <%= link_to review.title, review_path(review), class: "ml-1" %>
-              <% else %>
-                <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                <%= link_to review.title, review_path(review), class: "ml-1" %>
-                <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
-                <% if review.responses.present? %>
-                  <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="review-content m-4 border-bottom">
-              <% if review.content.chars.length > 121 %>
-                <p><%= review.content.slice(0, 120) + '...' %></p>
-              <% else %>
-                <p> <%= review.content %></p>
-              <% end %>
-            </div>
-          </div>
+      <div class="row d-flex justify-content-center pb-3">
+        <% if current_user.blank? %>
+          <%= link_to 'Faça login para avaliar o local', new_user_session_path unless current_user.present? && current_user.is_business %>
         <% end %>
-        <% if @review.responses %>
-          <div class="response-card">
-            <div class="response-header">
-            </div>
-            <div class="response-content">
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+      </div>
     </div>
-    <!-- <p><%= link_to 'Voltar a Locais', places_path %></p> -->
+    <!--form collapsable -->
+    <% if policy(@place).add_review? %>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header bg-white d-flex justify-content-center" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Deixe sua avaliação
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <%= simple_form_for [@place, @review], method: 'post' do |f| %>
+                <%# LABEL + INPUTS IS_GOOD  %>
+                <div class="d-flex justify-content-center">
+                  <%= f.label "Como foi sua experiência?" %>
+                </div>
+                <div class="d-flex justify-content-around">
+                  <%= f.collection_radio_buttons :is_good,
+                                              [
+                                                [true, 'Boa'],
+                                                [false, 'Ruim']
+                                              ],
+                                              :first,
+                                              :last,
+                                              checked: true,
+                                              item_wrapper_class: :evaluation,
+                                              item_wrapper_tag: :p %>
+                </div>
+                <%= f.input :title,
+                            label: "Título",
+                            hint: "Não deixe em branco" %>
+                <%= f.input :content,
+                            hint: "Não deixe em branco" %>
+                <%= f.input :rating, collection: (0..5).to_a, selected: 0 %>
+                <fieldset class="form-group" id="anonymous" style="display:none;">
+                  <%= f.input :is_anonymous, label: "Você gostaria de permanecer anônima?" %>
+                </fieldset>
+                <div>
+                  <%= f.submit 'Avaliar', class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <!--reviews-->
+    <% if @place.reviews.length >= 2 %>
+      <div class="tab-content" id="options-content">
+        <!-- TAB GOOD REVIEW -->
+        <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+          <% @reviews.where("is_disabled = ?", false).each do |review| %>
+            <div class="review-card">
+              <div class="review-header m-3">
+                <% if review.is_anonymous %>
+                  <!-- avatar anonimo -->
+                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <p class="ml-5 purple sm-line">Avaliação anônima</p>
+                <% else %>
+                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
+                  <% if review.responses.present? %>
+                    <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="review-content m-4 border-bottom">
+                <% if review.content.chars.length > 121 %>
+                  <p><%= review.content.slice(0, 120) + '...' %></p>
+                <% else %>
+                  <p> <%= review.content %></p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <% if @review.responses %>
+            <div class="response-card">
+              <div class="response-header">
+              </div>
+              <div class="response-content">
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="pills-good" role="tabpanel" aria-labelledby="pills-good-tab">
+          <% @reviews.where("is_disabled = ?", false).where(is_good: true).each do |review| %>
+            <div class="review-card">
+              <div class="review-header m-3">
+                <% if review.is_anonymous %>
+                  <!-- avatar anonimo -->
+                  <p>Por: usuário anônimo</p>
+                  <%= link_to review.title, review_path(review) %>
+                <% else %>
+                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
+                  <% if review.responses.present? %>
+                    <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="review-content m-4 border-bottom">
+                <% if review.content.chars.length > 121 %>
+                  <p><%= review.content.slice(0, 120) + '...' %></p>
+                <% else %>
+                  <p> <%= review.content %></p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <% if @review.responses %>
+            <div class="response-card">
+              <div class="response-header">
+              </div>
+              <div class="response-content">
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="pills-bad" role="tabpanel" aria-labelledby="pills-bad-tab">
+          <% @reviews.where("is_disabled = ?", false).where(is_good: false).each do |review| %>
+            <div class="review-card">
+              <div class="review-header m-3">
+                <% if review.is_anonymous %>
+                  <!-- avatar anonimo -->
+                  <p>Por: usuário anônimo</p>
+                  <%= link_to review.title, review_path(review) %>
+                <% else %>
+                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
+                  <% if review.responses.present? %>
+                    <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="review-content m-4 border-bottom">
+                <% if review.content.chars.length > 121 %>
+                  <p><%= review.content.slice(0, 120) + '...' %></p>
+                <% else %>
+                  <p> <%= review.content %></p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <% if @review.responses %>
+            <div class="response-card">
+              <div class="response-header">
+              </div>
+              <div class="response-content">
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- ONE REVIEW -->
+    <% else %>
+      <% @reviews.where("is_disabled = ?", false).each do |review| %>
+        <div class="review-card">
+          <div class="review-header m-3">
+            <% if review.is_anonymous %>
+              <!-- avatar anonimo -->
+              <p>Por: usuário anônimo</p>
+              <%= link_to review.title, review_path(review), class: "ml-1" %>
+            <% else %>
+              <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+              <%= link_to review.title, review_path(review), class: "ml-1" %>
+              <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
+              <% if review.responses.present? %>
+                <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="review-content m-4 border-bottom">
+            <% if review.content.chars.length > 121 %>
+              <p><%= review.content.slice(0, 120) + '...' %></p>
+            <% else %>
+              <p> <%= review.content %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <% if @review.responses %>
+        <div class="response-card">
+          <div class="response-header">
+          </div>
+          <div class="response-content">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
+  <!-- <p><%= link_to 'Voltar a Locais', places_path %></p> -->
+</div>
