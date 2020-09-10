@@ -18,7 +18,7 @@
       <%= simple_form_for(@review) do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <%= f.label "Quer desativar a sua avaliação?" %>
+        <%= f.label "Deseja desativar a sua avaliação?" %>
         <%= f.collection_radio_buttons :is_disabled,
                                       [
                                         [true, ' Sim, desative a avaliação'],
@@ -30,7 +30,7 @@
                                       item_wrapper_class: :disabling,
                                       item_wrapper_tag: :p %>
         <div class="row justify-content-center">
-          <%= f.button :submit, "Desativar", data: { confirm: 'Tem certeza? Caso opte por desativar a avaliação, não será possível reverter essa escolha' }, class: 'pink-btn mt-3 w-100 mx-3' %>
+          <%= f.button :submit, "Desativar", data: { confirm: 'Tem certeza? Caso opte por desativar a avaliação, não será possível reverter essa escolha' }, class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
         </div>
       <% end %>
     </div>

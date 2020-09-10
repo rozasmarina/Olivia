@@ -25,6 +25,14 @@ body {
   color: $dark-gray;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
 .purple {
   color: $roxo;
 }
