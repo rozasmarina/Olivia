@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = current_user
     @places = Place.where(owner: nil)
     authorize @user
-    NotificationChannel.broadcast_to("notification_channel", "showing profile")
+    NotificationChannel.broadcast_to("notification_channel", test: "ok")
   end
 
   def update_position

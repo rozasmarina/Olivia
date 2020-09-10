@@ -1,16 +1,16 @@
-import consumer from "./consumer"
+// import consumer from "./consumer"
 
-consumer.subscriptions.create({ channel: "UserChannel" }, {
-    connected() {
-        console.log("Conectado em User!");
-    },
+// consumer.subscriptions.create({ channel: "UserChannel" }, {
+//     connected() {
+//         console.log("Conectado em User!");
+//     },
 
-    disconnected() {
+//     disconnected() {
 
-    },
+//     },
 
-    received(data) {
-        console.log(data);
-    }
+//     received(data) {
+//         console.log(data);
+//     }
 
-});
+// });
