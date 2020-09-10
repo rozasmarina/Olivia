@@ -1,16 +1,36 @@
-<!-- HEADER -->
-<div class="heading d-flex justify-content-center align-items-center w-100 pt-2">
-  <div class="pg-title">
+<!-- Header + info -->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <i class="fas fa-arrow-left" style="color: #7209B7 !important;"></i>
+  </div>
+
+
+
+
+  <div class="pg-title" style="margin-left: 7em;
+                              margin-right: 7em;">
     <% if @user.is_business? && @user.owned_place.present? %>
-      <h5> <strong><%= @user.owned_place.name %> </strong> </h5>
+      <%= @user.owned_place.name %>
     <% else %>
-      <h5> <strong>Olá, <%= @user.first_name %> </strong> </h5>
+      Olá, <%= @user.first_name %>
     <% end %>
   </div>
+
+  <div><i class="fas fa-info" style="color: white;"></i></div>
+  <div class="mb-5">
+  </div>
 </div>
+<!-- Fim do Header -->
+
+
+<!-- HEADER -->
+
+
+
+
 <!-- MAIN BODY -->
 <!-- AVATAR -->
-<div class="d-flex justify-content-center pt-5 mt-4">
+<div class="d-flex justify-content-center" style="margin-top: 6em;">
   <%= cl_image_tag current_user.photo.key, class:"avatar", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
 </div>
 <br>
@@ -19,8 +39,8 @@
 <div class="dropdown-divider"></div>
 <% if @user.owned_place.present? %>
   <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center" %>
+  <div class="dropdown-divider"></div>
 <% end %>
-<div class="dropdown-divider"></div>
 <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
 <div class="container">
   <!-- BUSINESS PROFILE -->
@@ -301,8 +321,8 @@
           <div class="card-body">
             <div class="d-flex justify-content-center">
               <%= simple_form_for :message, url: message_update_path, method: "patch" do |f| %>
-                <%= f.input :message_authorities, 
-                            as: :text, 
+                <%= f.input :message_authorities,
+                            as: :text,
                             label: "Deseja personalizar sua mensagem para as autoridades?",
                             placeholder: "#{@user.message_authorities}",
                             hint: "Caso não digite nada, sua mensagem ficará em branco" %>
