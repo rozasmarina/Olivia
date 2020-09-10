@@ -12,7 +12,7 @@
     <% end %>
   </div>
 
-  <hr>
+
   <!-- Criar conta -->
   <div class="row justify-content-center">
     <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
@@ -28,7 +28,7 @@
 
   <div class="row justify-content-center">
     <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-      <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+      <%= link_to "Não recebeu instruções para desbloquear?", new_unlock_path(resource_name) %><br />
     <% end %>
   </div>
 
