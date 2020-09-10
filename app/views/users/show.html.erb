@@ -4,9 +4,6 @@
     <i class="fas fa-arrow-left" style="color: #7209B7 !important;"></i>
   </div>
 
-
-
-
   <div class="pg-title" style="margin-left: 7em;
                               margin-right: 7em;">
     <% if @user.is_business? && @user.owned_place.present? %>
@@ -27,7 +24,6 @@
 
 
 
-
 <!-- MAIN BODY -->
 <!-- AVATAR -->
 <div class="d-flex justify-content-center" style="margin-top: 6em;">
@@ -36,13 +32,14 @@
 <br>
 <!-- EDIT AND LOGOUT -->
 <%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center" %>
-<div class="dropdown-divider"></div>
+<!-- <div class="dropdown-divider"></div> -->
 <% if @user.owned_place.present? %>
   <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center" %>
-  <div class="dropdown-divider"></div>
+  <!-- <div class="dropdown-divider"></div> -->
 <% end %>
 <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
 <div class="container">
+
   <!-- BUSINESS PROFILE -->
   <% if @user.is_business %>
     <!-- HAS PLACE -->
@@ -203,11 +200,12 @@
     <!-- COMMON PROFILE -->
   <% else %>
     <div class="accordion" id="common">
+
       <!-- USER ANGELS -->
-      <div class="card">
-        <div class="card-header" id="angels">
+      <div class="card" style="border: transparent !important;">
+        <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="angels">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#angelsCollapse" aria-expanded="true" aria-controls="angelsCollapse">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#angelsCollapse" aria-expanded="true" aria-controls="angelsCollapse">
               Meus anjos
             </button>
           </h2>
@@ -233,11 +231,12 @@
           </div>
         </div>
       </div>
+
       <!-- USER REVIEWS -->
-      <div class="card">
-        <div class="card-header" id="reviews">
+      <div class="card" style="border: transparent !important;">
+        <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="reviews">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#reviewsCollapse" aria-expanded="false" aria-controls="reviewsCollapse">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#reviewsCollapse" aria-expanded="false" aria-controls="reviewsCollapse">
               Minhas avaliações
             </button>
           </h2>
@@ -257,10 +256,10 @@
         </div>
       </div>
       <!-- MESSAGE ANGELS -->
-      <div class="card">
-        <div class="card-header" id="messageAngels">
+      <div class="card" style="border: transparent !important;">
+        <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="messageAngels">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#messageAngelsCollapse" aria-expanded="true" aria-controls="messageAngelsCollapse">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#messageAngelsCollapse" aria-expanded="true" aria-controls="messageAngelsCollapse">
               Alterar minha mensagem para os anjos
             </button>
           </h2>
@@ -283,10 +282,10 @@
         </div>
       </div>
       <!-- MESSAGE NEAR USERS -->
-      <div class="card">
-        <div class="card-header" id="nearMe">
+      <div class="card" style="border: transparent !important;">
+        <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="nearMe">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#nearMeCollapse" aria-expanded="true" aria-controls="nearMeCollapse">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#nearMeCollapse" aria-expanded="true" aria-controls="nearMeCollapse">
               Alterar minha mensagem para pessoas próximas
             </button>
           </h2>
@@ -309,10 +308,10 @@
         </div>
       </div>
       <!-- MESSAGE AUTHORITIES -->
-      <div class="card">
-        <div class="card-header" id="authorities">
+      <div class="card" style="border: transparent !important;">
+        <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="authorities">
           <h2 class="mb-0">
-            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#authoritiesCollapse" aria-expanded="true" aria-controls="authoritiesCollapse">
+            <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#authoritiesCollapse" aria-expanded="true" aria-controls="authoritiesCollapse">
               Alterar minha mensagem para as autoridades
             </button>
           </h2>
