@@ -130,11 +130,34 @@
                 <% end %>
               </div>
             </div>
+            <!-- Accordion card -->
+            <div class="card border-bottom-0 border-left border-right border-light">
+              <!-- Card header -->
+              <div class="card-header border-bottom border-light bg-white" role="tab" id="headingTwo4">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo4"
+                aria-expanded="false" aria-controls="collapseTwo4">
+                  <h5 class="black-text font-weight-normal mb-0">
+                    Locais com mais resoluções <i class="fas fa-angle-down rotate-icon"></i>
+                  </h5>
+                </a>
+              </div>
+              <!-- Card body -->
+              <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo3"
+              data-parent="#accordionEx">
+                <div class="card-body">
+                  <% @places.order(average_rating: :asc).first(10).each do |place| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                      <%= link_to place.name, place_path(place) %>
+                      <span class="badge badge-roxa badge-pill"> <%= place.average_rating.round(1) %> </span>
+                    </li>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion card -->
           </div>
-          <!-- Accordion card -->
+          <!-- Accordion wrapper -->
         </div>
-        <!-- Accordion wrapper -->
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
