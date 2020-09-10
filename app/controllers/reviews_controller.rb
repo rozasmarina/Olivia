@@ -76,7 +76,11 @@ class ReviewsController < ApplicationController
   end
 
   def set_review
-    @review = Review.find(params[:id])
-    authorize @review
+    @review = Review.find_by(id: params[:id])
+    if @review.nil?
+      redirect_to root_path, notice: "Avaliação não encontrada."
+    else
+      authorize @review
+    end
   end
 end
