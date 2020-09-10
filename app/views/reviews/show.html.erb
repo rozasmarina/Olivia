@@ -12,11 +12,12 @@
   </div>
 </div>
 <!--fim do header-->
-
 <div class="container">
   <!-- PLACE NAME -->
   <div class="d-flex mt-5 mb-2 pt-5 purple justify-content-center">
-    <h2><strong><%= @review.place.name %></strong></h2>
+    <%= link_to place_path(@review.place) do %>
+      <h2><strong style="color: #7209B7;"><%= @review.place.name %></strong></h2>
+    <% end %>
   </div>
   <!-- REVIEW TITLE -->
   <div class="d-flex justify-content-center">
@@ -32,7 +33,7 @@
       <span class="align-self-center"> Avaliação de <%= @review.user.username %>: </span>
     <% end %>
     <!-- RATING SYSTEM -->
-    <div class="rates-outer align-self-center" data-rating="<%= @review.rating %>"> 
+    <div class="rates-outer align-self-center" data-rating="<%= @review.rating %>">
       <div class="rates-inner align-self-center">
       </div>
     </div>
@@ -47,7 +48,6 @@
       </div>
     <% end %>
   </div>
-
   <!-- REVIEW HEADER -->
   <div class="review-card">
     <div class="review-header m-3">
@@ -82,7 +82,6 @@
       <p><%= @review.content %></p>
     <% end %>
   </div>
-
   <!-- RESPONSE -->
   <% if @review.responses.present? %>
     <% @review.responses.each do | response | %>
@@ -118,11 +117,9 @@
                   <span>em <%= @review.created_at  %></span>
                 </div>
               <% end %>
-              
             </div>
           <% end %>
         </div>
-
         <!-- RESPONSE CONTENT -->
         <div class="response-content m-3 border-bottom">
           <% if response.user == @review.place.owner %>
@@ -131,10 +128,9 @@
             <p><%= response.response %></p>
           <% end %>
         </div>
-      </div>  
+      </div>
     <% end %>
   <% end %>
-
   <!-- ADD RESPONSE -->
   <% if policy(@review).create_response? %>
     <div class="mx-3">
@@ -144,15 +140,13 @@
             <%= f.label "Interaja nesta avaliação" %>
           </div>
           <%= f.input :response, label: false, placeholder: "Escreva aqui a sua resposta" %>
-          <div class="d-flex justify-content-center">
-            <%= f.submit 'Responda' %> 
+          <div>
+            <%= f.submit 'Responda', class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
           </div>
-          
         </div>
       <% end %>
     </div>
   <% end %>
-
   <!-- links -->
   <div class="m-3">
     <% if policy(@review).edit?  %>

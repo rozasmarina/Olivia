@@ -1,27 +1,28 @@
 <div class="container">
-  <div class="container d-flex justify-content-center text-center mt-2 pt-5">
-    <h2 class="h3 font-weight-normal">REGISTRE-SE</h2>
-  </div>
-  <div class="container d-flex justify-content-center pt-2">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%#= f.error_notification %>
-      <div class="form-inputs">
-        <%= f.input :email,
+  <div>
+    <div class="container d-flex justify-content-center text-center mt-2 pt-5">
+      <h2 class="h3 font-weight-normal">REGISTRE-SE</h2>
+    </div>
+    <div class="container d-flex justify-content-center pt-2">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%#= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
                       required: true,
                       autofocus: true,
                       label: false,
                       input_html: { autocomplete: "email", placeholder: 'E-mail' }%>
-        <%= f.input :password,
+          <%= f.input :password,
                       required: true,
                       label: false,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      hint: ("#{@minimum_password_length} caracteres no mínimo" if @minimum_password_length),
                       input_html: { autocomplete: "new-password", placeholder: 'Senha' } %>
-        <%= f.input :password_confirmation,
+          <%= f.input :password_confirmation,
                       required: true,
                       label: false,
                       input_html: { autocomplete: "new-password", placeholder: 'Confirme a senha' } %>
-        <%= f.label "Quer criar uma conta empresarial?" %>
-        <%= f.collection_radio_buttons :is_business,
+          <%= f.label "Quer criar uma conta empresarial?" %>
+          <%= f.collection_radio_buttons :is_business,
                                           [
                                             [false, 'Não, sou uma pessoa física'],
                                             [true, 'Sim, tenho um estabelecimento']
@@ -31,27 +32,60 @@
                                           checked: false,
                                           item_wrapper_class: :businessaccount,
                                           item_wrapper_tag: :p %>
-        <%#= SE USER COMUM: CPF E GENDER %>
-        <fieldset class="form-group" id="pffield" style="display:block;">
-          <%= f.input :cpf, label: false, placeholder: 'CPF' %>
-          <%= f.input :gender, label: false, placeholder: 'Sexo' %>
-        </fieldset>
-        <%#=SE USER EMPRESARIAL: CNPJ %>
-        <fieldset class="form-group" id="pjfield" style="display:none;">
-          <%= f.input :cnpj, label: false, placeholder: 'CNPJ' %>
-        </fieldset>
-        <%#= CMPOS COMUNS A TODOS OS USERS %>
-        <%= f.input :first_name, label: false, placeholder: 'Nome' %>
-        <%= f.input :last_name, label: false, placeholder: 'Sobrenome' %>
-        <%= f.input :username, label: false, placeholder: 'Username' %>
-        <%= f.input :city, label: false, placeholder: 'Cidade' %>
-        <%= f.input :state, label: false, placeholder: 'Estado' %>
-        <%= f.input :phone_number, label: false, placeholder: 'Telefone' %>
-        <%= f.input :photo, :label => 'Avatar', as: :file %>
-        <div class="form-actions pink-btn justify-content-center align-center-btn">
-          <%= f.button :submit, "Criar conta" %>
+          <%#= SE USER COMUM: CPF E GENDER %>
+          <fieldset class="form-group" id="pffield" style="display:block;">
+            <%= f.input :cpf, label: false, placeholder: 'CPF' %>
+            <%= f.input :gender, label: false, placeholder: 'Sexo' %>
+          </fieldset>
+          <%#=SE USER EMPRESARIAL: CNPJ %>
+          <fieldset class="form-group" id="pjfield" style="display:none;">
+            <%= f.input :cnpj, label: false, placeholder: 'CNPJ' %>
+          </fieldset>
+          <%#= CMPOS COMUNS A TODOS OS USERS %>
+          <%= f.input :first_name, label: false, placeholder: 'Nome' %>
+          <%= f.input :last_name, label: false, placeholder: 'Sobrenome' %>
+          <%= f.input :username, label: false, placeholder: 'Username' %>
+          <%= f.input :state,
+                    label: false,
+                    placeholder: 'Estado',
+                    collection: [
+                      'Acre', 
+                      'Alagoas',
+                      'Amazonas',
+                      'Amapá',
+                      'Bahia',
+                      'Ceará',
+                      'Distrito Federal',
+                      'Espírito Santo',
+                      'Goiás',
+                      'Maranhão',
+                      'Minas Gerais',
+                      'Mato Grosso do Sul',
+                      'Mato Grosso',
+                      'Pará',
+                      'Paraíba',
+                      'Pernambuco',
+                      'Piauí',
+                      'Paraná',
+                      'Rio de Janeiro',
+                      'Rio Grande do Norte',
+                      'Rondônia',
+                      'Roraima',
+                      'Rio Grande do Sul',
+                      'Santa Catarina',
+                      'Sergipe',
+                      'São Paulo',
+                      'Tocantins'
+                      ] %>
+          <%= f.input :city, label: false, placeholder: 'Cidade' %>
+          <%= f.input :phone_number, label: false, placeholder: 'Telefone' %>
+          <%= f.input :photo, :label => 'Adicionar avatar', as: :file %>
+          <div class="form-actions pink-btn justify-content-center align-center-btn mb-3">
+            <%= f.button :submit, "Criar conta" %>
+          </div>
+        <% end %>
+        <div class="mb-3">
+          <%= render "devise/shared/links" %>
         </div>
-      <% end %>
-      <%= render "devise/shared/links" %>
+      </div>
     </div>
-  </div>

@@ -13,6 +13,19 @@ class UsersController < ApplicationController
     @user.save
   end
 
+  def update_messages
+    @user = current_user
+    authorize @user
+    if params[:message][:message_angels]
+      @user.message_angels = params[:message][:message_angels]
+    elsif params[:message][:message_near_users]
+      @user.message_near_users = params[:message][:message_near_users]
+    else
+      @user.message_authorities = params[:message][:message_authorities]
+    end
+    @user.save ? (redirect_to users_path) : (render :show)
+  end
+  
   # ! DO NOT DELETE
   # def sos_angels
   #   #Precisamos criar uma função que transforme lat e lng em endereço e chamamos na variável abaixo
