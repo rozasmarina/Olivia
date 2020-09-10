@@ -55,8 +55,10 @@
               <% if @user.owned_place.reviews.present? %>
                 <ul>
                   <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
-                    <% if review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                    <% if review.responses.present? %>
+                      <% if review.responses.last.user != current_user %>
+                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </ul>

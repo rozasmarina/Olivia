@@ -34,7 +34,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def satisfy?
-    owner? && record.responses.present? && !record.is_satisfied
+    owner? && record.responses.present? && !record.is_satisfied 
   end
 
   # def destroy?
