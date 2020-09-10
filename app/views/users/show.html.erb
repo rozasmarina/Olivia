@@ -264,7 +264,8 @@
                 <%= f.input :message_angels,
                             as: :text,
                             label: "Deseja personalizar sua mensagem para seus anjos?",
-                            placeholder: "#{@user.message_angels}" %>
+                            placeholder: "#{@user.message_angels}",
+                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -290,7 +291,8 @@
                 <%= f.input :message_near_users,
                             as: :text,
                             label: "Deseja personalizar sua mensagem para pessoas próximas?",
-                            placeholder: "#{@user.message_near_users}" %>
+                            placeholder: "#{@user.message_near_users}",
+                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -316,7 +318,8 @@
                 <%= f.input :message_authorities, 
                             as: :text, 
                             label: "Deseja personalizar sua mensagem para as autoridades?",
-                            placeholder: "#{@user.message_authorities}" %>
+                            placeholder: "#{@user.message_authorities}",
+                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
