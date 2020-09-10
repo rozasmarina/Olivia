@@ -37,12 +37,12 @@ Rails.application.routes.draw do
   # Route to add owner to places
   patch 'places/add_owner', to: 'places#add_owner', as: :add_owner
 
-  resources :places, except: %i[destroy show]
+  resources :places, except: %i[destroy show index]
 
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
 
   # Redirect to home when the route does not exist
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 end

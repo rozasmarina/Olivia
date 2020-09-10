@@ -2,9 +2,9 @@ class PlacesController < ApplicationController
   before_action :set_place, only: %i[show edit update]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  def index
-    @places = policy_scope(Place)
-  end
+  # def index
+  #   @places = policy_scope(Place)
+  # end
 
   def show
     @reviews = @place.reviews.order('created_at desc')
