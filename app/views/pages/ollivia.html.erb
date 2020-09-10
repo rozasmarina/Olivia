@@ -1,12 +1,9 @@
 <!-- Header + info -->
 <div class="heading d-flex justify-content-between align-items-center w-100">
   <div class="back-btn text-white ml-2">
-
-    <%= link_to :back do %>
-      <i class="fas fa-arrow-left"></i>
-
-    <% end %>
+    <i class="fas fa-arrow-left" style="color: #7209B7 !important;"> </i>
   </div>
+
   <div class="pg-title" style="margin-left: 7em;
                               margin-right: 7em;">
     OLLIVIA
@@ -31,30 +28,27 @@
       <div class="col-md-6 mb-4" style="margin-top: 40px;">
         <!-- Card -->
 
-        <%#= link_to "Emergência", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
+        <%#= link_to "Emergência", emergency_path, class: "pr-4 pl-4 mr-484"  %>
 
-
-
-        <a href="#!" class="card hoverable" style="border-radius: 10px;
-                                                   border: 2px solid #F72585;
-                                                   /* margin-top: -4em;">
+        <%= link_to emergency_path, class:"card hoverable", style: "border-radius: 10px; border: 2px solid #F72585; margin-top: -1em;" do %>
+                
           <!-- Card content -->
           <div class="card-body">
             <div class="media">
               <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                
                 <i class="far fa-bell fa-2x icon-rosa"></i>
 
               </span>
               <div class="media-body">
                 <h5 class="dark-grey-text mb-3">Emergência!</h5>
                 <p class="font-weight-light text-muted mb-0">Clique aqui para avisar os seus anjos que você está em perigo</p>
-                 <%#= link_to "Emergência", emergency_path, id: 'sos-btn'%>
               </div>
             </div>
 
           </div>
 
-        </a>
+        <% end %>
         <!-- Card -->
       </div>
       <!--First column-->
@@ -87,13 +81,12 @@
 
           <!-- Accordion card -->
           <div class="card border-top border-bottom-0 border-left border-right border-light">
-
             <!-- Card header -->
             <div class="card-header border-bottom border-light" role="tab" id="headingOne1">
               <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
                 aria-controls="collapseOne1">
                 <h5 class="black-text font-weight-normal mb-0">
-                  Top 10 mais bem avaliados <i class="fas fa-angle-down rotate-icon"></i>
+                  Top 10 Ollivia <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
               </a>
             </div>
@@ -102,10 +95,14 @@
             <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
               data-parent="#accordionEx">
               <div class="card-body">
-                As mais positivas vao aqui
+                <% @places.order(average_rating: :desc).first(10).each do |place| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                    <%= link_to place.name, place_path(place) %>
+                    <span class="badge badge-roxa badge-pill"> <%= place.average_rating.round(1) %> </span>
+                  </li>
+                <% end %>
               </div>
             </div>
-
           </div>
           <!-- Accordion card -->
 
@@ -117,7 +114,7 @@
               <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
                 aria-expanded="false" aria-controls="collapseTwo2">
                 <h5 class="black-text font-weight-normal mb-0">
-                  Maior numero de resolucoes <i class="fas fa-angle-down rotate-icon"></i>
+                  Maior numero de resoluções <i class="fas fa-angle-down rotate-icon"></i>
                 </h5>
               </a>
             </div>
@@ -126,15 +123,47 @@
             <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
               data-parent="#accordionEx">
               <div class="card-body">
-                Num de resolucoes aqui
+                  <% @places.order(average_rating: :desc).first(10).each do |place| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                    <%= link_to place.name, place_path(place) %>
+                    <span class="badge badge-roxa badge-pill"> <%= place.average_rating.round(1) %> </span>
+                  </li>
+                <% end %>
               </div>
             </div>
 
           </div>
           <!-- Accordion card -->
 
+          <!-- Accordion card -->
+          <div class="card border-bottom-0 border-left border-right border-light">
+
+            <!-- Card header -->
+            <div class="card-header border-bottom border-light" role="tab" id="headingTwo3">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo3"
+                aria-expanded="false" aria-controls="collapseTwo3">
+                <h5 class="black-text font-weight-normal mb-0">
+                  Piores avaliações <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+              </a>
+            </div>
+
+            <!-- Card body -->
+            <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo3"
+              data-parent="#accordionEx">
+              <div class="card-body">
+                 <% @places.order(average_rating: :asc).first(10).each do |place| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                    <%= link_to place.name, place_path(place) %>
+                    <span class="badge badge-roxa badge-pill"> <%= place.average_rating.round(1) %> </span>
+                  </li>
+                <% end %>
+              </div>
+            </div>
+
           </div>
           <!-- Accordion card -->
+          
 
         </div>
         <!-- Accordion wrapper -->
