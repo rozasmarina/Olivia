@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ollivia</title>
+    <title>Ollivia - Rgtolê sem preocupação </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
   <body class='m-0'>
     <div data-controller="position"
     data-position-refresh-interval="60000"></div>
-
     <div class="main-content" style="position: relative;">
       <% if alert %>
         <div class="toast alert" style="position: absolute; top: 300px; right: 35px; z-index: 6;" data-autohide="false" aria-live="assertive" aria-atomic="true" role="alert">
@@ -27,7 +26,6 @@
           </div>
         </div>
       <% end %>
-
       <% if notice %>
         <div class="toast notice" style="position: absolute; top: 300px; right: 100px; z-index: 6;" data-autohide="false" aria-live="polite" aria-atomic="true" role="status">
           <div class="toast-header">
