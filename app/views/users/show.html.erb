@@ -55,10 +55,14 @@
               <% if @user.owned_place.reviews.present? %>
                 <ul>
                   <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
-                    <% if review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                    <% if review.responses.present? %>
+                      <% if review.responses.last.user != current_user %>
+                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                      <% end %>
+                      <% elsif review.responses.blank? %>
+                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                      <% end %>
                     <% end %>
-                  <% end %>
                 </ul>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Não há avaliações aguardando resposta.</p>
@@ -162,7 +166,7 @@
               <% if @user.owned_place.reviews.where(is_satisfied: true).present? %>
                 <ul>
                   <% @user.owned_place.reviews.where(is_satisfied: true).each do |review| %>
-                    <li> <%= link_to review.title, review_path(review) %></li>
+                    <li> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
                   <% end %>
                 </ul>
               <% else %>
