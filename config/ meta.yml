@@ -1,4 +1,5 @@
 meta_product_name: "Ollivia"
 meta_title: "Ollivia - Curta o rolê sem preocupação"
 meta_description: "Confira se o rolê que você vai é seguro, denuncie casos de assédio e compartilhe sua localização com amigos em caso de emergência"
-meta_image: "cover.png" # should exist in `app/assets/images/`
+meta_image: "role_sem_preocupacao.png" # should exist in `app/assets/images/`
+twitter_account: "@appollivia"
