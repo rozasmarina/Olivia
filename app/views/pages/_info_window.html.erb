@@ -1,9 +1,9 @@
-<div class="card-map" style="width: 22em;
+<div class="card-map" style="width: 25em;
                              height: 24em;">
   <!-- Card image -->
   <div class="view overlay">
     <%= cl_image_tag place.photo.key,
-    class: "shadow-lg card-img-olli d-flex justify-content-center", style:"width: 20em;
+    class: "shadow-lg card-img-olli d-flex justify-content-center", style:"width: 23em;
                                                                            height:10em"  %>
     <a>
       <div class="mask rgba-white-slight"> </div>
@@ -30,7 +30,7 @@
           <div class="rates-inner" style="width:<%= iconPercentageRounded %>%;">
           </div>
         </div>
-        <span id="number-rating"><%= place.average_rating.round(1) %></span>
+        <span id="number-rating">Rating Ollivia <%= place.average_rating.round(1) %></span>
       </div>
     <% end %>
   </div>
