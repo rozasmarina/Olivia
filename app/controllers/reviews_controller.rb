@@ -2,10 +2,10 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit update disable satisfy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  def index
-    @reviews = policy_scope(Review)
-    @active_reviews = policy_scope(Review).where("is_disabled = ?", false)
-  end
+  # def index
+  #   @reviews = policy_scope(Review)
+  #   @active_reviews = policy_scope(Review).where("is_disabled = ?", false)
+  # end
 
   def show
     @response = Response.new
