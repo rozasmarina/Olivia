@@ -31,10 +31,10 @@
 </div>
 <br>
 <!-- EDIT AND LOGOUT -->
-<%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center" %>
+<%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center py-1" %>
 <!-- <div class="dropdown-divider"></div> -->
 <% if @user.owned_place.present? %>
-  <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center" %>
+  <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center pb-1" %>
   <!-- <div class="dropdown-divider"></div> -->
 <% end %>
 <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
@@ -60,7 +60,7 @@
                 <ul>
                   <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
                     <% else %>
                       <p>Não há avaliações aguardando resposta.</p>
                     <% end %>
@@ -87,7 +87,7 @@
                 <ul>
                   <% @user.owned_place.reviews.each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
                     <% else %>
                       <li> <%= link_to review.title, review_path(review) %></li>
                     <% end %>
@@ -114,7 +114,7 @@
                 <ul>
                   <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
                     <% else %>
                       <li> <%= link_to review.title, review_path(review) %></li>
                     <% end %>
@@ -141,7 +141,7 @@
                 <ul>
                   <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                     <% else %>
                       <li> <%= link_to review.title, review_path(review) %></li>
                     <% end %>
@@ -246,7 +246,7 @@
             <ul>
               <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
                 <% if review.responses.present? && review.responses.last.user != current_user %>
-                  <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                  <li><%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
                 <% else %>
                   <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
                 <% end %>
