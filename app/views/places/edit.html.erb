@@ -19,6 +19,11 @@
     <%= simple_form_for @place do |f| %>
       <%= f.input :name %>
       <%= f.input :address %>
+      <%= f.input :description %>
+      <label class="d-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100">
+        Adicionar imagem
+        <%= f.input :photo, label: false, as: :file, input_html: { hidden: true } %>
+      </label>
       <div>
         <%= f.button :submit, "Editar", class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
       </div>

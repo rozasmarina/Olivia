@@ -70,7 +70,10 @@
                       ] %>
         <%= f.input :city, label: 'Cidade' %>
         <%= f.input :phone_number, label: 'Telefone' %>
-        <%= f.input :photo, :label => 'Alterar avatar', as: :file %>
+        <label class="d-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100">
+          Adicionar avatar
+          <%= f.input :photo, label: false, as: :file, input_html: { hidden: true } %>
+        </label>
       </div>
       <div>
         <%= f.button :submit, "Atualizar", class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %> 
