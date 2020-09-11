@@ -122,14 +122,12 @@
               <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo3"
               data-parent="#accordionEx">
                 <div class="card-body">
-                  <ul>
-                    <% @satisfied.group(:place_id).order(count: :desc).count.first(10).each do |place| %>
-                      <li class="list-group-item d-flex justify-content-between align-items-center list-place">
-                        <%= link_to @places.find(place[0]).name, place_path(@places.find(place[0])) %>
-                        <span class="badge badge-roxa badge-pill"> <%= place[1] %></span>
-                      </li>
-                    <% end %>
-                  </ul>
+                  <% @satisfied.group(:place_id).order(count: :desc).count.first(10).each do |place| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                      <%= link_to @places.find(place[0]).name, place_path(@places.find(place[0])) %>
+                      <span class="badge badge-roxa badge-pill"> <%= place[1] %></span>
+                    </li>
+                  <% end %>
                 </div>
               </div>
             </div>
