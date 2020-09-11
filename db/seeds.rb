@@ -338,7 +338,7 @@ place_names.length.times do
 end
 
 puts 'Creating bad reviews'
-rand(20..25).times do
+rand(25..35).times do
   title = Faker::Book.title
   content = Faker::Quote.famous_last_words
   rating = rand(0..3)
@@ -358,7 +358,7 @@ rand(20..25).times do
 end
 
 puts 'Creating good reviews'
-rand(20..25).times do
+rand(25..35).times do
   title = Faker::Book.title
   content = Faker::Movies::HitchhikersGuideToTheGalaxy.quote
   rating = rand(3..5)
@@ -378,14 +378,14 @@ rand(20..25).times do
 end
 
 puts 'Creating owners responses'
-rand(10..20).times do
+rand(35..45).times do
   response = Faker::Quote.famous_last_words
   review = Review.all.sample
   user = review.place.owner
   next if user.nil?
 
   Response.create!(response: response, user: user, review: review)
-  review.update(is_satisfied: [false, true].sample)
+  review.update(is_satisfied: [false, true, true, true].sample)
   puts "#{review.place.owner.username} responded to a review"
 
   rand(0..1).times do
