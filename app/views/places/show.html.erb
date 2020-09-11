@@ -14,7 +14,11 @@
 <div>
   <!--img -->
   <div class="pt-4">
-    <%= cl_image_tag @place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
+    <% if @place.photo.present? %>
+      <%= cl_image_tag @place.photo.key, transformation: [{width: 414, height: 300, crop: "fill"}] %>
+    <% else %>
+      <%= cl_image_tag("place-default-image", transformation: [{width: 414, height: 300, crop: "fill", quality: 100}]) %>
+    <% end %>
   </div>
   <!-- infos do estabelecimento -->
   <div class="review-content">
