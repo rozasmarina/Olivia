@@ -48,6 +48,7 @@ class PagesController < ApplicationController
 
   def ollivia
     @places = Place.all
+    @satisfied = Review.where(is_satisfied: true).left_joins(:place_id).group(:place_id).order('COUNT(place_id) DESC')
   end
 
   def community
