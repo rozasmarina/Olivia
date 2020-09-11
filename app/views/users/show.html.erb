@@ -28,7 +28,7 @@
   <!-- <div class="dropdown-divider"></div> -->
 <% end %>
 <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center" %>
-<%= link_to "#{Notification.unread_count(current_user)} Notificações", notifications_path, class: "d-flex justify-content-center pb-1 mt-5" %>
+<%= link_to "#{Notification.unread_count(current_user)} Notificações", main_app.notifications_path, class: "d-flex justify-content-center pb-1 mt-5" %>
 <div class="container mt-3">
   <!-- BUSINESS PROFILE -->
   <% if @user.is_business %>
