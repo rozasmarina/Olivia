@@ -1,18 +1,14 @@
 <!--Header-->
 <div class="heading d-flex justify-content-between align-items-center w-100">
-  <div class="back-btn text-white ml-2">
+  <div class="back-btn text-white ml-4">
     <%= link_to :back do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
   </div>
-  <div class="pg-title" style="margin-left: 7em;
-                              margin-right: 7em;">
+  <div class="pg-title mx-2">
     <%= @place.name %>
   </div>
-  <div>
-    <i class="fas fa-info" style="color: white;"></i>
-  </div>
-  <div class="mb-5"></div>
+  <div><i class="fas fa-info mr-4" style="color: white;"></i></div>
 </div>
 <!-- Fim do header -->
 <div>
@@ -39,8 +35,9 @@
     <div class="review-header mt-3 pt-4 pb-2 px-4 border-bottom">
       <div class='place-info'>
         <h2 class="purple"><%= @place.name %></h2>
+        <p><%= @place.address %></p>
         <p><%= @place.description %></p>
-        <div class="d-flex justify-content-around align-items-center mb-3">
+        <div class="d-flex justify-content-around align-items-center mb-1">
           <% if  @place.reviews.length == 1 %>
             <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
           <% elsif @place.reviews.length >= 2 %>
@@ -171,8 +168,9 @@
               <div class="review-header m-3">
                 <% if review.is_anonymous %>
                   <!-- avatar anonimo -->
-                  <p>Por: usuário anônimo</p>
-                  <%= link_to review.title, review_path(review) %>
+                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <p class="ml-5 purple sm-line">Avaliação anônima</p>
                 <% else %>
                   <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
                   <%= link_to review.title, review_path(review), class: "ml-1" %>
@@ -206,8 +204,9 @@
               <div class="review-header m-3">
                 <% if review.is_anonymous %>
                   <!-- avatar anonimo -->
-                  <p>Por: usuário anônimo</p>
-                  <%= link_to review.title, review_path(review) %>
+                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <p class="ml-5 purple sm-line">Avaliação anônima</p>
                 <% else %>
                   <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
                   <%= link_to review.title, review_path(review), class: "ml-1" %>
@@ -243,8 +242,9 @@
           <div class="review-header m-3">
             <% if review.is_anonymous %>
               <!-- avatar anonimo -->
-              <p>Por: usuário anônimo</p>
+              <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
               <%= link_to review.title, review_path(review), class: "ml-1" %>
+              <p class="ml-5 purple sm-line">Avaliação anônima</p>
             <% else %>
               <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
               <%= link_to review.title, review_path(review), class: "ml-1" %>
