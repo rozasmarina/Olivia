@@ -74,7 +74,6 @@ const initMapbox = () => {
             },
             trackUserLocation: true
         })
-        map.addControl(position, 'bottom-right');
         map.addControl(nav, 'bottom-right');
         navigator.geolocation.getCurrentPosition((pos) => {
             crd = pos.coords;
@@ -85,6 +84,7 @@ const initMapbox = () => {
         }, () => {
             fitMapToMarkers(map, markers)
         });
+        map.addControl(position, 'bottom-right');
     }
 };
 
