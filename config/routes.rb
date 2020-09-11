@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/community', to: 'pages#community', as: :community
   get '/ollivia', to: 'pages#ollivia', as: :ollivia
   get '/emergency', to: 'pages#emergency', as: :emergency
+  get '/intro', to: 'pages#intro', as: :intro
 
   # Messages
   # get '/send_message', to: 'twilio#send_message', as: :send_message
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
   get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
+  
 
   resource :users, only: :show
   patch 'users/message_update', to: 'users#update_messages', as: :message_update
