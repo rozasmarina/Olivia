@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get '/community', to: 'pages#community', as: :community
   get '/ollivia', to: 'pages#ollivia', as: :ollivia
   get '/emergency', to: 'pages#emergency', as: :emergency
-  get '/not_found', to: 'pages#not_found', as: :not_found
 
   # Messages
   # get '/send_message', to: 'twilio#send_message', as: :send_message
