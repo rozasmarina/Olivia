@@ -46,17 +46,15 @@
           <div id="awaitingCollapse" class="collapse" aria-labelledby="awaiting" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.present? %>
-                
-                  <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
-                    <% if review.responses.present? %>
-                      <% if review.responses.last.user != current_user %>
-                        <li class="list-group-item d-flex justify-content-between align-items-center list-place"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
-                      <% elsif review.responses.blank? %>
-                        <li class="list-group-item d-flex justify-content-between align-items-center list-place"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
-                      <% end %>
+                <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
+                  <% if review.responses.present? %>
+                    <% if review.responses.last.user != current_user %>
+                      <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                     <% end %>
+                  <% elsif review.responses.blank? %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                   <% end %>
-                
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Não há avaliações aguardando resposta.</p>
               <% end %>
@@ -75,15 +73,13 @@
           <div id="allReviewsCollapse" class="collapse" aria-labelledby="allReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.present? %>
-                <ul>
-                  <% @user.owned_place.reviews.each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
-                    <% else %>
-                      <li> <%= link_to review.title, review_path(review) %></li>
-                    <% end %>
+                <% @user.owned_place.reviews.each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                  <% else %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
               <% end %>
@@ -102,15 +98,13 @@
           <div id="goodReviewsCollapse" class="collapse" aria-labelledby="goodReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_good: true).present? %>
-                <ul>
-                  <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
-                    <% else %>
-                      <li> <%= link_to review.title, review_path(review) %></li>
-                    <% end %>
+                <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                  <% else %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação positiva.</p>
               <% end %>
@@ -129,15 +123,13 @@
           <div id="badReviewsCollapse" class="collapse" aria-labelledby="badReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_good: false).present? %>
-                <ul>
-                  <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
-                    <% else %>
-                      <li> <%= link_to review.title, review_path(review) %></li>
-                    <% end %>
+                <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
+                  <% else %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação negativa.</p>
               <% end %>
@@ -156,11 +148,9 @@
           <div id="satisfiedReviewsCollapse" class="collapse" aria-labelledby="satisfiedReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_satisfied: true).present? %>
-                <ul>
                   <% @user.owned_place.reviews.where(is_satisfied: true).each do |review| %>
-                    <li> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
                   <% end %>
-                </ul>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não existe avaliação marcada como satisfeita.</p>
               <% end %>
@@ -228,7 +218,7 @@
             <ul class="list-group my-2">
               <% if @user.angels %>
                 <% @user.angels.each do |angel| %>
-                  <li class="list-group-item d-flex justify-content-around mx-5">
+                  <li class="list-group-item d-flex justify-content-between align-items-center mx-5">
                     <%= angel.first_name %>
                     <%= link_to edit_angel_path(angel) do %>
                       <i class="far fa-edit"></i>
@@ -255,15 +245,13 @@
         </div>
         <div id="reviewsCollapse" class="collapse" aria-labelledby="reviews" data-parent="#common">
           <div class="card-body">
-            <ul>
-              <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
-                <% if review.responses.present? && review.responses.last.user != current_user %>
-                  <li><%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
-                <% else %>
-                  <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
-                <% end %>
+            <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
+              <% if review.responses.present? && review.responses.last.user != current_user %>
+                <li class="list-group-item d-flex align-items-center"><%= link_to review.title, review_path(review) %>  (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
+              <% else %>
+                <li class="list-group-item d-flex align-items-center"> <%= link_to review.title, review_path(review) %>  (<%= link_to review.place.name, place_path(review.place) %>)</li>
               <% end %>
-            </ul>
+            <% end %>
           </div>
         </div>
       </div>
