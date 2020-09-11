@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Notifications::Engine => "/notifications"
   root to: 'pages#home'
   get '/near_me', to: 'pages#near_me', as: "near_me"
   get '/top_places', to: 'pages#top_places', as: "top_places"
