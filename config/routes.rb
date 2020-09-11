@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'pages#intro'
+  get '/home', to: 'pages#home', as: "home"
   get '/near_me', to: 'pages#near_me', as: "near_me"
   get '/top_places', to: 'pages#top_places', as: "top_places"
   post 'users/update_position', to: 'users#update_position', as: :update_position
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
   get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
-  
 
   resource :users, only: :show
   patch 'users/message_update', to: 'users#update_messages', as: :message_update
