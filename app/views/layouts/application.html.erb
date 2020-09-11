@@ -28,8 +28,8 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
   <body class='m-0'>
-    <div data-controller="position" data-position-refresh-interval=<%= "#{'60000' if current_user}" %>>
-    </div>
+    <div data-controller="position"></div>
+    <div data-position-refresh-interval=<%= current_user && '6000' %> ></div>
     <div class="main-content" style="position: relative;">
       <% if alert %>
         <div class="toast alert" style="position: absolute; top: 300px; right: 35px; z-index: 6;" data-autohide="false" aria-live="assertive" aria-atomic="true" role="alert">
