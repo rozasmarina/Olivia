@@ -47,5 +47,5 @@ Rails.application.routes.draw do
   end
 
   # Redirect to home when the route does not exist
-  # get '*path' => redirect('/')
+  get '*path' => redirect('/')
 end

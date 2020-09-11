@@ -52,9 +52,9 @@
                     <% if review.responses.present? %>
                       <% if review.responses.last.user != current_user %>
                         <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
-                      <% elsif review.responses.blank? %>
-                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                       <% end %>
+                    <% elsif review.responses.blank? %>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                     <% end %>
                   <% end %>
                 </ul>
