@@ -82,31 +82,7 @@
             </div>
           </div>
           <!-- Accordion card -->
-          <!-- Accordion card -->
-          <div class="card border-bottom-0 border-left border-right border-light">
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light bg-white" role="tab" id="headingTwo2">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
-                aria-expanded="false" aria-controls="collapseTwo2">
-                <h5 class="black-text font-weight-normal mb-0">
-                  Maior número de resoluções <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-            <!-- Card body -->
-            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
-              data-parent="#accordionEx">
-              <div class="card-body">
-                <% @satisfied.group(:place_id).order(count: :desc).count.each do |key, value| %>
-                  <li class="list-group-item d-flex justify-content-between align-items-center list-place">
-                    <%= link_to @places.find(key).name, place_path(@places.find(key)) %>
-                    <span class="badge badge-roxa badge-pill"> <%= value %> </span>
-                  </li>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <!-- Accordion card -->
+          
           <!-- Accordion card -->
           <div class="card border-bottom-0 border-left border-right border-light">
             <!-- Card header -->
@@ -130,6 +106,7 @@
                 <% end %>
               </div>
             </div>
+
             <!-- Accordion card -->
             <div class="card border-bottom-0 border-left border-right border-light">
               <!-- Card header -->
@@ -145,18 +122,14 @@
               <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo3"
               data-parent="#accordionEx">
                 <div class="card-body">
-                  <% @places_satisfied_count = @places.map do |place| %>
-                    <% satisfied_reviews = place.reviews.select { |review| review.is_satisfied }%>
-                    <% {id: place[:id], score: satisfied_reviews.count} %>
-                  <% end %>
-                  <% @places_satisfied_count.sort_by! { | place| place[:score] } %>
-                  <% @most_satisfied = @places_satisfied_count.reverse.first(10).map {|place| Place.find(place[:id])} %>
-                  <% @most_satisfied.each do | place | %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center list-place">
-                      <%= link_to place.name, place_path(place) %>
-                      <span class="badge badge-roxa badge-pill"> <%= place.reviews.select { |review| review.is_satisfied }.count %> </span>
-                    </li>
-                  <% end %>
+                  <ul>
+                    <% @satisfied.group(:place_id).order(count: :desc).count.first(10).each do |place| %>
+                      <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                        <%= link_to @places.find(place[0]).name, place_path(@places.find(place[0])) %>
+                        <span class="badge badge-roxa badge-pill"> <%= place[1] %></span>
+                      </li>
+                    <% end %>
+                  </ul>
                 </div>
               </div>
             </div>
