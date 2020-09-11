@@ -7,9 +7,13 @@
 }
 
 .toast.notice {
-    border: 2px solid  rgb(114, 9, 183);
+    border: 2px solid  #7209b7;
 
     .toast-header {
         border-bottom: 1px solid rgba(247, 37, 133, 0.5);
     }
+}
+
+.toast-body > div {
+    opacity: 0.8;
 }

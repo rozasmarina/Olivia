@@ -1,96 +1,140 @@
-<!--header-->
-<div class="heading d-flex justify-content-between align-items-center w-100 header-ollivia">
-  <div class="back-btn text-white ml-2">
-    <%= link_to :back do %>
-      <i class="fas fa-arrow-left"></i>
-    <% end %>
+<!-- Header + info -->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-4">
+    <i class="fas fa-arrow-left" style="color: #7209B7 !important;"> </i>
   </div>
-  <div class="pg-title">
+  <div class="pg-title mx-2">
     OLLIVIA
   </div>
-  <div class="mb-5">
-  </div>
+  <div><i class="fas fa-info mr-4" style="color: white;"></i></div>
 </div>
-<!--fim do header-->
-
-
-<div class="container justify-content-center mt-2 pt-5">
-
-  <ul class="list-group list-group-flush ">
-
-    <!-- Emergency -->
-    <li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-      <div>
-        <i class="far fa-bell icon-rosa"></i>
-        <%= link_to "Emergência", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-      </div> <i class="fas fa-arrow-right icon-roxo"> </i>
-    </li>
-
-    <!-- App Info -->
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <i class="fas fa-info icon-roxo"></i>
-        <%= link_to "Informações sobre o app", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-      </div> <i class="fas fa-arrow-right"> </i>
-    </li>
-
-    <!-- VAI ENTRAR DENTRO DE APP INFO -->
-
-    <!-- Talk to us -->
-<!--     <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <i class="fas fa-headset"></i>
-        <%= link_to "Fale Conosco", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-      </div> <i class="fas fa-arrow-right"> </i>
-    </li> -->
-
-    <!-- Report a problem -->
-    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <i class="far fa-times-circle"></i>
-        <%= link_to "Reportar um problema", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-      </div> <i class="fas fa-arrow-right"> </i>
-    </li>  -->
-
-    <!-- Rankings -->
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <i class="fas fa-bullhorn"> </i>
-        <%= link_to "Rankings", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-      </div> <i class="fas fa-arrow-right icon-roxo"> </i>
-    </li>
-
-
-
-    <li class="list-group-item">  </li>
-  </ul>
-
-    <h2>Locais avaliados</h2>
-
-    <!-- AVALIACAO POSITIVAS -->
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <!-- <i class="fas fa-bullhorn"> </i> -->
-        <%= link_to "As mais positivas", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-        <!-- </div> <i class="fas fa-arrow-right"> </i> -->
-    </li>
-
-    <!-- NUMERO DE RESOLUCOES -->
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <!-- <i class="fas fa-bullhorn"> </i> -->
-        <%= link_to "Maior número de resoluções", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-        <!--  </div> <i class="fas fa-arrow-right"> </i> -->
-    </li>
-
-
-
+<!-- Fim do Header -->
+<div class="container my-1">
+  <!--Section: Content-->
+  <section class="dark-grey-text">
+    <!-- Section heading -->
+    <h3 class="text-center font-weight-bold mb-4 pb-2"></h3>
+    <!-- Section description -->
+    <p class="lead text-center w-responsive mx-auto text-muted mt-4 pt-2 mb-5"> <!-- Um texto acolhedor talvez ? --> </p>
+    <!--First row-->
+    <div class="row">
+      <!--First column-->
+      <div class="col-md-6 mb-4">
+        <!-- Card -->
+        <%#= link_to "Emergência", emergency_path, class: "pr-4 pl-4 mr-484"  %>
+        <%= link_to emergency_path, class:"card hoverable", style: "border-radius: 10px; border: 2px solid #F72585; margin-top: 2em;" do %>
+          <!-- Card content -->
+          <div class="card-body">
+            <div class="media">
+              <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                <i class="far fa-bell fa-2x icon-rosa"></i>
+              </span>
+              <div class="media-body">
+                <h5 class="dark-grey-text mb-3">Emergência!</h5>
+                <p class="font-weight-light text-muted mb-0">Clique aqui para avisar os seus anjos que você está em perigo</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <!-- Card -->
+      </div>
+      <!--First column-->
+    </div>
+    <!--First row-->
+  </section>
 </div>
+<div class="container my-5">
+  <!--Section: Content-->
+  <section>
+    <!-- Section heading -->
+    <h3 class="font-weight-bold black-text mb-4 pb-2 text-center" style="color: #7209B7;">Rankings de Lugares
+      <i class="fas fa-2x fa-bullhorn" style="font-size: 1em;"> </i> </h3>
+    <hr class="w-header">
+    <!-- Section description -->
+    <!--     <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
+  -->
+    <div class="row">
+      <div class="col-md-12 col-lg-10 mx-auto mb-5">
+        <!--Accordion wrapper-->
+        <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+          <!-- Accordion card -->
+          <div class="card border-top border-bottom-0 border-left border-right border-light">
+            <!-- Card header -->
+            <div class="card-header border-bottom border-light bg-white" role="tab" id="headingOne1">
+              <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                aria-controls="collapseOne1">
+                <h5 class="black-text font-weight-normal mb-0">
+                  Top 10 Ollivia <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+              </a>
+            </div>
+            <!-- Card body -->
+            <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1"
+              data-parent="#accordionEx">
+              <div class="card-body">
+                <% @places.order(average_rating: :desc).first(10).each do |place| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                    <%= link_to place.name, place_path(place) %>
+                    <span class="badge badge-roxa badge-pill"> <%= place.average_rating.round(1) %> </span>
+                  </li>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion card -->
+          
+          <!-- Accordion card -->
+          <div class="card border-bottom-0 border-left border-right border-light">
+            <!-- Card header -->
+            <div class="card-header border-bottom border-light bg-white" role="tab" id="headingTwo3">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo3"
+                aria-expanded="false" aria-controls="collapseTwo3">
+                <h5 class="black-text font-weight-normal mb-0">
+                  Piores avaliações <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+              </a>
+            </div>
+            <!-- Card body -->
+            <div id="collapseTwo3" class="collapse" role="tabpanel" aria-labelledby="headingTwo3"
+              data-parent="#accordionEx">
+              <div class="card-body">
+                <% @places.order(average_rating: :asc).first(10).each do |place| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                    <%= link_to place.name, place_path(place) %>
+                    <span class="badge badge-roxa badge-pill"> <%= place.average_rating.round(1) %> </span>
+                  </li>
+                <% end %>
+              </div>
+            </div>
 
-      <!-- RECOMENDAR APP -->
-      <div class="d-flex justify-content-center align-items-center container pt-5">
-          <%= link_to 'RECOMENDAR APP', recommended_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500;" %>
+            <!-- Accordion card -->
+            <div class="card border-bottom-0 border-left border-right border-light">
+              <!-- Card header -->
+              <div class="card-header border-bottom border-light bg-white" role="tab" id="headingTwo4">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo4"
+                aria-expanded="false" aria-controls="collapseTwo4">
+                  <h5 class="black-text font-weight-normal mb-0">
+                    Locais com mais resoluções <i class="fas fa-angle-down rotate-icon"></i>
+                  </h5>
+                </a>
+              </div>
+              <!-- Card body -->
+              <div id="collapseTwo4" class="collapse" role="tabpanel" aria-labelledby="headingTwo3"
+              data-parent="#accordionEx">
+                <div class="card-body">
+                  <% @satisfied.group(:place_id).order(count: :desc).count.first(10).each do |place| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center list-place">
+                      <%= link_to @places.find(place[0]).name, place_path(@places.find(place[0])) %>
+                      <span class="badge badge-roxa badge-pill"> <%= place[1] %></span>
+                    </li>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion card -->
+          </div>
+          <!-- Accordion wrapper -->
         </div>
-
-
-
+      </div>
+    </section>
+  </div>

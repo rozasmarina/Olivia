@@ -1,15 +1,14 @@
 <!--header-->
 <div class="heading d-flex justify-content-between align-items-center w-100">
-  <div class="back-btn text-white ml-2">
+  <div class="back-btn text-white ml-4">
     <%= link_to :back do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
   </div>
-  <div class="pg-title">
+  <div class="pg-title mx-2">
     Adicione um local
   </div>
-  <div>
-  </div>
+  <div><i class="fas fa-info mr-4" style="color: #7209B7 !important;"></i></div>
 </div>
 <!--fim do header-->
 <div class="container">
@@ -19,9 +18,12 @@
     <%= simple_form_for @place do |f| %>
       <%= f.input :name, label: 'Nome do estabelecimento' %>
       <%= f.input :address, label: 'Endereço' %>
-      <%= f.input :photo, :label => 'Foto', as: :file %>
-      <div class="form-actions pink-btn justify-content-center align-center-btn mb-3">
-        <%= f.button :submit, "Adicionar" %>
+      <label class="d-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100">
+        Adicionar imagem
+        <%= f.input :photo, label: false, as: :file, input_html: { hidden: true } %>
+      </label>
+      <div>
+        <%= f.button :submit, "Adicionar", class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100'%>
       </div>
     <% end %>
   </div>

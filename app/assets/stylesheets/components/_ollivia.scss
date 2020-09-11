@@ -2,13 +2,14 @@
   padding-top: 4px !important;
 }
 
-
-// .header-ollivia {
-//   height: 70px;
-// }
-
 .bg-rosa-list {
   background-color: #6633990d;
+}
+
+// Card Emergencia
+.border-olli {
+  border-radius: 10px !important;
+  border: 2px solid $roxo !important;
 }
 
 .txt-roxo-list {
@@ -20,4 +21,8 @@
 
 .icon-roxo {
   color: #roxo !important;
+}
+
+.body-color {
+  background-color: $roxo !important;
 }

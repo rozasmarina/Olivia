@@ -1,7 +1,22 @@
-<div class="card-map-new">
+<div class="card-map-new" style="width: 25em;
+                             height: 24em;">
+  <!-- Card image -->
+  <div class="view overlay">
+    <img src="https://media.giphy.com/media/cRMGqNpvm9XS2gRcpL/giphy.gif"
+    style="
+    width: 23em;
+    height: 10em;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border-radius: 4px;
+    object-fit: cover;"%>
+  </div>
+
   <!-- Card content -->
   <div class="card-body">
     <!-- Title -->
-    <p><%= link_to 'Adicione este local', new_place_path %></p>
+    <h3><%= link_to 'Adicione este local', new_place_path %></h3>
   </div>
 </div>
+
