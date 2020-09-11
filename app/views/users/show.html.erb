@@ -1,29 +1,18 @@
 <!-- Header + info -->
 <div class="heading d-flex justify-content-between align-items-center w-100">
-  <div class="back-btn text-white ml-2">
+  <div class="back-btn text-white ml-4">
     <i class="fas fa-arrow-left" style="color: #7209B7 !important;"></i>
   </div>
-
-  <div class="pg-title" style="margin-left: 7em;
-                              margin-right: 7em;">
+  <div class="pg-title mx-2">
     <% if @user.is_business? && @user.owned_place.present? %>
       <%= @user.owned_place.name %>
     <% else %>
       Olá, <%= @user.first_name %>
     <% end %>
   </div>
-
-  <div><i class="fas fa-info" style="color: white;"></i></div>
-  <div class="mb-5">
-  </div>
+  <div><i class="fas fa-info mr-4" style="color: white;"></i></div>
 </div>
 <!-- Fim do Header -->
-
-
-<!-- HEADER -->
-
-
-
 <!-- MAIN BODY -->
 <!-- AVATAR -->
 <div class="d-flex justify-content-center" style="margin-top: 6em;">
@@ -31,15 +20,15 @@
 </div>
 <br>
 <!-- EDIT AND LOGOUT -->
-<%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center" %>
+<%= link_to 'Editar perfil', edit_user_registration_path, class: "d-flex justify-content-center py-1" %>
 <!-- <div class="dropdown-divider"></div> -->
 <% if @user.owned_place.present? %>
-  <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center" %>
+  <%= link_to "Ver #{@user.owned_place.name}", place_path(@user.owned_place), class: "d-flex justify-content-center pb-1" %>
+  <%= link_to "Editar #{@user.owned_place.name}", edit_place_path(@user.owned_place), class: "d-flex justify-content-center pb-1" %>
   <!-- <div class="dropdown-divider"></div> -->
 <% end %>
-<%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center pb-5" %>
-<div class="container">
-
+<%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "d-flex justify-content-center" %>
+<div class="container mt-3">
   <!-- BUSINESS PROFILE -->
   <% if @user.is_business %>
     <!-- HAS PLACE -->
@@ -59,15 +48,17 @@
               <% if @user.owned_place.reviews.present? %>
                 <ul>
                   <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
-                    <% else %>
-                      <p>Não há avaliações aguardando resposta.</p>
+                    <% if review.responses.present? %>
+                      <% if review.responses.last.user != current_user %>
+                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
+                      <% elsif review.responses.blank? %>
+                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </ul>
               <% else %>
-                <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
+                <p class="d-flex justify-content-center align-content-center">Não há avaliações aguardando resposta.</p>
               <% end %>
             </div>
           </div>
@@ -87,7 +78,7 @@
                 <ul>
                   <% @user.owned_place.reviews.each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
                     <% else %>
                       <li> <%= link_to review.title, review_path(review) %></li>
                     <% end %>
@@ -114,7 +105,7 @@
                 <ul>
                   <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
                     <% else %>
                       <li> <%= link_to review.title, review_path(review) %></li>
                     <% end %>
@@ -141,7 +132,7 @@
                 <ul>
                   <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
                     <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> </li>
+                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                     <% else %>
                       <li> <%= link_to review.title, review_path(review) %></li>
                     <% end %>
@@ -149,6 +140,29 @@
                 </ul>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação negativa.</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <!-- SATISFIED REVIEWS -->
+        <div class="card">
+          <div class="card-header" id="satisfiedReviews">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#satisfiedReviewsCollapse" aria-expanded="false" aria-controls="satisfiedReviewsCollapse">
+                Avaliações satisfeitas
+              </button>
+            </h2>
+          </div>
+          <div id="satisfiedReviewsCollapse" class="collapse" aria-labelledby="satisfiedReviews" data-parent="#business">
+            <div class="card-body">
+              <% if @user.owned_place.reviews.where(is_satisfied: true).present? %>
+                <ul>
+                  <% @user.owned_place.reviews.where(is_satisfied: true).each do |review| %>
+                    <li> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p class="d-flex justify-content-center align-content-center">Ainda não existe avaliação marcada como satisfeita.</p>
               <% end %>
             </div>
           </div>
@@ -200,7 +214,6 @@
     <!-- COMMON PROFILE -->
   <% else %>
     <div class="accordion" id="common">
-
       <!-- USER ANGELS -->
       <div class="card" style="border: transparent !important;">
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="angels">
@@ -231,7 +244,6 @@
           </div>
         </div>
       </div>
-
       <!-- USER REVIEWS -->
       <div class="card" style="border: transparent !important;">
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="reviews">
@@ -246,7 +258,7 @@
             <ul>
               <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
                 <% if review.responses.present? && review.responses.last.user != current_user %>
-                  <li><i class="fas fa-comments"></i> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                  <li><%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
                 <% else %>
                   <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
                 <% end %>
@@ -272,7 +284,7 @@
                             as: :text,
                             label: "Deseja personalizar sua mensagem para seus anjos?",
                             placeholder: "#{@user.message_angels}",
-                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
+                            hint: "Caso não digite nada, será enviada a mensagem padrão Ollivia" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -298,7 +310,7 @@
                             as: :text,
                             label: "Deseja personalizar sua mensagem para pessoas próximas?",
                             placeholder: "#{@user.message_near_users}",
-                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
+                            hint: "Caso não digite nada, será enviada a mensagem padrão Ollivia" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
@@ -324,7 +336,7 @@
                             as: :text,
                             label: "Deseja personalizar sua mensagem para as autoridades?",
                             placeholder: "#{@user.message_authorities}",
-                            hint: "Caso não digite nada, sua mensagem ficará em branco" %>
+                            hint: "Caso não digite nada, será enviada a mensagem padrão Ollivia" %>
                 <div class="d-flex justify-content-center">
                   <%= f.submit 'Atualizar', data: { confirm: 'Está satisfeita com a mensagem?' }, class: "btn btn-sm btn-primary btns" %>
                 </div>
