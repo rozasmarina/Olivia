@@ -67,7 +67,11 @@ class ReviewsController < ApplicationController
   def average_rating(place)
     reviews = Review.where(is_disabled: false, place_id: place.id)
     ratings = reviews.map(&:rating)
-    place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
+    if ratings.sum.zero?
+      place.update_attribute(:average_rating, 0)
+    else
+      place.update_attribute(:average_rating, ratings.sum / ratings.length.to_f)
+    end
     # place.average_rating = ratings.sum / ratings.length.to_f
   end
 
