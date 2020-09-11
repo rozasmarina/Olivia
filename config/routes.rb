@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/near_me', to: 'pages#near_me', as: "near_me"
   get '/top_places', to: 'pages#top_places', as: "top_places"
-  get '/recommended', to: 'pages#recommended', as: "recommended"
   post 'users/update_position', to: 'users#update_position', as: :update_position
 
   devise_for :users do
@@ -21,7 +20,6 @@ Rails.application.routes.draw do
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
   get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
-
 
   resource :users, only: :show
   patch 'users/message_update', to: 'users#update_messages', as: :message_update
@@ -42,11 +40,10 @@ Rails.application.routes.draw do
 
   resources :places, except: %i[destroy show]
 
-
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
 
   # Redirect to home when the route does not exist
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 end

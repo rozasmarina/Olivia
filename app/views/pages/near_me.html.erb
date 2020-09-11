@@ -6,15 +6,12 @@
      data-rmarker="<%= @rmarker.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div class="row justify-content-between w-100 mx-auto px-2" style="position:absolute; top: 65px;">
+  <div class="row justify-content-around w-100 mx-auto px-2 pt-3" style="position:absolute; top: 65px;">
     <div class="px-1" >
-      <%= link_to 'PERTO DE MIM', near_me_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500; background-color:#FC6FB0; border: solid #FC6FB0 1px;" %>
+      <%= link_to 'PERTO DE MIM', near_me_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500; background-color:#FC6FB0; border: solid #FC6FB0 1px;  width: 150px;" %>
     </div>
     <div class="px-1">
-      <%= link_to 'TOP 5', top_places_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500;" %>
-    </div>
-    <div class="px-1">
-      <%= link_to 'RECOMENDADOS', recommended_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500;" %>
+      <%= link_to 'TOP 5', top_places_path, class:"btn btn-sm btn-info py-1 px-3", style:"border-radius: 5px; font-weight: 500;  width: 150px;" %>
     </div>
   </div>
 </div>
