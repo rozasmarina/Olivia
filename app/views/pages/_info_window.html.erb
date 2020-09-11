@@ -2,20 +2,21 @@
                              height: 24em;">
   <!-- Card image -->
   <div class="view overlay">
-    <%= cl_image_tag place.photo.key,
-    class: "shadow-lg card-img-olli d-flex justify-content-center", style:"width: 23em;
-                                                                           height:10em"  %>
-    <a> <div class="mask rgba-white-slight"> </div> </a>
+    <% if place.photo.present? %>
+      <%= cl_image_tag place.photo.key, class: "shadow-lg card-img-olli d-flex justify-content-center", style:"width: 23em;height:10em" %>
+    <% else %>
+      <%= cl_image_tag("place-default-image", class: "shadow-lg card-img-olli d-flex justify-content-center", style:"width: 23em;height:10em") %>
+    <% end %>
+    <a>
+      <div class="mask rgba-white-slight"> </div>
+    </a>
   </div>
-
   <!-- Card content -->
   <div class="card-body">
     <!-- Title -->
     <h4 class="card-title"> <%= link_to place.name, place_path(place) %> </h4>
-
     <!-- Text -->
     <p class="card-text"> <%= place.address %> </p>
-
     <!-- Rating -->
     <hr>
     <% iconPercentage = (place.average_rating.round(1) / 5) * 100 %>
@@ -33,4 +34,3 @@
     <% end %>
   </div>
 </div>
-
