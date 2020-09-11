@@ -42,7 +42,7 @@
             <p class="sm-line mt-3"><strong class="purple"> 1 </strong> relato </p>
           <% elsif @place.reviews.length >= 2 %>
             <nav class="nav justify-content-around" style="border-top:none;" id="optionsList" role ="tablist">
-              <a class="nav-link" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">
+              <a class="nav-link active" id="pills-all-tab" data-toggle="pill" href="#pills-all" role="tab" aria-controls="pills-all" aria-selected="true">
                 <p class="sm-line mt-3"><strong class="purple"><%= @place.reviews.length %></strong> relatos </p>
               </a>
               <a class="nav-link" id="pills-good-tab" data-toggle="pill" href="#pills-good" role="tab" aria-controls="pills-good" aria-selected="false">
