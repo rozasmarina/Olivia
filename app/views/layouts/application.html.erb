@@ -60,7 +60,7 @@
       <%= yield %>
     </div>
     <div class="fixed-bottom">
-      <%= render "shared/navbar"  %>
+      <%= render "shared/navbar" unless current_page?(root_path) %>
     </div>
   </body>
 </html>
