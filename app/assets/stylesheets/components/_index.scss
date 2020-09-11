@@ -16,31 +16,36 @@
 @import "toast";
 @import "radio_buttons";
 @import "intro";
-
 body {
-  margin: 0;
-  padding-bottom: 69px;
-  min-height: 98vh;
-  position: relative;
-  background-color: white;
-  color: $dark-gray;
+    margin: 0;
+    padding-bottom: 69px;
+    min-height: 98vh;
+    position: relative;
+    background-color: white;
+    color: $dark-gray;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .purple {
-  color: $roxo;
+    color: $roxo;
 }
 
-// .dimmedPage {
-//     background-color: black;
-// }
-// .dimmedPage body {
-//     opacity: 0.5;
-// }
+#splash-img {
+    @keyframes splash {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    animation-name: splash;
+    animation-duration: 4s;
+}
