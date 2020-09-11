@@ -47,6 +47,7 @@ class PagesController < ApplicationController
   end
 
   def ollivia
+    @places = Place.all
   end
 
   def community

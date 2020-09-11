@@ -1,17 +1,38 @@
-<%= simple_form_for(@review) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <%= f.label "Deseja desativar a sua avaliação?" %>
-  <%= f.collection_radio_buttons :is_disabled,
-                                [
-                                  [true, 'Sim, quero desativar a minha avaliação'],
-                                  [false, 'Não, desejo manter a avaliação ativa']
-                                ],
-                                :first,
-                                :last, 
-                                checked: false,
-                                item_wrapper_class: :disabling,
-                                item_wrapper_tag: :p %>
-  <%= f.button :submit, "Desativar", data: { confirm: 'Tem certeza? Caso opte por desativar a avaliação, não será possível reverter essa escolha' } %>
-<% end %>
+<!--header-->
+<div class="heading d-flex justify-content-between align-items-center w-100">
+  <div class="back-btn text-white ml-2">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+  </div>
+  <div class="pg-title">
+    Desativar avaliação 
+  </div>
+  <div>
+  </div>
+</div>
+<!--fim do header-->
+<div class="container pt-5 my-5">
+  <div class="row my-5 d-flex justify-content-center">
+    <div class="col-8 mt-5 pt-5">
+      <%= simple_form_for(@review) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= f.label "Deseja desativar a sua avaliação?" %>
+        <%= f.collection_radio_buttons :is_disabled,
+                                      [
+                                        [true, ' Sim, desative a avaliação'],
+                                        [false, 'Não, quero deixá-la ativa']
+                                      ],
+                                      :first,
+                                      :last, 
+                                      checked: false,
+                                      item_wrapper_class: :disabling,
+                                      item_wrapper_tag: :p %>
+        <div class="row justify-content-center">
+          <%= f.button :submit, "Desativar", data: { confirm: 'Tem certeza? Caso opte por desativar a avaliação, não será possível reverter essa escolha' }, class: 'd-flex justify-content-center form-actions pink-btn justify-content-center align-center-btn mb-3 w-100' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

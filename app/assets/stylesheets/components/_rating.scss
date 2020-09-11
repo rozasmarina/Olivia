@@ -44,3 +44,32 @@
     font-weight: 900;
     color: #F72585;
 }
+
+
+.rates-outer-rshow {
+    position: relative;
+    display: inline-block;
+}
+
+.rates-inner-rshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.rates-outer-rshow::before {
+    content: "\f1ae \f1ae \f1ae \f1ae \f1ae";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #ccc;
+}
+
+.rates-inner-rshow::before {
+    content: "\f1ae \f1ae \f1ae \f1ae \f1ae";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: #F72585;
+}

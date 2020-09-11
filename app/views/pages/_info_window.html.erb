@@ -1,7 +1,10 @@
-<div class="card-map">
+<div class="card-map" style="width: 25em;
+                             height: 24em;">
   <!-- Card image -->
-  <div class="view overlay ">
-    <%= cl_image_tag place.photo.key, class: "cad-img-top shadow-lg card-img-olli d-flex justify-content-center" %>
+  <div class="view overlay">
+    <%= cl_image_tag place.photo.key,
+    class: "shadow-lg card-img-olli d-flex justify-content-center", style:"width: 23em;
+                                                                           height:10em"  %>
     <a>
       <div class="mask rgba-white-slight"> </div>
     </a>
@@ -11,11 +14,12 @@
   <div class="card-body">
     <!-- Title -->
     <h4 class="card-title"> <%= link_to place.name, place_path(place) %> </h4>
-    
+
     <!-- Text -->
     <p class="card-text"> <%= place.address %> </p>
 
     <!-- Rating -->
+    <hr>
     <% iconPercentage = (place.average_rating.round(1) / 5) * 100 %>
     <% iconPercentageRounded = (iconPercentage / 10).round * 10 %>
     <% if place.reviews.length == 0 %>
@@ -26,8 +30,9 @@
           <div class="rates-inner" style="width:<%= iconPercentageRounded %>%;">
           </div>
         </div>
-        <span id="number-rating"><%= place.average_rating.round(1) %></span>
+        <span id="number-rating">Rating Ollivia <%= place.average_rating.round(1) %></span>
       </div>
     <% end %>
   </div>
 </div>
+

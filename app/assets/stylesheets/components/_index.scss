@@ -14,6 +14,7 @@
 @import "info_window";
 @import "profile_cards";
 @import "toast";
+@import "radio_buttons";
 
 body {
   margin: 0;
@@ -22,6 +23,14 @@ body {
   position: relative;
   background-color: white;
   color: $dark-gray;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none !important;
 }
 
 .purple {

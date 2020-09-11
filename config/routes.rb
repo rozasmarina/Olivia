@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/near_me', to: 'pages#near_me', as: "near_me"
   get '/top_places', to: 'pages#top_places', as: "top_places"
-  get '/recommended', to: 'pages#recommended', as: "recommended"
   post 'users/update_position', to: 'users#update_position', as: :update_position
-  
+
   devise_for :users do
   end
 
@@ -30,7 +29,11 @@ Rails.application.routes.draw do
     resources :responses, only: %i[new create destroy]
   end
 
+<<<<<<< HEAD
   resources :reviews, only: %i[index edit update]
+=======
+  resources :reviews, only: %i[edit update]
+>>>>>>> master
   get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
   get 'reviews/:id/satisfy', to: 'reviews#satisfy', as: :satisfy_review
   # patch 'reviews/:id', to: 'reviews#disabled' -> will use update to change

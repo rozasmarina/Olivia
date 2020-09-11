@@ -1,136 +1,48 @@
 <!-- Header + info -->
 <div class="heading d-flex justify-content-between align-items-center w-100">
-  <div class="back-btn text-white ml-2">
-
-    <%= link_to :back do %> <i class="fas fa-arrow-left"> </i>
-    <% end %>
-
+  <div class="back-btn text-white ml-4">
+    <i class="fas fa-arrow-left" style="color: #7209B7 !important;"> </i>
   </div>
-  <div class="pg-title" style="margin-left: 7em;
-                              margin-right: 7em;">
+  <div class="pg-title mx-2">
     EMERGÊNCIA
   </div>
-  <div><i class="fas fa-info" style="color: white;"></i></div>
-  <div class="mb-5">
-  </div>
+  <div><i class="fas fa-info mr-4" style="color: white;"></i></div>
 </div>
 <!-- Fim do Header -->
-
-
-
-<div class="container pt-5 my-5 z-depth-1">
-  <section class="p-md-3 mx-md-5 text-center text-lg-left">
-    <h2 class="text-center mx-auto font-weight-bold mb-4 pb-2"
-    style="margin-top: 1em;
-           color: #7209B7;"
-           >Meus Anjos</h2>
-    <div class="row">
-
-      <!-- Avatar -->
-      <div class="col colcol-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="p-1">
-          <div
-            class="avatar w-100 white d-flex justify-content-center align-items-center">
-            <img
-              src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-
-              <%#= Esse eh o caminho da img do user pra susbstituir pelas img %>
-              <%#= link_to image_tag("menu/user_anjo.png"), users_path, class: "icone-menu" %>
-              class="img-fluid rounded-circle z-depth-1" style="width: 3em;">
-          </div>
-          <div class="text-center mt-3">
-            <h6 class="font-weight-bold pt-1">Marina</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- Avatar -->
-      <div class="col colcol-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="p-1">
-          <div
-            class="avatar w-100 white d-flex justify-content-center align-items-center">
-            <img
-              src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-              class="img-fluid rounded-circle z-depth-1" style="width: 3em;">
-          </div>
-          <div class="text-center mt-3">
-            <h6 class="font-weight-bold pt-1">Deborah</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- Avatar -->
-      <div class="col colcol-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="p-1">
-          <div
-            class="avatar w-100 white d-flex justify-content-center align-items-center">
-            <img
-              src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-              class="img-fluid rounded-circle z-depth-1" style="width: 3em;">
-          </div>
-          <div class="text-center mt-3">
-            <h6 class="font-weight-bold pt-1">Ed</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- Avatar -->
-      <div class="col colcol-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="p-1">
-          <div
-            class="avatar w-100 white d-flex justify-content-center align-items-center">
-            <img
-
-              <%#= Esse eh o caminho da img do ADD USER pra susbstituir pela img %>
-              <%#= link_to image_tag("menu/user_add_anjo.png"), users_path, class: "icone-menu" %>
-              src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-              class="img-fluid rounded-circle z-depth-1" style="width: 3em;">
-          </div>
-          <div class="text-center mt-3">
-            <h6 class="font-weight-bold pt-1">ADD</h6>
-          </div>
-        </div>
-      </div>
-
+<div style="height: 100vh; padding-top: 200px;">
+  <!-- Notificar Anjos -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Notificar anjos', message_angels_path, class: "pr-4 pl-4 mr-484"  %>
     </div>
-  </section>
+  </li>
+  <!-- Notificar Usuarios Próximas -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Notificar usuárias próximas', message_near_users_path, class: "pr-4 pl-4 mr-484"  %>
+    </div>
+  </li>
+  <!-- Notificar Autoridades -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Notificar autoridades', message_authorities_path, class: "pr-4 pl-4 mr-484"  %>
+    </div>
+  </li>
+  <!-- Demo de SMS -->
+  <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+    <div>
+      <i class="far fa-bell" style="color: #F72585;"></i>
+      <%= link_to 'Demonstrar envio de SMS', demo_notification_path, class: "pr-4 pl-4 mr-484"  %>
+    </div>
+  </li>
 </div>
-
-
-
-<!-- Notificar Anjos -->
-<li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-  <div>
-    <i class="far fa-bell" style="color: #F72585;"></i>
-    <%= link_to "Notificar Anjos", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-  </div> <i class="fas fa-arrow-right" style="color: #7209B7;"> </i>
-</li>
-
-<!-- Notificar Usuarios Próximas -->
-<li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-  <div>
-    <i class="far fa-bell" style="color: #F72585;"></i>
-    <%= link_to "Notificar Usuarios Próximas", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-  </div> <i class="fas fa-arrow-right" style="color: #7209B7;"> </i>
-</li>
-
-
-<!-- Notificar Autoridades -->
-<li class="list-group-item d-flex justify-content-between align-items-center mt-4">
-  <div>
-    <i class="far fa-bell" style="color: #F72585;"></i>
-    <%= link_to "Notificar Autoridades", emergency_path, id: 'sos-btn', class: "pr-4 pl-4 mr-484"  %>
-  </div> <i class="fas fa-arrow-right" style="color: #7209B7;"> </i>
-</li>
-
-
-
-
 <p><%#= link_to 'Notificar anjos', message_angels_path %></p>
 <p><%#= link_to 'Notificar usuárias próximas', message_near_users_path %></p>
 <p><%#= link_to 'Notificar autoridades', message_authorities_path %></p>
 <%# Descomentar para a demoday %>
 <p><%# link_to 'Demonstrar envio de SMS', demo_notification_path %></p>
-
 <!-- Colocar o link voltar na flecha do header -->
 <%#= link_to 'voltar', ollivia_path %>
