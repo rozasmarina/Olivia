@@ -1,5 +1,5 @@
 meta_product_name: "Ollivia"
 meta_title: "Ollivia - curta o rolê sem preocupação"
 meta_description: "Confira se o rolê que você vai é seguro, denuncie casos de assédio e compartilhe sua localização com amigos em caso de emergência"
-meta_image: "ollivia_og.jpg" # should exist in `app/assets/images/`
-twitter_account: "@ollivia_app"   # required for Twitter Cards
+meta_image: "ollivia-og.jpg" # should exist in `app/assets/images/`
+twitter_account: "@ollivia_app" # required for Twitter Cards
