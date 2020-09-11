@@ -39,24 +39,22 @@
           <div class="card-header" id="awaiting">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#awaitingCollapse" aria-expanded="true" aria-controls="awaitingCollapse">
-                Avaliações aguardando resposta
+                <h5 class="black-text font-weight-normal mb-0">Avaliações aguardando resposta</h5>
               </button>
             </h2>
           </div>
           <div id="awaitingCollapse" class="collapse" aria-labelledby="awaiting" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.present? %>
-                <ul>
-                  <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
-                    <% if review.responses.present? %>
-                      <% if review.responses.last.user != current_user %>
-                        <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
-                      <% end %>
-                    <% elsif review.responses.blank? %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
+                <% @user.owned_place.reviews.order(updated_at: :desc).each do |review| %>
+                  <% if review.responses.present? %>
+                    <% if review.responses.last.user != current_user %>
+                      <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                     <% end %>
+                  <% elsif review.responses.blank? %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Não há avaliações aguardando resposta.</p>
               <% end %>
@@ -68,22 +66,20 @@
           <div class="card-header" id="allReviews">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#allReviewsCollapse" aria-expanded="false" aria-controls="allReviewsCollapse">
-                Todas as avaliações do meu estabelecimento
+                <h5 class="black-text font-weight-normal mb-0">Todas as avaliações do meu estabelecimento</h5>
               </button>
             </h2>
           </div>
           <div id="allReviewsCollapse" class="collapse" aria-labelledby="allReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.present? %>
-                <ul>
-                  <% @user.owned_place.reviews.each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
-                    <% else %>
-                      <li> <%= link_to review.title, review_path(review) %></li>
-                    <% end %>
+                <% @user.owned_place.reviews.each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                  <% else %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação.</p>
               <% end %>
@@ -95,22 +91,20 @@
           <div class="card-header" id="goodReviews">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#goodReviewsCollapse" aria-expanded="false" aria-controls="goodReviewsCollapse">
-                Avaliações positivas
+                <h5 class="black-text font-weight-normal mb-0">Avaliações positivas</h5>
               </button>
             </h2>
           </div>
           <div id="goodReviewsCollapse" class="collapse" aria-labelledby="goodReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_good: true).present? %>
-                <ul>
-                  <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
-                    <% else %>
-                      <li> <%= link_to review.title, review_path(review) %></li>
-                    <% end %>
+                <% @user.owned_place.reviews.where(is_good: true).each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i></li>
+                  <% else %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação positiva.</p>
               <% end %>
@@ -122,22 +116,20 @@
           <div class="card-header" id="badReviews">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#badReviewsCollapse" aria-expanded="false" aria-controls="badReviewsCollapse">
-                Avaliações negativas
+                <h5 class="black-text font-weight-normal mb-0">Avaliações negativas</h5>
               </button>
             </h2>
           </div>
           <div id="badReviewsCollapse" class="collapse" aria-labelledby="badReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_good: false).present? %>
-                <ul>
-                  <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
-                    <% if review.responses.present? && review.responses.last.user != current_user %>
-                      <li><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
-                    <% else %>
-                      <li> <%= link_to review.title, review_path(review) %></li>
-                    <% end %>
+                <% @user.owned_place.reviews.where(is_good: false).each do |review| %>
+                  <% if review.responses.present? && review.responses.last.user != current_user %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"><%= link_to review.title, review_path(review) %> <i class="fas fa-comments"></i> </li>
+                  <% else %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %></li>
                   <% end %>
-                </ul>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não foi realizada nenhuma avaliação negativa.</p>
               <% end %>
@@ -149,18 +141,16 @@
           <div class="card-header" id="satisfiedReviews">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#satisfiedReviewsCollapse" aria-expanded="false" aria-controls="satisfiedReviewsCollapse">
-                Avaliações satisfeitas
+                <h5 class="black-text font-weight-normal mb-0">Avaliações satisfeitas</h5>
               </button>
             </h2>
           </div>
           <div id="satisfiedReviewsCollapse" class="collapse" aria-labelledby="satisfiedReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_satisfied: true).present? %>
-                <ul>
                   <% @user.owned_place.reviews.where(is_satisfied: true).each do |review| %>
-                    <li> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
                   <% end %>
-                </ul>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não existe avaliação marcada como satisfeita.</p>
               <% end %>
@@ -176,7 +166,7 @@
           <div class="card-header" id="registered">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#registeredCollapse" aria-expanded="true" aria-controls="registeredCollapse">
-                Meu estabelecimento já está cadastrado na plataforma
+                <h5 class="black-text font-weight-normal mb-0">Meu estabelecimento já está cadastrado na plataforma</h5>
               </button>
             </h2>
           </div>
@@ -196,7 +186,7 @@
           <div class="card-header" id="newPlace">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" type="button" data-toggle="collapse" data-target="#newPlaceCollapse" aria-expanded="false" aria-controls="newPlaceCollapse">
-                Adicionar meu estabelecimento à Ollivia!
+                <h5 class="black-text font-weight-normal mb-0">Adicionar meu estabelecimento à Ollivia!</h5>
               </button>
             </h2>
           </div>
@@ -219,7 +209,7 @@
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="angels">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#angelsCollapse" aria-expanded="true" aria-controls="angelsCollapse">
-              Meus anjos
+              <h5 class="black-text font-weight-normal mb-0">Meus anjos</h5>
             </button>
           </h2>
         </div>
@@ -228,7 +218,7 @@
             <ul class="list-group my-2">
               <% if @user.angels %>
                 <% @user.angels.each do |angel| %>
-                  <li class="list-group-item d-flex justify-content-around mx-5">
+                  <li class="list-group-item d-flex justify-content-between align-items-center mx-5">
                     <%= angel.first_name %>
                     <%= link_to edit_angel_path(angel) do %>
                       <i class="far fa-edit"></i>
@@ -249,7 +239,7 @@
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="reviews">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#reviewsCollapse" aria-expanded="false" aria-controls="reviewsCollapse">
-              Minhas avaliações
+              <h5 class="black-text font-weight-normal mb-0">Minhas avaliações</h5>
             </button>
           </h2>
         </div>
@@ -272,7 +262,7 @@
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="messageAngels">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#messageAngelsCollapse" aria-expanded="true" aria-controls="messageAngelsCollapse">
-              Alterar minha mensagem para os anjos
+              <h5 class="black-text font-weight-normal mb-0">Alterar minha mensagem para os anjos</h5>
             </button>
           </h2>
         </div>
@@ -298,7 +288,7 @@
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="nearMe">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#nearMeCollapse" aria-expanded="true" aria-controls="nearMeCollapse">
-              Alterar minha mensagem para pessoas próximas
+              <h5 class="black-text font-weight-normal mb-0">Alterar minha mensagem para pessoas próximas</h5>
             </button>
           </h2>
         </div>
@@ -324,7 +314,7 @@
         <div class="card-header" style="border-bottom: 2px solid #adb5bd45; !important;" id="authorities">
           <h2 class="mb-0">
             <button class="btn btn-link collapsed title table page-item d-flex justify-content-center pt-3" style="font-size: 1.25rem;" type="button" data-toggle="collapse" data-target="#authoritiesCollapse" aria-expanded="true" aria-controls="authoritiesCollapse">
-              Alterar minha mensagem para as autoridades
+              <h5 class="black-text font-weight-normal mb-0">Alterar minha mensagem para as autoridades</h5>
             </button>
           </h2>
         </div>
