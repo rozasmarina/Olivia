@@ -32,16 +32,4 @@ class UserPolicy < ApplicationPolicy
   def update_messages?
     record.id == user.id
   end
-
-  def community?
-    true
-  end
-
-  def emergency?
-    true
-  end
-
-  def together?
-    true
-  end
 end
