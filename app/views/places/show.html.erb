@@ -172,12 +172,12 @@
               <div class="review-header m-3">
                 <% if review.is_anonymous %>
                   <!-- avatar anonimo -->
-                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Avaliação anônima</p>
                 <% else %>
-                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
                   <% if review.responses.present? %>
                     <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
@@ -208,12 +208,12 @@
               <div class="review-header m-3">
                 <% if review.is_anonymous %>
                   <!-- avatar anonimo -->
-                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Avaliação anônima</p>
                 <% else %>
-                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+                  <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
                   <% if review.responses.present? %>
                     <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
@@ -246,12 +246,12 @@
           <div class="review-header m-3">
             <% if review.is_anonymous %>
               <!-- avatar anonimo -->
-              <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-              <%= link_to review.title, review_path(review), class: "ml-1" %>
+              <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+              <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
               <p class="ml-5 purple sm-line">Avaliação anônima</p>
             <% else %>
-              <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-              <%= link_to review.title, review_path(review), class: "ml-1" %>
+              <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
+              <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
               <p class="ml-5 purple sm-line">Por <%= review.user.username %></p>
               <% if review.responses.present? %>
                 <span class="badge badge-pill badge-primary badge-pos">Respondido</span>
