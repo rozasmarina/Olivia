@@ -48,6 +48,7 @@ class PagesController < ApplicationController
 
   def ollivia
     @places = Place.all
+    @satisfied = Review.where(is_satisfied: true)
   end
 
   def community
