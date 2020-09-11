@@ -245,13 +245,15 @@
         </div>
         <div id="reviewsCollapse" class="collapse" aria-labelledby="reviews" data-parent="#common">
           <div class="card-body">
-            <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
-              <% if review.responses.present? && review.responses.last.user != current_user %>
-                <li class="list-group-item d-flex align-items-center"><%= link_to review.title, review_path(review) %>  (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
-              <% else %>
-                <li class="list-group-item d-flex align-items-center"> <%= link_to review.title, review_path(review) %>  (<%= link_to review.place.name, place_path(review.place) %>)</li>
+            <ul>
+              <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
+                <% if review.responses.present? && review.responses.last.user != current_user %>
+                  <li><%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
+                <% else %>
+                  <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
+                <% end %>
               <% end %>
-            <% end %>
+            </ul>
           </div>
         </div>
       </div>
