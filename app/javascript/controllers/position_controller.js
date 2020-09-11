@@ -16,10 +16,16 @@ export default class extends Controller {
     load() {
         navigator.geolocation.getCurrentPosition((pos) => {
             let position = pos.coords;
-            $.post('/users/update_position', {
-                lat: position.latitude,
-                lng: position.longitude
-            });
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+
+            fetch("/users/update_position", {
+                method: "POST",
+                headers: { 'X-CSRF-Token': csrfToken },
+                body: JSON.stringify({
+                    lat: position.latitude,
+                    lng: position.longitude
+                })
+            })
         }, () => {
             console.log("Position unavailable.")
         })

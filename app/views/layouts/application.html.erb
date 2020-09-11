@@ -4,10 +4,8 @@
     <title>Ollivia: Curta o rolê sem preocupação!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
-
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -15,7 +13,6 @@
     <meta property="og:image" content="<%= meta_image %>" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
-
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
@@ -23,7 +20,6 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
-    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -32,9 +28,8 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
   </head>
   <body class='m-0'>
-    <div data-controller="position"
-    data-position-refresh-interval="60000"></div>
-
+    <div data-controller="position"></div>
+    <div data-position-refresh-interval=<%= current_user && '6000' %> ></div>
     <div class="main-content" style="position: relative;">
       <% if alert %>
         <div class="toast alert" style="position: absolute; top: 300px; right: 35px; z-index: 6;" data-autohide="false" aria-live="assertive" aria-atomic="true" role="alert">
@@ -49,7 +44,6 @@
           </div>
         </div>
       <% end %>
-
       <% if notice %>
         <div class="toast notice" style="position: absolute; top: 300px; right: 100px; z-index: 6;" data-autohide="false" aria-live="polite" aria-atomic="true" role="status">
           <div class="toast-header">
@@ -70,5 +64,3 @@
     </div>
   </body>
 </html>
-
-
