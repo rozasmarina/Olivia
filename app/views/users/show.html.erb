@@ -252,6 +252,7 @@
                 <% else %>
                   <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
                 <% end %>
+                <div class="dropdown-divider"></div>
               <% end %>
             </ul>
           </div>
