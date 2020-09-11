@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/top_places', to: 'pages#top_places', as: "top_places"
   get '/recommended', to: 'pages#recommended', as: "recommended"
   post 'users/update_position', to: 'users#update_position', as: :update_position
-  
+
   devise_for :users do
   end
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/community', to: 'pages#community', as: :community
   get '/ollivia', to: 'pages#ollivia', as: :ollivia
   get '/emergency', to: 'pages#emergency', as: :emergency
+  get '/intro', to: 'pages#intro', as: :intro
 
   # Messages
   # get '/send_message', to: 'twilio#send_message', as: :send_message
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   get '/message_near_users', to: 'twilio#message_near_users', as: :message_near_users
   get '/message_authorities', to: 'twilio#message_authorities', as: :message_authorities
   get '/demo_notification', to: 'twilio#demo_notification', as: :demo_notification
-  
+
 
   resource :users, only: :show
   patch 'users/message_update', to: 'users#update_messages', as: :message_update
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[show] do
     resources :responses, only: %i[new create destroy]
   end
-  
+
   resources :reviews, only: %i[edit update]
   get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
   get 'reviews/:id/satisfy', to: 'reviews#satisfy', as: :satisfy_review
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
 
   resources :places, except: %i[destroy show]
 
-  
+
   resources :places, only: :show do
     resources :reviews, only: %i[new create]
   end
