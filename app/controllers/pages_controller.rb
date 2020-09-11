@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home top_places near_me recommended community together ollivia]
+  skip_before_action :authenticate_user!, only: %i[home top_places near_me recommended community together ollivia intro]
 
   def home
     @places = Place.all
