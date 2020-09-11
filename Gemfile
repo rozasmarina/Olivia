@@ -36,6 +36,7 @@ gem 'devise'
 gem 'turbolinks_render'
 gem 'geocoder'
 gem 'pundit'
+gem 'notifications'
 
 group :development, :test do
   gem 'pry-byebug'
