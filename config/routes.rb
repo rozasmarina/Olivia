@@ -29,11 +29,7 @@ Rails.application.routes.draw do
     resources :responses, only: %i[new create destroy]
   end
 
-<<<<<<< HEAD
-  resources :reviews, only: %i[index edit update]
-=======
   resources :reviews, only: %i[edit update]
->>>>>>> master
   get 'reviews/:id/disable', to: 'reviews#disable', as: :disable_review
   get 'reviews/:id/satisfy', to: 'reviews#satisfy', as: :satisfy_review
   # patch 'reviews/:id', to: 'reviews#disabled' -> will use update to change
