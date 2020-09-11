@@ -249,11 +249,10 @@
               <% @user.reviews.where("is_disabled = ?", false).each do |review| %>
                 <% if review.responses.present? && review.responses.last.user != current_user %>
                   <li><%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>) <i class="fas fa-comments"></i></li>
-                  <div class="dropdown-divider"></div>
                 <% else %>
                   <li> <%= link_to review.title, review_path(review) %> (<%= link_to review.place.name, place_path(review.place) %>)</li>
-                  <div class="dropdown-divider"></div>
                 <% end %>
+                <div class="dropdown-divider"></div>
               <% end %>
             </ul>
           </div>

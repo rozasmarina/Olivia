@@ -2,6 +2,12 @@
     
 }
 
-.nav-link .active {
-    background-color: 7209b7;
+.nav-link:active {
+    .xp-btn{
+        background-color: $roxo;
+    }
+}
+
+#pills-good-tab:active {
+    
 }
