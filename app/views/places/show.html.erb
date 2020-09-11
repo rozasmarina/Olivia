@@ -131,11 +131,11 @@
                 <% if review.is_anonymous %>
                   <!-- avatar anonimo -->
                   <%= image_tag 'menu/user_anon.png', class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "crop", quality: 80}, {width: 150, crop: "scale"}] %>
-                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line">Avaliação anônima</p>
                 <% else %>
                   <%= cl_image_tag review.user.photo.key, class:"avatar-mini", transformation: [{width: 400, height: 400, gravity: "face", radius: "max", crop: "fill", quality: 80}, {width: 150, crop: "scale"}] %>
-                  <%= link_to review.title, review_path(review), class: "ml-1" %>
+                  <%= link_to "#{review.title.length < 35 ? review.title : review.title.slice(0, 36) + '...'}", review_path(review), class: "ml-1" %>
                   <p class="ml-5 purple sm-line" style="margin-left: 58px !important;">Por <%= review.user.username %></p>
                   <% if review.is_satisfied? %>
                     <span class="badge badge-pill badge-danger badge-pos font-weight-normal" style="color: white;">Resolvido</span>

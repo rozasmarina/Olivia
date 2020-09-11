@@ -148,9 +148,9 @@
           <div id="satisfiedReviewsCollapse" class="collapse" aria-labelledby="satisfiedReviews" data-parent="#business">
             <div class="card-body">
               <% if @user.owned_place.reviews.where(is_satisfied: true).present? %>
-                  <% @user.owned_place.reviews.where(is_satisfied: true).each do |review| %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
-                  <% end %>
+                <% @user.owned_place.reviews.where(is_satisfied: true).each do |review| %>
+                  <li class="list-group-item d-flex justify-content-between align-items-center" style="color: #c8075f !important;"> <%= link_to review.title, review_path(review) %> <i class="fas fa-award" style="color:#F72585;"></i></li>
+                <% end %>
               <% else %>
                 <p class="d-flex justify-content-center align-content-center">Ainda não existe avaliação marcada como satisfeita.</p>
               <% end %>
