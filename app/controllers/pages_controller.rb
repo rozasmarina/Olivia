@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     @places = Place.near(current_user, 5) if @places == []
     @places = Place.near(current_user, 7) if @places == []
     if @places == []
-      redirect_to root_path, notice: 'Nenhum local próximo encontrado'
+      redirect_to home_path, notice: 'Nenhum local próximo encontrado'
     else
       @markers = @places.geocoded.map do |place|
         { lat: place.latitude, lng: place.longitude,
